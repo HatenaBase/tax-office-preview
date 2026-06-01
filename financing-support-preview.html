@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>融資支援サービス｜はてなベース税理士事務所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #FAFAFA;
+      --paper-warm: #F5F4F0;
+      --ink: #0E0E14;
+      --ink-soft: #3A3A45;
+      --ink-light: #8A8A93;
+      --line: #E8E6DF;
+      --line-soft: #F0EEE8;
+      --blue: #1F61AB;
+      --blue-deep: #0F3B72;
+      --blue-light: #E8EFF8;
+      --blue-ghost: #F4F8FD;
+      --font-en: "Cormorant Garamond", "Times New Roman", serif;
+      --font-en-sans: "Inter", system-ui, sans-serif;
+      --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-jp);
+      color: var(--ink);
+      background: #F2F2F2;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ====== Header ====== */
+    .hb-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 18px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-header__logo {
+      font-family: var(--font-en-sans);
+      font-size: 14px; font-weight: 600; letter-spacing: .06em;
+      color: var(--ink); text-decoration: none;
+    }
+    .hb-header__nav {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .hb-header__nav a {
+      font-family: var(--font-en-sans);
+      font-size: 12px; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .2s;
+    }
+    .hb-header__nav a:hover { color: var(--blue); }
+    .hb-header__cta {
+      padding: 10px 22px; background: var(--ink); color: #fff;
+      border-radius: 999px; font-size: 12px; font-weight: 500;
+      letter-spacing: .04em; text-decoration: none;
+      transition: background .3s;
+    }
+    .hb-header__cta:hover { background: var(--blue); }
+
+    /* ====== SubHero ====== */
+    .hb-subhero {
+      position: relative; padding: 80px 32px 72px;
+      background: var(--white); overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+    .hb-subhero__crumb {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px;
+    }
+    .hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; }
+    .hb-subhero__crumb a:hover { color: var(--blue); }
+    .hb-subhero__en {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 18px; color: var(--blue); margin-bottom: 14px;
+      letter-spacing: .02em;
+    }
+    .hb-subhero__jp {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(36px, 5vw, 64px); line-height: 1.18;
+      letter-spacing: -.02em; color: var(--ink); margin-bottom: 24px;
+    }
+    .hb-subhero__jp .accent {
+      border-bottom: 3px solid var(--blue); padding-bottom: .05em;
+    }
+    .hb-subhero__tag {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 15px; color: var(--ink-light); margin-bottom: 28px;
+    }
+    .hb-subhero__lead {
+      font-size: 15px; line-height: 1.95; color: var(--ink-soft);
+      max-width: 640px;
+    }
+
+    /* ====== Section Head ====== */
+    .hb-section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--line);
+      margin-bottom: 40px;
+    }
+    .hb-section-head__en {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-section-head__en::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    }
+    .hb-section-head__jp {
+      font-family: var(--font-jp); font-weight: 500; font-size: 32px;
+      letter-spacing: -.01em; color: var(--ink);
+    }
+
+    /* ====== Section base ====== */
+    .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .section--paper { background: var(--paper); }
+    .section--warm { background: var(--paper-warm); }
+    .section__inner { max-width: 1280px; margin: 0 auto; }
+
+    /* ====== Stats ====== */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .stat-cell {
+      padding: 40px 24px; text-align: center;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .stat-cell__number {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 48px; color: var(--blue); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-cell__label {
+      font-size: 13px; color: var(--ink-soft);
+    }
+
+    /* ====== Reasons ====== */
+    .reason-block {
+      display: grid; grid-template-columns: 100px 1fr;
+      gap: 48px; padding: 32px 0;
+      border-bottom: 1px solid var(--ink);
+      align-items: flex-start;
+    }
+    .reason-block:last-child { border-bottom: none; }
+    .reason-block__num {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 56px; color: var(--blue); line-height: .9;
+    }
+    .reason-block__title {
+      font-family: var(--font-jp); font-weight: 700; font-size: 22px;
+      margin-bottom: 12px; letter-spacing: -.01em;
+    }
+    .reason-block__desc {
+      font-size: 14px; line-height: 1.95; color: var(--ink-soft);
+    }
+
+    /* ====== Service Grid ====== */
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .svc-card {
+      padding: 40px 32px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      display: flex; flex-direction: column;
+    }
+    .svc-card__head {
+      display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px;
+    }
+    .svc-card__num {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 36px; color: var(--blue); line-height: 1;
+    }
+    .svc-card__en {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .28em; color: var(--ink-light);
+    }
+    .svc-card__title {
+      font-family: var(--font-jp); font-weight: 700; font-size: 22px;
+      line-height: 1.4; letter-spacing: -.01em; margin-bottom: 14px;
+    }
+    .svc-card__desc {
+      font-size: 14px; line-height: 1.95; color: var(--ink-soft);
+    }
+
+    /* ====== Pricing Card ====== */
+    .pricing-card {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--line);
+    }
+    .pricing-card__item {
+      padding: 40px 32px;
+      border-right: 1px solid var(--line);
+    }
+    .pricing-card__item:last-child { border-right: none; }
+    .pricing-card__label {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue); margin-bottom: 12px;
+    }
+    .pricing-card__value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 42px; color: var(--ink); line-height: 1.1; margin-bottom: 8px;
+    }
+    .pricing-card__value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 500;
+      font-size: 16px; color: var(--ink-soft);
+    }
+    .pricing-card__desc {
+      font-size: 13px; color: var(--ink-soft); line-height: 1.7;
+    }
+    .pricing-note {
+      margin-top: 24px; padding: 24px 32px;
+      background: var(--blue-ghost); border-left: 3px solid var(--blue);
+    }
+    .pricing-note__title {
+      font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--blue-deep);
+    }
+    .pricing-note__desc {
+      font-size: 13px; color: var(--ink-soft); line-height: 1.8;
+    }
+
+    /* ====== Flow ====== */
+    .flow-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .flow-step {
+      padding: 32px 24px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .flow-step__num {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 28px; color: var(--blue); margin-bottom: 14px;
+    }
+    .flow-step__title {
+      font-family: var(--font-jp); font-weight: 700; font-size: 16px;
+      margin-bottom: 10px; letter-spacing: -.01em;
+    }
+    .flow-step__desc {
+      font-size: 13px; line-height: 1.8; color: var(--ink-soft);
+    }
+
+    /* ====== Case Grid ====== */
+    .case-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .case-card {
+      padding: 32px 28px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .case-card__label {
+      font-family: var(--font-en-sans); font-size: 10px; font-weight: 600;
+      letter-spacing: .2em; color: var(--blue); margin-bottom: 10px;
+    }
+    .case-card__title {
+      font-weight: 700; font-size: 15px; margin-bottom: 8px;
+    }
+    .case-card__amount {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 28px; color: var(--blue); margin-bottom: 8px;
+    }
+    .case-card__desc {
+      font-size: 13px; color: var(--ink-soft); line-height: 1.7;
+    }
+
+    /* ====== FAQ ====== */
+    .faq-item {
+      padding: 28px 0; border-bottom: 1px solid var(--line);
+    }
+    .faq-item__q {
+      font-family: var(--font-jp); font-weight: 700; font-size: 15px;
+      color: var(--ink); margin-bottom: 10px; cursor: pointer;
+    }
+    .faq-item__q::before {
+      content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans);
+      font-weight: 600; color: var(--blue);
+    }
+    .faq-item__a {
+      font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px;
+    }
+
+    /* ====== CTA Section (Blue) ====== */
+    .cta-blue {
+      padding: 96px 32px; background: var(--blue); color: #fff;
+    }
+    .cta-blue__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: flex-end;
+    }
+    .cta-blue__label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
+    }
+    .cta-blue__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(28px, 3.8vw, 44px); line-height: 1.25; margin-bottom: 24px;
+    }
+    .cta-blue__lead {
+      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
+    }
+    .cta-blue__buttons { display: grid; gap: 14px; }
+    .cta-blue__btn {
+      padding: 18px 28px; text-decoration: none;
+      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+      transition: transform .2s;
+    }
+    .cta-blue__btn:hover { transform: translateX(4px); }
+    .cta-blue__btn--primary {
+      background: #fff; color: var(--blue);
+    }
+    .cta-blue__btn--outline {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.6);
+    }
+    .cta-blue__btn .arrow {
+      font-family: var(--font-en); font-style: italic;
+    }
+
+    /* ====== Footer ====== */
+    .hb-footer {
+      padding: 48px 32px; background: var(--ink); color: #fff; text-align: center;
+    }
+    .hb-footer__logo {
+      font-family: var(--font-en-sans); font-size: 13px; font-weight: 500;
+      letter-spacing: .08em; opacity: .7; margin-bottom: 12px;
+    }
+    .hb-footer__copy {
+      font-family: var(--font-en-sans); font-size: 11px; opacity: .4;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 767px) {
+      .hb-header__nav { display: none; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-grid { grid-template-columns: repeat(2, 1fr); }
+      .reason-block { grid-template-columns: 60px 1fr; gap: 24px; }
+      .reason-block__num { font-size: 36px; }
+      .cta-blue__inner { grid-template-columns: 1fr; gap: 40px; }
+      .hb-subhero__jp { font-size: 32px; }
+      .pricing-card { grid-template-columns: 1fr; }
+      .pricing-card__item { border-right: none; border-bottom: 1px solid var(--line); }
+      .case-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hb-header">
+    <div class="hb-header__inner">
+      <a href="./index.html" class="hb-header__logo">HATENABASE TAX OFFICE</a>
+      <nav class="hb-header__nav">
+        <a href="#reason">REASON</a>
+        <a href="#service">SERVICE</a>
+        <a href="#pricing">PRICING</a>
+        <a href="#flow">FLOW</a>
+        <a href="/contact" class="hb-header__cta">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- SubHero -->
+  <section class="hb-subhero">
+    <div class="hb-subhero__inner">
+      <p class="hb-subhero__crumb"><a href="./tax-accountant-preview.html">TAX OFFICE</a> &nbsp;/&nbsp; FINANCING SUPPORT</p>
+      <p class="hb-subhero__en">Financing Support</p>
+      <h1 class="hb-subhero__jp">
+        人生を賭ける事業に、<br>
+        <span class="accent">最高のスタートダッシュ</span>を。
+      </h1>
+      <p class="hb-subhero__tag">Business plan, bank negotiation &amp; financing — all covered.</p>
+      <p class="hb-subhero__lead">
+        累計50件超・総調達額3億円超の実績を持つ税理士事務所が、事業計画書の作成から金融機関との折衝まで一貫支援。創業融資・追加融資のいずれも、経営者の想いを数字に落とし込み、資金調達を成功に導きます。
+      </p>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">TRACK RECORD</span>
+        <span class="hb-section-head__jp">融資支援実績</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-cell__number">50+</div>
+          <div class="stat-cell__label">累計支援件数</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">3億+</div>
+          <div class="stat-cell__label">総調達額</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">60+</div>
+          <div class="stat-cell__label">開業1年で伴走した企業数</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">0</div>
+          <div class="stat-cell__label">初回相談料</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reason -->
+  <section class="section section--paper" id="reason">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">REASON</span>
+        <span class="hb-section-head__jp">選ばれる理由</span>
+      </div>
+      <div>
+        <div class="reason-block">
+          <div class="reason-block__num">01</div>
+          <div>
+            <h3 class="reason-block__title">事業計画書の作成から伴走</h3>
+            <p class="reason-block__desc">融資審査を通過するための事業計画書を、経営者の想いと市場分析をもとにゼロから作成。金融機関が求める論理構成と数値計画を的確に組み立てます。会計の専門家だからこそできる説得力のある計画書です。</p>
+          </div>
+        </div>
+        <div class="reason-block">
+          <div class="reason-block__num">02</div>
+          <div>
+            <h3 class="reason-block__title">金融機関の担当者を直接紹介</h3>
+            <p class="reason-block__desc">日本政策金融公庫や信用金庫など、創業融資に強い金融機関の担当者を直接ご紹介。事務所のネットワークを活かし、融資成功率を高めます。自分で窓口を探す手間がかかりません。</p>
+          </div>
+        </div>
+        <div class="reason-block">
+          <div class="reason-block__num">03</div>
+          <div>
+            <h3 class="reason-block__title">税務顧問との一体運用</h3>
+            <p class="reason-block__desc">融資後の月次決算・資金繰り管理までシームレスに連携。顧問契約いただいているお客様は成功報酬が4%（通常5%）に優遇されます。融資は「調達して終わり」ではなく、その後の経営管理まで一気通貫で支援します。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <section class="section" id="service">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">SERVICE</span>
+        <span class="hb-section-head__jp">支援内容</span>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-card__head">
+            <span class="svc-card__num">01</span>
+            <span class="svc-card__en">BUSINESS PLAN</span>
+          </div>
+          <h3 class="svc-card__title">事業計画書の作成</h3>
+          <p class="svc-card__desc">創業の動機・事業概要・市場分析・収支計画・資金計画をヒアリングし、金融機関向けの事業計画書をプロが作成します。</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card__head">
+            <span class="svc-card__num">02</span>
+            <span class="svc-card__en">BANK NEGOTIATION</span>
+          </div>
+          <h3 class="svc-card__title">金融機関との折衝</h3>
+          <p class="svc-card__desc">日本政策金融公庫・信用金庫等の担当者をご紹介し、面談準備から申込手続きまでサポート。審査のポイントを押さえた対策を行います。</p>
+        </div>
+        <div class="svc-card">
+          <div class="svc-card__head">
+            <span class="svc-card__num">03</span>
+            <span class="svc-card__en">POST-FINANCING</span>
+          </div>
+          <h3 class="svc-card__title">融資後のフォローアップ</h3>
+          <p class="svc-card__desc">融資実行後の返済計画管理・資金繰り表の作成・月次決算との連携まで。調達した資金を最大限活かす経営支援を行います。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case -->
+  <section class="section section--paper">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">CASE</span>
+        <span class="hb-section-head__jp">融資支援事例</span>
+      </div>
+      <div class="case-grid">
+        <div class="case-card">
+          <div class="case-card__label">CASE 01</div>
+          <h3 class="case-card__title">IT系スタートアップ</h3>
+          <div class="case-card__amount">¥10,000,000</div>
+          <p class="case-card__desc">創業時の日本政策金融公庫「新創業融資制度」を活用。事業計画書の作成から面談対策までフルサポート。</p>
+        </div>
+        <div class="case-card">
+          <div class="case-card__label">CASE 02</div>
+          <h3 class="case-card__title">飲食店（2店舗目出店）</h3>
+          <div class="case-card__amount">¥15,000,000</div>
+          <p class="case-card__desc">既存店舗の実績データをもとに、信用金庫からの追加融資を獲得。出店計画と収支シミュレーションを綿密に作成。</p>
+        </div>
+        <div class="case-card">
+          <div class="case-card__label">CASE 03</div>
+          <h3 class="case-card__title">コンサルティング会社</h3>
+          <div class="case-card__amount">¥5,000,000</div>
+          <p class="case-card__desc">設立直後の運転資金を日本政策金融公庫で調達。月次顧問と一体化した資金管理で安定経営を実現。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">PRICING</span>
+        <span class="hb-section-head__jp">料金体系</span>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__item">
+          <div class="pricing-card__label">RETAINER FEE</div>
+          <div class="pricing-card__value">¥50,000 <span>（税抜）</span></div>
+          <p class="pricing-card__desc">着手金として、ご契約時にお支払いいただきます。事業計画書の作成・金融機関の紹介を含みます。</p>
+        </div>
+        <div class="pricing-card__item">
+          <div class="pricing-card__label">SUCCESS FEE</div>
+          <div class="pricing-card__value">5% <span>（融資実行額に対して）</span></div>
+          <p class="pricing-card__desc">融資が実行された場合のみ発生する成功報酬です。融資が不成立の場合、着手金以外の追加費用はかかりません。</p>
+        </div>
+      </div>
+      <div class="pricing-note">
+        <p class="pricing-note__title">税務顧問のお客様は成功報酬 4%</p>
+        <p class="pricing-note__desc">当事務所の税務顧問契約をご利用いただいているお客様は、成功報酬が5%→4%に優遇されます。融資後の月次決算・資金繰り管理までワンストップで対応できるため、融資との相性が最も良いプランです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section class="section section--paper" id="flow">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">FLOW</span>
+        <span class="hb-section-head__jp">融資支援の流れ</span>
+      </div>
+      <div class="flow-grid">
+        <div class="flow-step">
+          <div class="flow-step__num">01</div>
+          <h3 class="flow-step__title">無料相談</h3>
+          <p class="flow-step__desc">事業内容・資金ニーズをヒアリング。最適な融資制度と調達戦略をご提案します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">02</div>
+          <h3 class="flow-step__title">事業計画書の作成</h3>
+          <p class="flow-step__desc">ヒアリング内容をもとに、金融機関向けの事業計画書を当事務所が作成します。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">03</div>
+          <h3 class="flow-step__title">金融機関への申込</h3>
+          <p class="flow-step__desc">最適な金融機関の担当者をご紹介。面談準備・書類提出まで全面サポート。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step__num">04</div>
+          <h3 class="flow-step__title">融資実行</h3>
+          <p class="flow-step__desc">融資実行後の返済計画管理まで対応。税務顧問との連携で継続的な経営支援。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">FAQ</span>
+        <span class="hb-section-head__jp">よくある質問</span>
+      </div>
+      <div style="max-width: 800px;">
+        <div class="faq-item">
+          <p class="faq-item__q">創業前でも融資の相談はできますか？</p>
+          <p class="faq-item__a">はい、創業前の段階からご相談いただけます。事業計画の策定段階から関わることで、より説得力のある計画書を作成できます。</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-item__q">融資が通らなかった場合、費用はかかりますか？</p>
+          <p class="faq-item__a">着手金（5万円）は返金されませんが、成功報酬は融資が実行された場合のみ発生します。融資不成立の場合、追加の費用はかかりません。</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-item__q">どのくらいの期間で融資が実行されますか？</p>
+          <p class="faq-item__a">一般的に、ご相談から融資実行まで1〜2ヶ月程度です。事業計画の準備状況や金融機関の審査状況により前後します。</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-item__q">日本政策金融公庫以外の融資も対応していますか？</p>
+          <p class="faq-item__a">はい、信用金庫・地方銀行等からの融資にも対応しております。お客様の状況に最適な金融機関をご提案します。</p>
+        </div>
+        <div class="faq-item">
+          <p class="faq-item__q">税務顧問契約なしでも融資支援を受けられますか？</p>
+          <p class="faq-item__a">はい、融資支援単体でもお受けしております。ただし、顧問契約をいただくと成功報酬が5%→4%に優遇されます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-blue">
+    <div class="cta-blue__inner">
+      <div>
+        <p class="cta-blue__label">● CONTACT</p>
+        <h2 class="cta-blue__title">
+          人生を賭ける事業に、<br>
+          最高のスタートダッシュを。
+        </h2>
+        <p class="cta-blue__lead">
+          「いくら調達できるか」「どの融資制度が使えるか」「自己資金はどのくらい必要か」——まずは無料相談で、資金調達の全体像を一緒に描きましょう。
+        </p>
+      </div>
+      <div class="cta-blue__buttons">
+        <a href="/contact" class="cta-blue__btn cta-blue__btn--primary">
+          <span>無料相談を予約する</span><span class="arrow">→</span>
+        </a>
+        <a href="./tax-accountant-preview.html" class="cta-blue__btn cta-blue__btn--outline">
+          <span>事務所トップに戻る</span><span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="hb-footer">
+    <div class="hb-footer__logo">HATENABASE TAX OFFICE</div>
+    <p class="hb-footer__copy">&copy;2026 Hatenabase, inc.</p>
+  </footer>
+
+</body>
+</html>
