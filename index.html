@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>税理士事務所HP改修 — プレビュー一覧</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Zen Kaku Gothic New", sans-serif;
+      background: #F2F2F2; color: #0E0E14;
+      margin: 0; padding: 64px 32px;
+    }
+    .container { max-width: 720px; margin: 0 auto; }
+    h1 {
+      font-size: 24px; font-weight: 700; margin-bottom: 8px;
+    }
+    .subtitle {
+      font-family: "Inter", sans-serif; font-size: 12px;
+      color: #8A8A93; letter-spacing: .2em; margin-bottom: 48px;
+    }
+    .card {
+      display: block; padding: 24px 28px;
+      background: #fff; border: 1px solid #E8E6DF;
+      margin-bottom: 12px; text-decoration: none; color: #0E0E14;
+      transition: border-color .2s, transform .2s;
+    }
+    .card:hover { border-color: #1F61AB; transform: translateX(4px); }
+    .card__title { font-weight: 700; font-size: 16px; margin-bottom: 4px; }
+    .card__path {
+      font-family: "Inter", sans-serif; font-size: 12px;
+      color: #1F61AB; letter-spacing: .02em;
+    }
+    .card__status {
+      font-size: 12px; color: #8A8A93; margin-top: 4px;
+    }
+    .note {
+      margin-top: 48px; font-size: 13px; color: #8A8A93; line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>税理士事務所HP改修</h1>
+    <p class="subtitle">PREVIEW INDEX</p>
+
+    <a href="./tax-accountant-preview.html" class="card">
+      <div class="card__title">税理士事務所トップ</div>
+      <div class="card__path">/tax-accountant/</div>
+      <div class="card__status">✅ 初版作成済み</div>
+    </a>
+
+    <a href="./tax-advisor-preview.html" class="card">
+      <div class="card__title">税務アドバイザリー（税務顧問）</div>
+      <div class="card__path">/tax-advisor/</div>
+      <div class="card__status">⬜ 未着手</div>
+    </a>
+
+    <a href="./financing-support-preview.html" class="card">
+      <div class="card__title">融資支援サービス</div>
+      <div class="card__path">/financing-support/</div>
+      <div class="card__status">⬜ 未着手</div>
+    </a>
+
+    <div class="note">
+      各ページのプレビューを確認し、構成が固まったら<br>
+      <a href="https://github.com/HatenaBase/homepage-wp/issues/52" style="color:#1F61AB;">homepage-wp#52</a> にコメントして宮澤さん・田村さんに確認依頼を出す。
+    </div>
+  </div>
+</body>
+</html>
