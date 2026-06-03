@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ｜はてなベース税理士事務所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & VARIABLES ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #FFFFFF;
+  --paper: #FAFAFA;
+  --paper-warm: #F5F4F0;
+  --ink: #0E0E14;
+  --ink-soft: #3A3A45;
+  --ink-light: #8A8A93;
+  --line: #E8E6DF;
+  --blue: #1F61AB;
+  --blue-deep: #0F3B72;
+  --blue-light: #E8EFF8;
+  --blue-ghost: #F4F8FD;
+  --font-en: "Cormorant Garamond", "Times New Roman", serif;
+  --font-en-sans: "Inter", system-ui, sans-serif;
+  --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-jp);
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--blue); text-decoration: none; transition: opacity 0.2s; }
+a:hover { opacity: 0.7; }
+
+img { max-width: 100%; display: block; }
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__logo-mark {
+  width: 32px;
+  height: 32px;
+  background: var(--blue);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.header__logo-text {
+  font-family: var(--font-jp);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.header__logo-sub {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.header__nav a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.header__nav a:hover { color: var(--blue); opacity: 1; }
+
+.header__cta {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white) !important;
+  background: var(--blue);
+  padding: 8px 24px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+  transition: background 0.2s;
+}
+
+.header__cta:hover { background: var(--blue-deep); opacity: 1 !important; }
+
+/* ===== SUBHERO ===== */
+.subhero {
+  background: var(--blue-ghost);
+  padding: 80px 40px 72px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.subhero::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(31,97,171,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.subhero__breadcrumb {
+  font-size: 12px;
+  font-family: var(--font-en-sans);
+  font-weight: 400;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 40px;
+}
+
+.subhero__breadcrumb a { color: var(--ink-light); }
+.subhero__breadcrumb a:hover { color: var(--blue); }
+.subhero__breadcrumb span { margin: 0 8px; }
+
+.subhero__en {
+  font-family: var(--font-en);
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--blue);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.subhero__headline {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.subhero__tag {
+  display: inline-block;
+  font-family: var(--font-en-sans);
+  font-size: 13px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+
+.subhero__lead {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 2;
+}
+
+/* ===== SECTION COMMON ===== */
+.section {
+  padding: 96px 40px;
+}
+
+.section--paper {
+  background: var(--paper-warm);
+}
+
+.section--white {
+  background: var(--white);
+}
+
+.section__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.section__inner--wide {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section__head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section__head-en {
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.section__head-jp {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.section__head-line {
+  width: 40px;
+  height: 1px;
+  background: var(--blue);
+  margin: 0 auto;
+}
+
+/* ===== FORM ===== */
+.form-container {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 56px 48px;
+}
+
+.form-group-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--blue);
+  margin-bottom: 32px;
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group-title:first-child { margin-top: 0; }
+
+.form-group-title__number {
+  font-family: var(--font-en-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--white);
+  background: var(--blue);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.form-field {
+  margin-bottom: 28px;
+}
+
+.form-field:last-child {
+  margin-bottom: 0;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.form-label__required {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--blue);
+  background: var(--blue-light);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.form-label__optional {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-light);
+  margin-left: 8px;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: var(--font-jp);
+  color: var(--ink);
+  border-radius: 4px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--ink-light);
+  font-weight: 300;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(31,97,171,0.08);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%238A8A93' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.form-textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.8;
+}
+
+/* Radio & Checkbox groups */
+.form-radio-group,
+.form-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.form-radio-item,
+.form-checkbox-item {
+  position: relative;
+}
+
+.form-radio-item input[type="radio"],
+.form-checkbox-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.form-radio-item label,
+.form-checkbox-item label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--white);
+  user-select: none;
+}
+
+.form-radio-item label:hover,
+.form-checkbox-item label:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-ghost);
+}
+
+.form-radio-item input[type="radio"]:checked + label,
+.form-checkbox-item input[type="checkbox"]:checked + label {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-light);
+  font-weight: 500;
+}
+
+/* Custom radio dot */
+.form-radio-item label::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.form-radio-item input[type="radio"]:checked + label::before {
+  border-color: var(--blue);
+  background: var(--blue);
+  box-shadow: inset 0 0 0 3px var(--white);
+}
+
+/* Custom checkbox */
+.form-checkbox-item label::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--line);
+  border-radius: 3px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.form-checkbox-item input[type="checkbox"]:checked + label::before {
+  border-color: var(--blue);
+  background: var(--blue);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Agreement checkbox (single) */
+.form-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px;
+  background: var(--blue-ghost);
+  border-radius: 6px;
+  border: 1px solid var(--blue-light);
+}
+
+.form-agreement input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 2px;
+}
+
+.form-agreement input[type="checkbox"]:checked {
+  border-color: var(--blue);
+  background: var(--blue);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='10' viewBox='0 0 12 10'%3E%3Cpath d='M1 5L4 8L11 1' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.form-agreement label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+.form-agreement label a {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+/* Submit button */
+.form-submit-wrap {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.form-submit {
+  display: inline-block;
+  padding: 16px 64px;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px rgba(31,97,171,0.2);
+}
+
+.form-submit:hover {
+  background: var(--blue-deep);
+  box-shadow: 0 4px 16px rgba(31,97,171,0.3);
+  transform: translateY(-1px);
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+/* ===== INFO LIST ===== */
+.info-list {
+  list-style: none;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.info-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.info-list__item:last-child {
+  border-bottom: none;
+}
+
+.info-list__label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  min-width: 120px;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+}
+
+.info-list__value {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+/* ===== FAQ ===== */
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  font-family: var(--font-jp);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+.faq-question:hover { color: var(--blue); }
+
+.faq-question__icon {
+  font-family: var(--font-en-sans);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--blue);
+  border-radius: 50%;
+}
+
+.faq-question__arrow {
+  margin-left: auto;
+  font-size: 18px;
+  color: var(--ink-light);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.faq-item.is-open .faq-question__arrow {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.faq-answer__inner {
+  padding: 0 0 24px 44px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 2;
+}
+
+.faq-item.is-open .faq-answer {
+  max-height: 300px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.6);
+  padding: 64px 40px 40px;
+}
+
+.footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__logo-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--blue);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-family: var(--font-en);
+  font-size: 15px;
+}
+
+.footer__logo-text {
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.footer__desc {
+  font-size: 12px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.footer__heading {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+  font-family: var(--font-en-sans);
+}
+
+.footer__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__links a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+  transition: color 0.2s;
+}
+
+.footer__links a:hover { color: var(--white); opacity: 1; }
+
+.footer__bottom {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-family: var(--font-en-sans);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer__bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__bottom-links a {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 300;
+}
+
+.footer__bottom-links a:hover { color: rgba(255,255,255,0.7); opacity: 1; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .header__inner { padding: 0 20px; height: 60px; }
+  .header__nav { display: none; }
+
+  .subhero { padding: 56px 20px 48px; }
+
+  .section { padding: 64px 20px; }
+
+  .form-container { padding: 32px 20px; }
+
+  .form-radio-group,
+  .form-checkbox-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-radio-item label,
+  .form-checkbox-item label {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .info-list__item {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-list__label {
+    min-width: auto;
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px 40px;
+  }
+
+  .form-group-title {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .subhero__en { font-size: 36px; }
+  .subhero__headline { font-size: 20px; }
+  .form-container { padding: 24px 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header__inner">
+    <a href="#" class="header__logo">
+      <div class="header__logo-mark">h</div>
+      <div>
+        <div class="header__logo-text">はてなベース税理士事務所</div>
+        <div class="header__logo-sub">Hatenabase Tax Office</div>
+      </div>
+    </a>
+    <nav class="header__nav">
+      <a href="#">ホーム</a>
+      <a href="#">事務所概要</a>
+      <a href="#">サービス</a>
+      <a href="#">料金</a>
+      <a href="#">お知らせ</a>
+      <a href="#" class="header__cta">お問い合わせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== SUBHERO ===== -->
+<section class="subhero">
+  <div class="subhero__breadcrumb">
+    <a href="#">ホーム</a><span>&gt;</span><a href="#">税理士事務所</a><span>&gt;</span>お問い合わせ
+  </div>
+  <div class="subhero__en">Contact</div>
+  <h1 class="subhero__headline">お問い合わせ</h1>
+  <div class="subhero__tag">Get in touch with us.</div>
+  <p class="subhero__lead">税務顧問・融資支援のご相談はこちらから。<br>通常1営業日以内にご返信いたします。</p>
+</section>
+
+<!-- ===== INQUIRY FORM ===== -->
+<section class="section section--white">
+  <div class="section__inner">
+    <div class="section__head">
+      <div class="section__head-en">INQUIRY FORM</div>
+      <h2 class="section__head-jp">お問い合わせフォーム</h2>
+      <div class="section__head-line"></div>
+    </div>
+
+    <form class="form-container" onsubmit="event.preventDefault(); alert('このフォームはプレビューです。実際には送信されません。');">
+
+      <!-- Group 1: 基本情報 -->
+      <div class="form-group-title">
+        <span class="form-group-title__number">1</span>
+        基本情報
+      </div>
+
+      <!-- 1. 事業区分 -->
+      <div class="form-field">
+        <span class="form-label">事業区分<span class="form-label__required">必須</span></span>
+        <div class="form-radio-group">
+          <div class="form-radio-item">
+            <input type="radio" name="business_type" id="bt_corp" value="法人">
+            <label for="bt_corp">法人</label>
+          </div>
+          <div class="form-radio-item">
+            <input type="radio" name="business_type" id="bt_sole" value="個人事業主">
+            <label for="bt_sole">個人事業主</label>
+          </div>
+          <div class="form-radio-item">
+            <input type="radio" name="business_type" id="bt_pre" value="法人設立予定">
+            <label for="bt_pre">法人設立予定</label>
+          </div>
+          <div class="form-radio-item">
+            <input type="radio" name="business_type" id="bt_other" value="その他">
+            <label for="bt_other">その他</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. お名前 -->
+      <div class="form-field">
+        <label class="form-label" for="name">お名前<span class="form-label__required">必須</span></label>
+        <input class="form-input" type="text" id="name" placeholder="例: 田村 直大">
+      </div>
+
+      <!-- 3. フリガナ -->
+      <div class="form-field">
+        <label class="form-label" for="furigana">フリガナ<span class="form-label__required">必須</span></label>
+        <input class="form-input" type="text" id="furigana" placeholder="例: タムラ ナオヒロ">
+      </div>
+
+      <!-- 4. 会社名 -->
+      <div class="form-field">
+        <label class="form-label" for="company">会社名（屋号）<span class="form-label__required">必須</span></label>
+        <input class="form-input" type="text" id="company" placeholder="例: 株式会社はてなベース">
+      </div>
+
+      <!-- 5. 業種 -->
+      <div class="form-field">
+        <label class="form-label" for="industry">業種<span class="form-label__required">必須</span></label>
+        <select class="form-select" id="industry">
+          <option value="" disabled selected>選択してください</option>
+          <option>IT・Web</option>
+          <option>コンサルティング</option>
+          <option>飲食・フード</option>
+          <option>小売・EC</option>
+          <option>建設・不動産</option>
+          <option>美容・健康</option>
+          <option>医療・福祉</option>
+          <option>教育</option>
+          <option>製造</option>
+          <option>物流</option>
+          <option>士業</option>
+          <option>その他</option>
+        </select>
+      </div>
+
+      <!-- 6. メールアドレス -->
+      <div class="form-field">
+        <label class="form-label" for="email">メールアドレス<span class="form-label__required">必須</span></label>
+        <input class="form-input" type="email" id="email" placeholder="example@company.co.jp">
+      </div>
+
+      <!-- 7. 電話番号 -->
+      <div class="form-field">
+        <label class="form-label" for="tel">電話番号<span class="form-label__optional">任意</span></label>
+        <input class="form-input" type="tel" id="tel" placeholder="例: 03-1234-5678">
+      </div>
+
+      <!-- Group 2: 事業情報 -->
+      <div class="form-group-title">
+        <span class="form-group-title__number">2</span>
+        事業情報
+      </div>
+
+      <!-- 8. 決算月 -->
+      <div class="form-field">
+        <label class="form-label" for="fiscal_month">決算月<span class="form-label__required">必須</span></label>
+        <select class="form-select" id="fiscal_month">
+          <option value="" disabled selected>選択してください</option>
+          <option>1月</option>
+          <option>2月</option>
+          <option>3月</option>
+          <option>4月</option>
+          <option>5月</option>
+          <option>6月</option>
+          <option>7月</option>
+          <option>8月</option>
+          <option>9月</option>
+          <option>10月</option>
+          <option>11月</option>
+          <option>12月</option>
+          <option>未定</option>
+        </select>
+      </div>
+
+      <!-- 9. 事業規模 -->
+      <div class="form-field">
+        <label class="form-label" for="revenue">事業規模（年商見込み）<span class="form-label__required">必須</span></label>
+        <select class="form-select" id="revenue">
+          <option value="" disabled selected>選択してください</option>
+          <option>1,000万円未満</option>
+          <option>1,000万〜2,000万円</option>
+          <option>2,000万〜5,000万円</option>
+          <option>5,000万〜1億円</option>
+          <option>1億〜3億円</option>
+          <option>3億円以上</option>
+          <option>未定・わからない</option>
+        </select>
+      </div>
+
+      <!-- 10. 従業員数 -->
+      <div class="form-field">
+        <label class="form-label" for="employees">従業員数<span class="form-label__optional">任意</span></label>
+        <select class="form-select" id="employees">
+          <option value="" disabled selected>選択してください</option>
+          <option>1名（代表のみ）</option>
+          <option>2〜5名</option>
+          <option>6〜10名</option>
+          <option>11〜20名</option>
+          <option>21名以上</option>
+        </select>
+      </div>
+
+      <!-- 11. 設立年月 -->
+      <div class="form-field">
+        <label class="form-label" for="founded">設立年月<span class="form-label__optional">任意</span></label>
+        <input class="form-input" type="text" id="founded" placeholder="例: 2024年4月">
+      </div>
+
+      <!-- 12. 本店所在地 -->
+      <div class="form-field">
+        <label class="form-label" for="prefecture">本店所在地<span class="form-label__required">必須</span></label>
+        <select class="form-select" id="prefecture">
+          <option value="" disabled selected>都道府県を選択</option>
+          <option>北海道</option><option>青森県</option><option>岩手県</option><option>宮城県</option>
+          <option>秋田県</option><option>山形県</option><option>福島県</option><option>茨城県</option>
+          <option>栃木県</option><option>群馬県</option><option>埼玉県</option><option>千葉県</option>
+          <option>東京都</option><option>神奈川県</option><option>新潟県</option><option>富山県</option>
+          <option>石川県</option><option>福井県</option><option>山梨県</option><option>長野県</option>
+          <option>岐阜県</option><option>静岡県</option><option>愛知県</option><option>三重県</option>
+          <option>滋賀県</option><option>京都府</option><option>大阪府</option><option>兵庫県</option>
+          <option>奈良県</option><option>和歌山県</option><option>鳥取県</option><option>島根県</option>
+          <option>岡山県</option><option>広島県</option><option>山口県</option><option>徳島県</option>
+          <option>香川県</option><option>愛媛県</option><option>高知県</option><option>福岡県</option>
+          <option>佐賀県</option><option>長崎県</option><option>熊本県</option><option>大分県</option>
+          <option>宮崎県</option><option>鹿児島県</option><option>沖縄県</option>
+        </select>
+      </div>
+
+      <!-- 13. ホームページURL -->
+      <div class="form-field">
+        <label class="form-label" for="website">ホームページURL<span class="form-label__optional">任意</span></label>
+        <input class="form-input" type="url" id="website" placeholder="https://example.com">
+      </div>
+
+      <!-- Group 3: 面談・サービス -->
+      <div class="form-group-title">
+        <span class="form-group-title__number">3</span>
+        面談・サービス
+      </div>
+
+      <!-- 14. 面談希望 -->
+      <div class="form-field">
+        <span class="form-label">面談希望<span class="form-label__required">必須</span></span>
+        <div class="form-radio-group">
+          <div class="form-radio-item">
+            <input type="radio" name="meeting_pref" id="mp_online" value="オンライン希望">
+            <label for="mp_online">オンライン希望</label>
+          </div>
+          <div class="form-radio-item">
+            <input type="radio" name="meeting_pref" id="mp_inperson" value="対面希望">
+            <label for="mp_inperson">対面希望</label>
+          </div>
+          <div class="form-radio-item">
+            <input type="radio" name="meeting_pref" id="mp_either" value="どちらでもよい">
+            <label for="mp_either">どちらでもよい</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15. 当事務所を知ったきっかけ -->
+      <div class="form-field">
+        <span class="form-label">当事務所を知ったきっかけ<span class="form-label__required">必須</span></span>
+        <div class="form-checkbox-group">
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_freee" value="freeeからの紹介">
+            <label for="ref_freee">freeeからの紹介</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_bank" value="金融機関からの紹介">
+            <label for="ref_bank">金融機関からの紹介</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_friend" value="知人の紹介">
+            <label for="ref_friend">知人の紹介</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_google" value="Google検索">
+            <label for="ref_google">Google検索</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_sns" value="SNS">
+            <label for="ref_sns">SNS</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_event" value="セミナー・イベント">
+            <label for="ref_event">セミナー・イベント</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="ref_other" value="その他">
+            <label for="ref_other">その他</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16. 現在ご利用の会計ソフト -->
+      <div class="form-field">
+        <label class="form-label" for="accounting_sw">現在ご利用の会計ソフト<span class="form-label__optional">任意</span></label>
+        <select class="form-select" id="accounting_sw">
+          <option value="" disabled selected>選択してください</option>
+          <option>freee</option>
+          <option>マネーフォワード</option>
+          <option>弥生</option>
+          <option>勘定奉行</option>
+          <option>その他</option>
+          <option>使用していない</option>
+        </select>
+      </div>
+
+      <!-- 17. 検討中のプラン -->
+      <div class="form-field">
+        <span class="form-label">検討中のプラン<span class="form-label__optional">任意</span></span>
+        <div class="form-checkbox-group">
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="plan_advisor" value="税務顧問">
+            <label for="plan_advisor">税務顧問</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="plan_spot" value="スポット申告">
+            <label for="plan_spot">スポット申告</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="plan_loan" value="融資支援">
+            <label for="plan_loan">融資支援</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="plan_undecided" value="まだ決めていない">
+            <label for="plan_undecided">まだ決めていない</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="plan_other" value="その他">
+            <label for="plan_other">その他</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Group 4: 相談内容 -->
+      <div class="form-group-title">
+        <span class="form-group-title__number">4</span>
+        相談内容
+      </div>
+
+      <!-- 18. 具体的なご相談内容 -->
+      <div class="form-field">
+        <span class="form-label">具体的なご相談内容<span class="form-label__optional">任意</span></span>
+        <div class="form-checkbox-group">
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_fee" value="税務顧問の料金を知りたい">
+            <label for="q_fee">税務顧問の料金を知りたい</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_bookkeeping" value="記帳代行について相談したい">
+            <label for="q_bookkeeping">記帳代行について相談したい</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_filing" value="決算・申告を依頼したい">
+            <label for="q_filing">決算・申告を依頼したい</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_startup_loan" value="創業融資の相談をしたい">
+            <label for="q_startup_loan">創業融資の相談をしたい</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_additional_loan" value="追加融資の相談をしたい">
+            <label for="q_additional_loan">追加融資の相談をしたい</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_switch" value="税理士の変更を検討している">
+            <label for="q_switch">税理士の変更を検討している</label>
+          </div>
+          <div class="form-checkbox-item">
+            <input type="checkbox" id="q_other" value="その他">
+            <label for="q_other">その他</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19. 自由記述 -->
+      <div class="form-field">
+        <label class="form-label" for="message">自由記述<span class="form-label__optional">任意</span></label>
+        <textarea class="form-textarea" id="message" placeholder="ご質問やご要望があればご自由にお書きください。"></textarea>
+      </div>
+
+      <!-- 20. 個人情報同意 -->
+      <div class="form-field">
+        <div class="form-agreement">
+          <input type="checkbox" id="privacy_agree">
+          <label for="privacy_agree">
+            <a href="#">個人情報の取り扱い</a>に同意する<span class="form-label__required">必須</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="form-submit-wrap">
+        <button type="submit" class="form-submit">送信する</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- ===== 補足情報 ===== -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="section__head">
+      <div class="section__head-en">INFORMATION</div>
+      <h2 class="section__head-jp">補足情報</h2>
+      <div class="section__head-line"></div>
+    </div>
+
+    <ul class="info-list">
+      <li class="info-list__item">
+        <span class="info-list__label">面談方法</span>
+        <span class="info-list__value">オンライン（Zoom / Google Meet）または対面（新宿オフィス）</span>
+      </li>
+      <li class="info-list__item">
+        <span class="info-list__label">所要時間</span>
+        <span class="info-list__value">初回面談は30〜60分程度</span>
+      </li>
+      <li class="info-list__item">
+        <span class="info-list__label">費用</span>
+        <span class="info-list__value">初回相談は無料です</span>
+      </li>
+      <li class="info-list__item">
+        <span class="info-list__label">営業時間</span>
+        <span class="info-list__value">平日 9:00〜18:00（土日祝休み）</span>
+      </li>
+      <li class="info-list__item">
+        <span class="info-list__label">対応エリア</span>
+        <span class="info-list__value">オンライン対応のため全国対応可能</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section section--white">
+  <div class="section__inner">
+    <div class="section__head">
+      <div class="section__head-en">FAQ</div>
+      <h2 class="section__head-jp">よくあるご質問</h2>
+      <div class="section__head-line"></div>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('is-open')">
+          <span class="faq-question__icon">Q</span>
+          相談料はかかりますか？
+          <span class="faq-question__arrow">&#9662;</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">初回のご相談は無料です。お気軽にお問い合わせください。</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('is-open')">
+          <span class="faq-question__icon">Q</span>
+          どのくらいで返信がもらえますか？
+          <span class="faq-question__arrow">&#9662;</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">通常1営業日以内にご返信いたします。お急ぎの場合はお電話でもお問い合わせいただけます。</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button" onclick="this.parentElement.classList.toggle('is-open')">
+          <span class="faq-question__icon">Q</span>
+          まだ法人設立前ですが相談できますか？
+          <span class="faq-question__arrow">&#9662;</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer__inner">はい、大歓迎です。法人設立前の段階からご相談いただくことで、設立時の届出や融資申請などもスムーズに進めることができます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <div class="footer__logo-mark">h</div>
+        <span class="footer__logo-text">はてなベース税理士事務所</span>
+      </div>
+      <p class="footer__desc">
+        freeeを基盤としたクラウド会計で、<br>
+        スタートアップの成長を支援します。
+      </p>
+    </div>
+    <div>
+      <div class="footer__heading">Services</div>
+      <ul class="footer__links">
+        <li><a href="#">税務顧問</a></li>
+        <li><a href="#">スポット申告</a></li>
+        <li><a href="#">融資支援</a></li>
+        <li><a href="#">記帳代行</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer__heading">Office</div>
+      <ul class="footer__links">
+        <li><a href="#">事務所概要</a></li>
+        <li><a href="#">お知らせ</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span class="footer__copyright">&copy; 2024 Hatenabase Tax Office. All rights reserved.</span>
+    <div class="footer__bottom-links">
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">特定商取引法に基づく表記</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
