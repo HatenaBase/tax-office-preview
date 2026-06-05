@@ -224,8 +224,8 @@
 
     /* ====== Team ====== */
     .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 24px; max-width: 880px;
     }
     .team-card {
       border: 1px solid var(--line); border-radius: 6px;
@@ -447,7 +447,7 @@
       .reason-grid { grid-template-columns: 1fr 1fr; }
       .svc-grid { grid-template-columns: 1fr 1fr; }
       .case-grid { grid-template-columns: 1fr 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; max-width: none; }
     }
 
     @media (max-width: 767px) {
@@ -520,20 +520,91 @@
       </div>
       <div class="stats-grid">
         <div class="stat-cell">
-          <div class="stat-cell__number">50+</div>
-          <div class="stat-cell__label">累計融資支援件数</div>
+          <div class="stat-cell__number">8億+</div>
+          <div class="stat-cell__label">累計調達実績</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-cell__number">3億+</div>
-          <div class="stat-cell__label">総調達額</div>
+          <div class="stat-cell__number">90+</div>
+          <div class="stat-cell__label">累計支援件数</div>
         </div>
         <div class="stat-cell">
-          <div class="stat-cell__number">60+</div>
-          <div class="stat-cell__label">開業1年で伴走した創業者</div>
+          <div class="stat-cell__number">120+</div>
+          <div class="stat-cell__label">個人含む累計調達サポート件数</div>
         </div>
         <div class="stat-cell">
           <div class="stat-cell__number">0円</div>
           <div class="stat-cell__label">融資不成立時の成功報酬</div>
+        </div>
+      </div>
+      <p style="font-size: 14px; color: var(--ink-soft); line-height: 2; margin-top: 32px; max-width: 800px;">
+        500〜2,000万円単位の調達サイズを中心に、創業3年と個人での活動を含め累計120件の調達をサポートしてきました。
+      </p>
+
+      <!-- Industry Breakdown -->
+      <div style="margin-top: 48px; display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center;">
+        <div>
+          <svg viewBox="0 0 200 200" width="280" height="280">
+            <!-- Pie chart segments -->
+            <!-- システム受託開発/SES 31.3% = 112.68deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#1F61AB" stroke-width="40"
+              stroke-dasharray="157.08 344.92" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+            <!-- AI 25% = 90deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#3A7FCC" stroke-width="40"
+              stroke-dasharray="125.66 376.34" stroke-dashoffset="-157.08" transform="rotate(-90 100 100)"/>
+            <!-- マーケティング 15.6% = 56.16deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#6BA3DC" stroke-width="40"
+              stroke-dasharray="78.41 423.59" stroke-dashoffset="-282.74" transform="rotate(-90 100 100)"/>
+            <!-- コンサルティング 12.5% = 45deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#94C1E8" stroke-width="40"
+              stroke-dasharray="62.83 439.17" stroke-dashoffset="-361.15" transform="rotate(-90 100 100)"/>
+            <!-- 飲食 9.4% = 33.84deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#B8D7F0" stroke-width="40"
+              stroke-dasharray="47.12 454.88" stroke-dashoffset="-423.98" transform="rotate(-90 100 100)"/>
+            <!-- その他 6.3% = 22.68deg -->
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#D9E9F6" stroke-width="40"
+              stroke-dasharray="31.62 470.38" stroke-dashoffset="-471.10" transform="rotate(-90 100 100)"/>
+            <!-- Center circle -->
+            <circle cx="100" cy="100" r="60" fill="white"/>
+            <text x="100" y="95" text-anchor="middle" font-family="Inter" font-size="11" fill="#8A8A93" letter-spacing=".1em">INDUSTRY</text>
+            <text x="100" y="115" text-anchor="middle" font-family="Zen Kaku Gothic New" font-size="11" fill="#3A3A45">業界別内訳</text>
+          </svg>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #1F61AB; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">システム受託開発/SES <strong style="color: var(--ink);">31.3%</strong></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #3A7FCC; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">AI <strong style="color: var(--ink);">25.0%</strong></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #6BA3DC; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">マーケティング <strong style="color: var(--ink);">15.6%</strong></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #94C1E8; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">コンサルティング <strong style="color: var(--ink);">12.5%</strong></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #B8D7F0; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">飲食 <strong style="color: var(--ink);">9.4%</strong></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; border-radius: 3px; background: #D9E9F6; flex-shrink: 0;"></span>
+            <span style="font-size: 14px; color: var(--ink-soft);">その他 <strong style="color: var(--ink);">6.3%</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bank Partners -->
+      <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line);">
+        <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 24px;">PARTNER BANKS — はてなベース株式会社経由にて金融機関をご紹介</p>
+        <div style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
+          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">日本政策金融公庫</span>
+          <span style="font-size: 15px; font-weight: 700; color: #1E3A8A; letter-spacing: .02em;">MIZUHO</span>
+          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">きらぼし銀行</span>
+          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">第一勧業信用組合</span>
         </div>
       </div>
     </div>
@@ -551,15 +622,14 @@
         <div class="reason-card">
           <div class="reason-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <path d="M16 13H8M16 17H8M10 9H8"/>
-              <path d="M18.5 2.5l2 2"/>
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
           <div class="reason-card__num">01</div>
-          <h3 class="reason-card__title">「融資成功のカギ」<br>事業計画書作成</h3>
-          <p class="reason-card__desc">融資の豊富な経験に基づき、金融機関向けの申請書を代理作成します。独自の売上シミュレーションスプレッドシートで月次損益・資金繰り予測まで精密に策定。面談で聞かれるポイントや回答のコツもお伝えします。</p>
+          <h3 class="reason-card__title">スタートアップに特化</h3>
+          <p class="reason-card__desc">数十社のVC・アクセラレーターと連携し、スタートアップの資金調達に特化しています。メンタリングや勉強会を通じて、創業期の経営者に寄り添った支援を提供。エクイティとデットの最適なバランスをご提案します。</p>
         </div>
         <!-- Reason 02 -->
         <div class="reason-card">
@@ -574,21 +644,21 @@
             </svg>
           </div>
           <div class="reason-card__num">02</div>
-          <h3 class="reason-card__title">金融機関の担当者を<br>ご紹介</h3>
-          <p class="reason-card__desc">東京都の登記なら日本政策金融公庫の担当者を直接ご紹介可能。会計事務所からの紹介により、一定の信用が得られた状態で融資を進められます。地方のお客様も最寄り支店への申込をサポートします。</p>
+          <h3 class="reason-card__title">金融機関担当者の<br>ご紹介</h3>
+          <p class="reason-card__desc">都内登記の場合、日本政策金融公庫の担当者を優先的にご紹介します。税理士事務所からの紹介により一定の信頼性が担保された状態で融資審査に臨めるため、スムーズな資金調達が可能です。</p>
         </div>
         <!-- Reason 03 -->
         <div class="reason-card">
           <div class="reason-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 7v0a2 2 0 012 2v1a2 2 0 01-2 2v0a2 2 0 00-2 2v1a2 2 0 002 2v0"/>
-              <path d="M9 7h6M9 17h6"/>
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <path d="M16 13H8M16 17H8M10 9H8"/>
             </svg>
           </div>
           <div class="reason-card__num">03</div>
-          <h3 class="reason-card__title">成果報酬5%以下で<br>ご支援</h3>
-          <p class="reason-card__desc">顧問契約のお客様は成功報酬4%。着手金5万円は成功報酬に含みます。融資が不成立の場合、成功報酬は0円。初期負担を抑え、融資が成功したときだけ費用が発生する安心の料金体系です。</p>
+          <h3 class="reason-card__title">事業計画書作成まで<br>丸っと</h3>
+          <p class="reason-card__desc">起業家にしかできないコア業務に注力いただくために、融資申請に必要な情報をヒアリングし、事業計画書の作成と面談対策まで一貫して行います。書類作成の手間を大幅に削減し、経営に集中できる環境をつくります。</p>
         </div>
       </div>
     </div>
@@ -671,11 +741,11 @@
               <circle cx="12" cy="7" r="4"/>
             </svg>
           </div>
-          <div class="team-card__name">三輪 衛</div>
-          <div class="team-card__name-en">Mamoru Miwa</div>
-          <div class="team-card__title">資金調達支援チーム リーダー</div>
+          <div class="team-card__name">世戸口 逸人</div>
+          <div class="team-card__name-en">Hayato Setoguchi</div>
+          <div class="team-card__title">会計アドバイザリー 代表取締役</div>
           <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">日本政策金融公庫を中心とした融資支援を専門とするチームリーダー。事業計画書の作成から金融機関との折衝まで一貫してサポートします。</p>
+          <p class="team-card__desc">ベンチャーキャピタルとの接点を多く持ち、スタートアップの協調融資をこれまで数十社担当。前職のリディッシュ株式会社/クロスポイント税理士法人にて飲食業界に特化した資金調達支援を担当したことから、スモールビジネスの資金調達の知見を多く有する。</p>
         </div>
         <!-- Member 2 -->
         <div class="team-card">
@@ -685,25 +755,11 @@
               <circle cx="12" cy="7" r="4"/>
             </svg>
           </div>
-          <div class="team-card__name">増田 和也</div>
-          <div class="team-card__name-en">Kazuya Masuda</div>
-          <div class="team-card__title">資金調達支援チーム</div>
+          <div class="team-card__name">三輪 衛</div>
+          <div class="team-card__name-en">Mamoru Miwa</div>
+          <div class="team-card__title">会計コンサルティング事業部 事業部長</div>
           <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">融資申請書類の準備・事業計画のロジック構築をサポート。金融機関が求めるストーリーを組み立て、説得力のある計画書に仕上げます。</p>
-        </div>
-        <!-- Member 3 -->
-        <div class="team-card">
-          <div class="team-card__avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <div class="team-card__name">瀬戸口 駿</div>
-          <div class="team-card__name-en">Shun Setoguchi</div>
-          <div class="team-card__title">資金調達支援チーム</div>
-          <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">融資案件の進捗管理・日程調整・追加資料対応を担当。スピーディなコミュニケーションで、融資プロセスをスムーズに進行させます。</p>
+          <p class="team-card__desc">慶應義塾大学在学中に創業1期目のベンチャー企業を2年間経験し、新規事業部の立ち上げを行う。現在ははてなベース社の資金調達をリードしつつ、金融機関とのネットワークを活かして数千万単位の資金調達をサポートしている。</p>
         </div>
       </div>
     </div>
