@@ -4,1121 +4,685 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ご契約後の流れ｜はてなベース税理士事務所</title>
+<meta name="description" content="はてなベース税理士事務所のご契約から記帳代行開始までの手順をご案内。freee会計セットアップ・Slack参加・毎月の資料提供の流れを解説。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-  /* ========== RESET & VARIABLES ========== */
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --white: #FFFFFF; --paper: #FAFAFA; --paper-warm: #F5F4F0;
-    --ink: #0E0E14; --ink-soft: #3A3A45; --ink-light: #8A8A93;
-    --line: #E8E6DF; --blue: #1F61AB; --blue-deep: #0F3B72; --blue-light: #E8EFF8; --blue-ghost: #F4F8FD;
-    --font-en: "Cormorant Garamond", "Times New Roman", serif;
-    --font-en-sans: "Inter", system-ui, sans-serif;
-    --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
-  }
-  html { font-size: 16px; scroll-behavior: smooth; }
-  body {
-    font-family: var(--font-jp);
-    font-weight: 400;
-    color: var(--ink);
-    background: var(--white);
-    line-height: 1.8;
-    -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
+:root {
+  --white: #FFFFFF; --paper: #FAFAFA; --paper-warm: #F5F4F0;
+  --ink: #0E0E14; --ink-soft: #3A3A45; --ink-light: #8A8A93;
+  --line: #E8E6DF; --blue: #1F61AB; --blue-deep: #0F3B72; --blue-light: #E8EFF8; --blue-ghost: #F4F8FD;
+  --font-en: "Cormorant Garamond", "Times New Roman", serif;
+  --font-en-sans: "Inter", system-ui, sans-serif;
+  --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
 
-  /* ========== LAYOUT ========== */
-  .container { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
-  .container--narrow { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+/* Header */
+.hb-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.hb-header__inner { max-width: 1280px; margin: 0 auto; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+.hb-header__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.hb-header__logo-text { font-family: var(--font-jp); font-weight: 700; font-size: 15px; letter-spacing: .02em; line-height: 1.3; }
+.hb-header__logo-sub { font-size: 10px; font-weight: 400; color: var(--ink-light); display: block; }
+.hb-header__nav { display: flex; gap: 28px; align-items: center; }
+.hb-header__nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+.hb-header__nav a:hover { color: var(--blue); }
+.hb-header__cta { padding: 10px 24px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
+.hb-header__cta:hover { background: var(--blue-deep); }
+.hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+.hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; transition: .3s; }
+.hb-hamburger span:nth-child(1) { top: 9px; } .hb-hamburger span:nth-child(2) { top: 15px; } .hb-hamburger span:nth-child(3) { top: 21px; }
 
-  /* ========== HEADER (Sticky) ========== */
-  .header {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--line);
-    height: 72px;
-    display: flex; align-items: center;
-  }
-  .header__inner {
-    max-width: 1120px; margin: 0 auto; padding: 0 40px;
-    width: 100%;
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .header__logo {
-    font-family: var(--font-en);
-    font-size: 1.35rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-  }
-  .header__logo span {
-    font-family: var(--font-jp);
-    font-size: 0.7rem;
-    font-weight: 300;
-    color: var(--ink-light);
-    margin-left: 12px;
-    letter-spacing: 0.08em;
-  }
-  .header__nav { display: flex; align-items: center; gap: 32px; }
-  .header__nav a {
-    font-family: var(--font-en-sans);
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: var(--ink-soft);
-    letter-spacing: 0.06em;
-    transition: color 0.2s;
-  }
-  .header__nav a:hover { color: var(--blue); }
-  .header__cta {
-    font-family: var(--font-jp);
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: var(--white) !important;
-    background: var(--blue);
-    padding: 8px 24px;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-  .header__cta:hover { background: var(--blue-deep); }
+/* SubHero */
+.hb-subhero { padding: 80px 32px 72px; background: var(--white); border-bottom: 1px solid var(--line); }
+.hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+.hb-subhero__crumb { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px; }
+.hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; } .hb-subhero__crumb a:hover { color: var(--blue); }
+.hb-subhero__en { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 16px; color: var(--blue); margin-bottom: 16px; letter-spacing: .04em; }
+.hb-subhero__jp { font-family: var(--font-jp); font-weight: 900; font-size: clamp(28px, 4vw, 48px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px; }
+.hb-subhero__lead { font-size: 15px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
 
-  /* ========== SUBHERO ========== */
-  .subhero {
-    padding: 64px 0 80px;
-    border-bottom: 1px solid var(--line);
-    background: var(--white);
-  }
-  .subhero__breadcrumb {
-    font-family: var(--font-en-sans);
-    font-size: 0.72rem;
-    font-weight: 400;
-    color: var(--ink-light);
-    letter-spacing: 0.04em;
-    margin-bottom: 40px;
-  }
-  .subhero__breadcrumb a { color: var(--ink-light); transition: color 0.2s; }
-  .subhero__breadcrumb a:hover { color: var(--blue); }
-  .subhero__breadcrumb span { margin: 0 8px; opacity: 0.5; }
-  .subhero__en {
-    font-family: var(--font-en);
-    font-size: 0.85rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink-light);
-    letter-spacing: 0.12em;
-    margin-bottom: 12px;
-  }
-  .subhero__headline {
-    font-family: var(--font-jp);
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1.3;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-  .subhero__tag {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 0.82rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink-light);
-    letter-spacing: 0.04em;
-    margin-bottom: 28px;
-  }
-  .subhero__lead {
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--ink-soft);
-    line-height: 2;
-    max-width: 640px;
-  }
+/* Section */
+.section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+.section--paper { background: var(--paper); }
+.section__inner { max-width: 1280px; margin: 0 auto; }
+.section__narrow { max-width: 860px; margin: 0 auto; }
+.hb-section-head { display: flex; align-items: baseline; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+.hb-section-head__en { font-family: var(--font-en-sans); font-size: 11px; font-weight: 500; letter-spacing: .3em; color: var(--blue); display: flex; align-items: center; gap: 10px; }
+.hb-section-head__en::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.hb-section-head__jp { font-family: var(--font-jp); font-weight: 700; font-size: 28px; letter-spacing: -.01em; color: var(--ink); }
 
-  /* ========== SECTION BASE ========== */
-  .section { padding: 96px 0; }
-  .section--paper { background: var(--paper); }
-  .section--white { background: var(--white); }
-  .section--blue { background: var(--blue); color: var(--white); }
+/* Overview flow */
+.overview-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.overview-flow__step { padding: 40px 20px; text-align: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
+.overview-flow__step:hover { background: var(--blue-ghost); }
+.overview-flow__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 32px; color: var(--blue); margin-bottom: 8px; }
+.overview-flow__icon { width: 48px; height: 48px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 12px; }
+.overview-flow__icon svg { width: 24px; height: 24px; }
+.overview-flow__label { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.5; margin-bottom: 6px; }
+.overview-flow__sub { font-size: 12px; color: var(--ink-light); line-height: 1.6; }
 
-  .section__head {
-    margin-bottom: 56px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .section--paper .section__head,
-  .section--blue .section__head { border-bottom-color: rgba(0,0,0,0.08); }
-  .section--blue .section__head { border-bottom-color: rgba(255,255,255,0.2); }
+/* Step section */
+.step-head { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.step-num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 48px; color: var(--blue); line-height: 1; }
+.step-title { font-weight: 700; font-size: 24px; color: var(--ink); }
+.step-desc { font-size: 15px; color: var(--ink-soft); line-height: 2; margin-bottom: 32px; }
 
-  .section__en {
-    font-family: var(--font-en);
-    font-size: 0.72rem;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-bottom: 8px;
-  }
-  .section--blue .section__en { color: rgba(255,255,255,0.5); }
+/* Subsection */
+.subsection { margin-bottom: 48px; }
+.subsection:last-child { margin-bottom: 0; }
+.subsection__title { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 14px; padding-left: 16px; border-left: 3px solid var(--blue); }
+.subsection__text { font-size: 14px; color: var(--ink-soft); line-height: 2; margin-bottom: 20px; }
 
-  .section__title {
-    font-family: var(--font-jp);
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    line-height: 1.4;
-  }
-  .section--blue .section__title { color: var(--white); }
+/* Table */
+.table-label { font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; margin-top: 24px; }
+.table-wrap { margin-bottom: 28px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+table thead th { font-weight: 700; font-size: 13px; padding: 14px 20px; text-align: left; background: var(--blue); color: #fff; border: 1px solid var(--blue-deep); }
+table tbody td { padding: 14px 20px; border-bottom: 1px solid var(--line); color: var(--ink-soft); vertical-align: top; }
+table tbody tr:nth-child(even) { background: var(--blue-ghost); }
+table tbody tr:hover { background: var(--blue-light); }
+.table--simple thead th { background: var(--paper-warm); color: var(--ink); border-bottom: 2px solid var(--line); border: none; }
+.table--simple tbody tr:nth-child(even) { background: transparent; }
+.table--simple tbody tr:hover { background: var(--paper); }
 
-  /* ========== OVERVIEW FLOW GRID (5 Steps) ========== */
-  .flow-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 0;
-    position: relative;
-  }
-  .flow-step {
-    text-align: center;
-    padding: 40px 20px;
-    position: relative;
-  }
-  .flow-step::after {
-    content: "";
-    position: absolute;
-    right: 0; top: 50%;
-    transform: translateY(-50%);
-    width: 32px; height: 1px;
-    background: var(--line);
-  }
-  .flow-step:last-child::after { display: none; }
-  .flow-step__number {
-    font-family: var(--font-en);
-    font-size: 0.68rem;
-    font-weight: 400;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 16px;
-  }
-  .flow-step__circle {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: var(--blue-ghost);
-    border: 1px solid var(--blue-light);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    font-family: var(--font-en);
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--blue);
-  }
-  .flow-step__label {
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.6;
-  }
+/* Card list with icons */
+.onboard-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 36px; }
+.onboard-card { display: flex; align-items: center; gap: 18px; background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 20px 24px; transition: border-color .2s, background .2s; }
+.onboard-card:hover { border-color: var(--blue); background: var(--blue-ghost); }
+.onboard-card__icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+.onboard-card__icon svg { width: 22px; height: 22px; }
+.onboard-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 20px; color: var(--blue); flex-shrink: 0; width: 28px; text-align: center; }
+.onboard-card__content { flex: 1; }
+.onboard-card__label { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+.onboard-card__desc { font-size: 12px; color: var(--ink-light); line-height: 1.6; }
 
-  /* ========== SUBSECTION ========== */
-  .subsection { margin-bottom: 56px; }
-  .subsection:last-child { margin-bottom: 0; }
-  .subsection__title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 16px;
-    padding-left: 16px;
-    border-left: 3px solid var(--blue);
-  }
-  .subsection__text {
-    font-size: 0.92rem;
-    font-weight: 300;
-    color: var(--ink-soft);
-    line-height: 2;
-    margin-bottom: 28px;
-  }
+/* Notes list */
+.note-item { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.note-item:first-child { border-top: 1px solid var(--line); }
+.note-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin-top: 2px; }
+.note-icon svg { width: 20px; height: 20px; }
+.note-text { font-size: 14px; color: var(--ink-soft); line-height: 2; }
+.note-text strong { font-weight: 700; color: var(--ink); }
 
-  /* ========== TABLES ========== */
-  .table-label {
-    font-family: var(--font-en-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    margin-bottom: 12px;
-  }
-  .table-wrap { margin-bottom: 36px; overflow-x: auto; }
-  .table-wrap:last-child { margin-bottom: 0; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-  }
-  table thead th {
-    font-family: var(--font-en-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    text-align: left;
-    padding: 12px 20px;
-    border-bottom: 2px solid var(--ink);
-    background: transparent;
-    white-space: nowrap;
-  }
-  table tbody td {
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--line);
-    color: var(--ink-soft);
-    font-weight: 300;
-    vertical-align: top;
-  }
-  table tbody tr:last-child td { border-bottom: 1px solid var(--line); }
-  table tbody td:first-child {
-    font-family: var(--font-en);
-    font-weight: 400;
-    color: var(--ink-light);
-    width: 48px;
-    text-align: center;
-  }
-  table tbody td:nth-child(2) {
-    color: var(--ink);
-    font-weight: 400;
-  }
+/* Expense grid */
+.expense-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.expense-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 32px 28px; transition: border-color .2s; }
+.expense-card:hover { border-color: var(--blue); }
+.expense-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); margin-bottom: 8px; }
+.expense-card__title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 12px; line-height: 1.5; }
+.expense-card__text { font-size: 13px; color: var(--ink-soft); line-height: 1.9; }
 
-  /* Procedure table (Step 2) */
-  .table--procedure tbody td:first-child {
-    font-family: var(--font-jp);
-    font-weight: 500;
-    color: var(--ink);
-    width: auto;
-    text-align: left;
-    white-space: nowrap;
-  }
-  .table--procedure tbody td:nth-child(2) {
-    color: var(--ink-soft);
-    font-weight: 300;
-    font-family: var(--font-en-sans);
-  }
+/* Flow diagram */
+.flow-diagram { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 48px 40px; margin-bottom: 40px; }
+.flow-row { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.flow-row-label { font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-light); min-width: 72px; text-align: center; }
+.flow-node { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 14px 20px; font-size: 13px; font-weight: 500; color: var(--ink); text-align: center; min-width: 110px; }
+.flow-node--blue { background: var(--blue-ghost); border-color: var(--blue-light); color: var(--blue-deep); }
+.flow-node--accent { background: var(--blue); border-color: var(--blue-deep); color: var(--white); font-weight: 700; }
+.flow-node--decision { background: var(--paper-warm); color: var(--ink-soft); font-style: italic; font-size: 12px; }
+.flow-arrow { font-family: var(--font-en-sans); font-size: 12px; color: var(--ink-light); padding: 0 10px; display: flex; align-items: center; }
+.flow-connector { width: 1px; height: 32px; background: var(--line); margin: 8px auto; position: relative; }
+.flow-connector::after { content: ''; position: absolute; bottom: -4px; left: -4px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--ink-light); }
 
-  /* ========== NUMBERED CARD LIST ========== */
-  .card-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
-  .card-item {
-    display: flex; align-items: center; gap: 16px;
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 20px 24px;
-    transition: border-color 0.2s;
-  }
-  .card-item:hover { border-color: var(--blue); }
-  .card-item__num {
-    font-family: var(--font-en);
-    font-size: 1.2rem;
-    font-weight: 300;
-    color: var(--blue);
-    flex-shrink: 0;
-    width: 32px;
-    text-align: center;
-  }
-  .card-item__label {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--ink);
-  }
+/* CTA */
+.cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
+.cta-blue__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+.cta-blue__label { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .32em; opacity: .85; margin-bottom: 18px; }
+.cta-blue__title { font-weight: 900; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px; }
+.cta-blue__lead { font-size: 15px; line-height: 1.95; opacity: .9; }
+.cta-blue__buttons { display: grid; gap: 14px; }
+.cta-blue__btn { padding: 18px 28px; text-decoration: none; font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-radius: 999px; transition: transform .2s, opacity .2s; }
+.cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+.cta-blue__btn--primary { background: #fff; color: var(--blue); }
+.cta-blue__btn--outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+.cta-blue__btn .arrow { font-family: var(--font-en); font-style: italic; }
 
-  /* ========== NOTES LIST ========== */
-  .notes-list { margin-top: 32px; }
-  .note-item {
-    display: flex; gap: 12px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .note-item:first-child { border-top: 1px solid var(--line); }
-  .note-item__bullet {
-    flex-shrink: 0;
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--blue);
-    margin-top: 10px;
-  }
-  .note-item__text {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--ink-soft);
-    line-height: 1.9;
-  }
-  .note-item__text strong {
-    font-weight: 500;
-    color: var(--ink);
-  }
+/* Footer */
+.hb-footer { padding: 56px 32px; background: var(--ink); color: #fff; }
+.hb-footer__inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.hb-footer__logo { font-size: 14px; font-weight: 700; opacity: .8; margin-bottom: 4px; }
+.hb-footer__address { font-size: 12px; opacity: .5; line-height: 1.7; }
+.hb-footer__copy { font-family: var(--font-en-sans); font-size: 11px; opacity: .4; }
+.hb-footer__links { display: flex; gap: 24px; }
+.hb-footer__links a { font-size: 12px; color: #fff; opacity: .5; text-decoration: none; transition: opacity .2s; }
+.hb-footer__links a:hover { opacity: .9; }
 
-  /* ========== FLOW DIAGRAM (Step 4) ========== */
-  .flow-diagram {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 48px 40px;
-    margin-bottom: 40px;
-  }
-  .flow-diagram__row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-  }
-  .flow-diagram__node {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 16px 24px;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: var(--ink);
-    text-align: center;
-    min-width: 120px;
-    position: relative;
-  }
-  .flow-diagram__node--blue {
-    background: var(--blue-ghost);
-    border-color: var(--blue-light);
-    color: var(--blue-deep);
-    font-weight: 500;
-  }
-  .flow-diagram__node--accent {
-    background: var(--blue);
-    border-color: var(--blue-deep);
-    color: var(--white);
-    font-weight: 500;
-  }
-  .flow-diagram__node--decision {
-    background: var(--paper-warm);
-    border-color: var(--line);
-    color: var(--ink-soft);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 0.82rem;
-  }
-  .flow-diagram__arrow {
-    font-family: var(--font-en-sans);
-    font-size: 0.75rem;
-    color: var(--ink-light);
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-  }
-  .flow-diagram__arrow::after {
-    content: "";
-    display: inline-block;
-    width: 24px; height: 1px;
-    background: var(--ink-light);
-    margin-left: 4px;
-    position: relative;
-  }
-  .flow-diagram__label {
-    font-size: 0.72rem;
-    color: var(--ink-light);
-    text-align: center;
-    margin-top: 8px;
-    font-weight: 300;
-  }
-
-  /* Vertical flow for mobile / complex flows */
-  .flow-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .flow-vertical__step {
-    text-align: center;
-  }
-  .flow-vertical__connector {
-    width: 1px; height: 28px;
-    background: var(--line);
-    position: relative;
-  }
-  .flow-vertical__connector::after {
-    content: "";
-    position: absolute;
-    bottom: -3px; left: -3px;
-    width: 7px; height: 7px;
-    border-right: 1px solid var(--ink-light);
-    border-bottom: 1px solid var(--ink-light);
-    transform: rotate(45deg);
-  }
-
-  /* Horizontal Flow Tracks */
-  .flow-tracks { margin-bottom: 40px; }
-  .flow-track {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 2px;
-  }
-  .flow-track__label {
-    flex-shrink: 0;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-en-sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-light);
-    border-right: 2px solid var(--line);
-    padding: 20px 12px;
-  }
-  .flow-track__content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    padding: 16px 24px;
-    background: var(--paper);
-    flex-wrap: wrap;
-  }
-  .flow-track:first-child .flow-track__content { background: var(--blue-ghost); }
-
-  /* ========== EXPENSES GRID ========== */
-  .expense-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  .expense-card {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 28px 28px 24px;
-  }
-  .expense-card__num {
-    font-family: var(--font-en);
-    font-size: 0.68rem;
-    font-weight: 400;
-    letter-spacing: 0.16em;
-    color: var(--blue);
-    margin-bottom: 8px;
-  }
-  .expense-card__title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 12px;
-  }
-  .expense-card__text {
-    font-size: 0.85rem;
-    font-weight: 300;
-    color: var(--ink-soft);
-    line-height: 1.9;
-  }
-
-  /* ========== LINK LIST (accounts) ========== */
-  .link-list {
-    list-style: none;
-    margin: 0;
-  }
-  .link-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: var(--ink-soft);
-  }
-  .link-list li::before {
-    content: "";
-    display: block;
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--blue);
-    flex-shrink: 0;
-  }
-
-  /* ========== CTA SECTION ========== */
-  .cta {
-    background: var(--blue);
-    padding: 80px 0;
-    text-align: center;
-  }
-  .cta__title {
-    font-family: var(--font-jp);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 16px;
-    letter-spacing: 0.04em;
-  }
-  .cta__text {
-    font-size: 0.9rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 36px;
-    line-height: 2;
-  }
-  .cta__button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--white);
-    color: var(--blue);
-    font-family: var(--font-jp);
-    font-size: 0.92rem;
-    font-weight: 500;
-    padding: 16px 40px;
-    border-radius: 4px;
-    letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .cta__button:hover { background: var(--paper); transform: translateY(-1px); }
-  .cta__button span {
-    font-family: var(--font-en-sans);
-    font-size: 0.82rem;
-    transition: transform 0.2s;
-  }
-
-  /* ========== FOOTER ========== */
-  .footer {
-    background: var(--ink);
-    color: rgba(255,255,255,0.5);
-    padding: 64px 0 40px;
-  }
-  .footer__inner {
-    max-width: 1120px; margin: 0 auto; padding: 0 40px;
-    display: flex; justify-content: space-between; align-items: flex-start;
-    flex-wrap: wrap; gap: 40px;
-  }
-  .footer__brand {
-    font-family: var(--font-en);
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: rgba(255,255,255,0.8);
-    letter-spacing: 0.04em;
-    margin-bottom: 12px;
-  }
-  .footer__brand-sub {
-    font-size: 0.72rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.04em;
-  }
-  .footer__nav { display: flex; gap: 48px; }
-  .footer__nav-group h4 {
-    font-family: var(--font-en-sans);
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 16px;
-  }
-  .footer__nav-group a {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 300;
-    color: rgba(255,255,255,0.5);
-    padding: 4px 0;
-    transition: color 0.2s;
-  }
-  .footer__nav-group a:hover { color: rgba(255,255,255,0.85); }
-  .footer__copy {
-    max-width: 1120px; margin: 0 auto; padding: 40px 40px 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    margin-top: 48px;
-    text-align: center;
-    font-family: var(--font-en-sans);
-    font-size: 0.68rem;
-    font-weight: 300;
-    letter-spacing: 0.08em;
-    color: rgba(255,255,255,0.25);
-  }
-
-  /* ========== RESPONSIVE ========== */
-  @media (max-width: 768px) {
-    .container, .container--narrow { padding: 0 20px; }
-    .header__inner { padding: 0 20px; }
-    .header__nav a:not(.header__cta) { display: none; }
-    .subhero { padding: 40px 0 56px; }
-    .subhero__headline { font-size: 1.6rem; }
-    .section { padding: 64px 0; }
-    .section__title { font-size: 1.3rem; }
-
-    .flow-grid {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-    .flow-step {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px 0;
-      text-align: left;
-      border-bottom: 1px solid var(--line);
-    }
-    .flow-step:last-child { border-bottom: none; }
-    .flow-step::after { display: none; }
-    .flow-step__circle { margin: 0; width: 44px; height: 44px; font-size: 0.95rem; flex-shrink: 0; }
-    .flow-step__number { margin-bottom: 0; }
-    .flow-step__meta { display: flex; flex-direction: column; gap: 4px; }
-
-    .card-list { grid-template-columns: 1fr; }
-    .expense-grid { grid-template-columns: 1fr; }
-
-    .flow-diagram { padding: 28px 20px; overflow-x: auto; }
-    .flow-diagram__row { flex-direction: column; gap: 0; }
-    .flow-diagram__arrow { transform: rotate(90deg); padding: 8px 0; }
-
-    .flow-track { flex-direction: column; }
-    .flow-track__label {
-      width: 100%;
-      border-right: none;
-      border-bottom: 2px solid var(--line);
-      padding: 12px;
-      justify-content: flex-start;
-    }
-    .flow-track__content { padding: 16px; }
-
-    .footer__inner { flex-direction: column; }
-    .footer__nav { flex-direction: column; gap: 32px; }
-
-    table { font-size: 0.82rem; }
-    table thead th, table tbody td { padding: 10px 12px; }
-  }
-
-  @media (max-width: 480px) {
-    .subhero__headline { font-size: 1.35rem; }
-    .header__logo span { display: none; }
-  }
+/* Responsive */
+@media (max-width: 1024px) { .overview-flow { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 767px) {
+  .hb-header__nav { display: none; } .hb-hamburger { display: block; }
+  .hb-subhero { padding: 60px 20px 48px; } .hb-subhero__jp { font-size: 26px; }
+  .section { padding: 64px 20px; }
+  .overview-flow { grid-template-columns: 1fr 1fr; }
+  .onboard-cards { grid-template-columns: 1fr; }
+  .expense-grid { grid-template-columns: 1fr; }
+  .flow-diagram { padding: 28px 20px; }
+  .flow-row { flex-direction: column; gap: 0; }
+  .flow-arrow { transform: rotate(90deg); padding: 8px 0; }
+  .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+  .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
+  .hb-section-head { flex-direction: column; gap: 8px; }
+  .step-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  table { font-size: 12px; } table td, table th { padding: 10px 12px; }
+}
+@media (max-width: 480px) { .overview-flow { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
-<header class="header">
-  <div class="header__inner">
-    <a href="#" class="header__logo">
-      Hatenabase<span>税理士事務所</span>
+<!-- Header -->
+<header class="hb-header">
+  <div class="hb-header__inner">
+    <a href="./tax-accountant-preview.html" class="hb-header__logo">
+      <span class="hb-header__logo-text">はてなベース税理士事務所<span class="hb-header__logo-sub">HatenaBase Tax Office</span></span>
     </a>
-    <nav class="header__nav">
-      <a href="#">Services</a>
-      <a href="#">About</a>
-      <a href="#">News</a>
-      <a href="#" class="header__cta">無料相談</a>
+    <nav class="hb-header__nav">
+      <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+      <a href="./financing-support-preview.html">FINANCING</a>
+      <a href="./about-us-preview.html">ABOUT</a>
+      <a href="/contact" class="hb-header__cta">CONTACT</a>
     </nav>
+    <button class="hb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ==================== SUBHERO ==================== -->
-<section class="subhero">
-  <div class="container">
-    <div class="subhero__breadcrumb">
-      <a href="#">ホーム</a><span>></span><a href="#">税理士事務所</a><span>></span>ご契約後の流れ
-    </div>
-    <p class="subhero__en">Onboarding</p>
-    <h1 class="subhero__headline">ご契約後の流れ</h1>
-    <p class="subhero__tag">"What happens after you sign up."</p>
-    <p class="subhero__lead">
-      顧問契約の締結から記帳代行が開始するまでの手順をご案内します。<br>
-      お客様にご協力いただく事項を中心にまとめています。
+<!-- SubHero -->
+<section class="hb-subhero">
+  <div class="hb-subhero__inner">
+    <p class="hb-subhero__crumb"><a href="./tax-accountant-preview.html">HOME</a> &nbsp;/&nbsp; <a href="./tax-accountant-preview.html">TAX OFFICE</a> &nbsp;/&nbsp; ONBOARDING</p>
+    <p class="hb-subhero__en">Onboarding Guide</p>
+    <h1 class="hb-subhero__jp">
+      ご契約後の流れ
+    </h1>
+    <p class="hb-subhero__lead">
+      顧問契約の締結から記帳代行が開始するまでの手順をご案内します。お客様にご協力いただく事項を中心にまとめています。<br><br>
+      基本的にはSlackでひとつずつご案内しますので、難しい作業はありません。通常2〜3週間程度で記帳代行がスタートします。<br><br>
+      ご不明点はいつでもSlackでお気軽にご質問ください。
     </p>
   </div>
 </section>
 
-<!-- ==================== OVERVIEW ==================== -->
-<section class="section section--white">
-  <div class="container">
-    <div class="section__head">
-      <p class="section__en">Overview</p>
-      <h2 class="section__title">全体フロー</h2>
+<!-- Overview: 全体フロー -->
+<section class="section">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">OVERVIEW</span>
+      <span class="hb-section-head__jp">全体フロー</span>
     </div>
-    <div class="flow-grid">
-      <div class="flow-step">
-        <div class="flow-step__circle">1</div>
-        <div class="flow-step__meta">
-          <p class="flow-step__number">Step 01</p>
-          <p class="flow-step__label">ヒアリング</p>
+    <div class="overview-flow">
+      <div class="overview-flow__step">
+        <div class="overview-flow__num">01</div>
+        <div class="overview-flow__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
         </div>
+        <div class="overview-flow__label">ヒアリング</div>
+        <div class="overview-flow__sub">税務書類の確認<br>記帳事項の把握</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-step__circle">2</div>
-        <div class="flow-step__meta">
-          <p class="flow-step__number">Step 02</p>
-          <p class="flow-step__label">freee会計の<br>セットアップ</p>
+      <div class="overview-flow__step">
+        <div class="overview-flow__num">02</div>
+        <div class="overview-flow__icon" style="background: #EEF3FF;">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="12" y="16" font-family="Inter" font-size="8" fill="#2864F0" text-anchor="middle" font-weight="700">freee</text></svg>
         </div>
+        <div class="overview-flow__label">freee会計<br>セットアップ</div>
+        <div class="overview-flow__sub">アドバイザー招待<br>口座連携</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-step__circle">3</div>
-        <div class="flow-step__meta">
-          <p class="flow-step__number">Step 03</p>
-          <p class="flow-step__label">ご協力いただきたい<br>事項</p>
+      <div class="overview-flow__step">
+        <div class="overview-flow__num">03</div>
+        <div class="overview-flow__icon" style="background: #F8F0F8;">
+          <!-- Slack icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="7" y="7" width="4" height="4" rx="1" fill="#E01E5A"/>
+            <rect x="13" y="7" width="4" height="4" rx="1" fill="#36C5F0"/>
+            <rect x="7" y="13" width="4" height="4" rx="1" fill="#2EB67D"/>
+            <rect x="13" y="13" width="4" height="4" rx="1" fill="#ECB22E"/>
+          </svg>
         </div>
+        <div class="overview-flow__label">ご協力事項</div>
+        <div class="overview-flow__sub">Slack参加・契約<br>クレカ登録</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-step__circle">4</div>
-        <div class="flow-step__meta">
-          <p class="flow-step__number">Step 04</p>
-          <p class="flow-step__label">記帳代行の<br>進め方</p>
+      <div class="overview-flow__step">
+        <div class="overview-flow__num">04</div>
+        <div class="overview-flow__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </div>
+        <div class="overview-flow__label">記帳代行<br>の進め方</div>
+        <div class="overview-flow__sub">freeeで記帳<br>完了報告</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-step__circle">5</div>
-        <div class="flow-step__meta">
-          <p class="flow-step__number">Step 05</p>
-          <p class="flow-step__label">毎月の<br>資料提供</p>
+      <div class="overview-flow__step">
+        <div class="overview-flow__num">05</div>
+        <div class="overview-flow__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
+        <div class="overview-flow__label">毎月の<br>資料提供</div>
+        <div class="overview-flow__sub">請求書・給与<br>経費資料</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== STEP 01 ==================== -->
+<!-- Step 01: ヒアリング -->
 <section class="section section--paper">
-  <div class="container--narrow">
-    <div class="section__head">
-      <p class="section__en">Step 01</p>
-      <h2 class="section__title">ヒアリング</h2>
-    </div>
-
-    <!-- Subsection: 税務書類 -->
-    <div class="subsection">
-      <h3 class="subsection__title">税務書類の控えの有無の確認</h3>
-      <p class="subsection__text">
-        アンケートでご回答いただいた税務署等へ提出した資料について、控えをお持ちであれば共有ください。
+  <div class="section__inner">
+    <div class="section__narrow">
+      <div class="step-head">
+        <div class="step-num">01</div>
+        <div class="step-title">ヒアリング</div>
+      </div>
+      <p class="step-desc">
+        まずはZoom / Google Meetで30〜60分程度のヒアリングを行います。現在の経理体制・事業内容をお伺いし、税務書類の提出状況を確認します。記帳に必要な事項（取引先、決済方法、経費パターンなど）もこのタイミングで整理します。もちろん無料です。
       </p>
 
-      <!-- 法人の場合 -->
-      <p class="table-label">法人の場合</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>書類名</th>
-              <th>提出先</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>法人設立届出書</td><td>税務署</td></tr>
-            <tr><td>2</td><td>法人設立・設置届出書</td><td>都道府県税事務所</td></tr>
-            <tr><td>3</td><td>法人設立・設置届出書</td><td>市町村（東京23区は不要）</td></tr>
-            <tr><td>4</td><td>法人税の青色申告の承認届出書</td><td>税務署</td></tr>
-            <tr><td>5</td><td>給与支払事務所の開設届出書</td><td>税務署</td></tr>
-            <tr><td>6</td><td>源泉所得税の納期の特例の承認申請書</td><td>税務署</td></tr>
-            <tr><td>7</td><td>その他</td><td>—</td></tr>
-          </tbody>
-        </table>
+      <div class="subsection">
+        <h3 class="subsection__title">税務書類の控えの有無の確認</h3>
+        <p class="subsection__text">
+          アンケートでご回答いただいた税務署等へ提出した書類について、控えをお持ちであれば共有ください。提出未了あるいは提出したか曖昧な場合は、弊所で代理で提出いたしますのでご安心ください。
+        </p>
+
+        <p class="table-label">法人の場合</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>書類名</th><th>提出先</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>法人設立届出書</td><td>税務署</td></tr>
+              <tr><td>2</td><td>法人設立・設置届出書</td><td>都道府県税事務所</td></tr>
+              <tr><td>3</td><td>法人設立・設置届出書</td><td>市町村（東京23区は不要）</td></tr>
+              <tr><td>4</td><td>法人税の青色申告の承認届出書</td><td>税務署</td></tr>
+              <tr><td>5</td><td>給与支払事務所の開設届出書</td><td>税務署</td></tr>
+              <tr><td>6</td><td>源泉所得税の納期の特例の承認申請書</td><td>税務署</td></tr>
+              <tr><td>7</td><td>適格請求書発行事業者の登録申請書</td><td>国税庁</td></tr>
+              <tr><td>8</td><td>その他（消費税課税事業者届出書等）</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-label">個人事業主の場合</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>書類名</th><th>提出先</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>開業届</td><td>税務署</td></tr>
+              <tr><td>2</td><td>所得税の青色申告の承認届出書</td><td>税務署</td></tr>
+              <tr><td>3</td><td>給与支払事務所の開設届出書</td><td>税務署</td></tr>
+              <tr><td>4</td><td>源泉所得税の納期の特例の承認申請書</td><td>税務署</td></tr>
+              <tr><td>5</td><td>適格請求書発行事業者の登録申請書</td><td>国税庁</td></tr>
+              <tr><td>6</td><td>その他</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- 個人事業主の場合 -->
-      <p class="table-label">個人事業主の場合</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>書類名</th>
-              <th>提出先</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td>開業届</td><td>税務署</td></tr>
-            <tr><td>2</td><td>所得税の青色申告の承認届出書</td><td>税務署</td></tr>
-            <tr><td>3</td><td>給与支払事務所の開設届出書</td><td>税務署</td></tr>
-            <tr><td>4</td><td>源泉所得税の納期の特例の承認申請書</td><td>税務署</td></tr>
-            <tr><td>5</td><td>適格請求書発行事業者の登録申請書</td><td>—</td></tr>
-            <tr><td>6</td><td>その他</td><td>—</td></tr>
-          </tbody>
-        </table>
+      <div class="subsection">
+        <h3 class="subsection__title">記帳に必要な事項のヒアリング</h3>
+        <p class="subsection__text">
+          事業内容・主要取引先・決済方法・経費の発生パターン・従業員の有無・役員報酬の金額などをお伺いします。ここでヒアリングした内容をもとに、freee会計の勘定科目設定や自動仕訳ルールを事務所側で構築します。
+        </p>
       </div>
-    </div>
-
-    <!-- Subsection: 記帳に必要な事項 -->
-    <div class="subsection">
-      <h3 class="subsection__title">記帳に必要な事項のヒアリング</h3>
-      <p class="subsection__text">
-        事業内容・取引先・決済方法・経費の発生パターンなどをヒアリングいたします。
-      </p>
     </div>
   </div>
 </section>
 
-<!-- ==================== STEP 02 ==================== -->
-<section class="section section--white">
-  <div class="container--narrow">
-    <div class="section__head">
-      <p class="section__en">Step 02</p>
-      <h2 class="section__title">freee会計のセットアップ</h2>
-    </div>
-
-    <!-- Subsection: 招待 -->
-    <div class="subsection">
-      <h3 class="subsection__title">freee会計への招待</h3>
-      <p class="subsection__text">
-        以下の情報をもとに、freee会計のアドバイザー招待をお願いいたします。
-      </p>
-      <div class="table-wrap">
-        <table class="table--procedure">
-          <thead>
-            <tr>
-              <th>手順</th>
-              <th>内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>アドバイザーの事業所番号</td><td>3649358791</td></tr>
-            <tr><td>メールアドレス</td><td>記帳担当者のメールアドレス</td></tr>
-            <tr><td>権限</td><td>「管理者」で招待</td></tr>
-          </tbody>
-        </table>
+<!-- Step 02: freee会計セットアップ -->
+<section class="section">
+  <div class="section__inner">
+    <div class="section__narrow">
+      <div class="step-head">
+        <div class="step-num">02</div>
+        <div class="step-title">freee会計のセットアップ</div>
       </div>
-    </div>
-
-    <!-- Subsection: 口座連携 -->
-    <div class="subsection">
-      <h3 class="subsection__title">freeeと口座等の連携</h3>
-      <p class="subsection__text">
-        以下の口座・決済サービスをfreeeと連携してください。
+      <p class="step-desc">
+        弊所はfreee会計100%の事務所です。お客様のfreee会計に弊所をアドバイザーとして招待いただくことで、記帳代行の準備が整います。freeeをまだお使いでない場合は、アカウント開設からサポートしますのでご安心ください。
       </p>
-      <ul class="link-list">
-        <li>銀行口座（法人名義の全口座）</li>
-        <li>クレジットカード（事業で使用する全カード）</li>
-        <li>決済サービス・電子マネー（Square・PayPay等）</li>
-      </ul>
+
+      <div class="subsection">
+        <h3 class="subsection__title">freee会計への招待</h3>
+        <p class="subsection__text">
+          以下の情報をもとに、freee会計の「アドバイザー招待」を行ってください。手順はSlackで画面キャプチャ付きでご案内します。
+        </p>
+        <div class="table-wrap">
+          <table class="table--simple">
+            <thead><tr><th>項目</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;color:var(--ink);">アドバイザーの事業所番号</td><td style="font-family:var(--font-en-sans);font-weight:600;color:var(--blue);font-size:16px;">3649358791</td></tr>
+              <tr><td style="font-weight:500;color:var(--ink);">メールアドレス</td><td>記帳担当者のメールアドレス（Slackでお伝えします）</td></tr>
+              <tr><td style="font-weight:500;color:var(--ink);">権限</td><td>「管理者」で招待してください</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">freeeと口座等の連携</h3>
+        <p class="subsection__text">
+          freee会計に以下の口座・決済サービスを連携してください。連携することで取引データが自動的にfreeeに取り込まれ、記帳の手間を大幅に削減できます。
+        </p>
+        <div class="onboard-cards" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="onboard-card">
+            <div class="onboard-card__icon" style="background: var(--blue-light);">
+              <!-- Bank icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+            </div>
+            <div class="onboard-card__content">
+              <div class="onboard-card__label">銀行口座</div>
+              <div class="onboard-card__desc">法人名義の全口座</div>
+            </div>
+          </div>
+          <div class="onboard-card">
+            <div class="onboard-card__icon" style="background: var(--blue-light);">
+              <!-- Credit card icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <div class="onboard-card__content">
+              <div class="onboard-card__label">クレジットカード</div>
+              <div class="onboard-card__desc">事業で使用する全カード</div>
+            </div>
+          </div>
+          <div class="onboard-card">
+            <div class="onboard-card__icon" style="background: var(--blue-light);">
+              <!-- Smartphone / payment icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <div class="onboard-card__content">
+              <div class="onboard-card__label">決済サービス</div>
+              <div class="onboard-card__desc">Square・PayPay等</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-light); line-height: 1.8;">
+          ※ できるだけ立替や現金取引は行わず、freeeに連携している決済手段で日々の取引を行ってください。質問や資料のやり取りを減らし、貴社のご負担を軽減できます。
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== STEP 03 ==================== -->
+<!-- Step 03: ご協力いただきたい事項 -->
 <section class="section section--paper">
-  <div class="container--narrow">
-    <div class="section__head">
-      <p class="section__en">Step 03</p>
-      <h2 class="section__title">ご協力いただきたい事項</h2>
-    </div>
+  <div class="section__inner">
+    <div class="section__narrow">
+      <div class="step-head">
+        <div class="step-num">03</div>
+        <div class="step-title">ご協力いただきたい事項</div>
+      </div>
+      <p class="step-desc">
+        記帳代行を開始するまでに、以下7つの事項をお願いしております。ひとつずつSlackでご案内しますので、まとめて対応する必要はありません。通常1〜2週間で完了します。
+      </p>
 
-    <div class="card-list">
-      <div class="card-item">
-        <span class="card-item__num">01</span>
-        <span class="card-item__label">Slackへの参加</span>
+      <div class="onboard-cards">
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: #F8F0F8;">
+            <!-- Slack logo -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="7" y="7" width="4" height="4" rx="1" fill="#E01E5A"/>
+              <rect x="13" y="7" width="4" height="4" rx="1" fill="#36C5F0"/>
+              <rect x="7" y="13" width="4" height="4" rx="1" fill="#2EB67D"/>
+              <rect x="13" y="13" width="4" height="4" rx="1" fill="#ECB22E"/>
+            </svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">Slackへの参加</div>
+            <div class="onboard-card__desc">事務所との連絡はすべてSlackで行います</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: var(--blue-light);">
+            <!-- CloudSign / pen icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">合意書への署名</div>
+            <div class="onboard-card__desc">クラウドサインで電子署名。紙の郵送は不要です</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: #EEF3FF;">
+            <!-- freee logo -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="12" y="16" font-family="Inter" font-size="8" fill="#2864F0" text-anchor="middle" font-weight="700">freee</text></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">freee会計への事務所メンバー招待</div>
+            <div class="onboard-card__desc">Step 02で設定したアドバイザー招待の完了</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: var(--blue-light);">
+            <!-- Contract icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">契約の締結</div>
+            <div class="onboard-card__desc">顧問契約書をクラウドサインで締結</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: var(--blue-light);">
+            <!-- Credit card icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">支払クレカ登録</div>
+            <div class="onboard-card__desc">Visa / Mastercard / JCB / AMEX に対応</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: var(--blue-light);">
+            <!-- Checklist icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">アンケート回答</div>
+            <div class="onboard-card__desc">事業内容・取引先の情報を事前にご記入</div>
+          </div>
+        </div>
+        <div class="onboard-card">
+          <div class="onboard-card__icon" style="background: var(--blue-light);">
+            <!-- Upload / folder icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="onboard-card__content">
+            <div class="onboard-card__label">資料の共有</div>
+            <div class="onboard-card__desc">過去の決算書・税務書類・定款等をSlackで共有</div>
+          </div>
+        </div>
       </div>
-      <div class="card-item">
-        <span class="card-item__num">02</span>
-        <span class="card-item__label">合意書への署名</span>
-      </div>
-      <div class="card-item">
-        <span class="card-item__num">03</span>
-        <span class="card-item__label">freee会計への事務所メンバー招待</span>
-      </div>
-      <div class="card-item">
-        <span class="card-item__num">04</span>
-        <span class="card-item__label">契約の締結</span>
-      </div>
-      <div class="card-item">
-        <span class="card-item__num">05</span>
-        <span class="card-item__label">支払クレカ登録</span>
-      </div>
-      <div class="card-item">
-        <span class="card-item__num">06</span>
-        <span class="card-item__label">アンケート回答</span>
-      </div>
-      <div class="card-item">
-        <span class="card-item__num">07</span>
-        <span class="card-item__label">資料の共有</span>
-      </div>
-    </div>
 
-    <div class="notes-list">
-      <div class="note-item">
-        <div class="note-item__bullet"></div>
-        <p class="note-item__text">
-          <strong>freeeに連携した決済手段で取引を行う</strong><br>
-          連携済みの口座・クレジットカード・決済サービスを通じて取引を行うことで、自動的にfreeeに取引データが取り込まれます。
-        </p>
-      </div>
-      <div class="note-item">
-        <div class="note-item__bullet"></div>
-        <p class="note-item__text">
-          <strong>freee請求書を利用する</strong><br>
-          売上請求書はfreee請求書で発行いただくことで、売上の記帳を効率的に行えます。
-        </p>
-      </div>
-      <div class="note-item">
-        <div class="note-item__bullet"></div>
-        <p class="note-item__text">
-          <strong>給与計算・社会保険は専門外</strong><br>
-          給与計算および社会保険手続きは当事務所の対応範囲外となります。必要に応じて提携社労士をご紹介いたします。
-        </p>
+      <!-- 注意事項 -->
+      <div style="margin-top: 40px;">
+        <h3 class="subsection__title">運用上のお願い</h3>
+        <div class="note-item">
+          <div class="note-icon" style="background: #EEF3FF;">
+            <!-- freee icon -->
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="10" y="14" font-family="Inter" font-size="6" fill="#2864F0" text-anchor="middle" font-weight="700">freee</text></svg>
+          </div>
+          <p class="note-text">
+            <strong>freeeに連携した決済手段で取引を行う</strong><br>
+            連携済みの口座・クレジットカード・決済サービスを通じて取引を行うことで、自動的にfreeeに取引データが取り込まれます。現金取引や立替払いはできるだけ避けていただくことで、記帳の精度と速度が上がり、貴社のご負担も軽減できます。
+          </p>
+        </div>
+        <div class="note-item">
+          <div class="note-icon" style="background: #EEF3FF;">
+            <!-- Invoice icon -->
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="10" y="14" font-family="Inter" font-size="6" fill="#2864F0" text-anchor="middle" font-weight="700">freee</text></svg>
+          </div>
+          <p class="note-text">
+            <strong>売上請求書はfreee請求書で発行する</strong><br>
+            freee請求書で発行し「保存して取引を登録」機能を使うことで、売上計上まで自動化できます。請求日＝売上計上日になりますので、発生月（稼働月）の日付を設定してください（通常は月末日付）。
+          </p>
+        </div>
+        <div class="note-item">
+          <div class="note-icon" style="background: var(--paper-warm);">
+            <!-- Warning / info icon -->
+            <svg viewBox="0 0 20 20" fill="none" stroke="#8A8A93" stroke-width="1.5"><circle cx="10" cy="10" r="8"/><line x1="10" y1="7" x2="10" y2="11"/><line x1="10" y1="14" x2="10.01" y2="14"/></svg>
+          </div>
+          <p class="note-text">
+            <strong>給与計算・社会保険は専門外です</strong><br>
+            給与計算および社会保険手続きは当事務所の対応範囲外となります。必要に応じて提携社労士をご紹介いたしますので、お気軽にご相談ください。
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== STEP 04 ==================== -->
-<section class="section section--white">
-  <div class="container--narrow">
-    <div class="section__head">
-      <p class="section__en">Step 04</p>
-      <h2 class="section__title">記帳代行の進め方</h2>
-    </div>
-
-    <!-- Flow Diagram -->
-    <div class="flow-diagram">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
-
-        <!-- Row: Client actions -->
-        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px;">
-          <span style="font-family: var(--font-en-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); min-width: 60px;">Client</span>
-          <div class="flow-diagram__node flow-diagram__node--blue">売上請求書の発行</div>
-          <div class="flow-diagram__node flow-diagram__node--blue">役員報酬及び<br>給与計算</div>
-          <div class="flow-diagram__node flow-diagram__node--blue">毎月の資料提供</div>
-        </div>
-
-        <!-- Connector -->
-        <div style="width: 1px; height: 32px; background: var(--line); position: relative;">
-          <div style="position: absolute; bottom: -4px; left: -4px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--ink-light);"></div>
-        </div>
-
-        <!-- Row: Office process -->
-        <div style="display: flex; align-items: center; gap: 0; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
-          <span style="font-family: var(--font-en-sans); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); min-width: 60px; text-align: center;">Office</span>
-          <div class="flow-diagram__node">freeeにて記帳</div>
-          <div class="flow-diagram__arrow"></div>
-          <div class="flow-diagram__node flow-diagram__node--decision">不明点あり？</div>
-          <div class="flow-diagram__arrow"></div>
-          <div class="flow-diagram__node">追加資料依頼</div>
-        </div>
-
-        <!-- Connector -->
-        <div style="width: 1px; height: 32px; background: var(--line); position: relative;">
-          <div style="position: absolute; bottom: -4px; left: -4px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--ink-light);"></div>
-        </div>
-
-        <!-- Row: Completion -->
-        <div style="display: flex; align-items: center; gap: 0; justify-content: center; margin-top: 8px;">
-          <div class="flow-diagram__node flow-diagram__node--accent">記帳完了</div>
-          <div class="flow-diagram__arrow"></div>
-          <div class="flow-diagram__node flow-diagram__node--accent">記帳完了報告</div>
-        </div>
-
+<!-- Step 04: 記帳代行の進め方 -->
+<section class="section">
+  <div class="section__inner">
+    <div class="section__narrow">
+      <div class="step-head">
+        <div class="step-num">04</div>
+        <div class="step-title">記帳代行の進め方</div>
       </div>
-    </div>
+      <p class="step-desc">
+        顧問契約開始後、毎月以下の流れで記帳を進めます。お客様に資料をご共有いただき、事務所側でfreeeにて記帳。不明点があればSlackで確認し、記帳完了後に報告をお送りします。
+      </p>
 
-    <!-- Monthly resources table -->
-    <div class="subsection">
-      <h3 class="subsection__title">毎月の提供資料</h3>
-      <div class="table-wrap">
-        <table class="table--procedure">
-          <thead>
-            <tr>
-              <th>資料</th>
-              <th>内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>売上請求書</td><td>freee請求書で発行</td></tr>
-            <tr><td>役員報酬及び給与計算</td><td>毎月の情報</td></tr>
-            <tr><td>その他資料</td><td>領収書・契約書など</td></tr>
-          </tbody>
-        </table>
+      <!-- Flow Diagram -->
+      <div class="flow-diagram">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+          <!-- Client row -->
+          <div class="flow-row" style="margin-bottom: 8px;">
+            <span class="flow-row-label">YOUR TASK</span>
+            <div class="flow-node flow-node--blue">売上請求書の発行</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node flow-node--blue">役員報酬及び<br>給与計算</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node flow-node--blue">毎月の資料提供</div>
+          </div>
+          <!-- Connector -->
+          <div class="flow-connector"></div>
+          <!-- Office row -->
+          <div class="flow-row" style="margin-top: 8px;">
+            <span class="flow-row-label">OUR TASK</span>
+            <div class="flow-node">freeeにて記帳</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node flow-node--decision">不明点あり？</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">追加資料依頼<br><span style="font-size:11px;color:var(--ink-light);">Slackで確認</span></div>
+          </div>
+          <!-- Connector -->
+          <div class="flow-connector"></div>
+          <!-- Completion row -->
+          <div class="flow-row" style="margin-top: 8px;">
+            <span class="flow-row-label" style="opacity:0;">—</span>
+            <div class="flow-node flow-node--accent">記帳完了</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node flow-node--accent">記帳完了報告<br><span style="font-size:11px;opacity:.8;">Slackでお知らせ</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 毎月の提供資料 -->
+      <div class="subsection">
+        <h3 class="subsection__title">毎月の提供資料</h3>
+        <p class="subsection__text">
+          毎月、以下の資料をSlackで共有してください。共有方法はSlackの専用チャンネルにドラッグ&ドロップするだけ。フォーマットの指定はありません。
+        </p>
+        <div class="table-wrap">
+          <table class="table--simple">
+            <thead><tr><th>資料</th><th>内容</th><th>補足</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;color:var(--ink);">売上請求書</td><td>freee請求書で発行（推奨）</td><td style="font-size:12px;color:var(--ink-light);">freee請求書なら売上計上まで自動化</td></tr>
+              <tr><td style="font-weight:500;color:var(--ink);">役員報酬・給与情報</td><td>毎月の支給額・変更があればその内容</td><td style="font-size:12px;color:var(--ink-light);">定期同額給与の確認</td></tr>
+              <tr><td style="font-weight:500;color:var(--ink);">その他資料</td><td>領収書・契約書・保険証券・賃貸契約書など</td><td style="font-size:12px;color:var(--ink-light);">PDF or 写真でSlackに共有</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== 経費の注意点 ==================== -->
+<!-- Step 05: 経費の注意点 -->
 <section class="section section--paper">
-  <div class="container--narrow">
-    <div class="section__head">
-      <p class="section__en">Notes</p>
-      <h2 class="section__title">経費の注意点</h2>
-    </div>
+  <div class="section__inner">
+    <div class="section__narrow">
+      <div class="step-head">
+        <div class="step-num">05</div>
+        <div class="step-title">経費の注意点</div>
+      </div>
+      <p class="step-desc">
+        法人税法上、経費として認められるためにはいくつかのルールがあります。特に創業期に注意が必要なポイントを4つにまとめました。不明点はSlackでいつでもご相談ください。
+      </p>
 
-    <div class="expense-grid">
-      <div class="expense-card">
-        <p class="expense-card__num">01</p>
-        <h3 class="expense-card__title">経費の範囲</h3>
-        <p class="expense-card__text">
-          事業に関連する支出のみが経費として認められます。私的な支出との区分を明確にしてください。
-        </p>
-      </div>
-      <div class="expense-card">
-        <p class="expense-card__num">02</p>
-        <h3 class="expense-card__title">毎月の役員報酬<br>（定期同額給与）</h3>
-        <p class="expense-card__text">
-          役員報酬は原則として期中の変更ができません。毎月同額を支給する必要があります。
-        </p>
-      </div>
-      <div class="expense-card">
-        <p class="expense-card__num">03</p>
-        <h3 class="expense-card__title">役員賞与<br>（事前確定届出給与）</h3>
-        <p class="expense-card__text">
-          役員への賞与は事前に届出が必要です。届出と異なる支給は損金不算入となります。
-        </p>
-      </div>
-      <div class="expense-card">
-        <p class="expense-card__num">04</p>
-        <h3 class="expense-card__title">給与の締め日支払日</h3>
-        <p class="expense-card__text">
-          給与の締め日と支払日を事前にお知らせください。記帳処理のタイミングに影響します。
-        </p>
+      <div class="expense-grid">
+        <div class="expense-card">
+          <p class="expense-card__num">01</p>
+          <h3 class="expense-card__title">経費の範囲</h3>
+          <p class="expense-card__text">
+            会社の事業に関連する支出のみが経費として認められます。経費性を合理的に説明できない場合、税務署に否認され追徴課税がなされる可能性があります。私的な支出との区分を明確にしてください。
+          </p>
+        </div>
+        <div class="expense-card">
+          <p class="expense-card__num">02</p>
+          <h3 class="expense-card__title">毎月の役員報酬<br>（定期同額給与）</h3>
+          <p class="expense-card__text">
+            毎月の役員への給与を税務上の経費にするためには、毎月定額かつ同じ日に支給する必要があります。期中の変更は原則として損金不算入となりますのでご注意ください。
+          </p>
+        </div>
+        <div class="expense-card">
+          <p class="expense-card__num">03</p>
+          <h3 class="expense-card__title">役員賞与<br>（事前確定届出給与）</h3>
+          <p class="expense-card__text">
+            役員への賞与を経費にするためには、税務署への届出が所定の期限までに必要です。届出と異なる日付・金額で支給すると全額が損金不算入になります。賞与を検討する場合は、新事業年度開始前にご相談ください。
+          </p>
+        </div>
+        <div class="expense-card">
+          <p class="expense-card__num">04</p>
+          <h3 class="expense-card__title">給与の締め日と支払日</h3>
+          <p class="expense-card__text">
+            締め日と支払日にこだわりがない場合、毎月末締めの翌月25日払いを推奨しております。記帳処理のタイミングに影響しますので、事前にお知らせください。
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CTA ==================== -->
-<section class="cta">
-  <div class="container">
-    <h2 class="cta__title">ご不明点はお気軽にお問い合わせください</h2>
-    <p class="cta__text">
-      契約前のご質問も大歓迎です。まずは無料相談からお気軽にどうぞ。
-    </p>
-    <a href="#" class="cta__button">
-      無料相談を予約する <span>&rarr;</span>
-    </a>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="footer">
-  <div class="footer__inner">
+<!-- CTA -->
+<section class="cta-blue">
+  <div class="cta-blue__inner">
     <div>
-      <p class="footer__brand">Hatenabase</p>
-      <p class="footer__brand-sub">はてなベース税理士事務所</p>
+      <p class="cta-blue__label">CONTACT</p>
+      <h2 class="cta-blue__title">
+        ご不明点は<br>
+        お気軽にお問い合わせください。
+      </h2>
+      <p class="cta-blue__lead">
+        契約前のご質問も大歓迎です。オンライン面談にも対応しています。初回相談は無料です。
+      </p>
     </div>
-    <div class="footer__nav">
-      <div class="footer__nav-group">
-        <h4>Services</h4>
-        <a href="#">顧問税務</a>
-        <a href="#">記帳代行</a>
-        <a href="#">会社設立</a>
-        <a href="#">資金調達</a>
-      </div>
-      <div class="footer__nav-group">
-        <h4>Company</h4>
-        <a href="#">事務所概要</a>
-        <a href="#">代表紹介</a>
-        <a href="#">お知らせ</a>
-        <a href="#">お問い合わせ</a>
-      </div>
-      <div class="footer__nav-group">
-        <h4>Legal</h4>
-        <a href="#">プライバシーポリシー</a>
-        <a href="#">利用規約</a>
-      </div>
+    <div class="cta-blue__buttons">
+      <a href="/contact" class="cta-blue__btn cta-blue__btn--primary">
+        <span>日程調整はこちら</span><span class="arrow">→</span>
+      </a>
+      <a href="/contact" class="cta-blue__btn cta-blue__btn--outline">
+        <span>お問い合わせフォーム</span><span class="arrow">↗</span>
+      </a>
     </div>
   </div>
-  <p class="footer__copy">&copy; 2026 Hatenabase, inc. All rights reserved.</p>
+</section>
+
+<!-- Footer -->
+<footer class="hb-footer">
+  <div class="hb-footer__inner">
+    <div>
+      <div class="hb-footer__logo">はてなベース税理士事務所</div>
+      <p class="hb-footer__address">運営: 田村直大税理士事務所<br>〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階</p>
+    </div>
+    <div style="text-align: right;">
+      <div class="hb-footer__links">
+        <a href="./tax-accountant-preview.html">事務所トップ</a>
+        <a href="./tax-advisor-preview.html">税務顧問</a>
+        <a href="./about-us-preview.html">私たちについて</a>
+        <a href="/contact">お問い合わせ</a>
+      </div>
+      <p class="hb-footer__copy" style="margin-top: 12px;">&copy; 2026 Hatenabase, inc.</p>
+    </div>
+  </div>
 </footer>
 
 </body>
