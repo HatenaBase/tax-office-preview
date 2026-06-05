@@ -1,366 +1,830 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>はてなベース税理士事務所｜クラウド会計×ITに強い30代の税理士事務所</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<style>
-/* ===== CSS Variables ===== */
-:root {
-  --white: #FFFFFF; --paper: #FAFAFA; --paper-warm: #F5F4F0;
-  --ink: #0E0E14; --ink-soft: #3A3A45; --ink-light: #8A8A93;
-  --line: #E8E6DF; --line-soft: #F0EEE8;
-  --blue: #1F61AB; --blue-deep: #0F3B72; --blue-light: #E8EFF8; --blue-ghost: #F4F8FD;
-  --font-en: "Cormorant Garamond", "Times New Roman", serif;
-  --font-en-sans: "Inter", system-ui, sans-serif;
-  --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>はてなベース税理士事務所｜クラウド会計×ITに強い30代の税理士事務所</title>
+  <meta name="description" content="クラウド会計に精通した新宿区の30代税理士事務所。freee認定5つ星。リアルタイム経営可視化・記帳代行・決算申告・創業融資支援。Slack対応・オンライン全国対応。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #FAFAFA;
+      --paper-warm: #F5F4F0;
+      --ink: #0E0E14;
+      --ink-soft: #3A3A45;
+      --ink-light: #8A8A93;
+      --line: #E8E6DF;
+      --line-soft: #F0EEE8;
+      --blue: #1F61AB;
+      --blue-deep: #0F3B72;
+      --blue-light: #E8EFF8;
+      --blue-ghost: #F4F8FD;
+      --font-en: "Cormorant Garamond", "Times New Roman", serif;
+      --font-en-sans: "Inter", system-ui, sans-serif;
+      --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+    }
 
-/* ===== Reset & Base ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.8; font-weight: 400; }
-a { color: inherit; text-decoration: none; }
-img { max-width: 100%; display: block; }
-ul, ol { list-style: none; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== Layout ===== */
-.container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
+    body {
+      font-family: var(--font-jp);
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ===== Header ===== */
-.header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line-soft); }
-.header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; max-width: 1120px; margin: 0 auto; padding: 0 40px; }
-.header__logo { font-family: var(--font-en); font-size: 14px; font-weight: 400; letter-spacing: 0.18em; color: var(--ink); }
-.header__nav { display: flex; align-items: center; gap: 32px; }
-.header__nav-link { font-family: var(--font-en-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; color: var(--ink-soft); transition: color 0.2s; }
-.header__nav-link:hover { color: var(--blue); }
-.header__cta { font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: var(--white); background: var(--ink); padding: 8px 24px; border-radius: 999px; transition: background 0.2s; }
-.header__cta:hover { background: var(--blue-deep); }
+    /* ====== Header ====== */
+    .hb-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-header__logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .hb-header__logo-text {
+      font-family: var(--font-jp); font-weight: 700; font-size: 15px;
+      letter-spacing: .02em; line-height: 1.3;
+    }
+    .hb-header__logo-sub {
+      font-size: 10px; font-weight: 400; color: var(--ink-light);
+      display: block;
+    }
+    .hb-header__nav {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .hb-header__nav a {
+      font-family: var(--font-en-sans);
+      font-size: 12px; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .2s;
+    }
+    .hb-header__nav a:hover { color: var(--blue); }
+    .hb-header__cta {
+      padding: 10px 24px; background: var(--ink); color: #fff;
+      border-radius: 999px; font-size: 12px; font-weight: 600;
+      letter-spacing: .04em; text-decoration: none;
+      transition: background .3s;
+    }
+    .hb-header__cta:hover { background: var(--blue-deep); }
 
-/* ===== Section Base ===== */
-.section { padding: 100px 0; }
-.section--paper { background: var(--paper-warm); }
-.section--blue { background: var(--blue-deep); color: var(--white); }
+    /* ====== Mobile menu ====== */
+    .hb-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 32px; height: 32px; position: relative;
+    }
+    .hb-hamburger span {
+      display: block; width: 20px; height: 1.5px; background: var(--ink);
+      position: absolute; left: 6px; transition: .3s;
+    }
+    .hb-hamburger span:nth-child(1) { top: 9px; }
+    .hb-hamburger span:nth-child(2) { top: 15px; }
+    .hb-hamburger span:nth-child(3) { top: 21px; }
 
-/* ===== Section Head ===== */
-.section-head { margin-bottom: 64px; }
-.section-head__en { font-family: var(--font-en); font-size: 13px; font-weight: 400; letter-spacing: 0.2em; color: var(--ink-light); margin-bottom: 8px; }
-.section-head__jp { font-family: var(--font-jp); font-size: 15px; font-weight: 500; letter-spacing: 0.06em; color: var(--ink); }
+    /* ====== Hero ====== */
+    .hb-hero {
+      position: relative; padding: 100px 32px 80px;
+      background: var(--white); overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-hero__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hb-hero__crumb {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 28px;
+    }
+    .hb-hero__en {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--blue); margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .hb-hero__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(28px, 3.5vw, 48px); line-height: 1.3;
+      letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px;
+    }
+    .hb-hero__lead {
+      font-size: 15px; line-height: 2; color: var(--ink-soft);
+      margin-bottom: 36px;
+    }
+    .hb-hero__btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 36px; background: var(--ink); color: #fff;
+      border-radius: 999px; font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: background .3s;
+    }
+    .hb-hero__btn:hover { background: var(--blue-deep); }
+    .hb-hero__visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hb-hero__visual svg { width: 100%; max-width: 480px; height: auto; }
 
-/* ===== Hero ===== */
-.hero { padding: 140px 0 100px; }
-.hero__breadcrumb { font-family: var(--font-en); font-size: 11px; font-weight: 400; letter-spacing: 0.2em; color: var(--ink-light); margin-bottom: 24px; }
-.hero__tag { font-family: var(--font-en); font-size: 14px; font-weight: 300; font-style: italic; letter-spacing: 0.06em; color: var(--ink-light); margin-bottom: 20px; }
-.hero__headline { font-family: var(--font-jp); font-size: 42px; font-weight: 900; line-height: 1.5; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 16px; }
-.hero__subtitle { font-family: var(--font-en); font-size: 15px; font-weight: 300; font-style: italic; letter-spacing: 0.04em; color: var(--ink-light); margin-bottom: 32px; }
-.hero__lead { font-size: 15px; font-weight: 400; line-height: 2; color: var(--ink-soft); max-width: 640px; margin-bottom: 48px; }
-.hero__cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-jp); font-size: 14px; font-weight: 500; color: var(--white); background: var(--blue); padding: 14px 40px; border-radius: 999px; transition: background 0.2s; }
-.hero__cta:hover { background: var(--blue-deep); }
+    /* ====== Section base ====== */
+    .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .section--paper { background: var(--paper); }
+    .section--warm { background: var(--paper-warm); }
+    .section__inner { max-width: 1280px; margin: 0 auto; }
 
-/* ===== Service Grid (9 features) ===== */
-.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.svc-grid__item { padding: 40px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background 0.2s; }
-.svc-grid__item:hover { background: var(--blue-ghost); }
-.svc-grid__num { font-family: var(--font-en); font-size: 32px; font-weight: 300; font-style: italic; color: var(--ink-light); margin-bottom: 16px; line-height: 1; }
-.svc-grid__title { font-family: var(--font-jp); font-size: 16px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 12px; }
-.svc-grid__desc { font-size: 13px; font-weight: 400; line-height: 1.9; color: var(--ink-soft); }
+    /* ====== Section Head ====== */
+    .hb-section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .hb-section-head__en {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-section-head__en::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    }
+    .hb-section-head__jp {
+      font-family: var(--font-jp); font-weight: 700; font-size: 28px;
+      letter-spacing: -.01em; color: var(--ink);
+    }
 
-/* ===== Message Section ===== */
-.message { display: flex; gap: 64px; align-items: flex-start; }
-.message__body { flex: 1; }
-.message__quote { font-family: var(--font-jp); font-size: 24px; font-weight: 700; line-height: 1.7; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 32px; position: relative; padding-left: 24px; border-left: 3px solid var(--blue); }
-.message__text { font-size: 14px; line-height: 2.1; color: var(--ink-soft); margin-bottom: 32px; }
-.message__photo { flex-shrink: 0; text-align: center; }
-.message__photo-box { width: 200px; height: 200px; background: var(--line-soft); border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.message__photo-box span { font-size: 12px; color: var(--ink-light); }
-.message__photo-name { font-size: 13px; font-weight: 500; color: var(--ink); }
-.message__photo-role { font-size: 11px; color: var(--ink-light); margin-top: 4px; }
-.message__link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--blue); letter-spacing: 0.04em; transition: gap 0.2s; }
-.message__link:hover { gap: 10px; }
+    /* ====== Features (5-col grid) ====== */
+    .feat-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .feat-card {
+      padding: 36px 24px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      transition: background .3s;
+    }
+    .feat-card:hover { background: var(--blue-ghost); }
+    .feat-card__icon {
+      width: 48px; height: 48px; margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--blue-light); border-radius: 12px;
+    }
+    .feat-card__icon svg { width: 24px; height: 24px; }
+    .feat-card__title {
+      font-weight: 700; font-size: 16px; line-height: 1.5;
+      margin-bottom: 12px; letter-spacing: -.01em;
+    }
+    .feat-card__desc {
+      font-size: 13px; line-height: 1.85; color: var(--ink-soft);
+    }
 
-/* ===== About Points ===== */
-.about__headline { font-family: var(--font-jp); font-size: 22px; font-weight: 700; line-height: 1.7; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 48px; max-width: 640px; }
-.about-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 40px; }
-.about-points__title { font-family: var(--font-jp); font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-.about-points__desc { font-size: 13px; color: var(--ink-soft); line-height: 1.8; }
-.about__link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--blue); letter-spacing: 0.04em; transition: gap 0.2s; }
-.about__link:hover { gap: 10px; }
+    /* ====== Message (Representative) ====== */
+    .msg-grid {
+      display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: center;
+    }
+    .msg-photo {
+      width: 360px; height: 440px; overflow: hidden; border-radius: 8px;
+    }
+    .msg-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    }
+    .msg-label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--blue); margin-bottom: 12px;
+    }
+    .msg-name {
+      font-family: var(--font-jp); font-weight: 700; font-size: 14px;
+      color: var(--ink-soft); margin-bottom: 6px;
+    }
+    .msg-role {
+      font-size: 12px; color: var(--ink-light); margin-bottom: 24px;
+    }
+    .msg-title {
+      font-weight: 900; font-size: clamp(22px, 2.5vw, 32px); line-height: 1.4;
+      letter-spacing: -.01em; margin-bottom: 24px;
+    }
+    .msg-body {
+      font-size: 15px; line-height: 2; color: var(--ink-soft);
+    }
 
-/* ===== Service Cards ===== */
-.svc-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
-.svc-card { background: var(--white); border: 1px solid var(--line); padding: 48px 40px; transition: border-color 0.2s; }
-.svc-card:hover { border-color: var(--blue); }
-.svc-card__title { font-family: var(--font-jp); font-size: 18px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 16px; }
-.svc-card__desc { font-size: 14px; color: var(--ink-soft); line-height: 1.9; margin-bottom: 24px; }
-.svc-card__price { font-family: var(--font-en-sans); font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.02em; margin-bottom: 24px; }
-.svc-card__link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-en-sans); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; color: var(--ink); transition: color 0.2s, gap 0.2s; }
-.svc-card__link:hover { color: var(--blue); gap: 10px; }
+    /* ====== About ====== */
+    .about-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .about-card {
+      padding: 48px 32px; text-align: center;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .about-card__icon {
+      width: 64px; height: 64px; margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-card__title {
+      font-weight: 700; font-size: 18px; margin-bottom: 14px;
+    }
+    .about-card__desc {
+      font-size: 14px; line-height: 1.85; color: var(--ink-soft);
+    }
+    .about-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 40px; font-size: 14px; font-weight: 600;
+      color: var(--blue); text-decoration: none;
+    }
+    .about-link:hover { text-decoration: underline; }
 
-/* ===== Stats / Performance ===== */
-.stat-single { text-align: center; padding: 40px 0; }
-.stat-single__number { font-family: var(--font-en); font-size: 96px; font-weight: 300; font-style: italic; color: var(--blue); line-height: 1; display: inline; }
-.stat-single__unit { font-family: var(--font-jp); font-size: 28px; font-weight: 700; color: var(--ink); margin-left: 4px; }
-.stat-single__label { font-size: 14px; font-weight: 500; color: var(--ink-soft); margin-top: 16px; letter-spacing: 0.04em; }
+    /* ====== Service (2 cards) ====== */
+    .svc-grid2 {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .svc2-card {
+      padding: 56px 48px;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      text-decoration: none; color: var(--ink);
+      display: flex; flex-direction: column;
+      transition: background .3s;
+    }
+    .svc2-card:hover { background: var(--blue-ghost); }
+    .svc2-card__icon {
+      width: 72px; height: 72px; margin-bottom: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--blue-light); border-radius: 16px;
+    }
+    .svc2-card__icon svg { width: 36px; height: 36px; }
+    .svc2-card__head {
+      display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px;
+    }
+    .svc2-card__num {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 36px; color: var(--blue); line-height: 1;
+    }
+    .svc2-card__en {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .28em; color: var(--ink-light);
+    }
+    .svc2-card__title {
+      font-weight: 700; font-size: 24px; line-height: 1.4;
+      letter-spacing: -.01em; margin-bottom: 16px;
+    }
+    .svc2-card__desc {
+      font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 24px;
+    }
+    .svc2-card__price {
+      font-family: var(--font-en-sans); font-size: 14px; font-weight: 600;
+      color: var(--blue); margin-bottom: 16px;
+    }
+    .svc2-card__link {
+      margin-top: auto;
+      font-family: var(--font-en-sans); font-size: 12px; font-weight: 600;
+      letter-spacing: .18em; color: var(--blue);
+    }
 
-/* ===== CTA Section ===== */
-.cta-section { text-align: center; }
-.cta-section__label { font-family: var(--font-en); font-size: 12px; font-weight: 400; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
-.cta-section__title { font-family: var(--font-jp); font-size: 32px; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 20px; }
-.cta-section__lead { font-size: 14px; font-weight: 400; line-height: 2; color: rgba(255,255,255,0.8); max-width: 560px; margin: 0 auto 48px; }
-.cta-section__buttons { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.btn--primary { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-jp); font-size: 14px; font-weight: 600; color: var(--blue-deep); background: var(--white); padding: 16px 40px; border-radius: 999px; transition: background 0.2s, transform 0.2s; }
-.btn--primary:hover { background: var(--blue-light); transform: translateY(-1px); }
-.btn--outline { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-jp); font-size: 14px; font-weight: 500; color: var(--white); background: transparent; padding: 16px 40px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.4); transition: border-color 0.2s, background 0.2s; }
-.btn--outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    /* ====== Voice (Testimonials) ====== */
+    .voice-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+    }
+    .voice-card {
+      display: grid; grid-template-columns: 160px 1fr; gap: 28px;
+      padding: 32px; background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; align-items: start;
+    }
+    .voice-card__thumb {
+      width: 160px; height: 110px; overflow: hidden; border-radius: 6px;
+      background: var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .voice-card__thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .voice-card__thumb-placeholder {
+      font-size: 13px; color: var(--ink-light); text-align: center;
+      padding: 12px;
+    }
+    .voice-card__company {
+      font-weight: 700; font-size: 16px; margin-bottom: 4px;
+    }
+    .voice-card__industry {
+      font-size: 12px; color: var(--ink-light); margin-bottom: 12px;
+    }
+    .voice-card__text {
+      font-size: 14px; line-height: 1.85; color: var(--ink-soft);
+    }
+    .voice-card__link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; font-size: 12px; font-weight: 600;
+      color: var(--blue); text-decoration: none;
+    }
 
-/* ===== Footer ===== */
-.footer { padding: 64px 0; border-top: 1px solid var(--line); }
-.footer__inner { display: flex; align-items: flex-start; justify-content: space-between; }
-.footer__logo { font-family: var(--font-en); font-size: 13px; font-weight: 400; letter-spacing: 0.18em; color: var(--ink); margin-bottom: 16px; }
-.footer__address { font-size: 12px; color: var(--ink-light); line-height: 1.8; font-style: normal; }
-.footer__copy { font-family: var(--font-en-sans); font-size: 11px; color: var(--ink-light); letter-spacing: 0.04em; align-self: flex-end; }
+    /* ====== Stats ====== */
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+    }
+    .stat-cell {
+      padding: 48px 24px; text-align: center;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .stat-cell__number {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 52px; color: var(--blue); line-height: 1; margin-bottom: 10px;
+    }
+    .stat-cell__label {
+      font-size: 14px; color: var(--ink-soft);
+    }
 
-/* ===== Responsive ===== */
-@media (max-width: 767px) {
-  .container { padding: 0 20px; }
-  .header__inner { padding: 0 20px; height: 56px; }
-  .header__nav { gap: 16px; }
-  .header__nav-link { font-size: 10px; }
-  .header__cta { font-size: 10px; padding: 6px 16px; }
+    /* ====== CTA ====== */
+    .cta-blue {
+      padding: 96px 32px; background: var(--blue); color: #fff;
+    }
+    .cta-blue__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+    }
+    .cta-blue__label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
+    }
+    .cta-blue__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px;
+    }
+    .cta-blue__lead {
+      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
+    }
+    .cta-blue__buttons { display: grid; gap: 14px; }
+    .cta-blue__btn {
+      padding: 18px 28px; text-decoration: none;
+      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+      border-radius: 999px; transition: transform .2s, opacity .2s;
+    }
+    .cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+    .cta-blue__btn--primary { background: #fff; color: var(--blue); }
+    .cta-blue__btn--outline {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .cta-blue__btn .arrow {
+      font-family: var(--font-en); font-style: italic;
+    }
 
-  .hero { padding: 100px 0 64px; }
-  .hero__headline { font-size: 26px; }
-  .hero__subtitle { font-size: 13px; }
-  .hero__lead { font-size: 14px; }
+    /* ====== Footer ====== */
+    .hb-footer {
+      padding: 56px 32px; background: var(--ink); color: #fff;
+    }
+    .hb-footer__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-footer__logo {
+      font-family: var(--font-jp); font-size: 14px; font-weight: 700;
+      opacity: .8; margin-bottom: 4px;
+    }
+    .hb-footer__address {
+      font-size: 12px; opacity: .5; line-height: 1.7;
+    }
+    .hb-footer__copy {
+      font-family: var(--font-en-sans); font-size: 11px; opacity: .4;
+    }
+    .hb-footer__links {
+      display: flex; gap: 24px;
+    }
+    .hb-footer__links a {
+      font-size: 12px; color: #fff; opacity: .5;
+      text-decoration: none; transition: opacity .2s;
+    }
+    .hb-footer__links a:hover { opacity: .9; }
 
-  .section { padding: 64px 0; }
-  .section-head { margin-bottom: 40px; }
+    /* ====== Responsive ====== */
+    @media (max-width: 1024px) {
+      .hb-hero__inner { grid-template-columns: 1fr; gap: 40px; }
+      .hb-hero__visual { order: -1; }
+      .hb-hero__visual svg { max-width: 360px; }
+      .feat-grid { grid-template-columns: repeat(3, 1fr); }
+      .msg-grid { grid-template-columns: 280px 1fr; gap: 40px; }
+      .msg-photo { width: 280px; height: 360px; }
+    }
 
-  .svc-grid { grid-template-columns: 1fr; }
-  .svc-grid__item { padding: 32px 24px; }
+    @media (max-width: 767px) {
+      .hb-header__nav { display: none; }
+      .hb-hamburger { display: block; }
+      .hb-hero { padding: 60px 20px 48px; }
+      .hb-hero__title { font-size: 26px; }
+      .hb-hero__visual svg { max-width: 280px; }
+      .section { padding: 64px 20px; }
+      .feat-grid { grid-template-columns: 1fr 1fr; }
+      .msg-grid { grid-template-columns: 1fr; gap: 32px; }
+      .msg-photo { width: 100%; height: 320px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .svc-grid2 { grid-template-columns: 1fr; }
+      .svc2-card { padding: 36px 24px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .voice-card { grid-template-columns: 1fr; }
+      .voice-card__thumb { width: 100%; height: 160px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+      .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
+      .hb-section-head { flex-direction: column; gap: 8px; }
+    }
 
-  .message { flex-direction: column-reverse; gap: 40px; align-items: center; }
-  .message__quote { font-size: 20px; }
-  .message__photo { text-align: center; }
-
-  .about__headline { font-size: 18px; }
-  .about-points { grid-template-columns: 1fr; gap: 24px; }
-
-  .svc-cards { grid-template-columns: 1fr; gap: 20px; }
-  .svc-card { padding: 32px 24px; }
-
-  .stat-single__number { font-size: 64px; }
-  .stat-single__unit { font-size: 22px; }
-
-  .cta-section__title { font-size: 24px; }
-  .cta-section__buttons { flex-direction: column; }
-  .btn--primary, .btn--outline { width: 100%; justify-content: center; }
-
-  .footer__inner { flex-direction: column; gap: 24px; }
-  .footer__copy { align-self: flex-start; }
-}
-</style>
+    @media (max-width: 480px) {
+      .feat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ===== Header ===== -->
-<header class="header">
-  <div class="header__inner">
-    <a href="/" class="header__logo">HATENABASE TAX OFFICE</a>
-    <nav class="header__nav">
-      <a href="#service" class="header__nav-link">SERVICE</a>
-      <a href="#about" class="header__nav-link">ABOUT</a>
-      <a href="#contact" class="header__nav-link">CONTACT</a>
-      <a href="#contact" class="header__cta">CONTACT</a>
-    </nav>
-  </div>
-</header>
+  <!-- Header -->
+  <header class="hb-header">
+    <div class="hb-header__inner">
+      <a href="/" class="hb-header__logo">
+        <span class="hb-header__logo-text">
+          はてなベース税理士事務所
+          <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
+        </span>
+      </a>
+      <nav class="hb-header__nav">
+        <a href="#features">FEATURES</a>
+        <a href="#service">SERVICE</a>
+        <a href="#voice">VOICE</a>
+        <a href="/contact" class="hb-header__cta">CONTACT</a>
+      </nav>
+      <button class="hb-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-<!-- ===== Hero ===== -->
-<section class="hero">
-  <div class="container">
-    <p class="hero__breadcrumb">HATENABASE TAX OFFICE</p>
-    <p class="hero__tag">HatenaBase Tax Office</p>
-    <h1 class="hero__headline">クラウド会計に精通した、<br>30代の税理士事務所。</h1>
-    <p class="hero__subtitle">Cloud accounting experts in their 30s.</p>
-    <p class="hero__lead">リアルタイム経営の可視化に特化。ITとfreeeを駆使し、創業期・小規模法人の「経理の悩み」をゼロにします。</p>
-    <a href="#contact" class="hero__cta">無料相談はこちら</a>
-  </div>
-</section>
-
-<!-- ===== 9つの特徴 ===== -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-head__en">FEATURES</p>
-      <p class="section-head__jp">9つの特徴</p>
-    </div>
-    <div class="svc-grid">
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">01</p>
-        <h3 class="svc-grid__title">法人の節税に強い</h3>
-        <p class="svc-grid__desc">創業期・小規模法人のサポート経験が豊富。事業フェーズに合わせた節税アドバイスが可能です。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">02</p>
-        <h3 class="svc-grid__title">業界最低水準のコスト</h3>
-        <p class="svc-grid__desc">年商1,000万円未満なら月額20,000円（税抜）から。記帳代行・決算・申告すべて込み。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">03</p>
-        <h3 class="svc-grid__title">経理がわからなくてもOK</h3>
-        <p class="svc-grid__desc">資料を共有するだけでお任せいただけます。経営者ご自身は経営や営業に集中できます。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">04</p>
-        <h3 class="svc-grid__title">会計ソフト入力不要</h3>
-        <p class="svc-grid__desc">弊所がfreee会計への記帳をすべて代行。お客様側での会計ソフト操作は不要です。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">05</p>
-        <h3 class="svc-grid__title">決算書・申告書作成</h3>
-        <p class="svc-grid__desc">決算書の作成、法人税申告書・消費税申告書の作成・提出まで対応します。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">06</p>
-        <h3 class="svc-grid__title">ITでペーパーレス化</h3>
-        <p class="svc-grid__desc">freee会計100%の事務所。Slackでのコミュニケーション・クラウド完結で紙のやり取り不要。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">07</p>
-        <h3 class="svc-grid__title">税務署への届出・対応</h3>
-        <p class="svc-grid__desc">法人設立届出書・青色申告承認申請書などの税務書類を代理で作成・提出します。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">08</p>
-        <h3 class="svc-grid__title">税務調査対応</h3>
-        <p class="svc-grid__desc">万が一の税務調査にも対応。日頃の適切な記帳・申告が最大の備えです。</p>
-      </div>
-      <div class="svc-grid__item">
-        <p class="svc-grid__num">09</p>
-        <h3 class="svc-grid__title">freee認定アドバイザー5つ星</h3>
-        <p class="svc-grid__desc">freee認定アドバイザー最上位の5つ星。freeeをご利用の法人様に安心の事務所です。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 代表メッセージ ===== -->
-<section class="section section--paper">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-head__en">MESSAGE</p>
-      <p class="section-head__jp">代表メッセージ</p>
-    </div>
-    <div class="message">
-      <div class="message__body">
-        <blockquote class="message__quote">「この事業を成功させたい」<br>その想いに、全力で応えます。</blockquote>
-        <p class="message__text">私たちは30代前半を中心としたメンバーで構成された、創業期に強い会計事務所です。「新しく始めたこの事業を必ず成功させたい」——私たちは、そんな真摯な想いを持つ経営者様の、一番の味方でありたいと願っています。代表の田村は大手監査法人出身の公認会計士・税理士。若さとスピード感を武器に、freeeとSlackを駆使して、同世代の経営者と伴走します。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。</p>
-        <a href="#" class="message__link">料金表を見る <span>&rarr;</span></a>
-      </div>
-      <div class="message__photo">
-        <div class="message__photo-box"><span>PHOTO</span></div>
-        <p class="message__photo-name">田村 直大</p>
-        <p class="message__photo-role">代表税理士</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== About Us ===== -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-head__en">ABOUT</p>
-      <p class="section-head__jp">私たちについて</p>
-    </div>
-    <h2 class="about__headline">30代前半の税理士事務所。<br>ITとクラウド会計で、税理士業界の当たり前を変える。</h2>
-    <div class="about-points">
-      <div class="about-points__item">
-        <h3 class="about-points__title">30代×IT</h3>
-        <p class="about-points__desc">若さとテクノロジーを活かしたスピーディな税務支援</p>
-      </div>
-      <div class="about-points__item">
-        <h3 class="about-points__title">freee会計100%</h3>
-        <p class="about-points__desc">認定アドバイザー最上位5つ星</p>
-      </div>
-      <div class="about-points__item">
-        <h3 class="about-points__title">Slack完結</h3>
-        <p class="about-points__desc">チャットでレスポンス良くやり取り</p>
-      </div>
-    </div>
-    <a href="/tax-accountant/about-us/" class="about__link">詳しくはこちら <span>&rarr;</span></a>
-  </div>
-</section>
-
-<!-- ===== サービス紹介 ===== -->
-<section id="service" class="section section--paper">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-head__en">SERVICE</p>
-      <p class="section-head__jp">サービス</p>
-    </div>
-    <div class="svc-cards">
-      <div class="svc-card">
-        <h3 class="svc-card__title">税務顧問（税務アドバイザリー）</h3>
-        <p class="svc-card__desc">記帳から申告まで、創業期の業務課題をまるごと巻き取ります。</p>
-        <p class="svc-card__price">&yen;20,000 / month〜</p>
-        <a href="#" class="svc-card__link">READ MORE <span>&rarr;</span></a>
-      </div>
-      <div class="svc-card">
-        <h3 class="svc-card__title">資金調達支援（創業融資）</h3>
-        <p class="svc-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。</p>
-        <p class="svc-card__price">着手金 &yen;50,000 + 成功報酬5%</p>
-        <a href="#" class="svc-card__link">READ MORE <span>&rarr;</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 実績 ===== -->
-<section class="section">
-  <div class="container">
-    <div class="section-head">
-      <p class="section-head__en">PERFORMANCE</p>
-      <p class="section-head__jp">実績</p>
-    </div>
-    <div class="stat-single">
-      <span class="stat-single__number">5</span><span class="stat-single__unit">つ星</span>
-      <p class="stat-single__label">freee認定アドバイザー最上位</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section id="contact" class="section section--blue">
-  <div class="container">
-    <div class="cta-section">
-      <p class="cta-section__label">CONTACT</p>
-      <h2 class="cta-section__title">まずは無料相談から</h2>
-      <p class="cta-section__lead">創業期の税務・会計・融資のお悩みをお気軽にご相談ください。オンライン面談にも対応しています。</p>
-      <div class="cta-section__buttons">
-        <a href="#" class="btn--primary">無料相談を予約する <span>&rarr;</span></a>
-        <a href="#service" class="btn--outline">サービス内容を見る <span>&nearr;</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
+  <!-- Hero -->
+  <section class="hb-hero">
+    <div class="hb-hero__inner">
       <div>
-        <p class="footer__logo">HATENABASE TAX OFFICE</p>
-        <address class="footer__address">東京都新宿区愛住町23-1 Woody21ビル6階</address>
+        <p class="hb-hero__crumb">HOME &nbsp;/&nbsp; TAX OFFICE</p>
+        <p class="hb-hero__en">HatenaBase Tax Office — Shinjuku, Tokyo</p>
+        <h1 class="hb-hero__title">
+          クラウド会計の扱いに<br>精通した<br>新宿区の税理士事務所。
+        </h1>
+        <p class="hb-hero__lead">
+          リアルタイム経営の可視化に特化。freee認定アドバイザー最上位5つ星の事務所として、ITとクラウド会計を駆使し、創業期・小規模法人の「経理の悩み」をゼロにします。<br><br>
+          記帳代行から決算申告、創業融資支援まで——経営者が本業に集中できる環境を、30代の若い専門家チームがスピーディに構築。Slackでのリアルタイム対応で、ストレスのない税務体験を提供します。<br><br>
+          「自分でやらなきゃ」を手放して、まずは気軽にご相談ください。
+        </p>
+        <a href="/contact" class="hb-hero__btn">
+          無料相談を予約する
+          <span style="font-family:var(--font-en);font-style:italic;">→</span>
+        </a>
       </div>
-      <p class="footer__copy">&copy;2026 Hatenabase, inc.</p>
+      <div class="hb-hero__visual">
+        <!-- Cloud accounting illustration -->
+        <svg viewBox="0 0 480 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background circles -->
+          <circle cx="240" cy="200" r="180" stroke="#E8EFF8" stroke-width="1"/>
+          <circle cx="240" cy="200" r="140" stroke="#E8EFF8" stroke-width="1"/>
+          <circle cx="240" cy="200" r="100" stroke="#E8EFF8" stroke-width="1"/>
+          <!-- Cloud shape -->
+          <path d="M160 220 C160 180, 200 160, 230 160 C240 130, 280 120, 310 140 C340 130, 370 150, 370 180 C400 185, 410 210, 390 230 C395 260, 370 270, 340 260 L180 260 C150 260, 140 240, 160 220Z" fill="#F4F8FD" stroke="#1F61AB" stroke-width="1.5"/>
+          <!-- Chart bars inside cloud -->
+          <rect x="200" y="230" width="20" height="20" rx="2" fill="#1F61AB" opacity=".2"/>
+          <rect x="228" y="215" width="20" height="35" rx="2" fill="#1F61AB" opacity=".35"/>
+          <rect x="256" y="200" width="20" height="50" rx="2" fill="#1F61AB" opacity=".5"/>
+          <rect x="284" y="190" width="20" height="60" rx="2" fill="#1F61AB" opacity=".7"/>
+          <rect x="312" y="175" width="20" height="75" rx="2" fill="#1F61AB" opacity=".9"/>
+          <!-- Connecting dots -->
+          <circle cx="160" cy="300" r="6" fill="#E8EFF8" stroke="#1F61AB" stroke-width="1"/>
+          <circle cx="320" cy="300" r="6" fill="#E8EFF8" stroke="#1F61AB" stroke-width="1"/>
+          <circle cx="240" cy="320" r="6" fill="#E8EFF8" stroke="#1F61AB" stroke-width="1"/>
+          <!-- Connection lines -->
+          <line x1="166" y1="296" x2="234" y2="316" stroke="#1F61AB" stroke-width=".8" opacity=".3"/>
+          <line x1="314" y1="296" x2="246" y2="316" stroke="#1F61AB" stroke-width=".8" opacity=".3"/>
+          <line x1="180" y1="258" x2="162" y2="294" stroke="#1F61AB" stroke-width=".8" opacity=".3"/>
+          <line x1="338" y1="258" x2="318" y2="294" stroke="#1F61AB" stroke-width=".8" opacity=".3"/>
+          <!-- Labels -->
+          <text x="140" y="318" font-family="Inter" font-size="9" fill="#8A8A93" text-anchor="middle" letter-spacing=".08em">freee</text>
+          <text x="320" y="318" font-family="Inter" font-size="9" fill="#8A8A93" text-anchor="middle" letter-spacing=".08em">Slack</text>
+          <text x="240" y="342" font-family="Inter" font-size="9" fill="#8A8A93" text-anchor="middle" letter-spacing=".08em">Cloud</text>
+          <!-- Decorative dots -->
+          <circle cx="120" cy="160" r="3" fill="#1F61AB" opacity=".15"/>
+          <circle cx="380" cy="140" r="3" fill="#1F61AB" opacity=".15"/>
+          <circle cx="100" cy="260" r="2" fill="#1F61AB" opacity=".1"/>
+          <circle cx="400" cy="280" r="2" fill="#1F61AB" opacity=".1"/>
+        </svg>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
+
+  <!-- Features (5 items) -->
+  <section class="section section--paper" id="features">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">FEATURES</span>
+        <span class="hb-section-head__jp">5つの特徴</span>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="feat-card__title">法人の節税に強い</h3>
+          <p class="feat-card__desc">創業期・小規模法人のサポート経験が豊富。事業フェーズに合わせた節税アドバイスで、手元資金を最大化します。</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3 class="feat-card__title">業界最低水準のコスト</h3>
+          <p class="feat-card__desc">年商1,000万円未満なら月額20,000円（税抜）から。記帳代行・決算・申告すべて込みの明朗会計。</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3 class="feat-card__title">経理がわからなくてもOK</h3>
+          <p class="feat-card__desc">資料を共有するだけでお任せいただけます。会計ソフトの操作も不要。経営者は経営と営業に集中してください。</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="feat-card__title">freee会計100%・完全ペーパーレス</h3>
+          <p class="feat-card__desc">freee会計のみを使用する事務所。クラウド完結で紙のやり取りは一切不要。場所を選ばず業務が進みます。</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-card__icon" style="background: #FFF8E1;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F5A623" stroke-width="1.5"><polygon points="12,2 15,9 22,9 16.5,14 18.5,21 12,17 5.5,21 7.5,14 2,9 9,9"/></svg>
+          </div>
+          <h3 class="feat-card__title">freee認定アドバイザー 5つ星</h3>
+          <p class="feat-card__desc">freee認定アドバイザー最上位の5つ星を取得。freeeに完全特化した体制で、導入から活用まで安心です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Representative Message -->
+  <section class="section" id="message">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">MESSAGE</span>
+        <span class="hb-section-head__jp">代表メッセージ</span>
+      </div>
+      <div class="msg-grid">
+        <div class="msg-photo">
+          <img src="images/tamura-profile.jpg" alt="田村直大 代表税理士">
+        </div>
+        <div>
+          <p class="msg-label">REPRESENTATIVE</p>
+          <p class="msg-name">田村 直大（Naohiro Tamura）</p>
+          <p class="msg-role">代表税理士 / 公認会計士｜PwCあらた有限責任監査法人 出身</p>
+          <h2 class="msg-title">
+            「この事業を成功させたい」<br>
+            その想いに、全力で応えます。
+          </h2>
+          <p class="msg-body">
+            私たちは30代前半を中心としたメンバーで構成された、創業期に強い会計事務所です。<br><br>
+            「新しく始めたこの事業を必ず成功させたい」——私たちは、そんな真摯な想いを持つ経営者様の、一番の味方でありたいと願っています。<br><br>
+            代表の田村は大手監査法人出身の公認会計士・税理士。若さとスピード感を武器に、freeeとSlackを駆使して、同世代の経営者と伴走します。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us -->
+  <section class="section section--paper" id="about">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">ABOUT US</span>
+        <span class="hb-section-head__jp">私たちについて</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card__icon">
+            <!-- 30s icon -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#1F61AB" stroke-width="1.5" fill="#E8EFF8"/>
+              <text x="32" y="38" font-family="Cormorant Garamond" font-style="italic" font-size="24" fill="#1F61AB" text-anchor="middle" font-weight="300">30s</text>
+            </svg>
+          </div>
+          <h3 class="about-card__title">30代 × IT化</h3>
+          <p class="about-card__desc">30代前半のメンバーが中心。若さとテクノロジーを活かした、スピーディな税務支援を提供します。</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">
+            <!-- freee logo -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#2864F0" stroke-width="1.5" fill="#EEF3FF"/>
+              <text x="32" y="38" font-family="Inter" font-size="14" fill="#2864F0" text-anchor="middle" font-weight="600">freee</text>
+            </svg>
+          </div>
+          <h3 class="about-card__title">freee会計 100%</h3>
+          <p class="about-card__desc">freee認定アドバイザー最上位5つ星を取得。freeeに完全特化した体制で安心です。</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card__icon">
+            <!-- Slack logo -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#4A154B" stroke-width="1.5" fill="#F8F0F8"/>
+              <rect x="22" y="22" width="8" height="8" rx="2" fill="#E01E5A"/>
+              <rect x="34" y="22" width="8" height="8" rx="2" fill="#36C5F0"/>
+              <rect x="22" y="34" width="8" height="8" rx="2" fill="#2EB67D"/>
+              <rect x="34" y="34" width="8" height="8" rx="2" fill="#ECB22E"/>
+            </svg>
+          </div>
+          <h3 class="about-card__title">Slack完結</h3>
+          <p class="about-card__desc">コミュニケーションはSlackで完結。チャットでレスポンス良く、いつでも気軽にやり取りできます。</p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="/tax-accountant/about-us/" class="about-link">
+          事務所について詳しく見る
+          <span style="font-family:var(--font-en);font-style:italic;">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service -->
+  <section class="section" id="service">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">SERVICE</span>
+        <span class="hb-section-head__jp">サービス紹介</span>
+      </div>
+      <div class="svc-grid2">
+        <a href="/tax-advisor/" class="svc2-card">
+          <div class="svc2-card__icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
+              <rect x="6" y="4" width="24" height="28" rx="3"/>
+              <line x1="11" y1="12" x2="25" y2="12"/>
+              <line x1="11" y1="17" x2="25" y2="17"/>
+              <line x1="11" y1="22" x2="20" y2="22"/>
+              <path d="M22 26l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">01</span>
+            <span class="svc2-card__en">TAX ADVISOR</span>
+          </div>
+          <h3 class="svc2-card__title">税務顧問</h3>
+          <p class="svc2-card__desc">記帳から決算・申告まで、まるっとおまかせ。顧問として日常のご相談から記帳代行、年末調整、決算申告まで、会社の税金のことをワンストップでお引き受けします。あなたの事業に精通した専門家が、同世代の経営者として気軽に相談できるパートナーになります。</p>
+          <p class="svc2-card__price">月額 ¥20,000〜（税抜）</p>
+          <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
+        </a>
+        <a href="/financing-support/" class="svc2-card">
+          <div class="svc2-card__icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
+              <rect x="4" y="8" width="28" height="20" rx="3"/>
+              <circle cx="18" cy="18" r="5"/>
+              <line x1="8" y1="8" x2="8" y2="28"/>
+              <line x1="28" y1="8" x2="28" y2="28"/>
+              <text x="18" y="21" font-family="Inter" font-size="8" fill="#1F61AB" text-anchor="middle" font-weight="600">¥</text>
+            </svg>
+          </div>
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">02</span>
+            <span class="svc2-card__en">FINANCING</span>
+          </div>
+          <h3 class="svc2-card__title">資金調達支援</h3>
+          <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計50件超・総調達額3億円超の実績で、創業期の資金調達を成功に導きます。成果報酬型だから、リスクなく始められます。</p>
+          <p class="svc2-card__price">着手金 ¥50,000 + 成功報酬 5%（顧問客 4%）</p>
+          <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice (Testimonials) -->
+  <section class="section section--paper" id="voice">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">VOICE</span>
+        <span class="hb-section-head__jp">お客様の声</span>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <div class="voice-card__thumb">
+            <div class="voice-card__thumb-placeholder">
+              <svg viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;opacity:.4;">
+                <rect x="4" y="4" width="56" height="40" rx="4" stroke="#1F61AB" stroke-width="1.5"/>
+                <circle cx="22" cy="20" r="6" stroke="#1F61AB" stroke-width="1"/>
+                <path d="M4 36 L20 24 L32 32 L44 20 L60 30" stroke="#1F61AB" stroke-width="1" fill="none"/>
+              </svg>
+              <br>記事サムネイル
+            </div>
+          </div>
+          <div>
+            <h4 class="voice-card__company">株式会社オーガイ</h4>
+            <p class="voice-card__industry">IT・コンサルティング</p>
+            <p class="voice-card__text">「創業時から税務顧問をお願いしています。Slackでの対応が早く、経理の知識がなくても安心して任せられる。freeeの使い方も丁寧に教えてくれるので、月次の数字を見ながら経営判断ができるようになりました。」</p>
+            <a href="#" class="voice-card__link">
+              紹介記事を読む <span style="font-family:var(--font-en);font-style:italic;">↗</span>
+            </a>
+          </div>
+        </div>
+        <div class="voice-card">
+          <div class="voice-card__thumb">
+            <div class="voice-card__thumb-placeholder">
+              <svg viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;opacity:.4;">
+                <rect x="4" y="4" width="56" height="40" rx="4" stroke="#1F61AB" stroke-width="1.5"/>
+                <circle cx="22" cy="20" r="6" stroke="#1F61AB" stroke-width="1"/>
+                <path d="M4 36 L20 24 L32 32 L44 20 L60 30" stroke="#1F61AB" stroke-width="1" fill="none"/>
+              </svg>
+              <br>記事サムネイル
+            </div>
+          </div>
+          <div>
+            <h4 class="voice-card__company">グロスウェル株式会社</h4>
+            <p class="voice-card__industry">資金調達支援の事例</p>
+            <p class="voice-card__text">「事業計画書の作成から公庫の担当者紹介まで、すべてお任せできました。融資面談のポイントも事前に教えていただき、初めての資金調達でしたが満額の融資を獲得。創業期の大きな安心につながりました。」</p>
+            <a href="#" class="voice-card__link">
+              紹介記事を読む <span style="font-family:var(--font-en);font-style:italic;">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">PERFORMANCE</span>
+        <span class="hb-section-head__jp">実績</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-cell__number">5</div>
+          <div class="stat-cell__label">freee認定アドバイザー（つ星）</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">50+</div>
+          <div class="stat-cell__label">累計融資支援件数</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">3億+</div>
+          <div class="stat-cell__label">総調達額</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell__number">0</div>
+          <div class="stat-cell__label">初回相談料</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-blue">
+    <div class="cta-blue__inner">
+      <div>
+        <p class="cta-blue__label">CONTACT</p>
+        <h2 class="cta-blue__title">
+          まずは無料相談から。<br>
+          創業期の税務・会計・融資のお悩みを<br>
+          お気軽にご相談ください。
+        </h2>
+        <p class="cta-blue__lead">
+          オンライン面談にも対応しています。初回相談は無料です。着任後の月次決算の進め方、資金調達の組み立て方など、ご状況に合わせて具体的にお答えします。
+        </p>
+      </div>
+      <div class="cta-blue__buttons">
+        <a href="/contact" class="cta-blue__btn cta-blue__btn--primary">
+          <span>日程調整はこちら</span><span class="arrow">→</span>
+        </a>
+        <a href="/contact" class="cta-blue__btn cta-blue__btn--outline">
+          <span>お問い合わせフォーム</span><span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="hb-footer">
+    <div class="hb-footer__inner">
+      <div>
+        <div class="hb-footer__logo">はてなベース税理士事務所</div>
+        <p class="hb-footer__address">
+          運営: 田村直大税理士事務所<br>
+          〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階
+        </p>
+      </div>
+      <div style="text-align: right;">
+        <div class="hb-footer__links">
+          <a href="/tax-advisor/">税務顧問</a>
+          <a href="/financing-support/">融資支援</a>
+          <a href="/tax-accountant/about-us/">私たちについて</a>
+          <a href="/contact/">お問い合わせ</a>
+        </div>
+        <p class="hb-footer__copy" style="margin-top: 12px;">©2026 Hatenabase, inc.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>

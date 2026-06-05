@@ -4,12 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>私たちについて｜はてなベース税理士事務所</title>
+<meta name="description" content="はてなベース税理士事務所は2023年設立、創業期・小規模法人に特化した新宿区の税理士事務所。代表の田村直大はPwCあらた出身の公認会計士・税理士。freee5つ星、Slack対応。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET & VARIABLES ===== */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
   --white: #FFFFFF; --paper: #FAFAFA; --paper-warm: #F5F4F0;
   --ink: #0E0E14; --ink-soft: #3A3A45; --ink-light: #8A8A93;
@@ -18,422 +17,183 @@
   --font-en-sans: "Inter", system-ui, sans-serif;
   --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
 }
-html { font-size: 16px; scroll-behavior: smooth; }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
-
-/* ===== CONTAINER ===== */
 .container { max-width: 1120px; margin: 0 auto; padding: 0 40px; }
 
-/* ===== STICKY HEADER ===== */
-.header {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--line);
-  height: 72px; display: flex; align-items: center;
-}
+/* Header */
+.header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); height: 64px; display: flex; align-items: center; }
 .header .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-.header-logo {
-  font-family: var(--font-en-sans); font-weight: 700; font-size: 13px;
-  letter-spacing: 0.12em; color: var(--ink); text-transform: uppercase;
-}
-.header-logo span { color: var(--blue); }
-.header-nav { display: flex; align-items: center; gap: 32px; }
-.header-nav a {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft);
-  transition: color 0.2s;
-}
+.header-logo { font-family: var(--font-jp); font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.3; }
+.header-logo-sub { font-size: 10px; font-weight: 400; color: var(--ink-light); display: block; }
+.header-nav { display: flex; align-items: center; gap: 28px; }
+.header-nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); transition: color 0.2s; }
 .header-nav a:hover { color: var(--blue); }
-.header-nav .nav-pill {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 8px 20px; border: 1px solid var(--ink); border-radius: 100px;
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.08em; color: var(--ink); transition: all 0.25s;
-}
-.header-nav .nav-pill:hover { background: var(--ink); color: var(--white); }
+.header-nav .nav-pill { padding: 10px 24px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; transition: background 0.3s; }
+.header-nav .nav-pill:hover { background: var(--blue-deep); }
+.hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+.hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; }
+.hb-hamburger span:nth-child(1) { top: 9px; } .hb-hamburger span:nth-child(2) { top: 15px; } .hb-hamburger span:nth-child(3) { top: 21px; }
 
-/* ===== SECTION HEAD (blue dot pattern) ===== */
+/* Section head */
 .section-head { margin-bottom: 48px; }
-.section-head .label {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 12px;
-}
-.section-head .label::before {
-  content: ""; display: inline-block; width: 6px; height: 6px;
-  border-radius: 50%; background: var(--blue); flex-shrink: 0;
-}
-.section-head .title {
-  font-family: var(--font-jp); font-size: 26px; font-weight: 700;
-  letter-spacing: 0.04em; color: var(--ink); line-height: 1.5;
-}
+.section-head .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 12px; }
+.section-head .label::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.section-head .title { font-family: var(--font-jp); font-size: 26px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); line-height: 1.5; }
 
-/* ===== SUBHERO ===== */
-.subhero {
-  padding: 120px 0 80px; background: var(--white);
-  border-bottom: 1px solid var(--line);
-}
-.subhero .breadcrumb {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 400;
-  color: var(--ink-light); letter-spacing: 0.04em; margin-bottom: 40px;
-}
+/* Subhero */
+.subhero { padding: 100px 0 80px; background: var(--white); border-bottom: 1px solid var(--line); }
+.subhero .breadcrumb { font-family: var(--font-en-sans); font-size: 11px; color: var(--ink-light); letter-spacing: 0.04em; margin-bottom: 40px; }
 .subhero .breadcrumb a { color: var(--ink-light); transition: color 0.2s; }
 .subhero .breadcrumb a:hover { color: var(--blue); }
 .subhero .breadcrumb span { margin: 0 6px; }
-.subhero .en {
-  font-family: var(--font-en); font-size: 56px; font-weight: 300;
-  font-style: italic; color: var(--ink); letter-spacing: 0.02em;
-  line-height: 1.1; margin-bottom: 20px;
-}
-.subhero .headline {
-  font-family: var(--font-jp); font-size: 28px; font-weight: 700;
-  color: var(--ink); letter-spacing: 0.04em; line-height: 1.5;
-  margin-bottom: 16px;
-}
-.subhero .tag {
-  display: inline-block; font-family: var(--font-en-sans); font-size: 12px;
-  font-weight: 500; letter-spacing: 0.06em; color: var(--blue);
-  border: 1px solid var(--blue); border-radius: 100px;
-  padding: 4px 16px; margin-bottom: 28px;
-}
-.subhero .lead {
-  font-family: var(--font-jp); font-size: 15px; font-weight: 400;
-  color: var(--ink-soft); line-height: 2; max-width: 640px;
-}
+.subhero .en { font-family: var(--font-en-sans); font-size: 42px; font-weight: 700; color: var(--ink); letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 20px; }
+.subhero .headline { font-family: var(--font-jp); font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; line-height: 1.5; margin-bottom: 28px; }
+.subhero .lead { font-family: var(--font-jp); font-size: 15px; color: var(--ink-soft); line-height: 2; max-width: 720px; }
 
-/* ===== SECTIONS ===== */
+/* Sections */
 .section { padding: 96px 0; }
 .section--paper { background: var(--paper); }
 .section--white { background: var(--white); }
-.section--blue {
-  background: var(--blue-deep); color: var(--white);
-}
 
-/* ===== OVERVIEW TABLE ===== */
+/* Overview table */
 .overview-table { width: 100%; border-collapse: collapse; }
 .overview-table tr { border-bottom: 1px solid var(--line); }
-.overview-table th {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 500;
-  color: var(--ink-light); text-align: left; padding: 18px 24px 18px 0;
-  width: 160px; vertical-align: top; white-space: nowrap;
-}
-.overview-table td {
-  font-family: var(--font-jp); font-size: 15px; font-weight: 400;
-  color: var(--ink); padding: 18px 0; line-height: 1.8;
-}
+.overview-table th { font-size: 14px; font-weight: 500; color: var(--ink-light); text-align: left; padding: 18px 24px 18px 0; width: 160px; vertical-align: top; }
+.overview-table td { font-size: 15px; color: var(--ink); padding: 18px 0; line-height: 1.8; }
 
-/* ===== VISION / MISSION / VALUE ===== */
-.vmv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-.vmv-item {
-  padding: 48px 36px; border: 1px solid var(--line);
-  margin-left: -1px; margin-top: -1px;
-}
-.vmv-item:first-child { margin-left: 0; }
-.vmv-item .vmv-label {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue);
-  margin-bottom: 8px;
-}
-.vmv-item .vmv-number {
-  font-family: var(--font-en); font-size: 48px; font-weight: 300;
-  font-style: italic; color: var(--line); line-height: 1;
-  margin-bottom: 20px;
-}
-.vmv-item .vmv-text {
-  font-family: var(--font-jp); font-size: 16px; font-weight: 500;
-  color: var(--ink); line-height: 1.9;
-}
+/* Representative */
+.rep-grid { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+.rep-photo { width: 300px; height: 380px; overflow: hidden; border-radius: 6px; }
+.rep-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.rep-info .rep-name { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.rep-info .rep-name-en { font-family: var(--font-en-sans); font-size: 14px; font-weight: 400; color: var(--ink-light); margin-bottom: 12px; }
+.rep-info .rep-title { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; color: var(--blue); margin-bottom: 24px; }
+.rep-info .rep-career { font-size: 14px; color: var(--ink-soft); line-height: 2; margin-bottom: 28px; }
+.rep-info .rep-quote { padding: 24px 28px; background: var(--blue-ghost); border-left: 3px solid var(--blue); border-radius: 0 4px 4px 0; }
+.rep-info .rep-quote p { font-size: 14px; color: var(--ink-soft); line-height: 2; }
 
-/* ===== REPRESENTATIVE ===== */
-.rep-grid { display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: start; }
-.rep-photo {
-  width: 240px; height: 300px; background: var(--paper-warm);
-  border: 1px solid var(--line); border-radius: 4px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 8px;
-}
-.rep-photo .photo-name {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 500; color: var(--ink-soft);
-}
-.rep-photo .photo-note {
-  font-family: var(--font-jp); font-size: 11px; font-weight: 400; color: var(--ink-light);
-}
-.rep-info .rep-name {
-  font-family: var(--font-jp); font-size: 24px; font-weight: 700;
-  color: var(--ink); margin-bottom: 4px;
-}
-.rep-info .rep-name-en {
-  font-family: var(--font-en); font-size: 16px; font-weight: 300;
-  font-style: italic; color: var(--ink-light); margin-bottom: 12px;
-}
-.rep-info .rep-title {
-  font-family: var(--font-en-sans); font-size: 12px; font-weight: 500;
-  letter-spacing: 0.06em; color: var(--blue); margin-bottom: 24px;
-}
-.rep-info .rep-career {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
-  color: var(--ink-soft); line-height: 2; margin-bottom: 28px;
-}
-.rep-info .rep-quote {
-  position: relative; padding: 24px 28px;
-  background: var(--blue-ghost); border-left: 3px solid var(--blue);
-  border-radius: 0 4px 4px 0;
-}
-.rep-info .rep-quote p {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
-  color: var(--ink-soft); line-height: 2; font-style: normal;
-}
+/* Team */
+.team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.team-card { border: 1px solid var(--line); border-radius: 6px; padding: 36px; background: var(--white); }
+.team-card--wide { grid-column: 1 / -1; }
+.team-card-header { display: flex; align-items: center; gap: 24px; margin-bottom: 16px; }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; overflow: hidden; border: 1px solid var(--line); flex-shrink: 0; }
+.team-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.team-avatar--placeholder { width: 80px; height: 80px; border-radius: 50%; background: var(--blue-light); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.team-avatar--placeholder svg { width: 32px; height: 32px; color: var(--blue); }
+.team-card .card-name { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+.team-card .card-name-en { font-family: var(--font-en-sans); font-size: 12px; color: var(--ink-light); margin-bottom: 6px; }
+.team-card .card-title { font-family: var(--font-en-sans); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--blue); }
+.team-card .card-desc { font-size: 14px; color: var(--ink-soft); line-height: 2; }
 
-/* ===== TEAM ===== */
-.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-.team-card {
-  border: 1px solid var(--line); border-radius: 4px;
-  padding: 40px; background: var(--white);
-}
-.team-card-header { display: flex; align-items: center; gap: 24px; margin-bottom: 20px; }
-.team-avatar {
-  width: 100px; height: 100px; border-radius: 50%;
-  background: var(--paper-warm); border: 1px solid var(--line);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.team-avatar .avatar-text {
-  font-family: var(--font-jp); font-size: 11px; font-weight: 400; color: var(--ink-light);
-  text-align: center; line-height: 1.4;
-}
-.team-avatar--icon {
-  width: 100px; height: 100px; border-radius: 50%;
-  background: var(--blue-light); border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.team-avatar--icon svg { width: 36px; height: 36px; color: var(--blue); }
-.team-card .card-name {
-  font-family: var(--font-jp); font-size: 18px; font-weight: 700; color: var(--ink);
-  margin-bottom: 2px;
-}
-.team-card .card-name-en {
-  font-family: var(--font-en); font-size: 13px; font-weight: 300;
-  font-style: italic; color: var(--ink-light); margin-bottom: 6px;
-}
-.team-card .card-title {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.04em; color: var(--blue);
-}
-.team-card .card-desc {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
-  color: var(--ink-soft); line-height: 2;
-}
+/* Features */
+.features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.feature-card { padding: 40px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
+.feature-card:hover { background: var(--blue-ghost); }
+.feature-card__icon { width: 56px; height: 56px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
+.feature-card .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; line-height: 1.5; }
+.feature-card .feature-desc { font-size: 13px; color: var(--ink-soft); line-height: 1.9; }
 
-/* ===== FEATURES (4 cards) ===== */
-.features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-.feature-card {
-  padding: 40px 28px; border: 1px solid var(--line);
-  margin-left: -1px; margin-top: -1px; background: var(--white);
-}
-.feature-card:first-child { margin-left: 0; }
-.feature-card .feature-num {
-  font-family: var(--font-en); font-size: 42px; font-weight: 300;
-  font-style: italic; color: var(--line); line-height: 1; margin-bottom: 20px;
-}
-.feature-card .feature-title {
-  font-family: var(--font-jp); font-size: 16px; font-weight: 700;
-  color: var(--ink); margin-bottom: 12px; line-height: 1.5;
-}
-.feature-card .feature-desc {
-  font-family: var(--font-jp); font-size: 13px; font-weight: 400;
-  color: var(--ink-soft); line-height: 1.9;
-}
-
-/* ===== HISTORY TIMELINE ===== */
+/* Timeline */
 .timeline { position: relative; padding-left: 32px; }
-.timeline::before {
-  content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px;
-  width: 1px; background: var(--line);
-}
+.timeline::before { content: ""; position: absolute; left: 5px; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
 .timeline-item { position: relative; padding-bottom: 36px; }
 .timeline-item:last-child { padding-bottom: 0; }
-.timeline-item::before {
-  content: ""; position: absolute; left: -32px; top: 8px;
-  width: 11px; height: 11px; border-radius: 50%;
-  border: 2px solid var(--blue); background: var(--white);
-  z-index: 1;
-}
-.timeline-item .tl-year {
-  font-family: var(--font-en); font-size: 28px; font-weight: 300;
-  font-style: italic; color: var(--ink); line-height: 1; margin-bottom: 8px;
-}
-.timeline-item .tl-text {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
-  color: var(--ink-soft); line-height: 1.8;
-}
+.timeline-item::before { content: ""; position: absolute; left: -32px; top: 8px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--blue); background: var(--white); z-index: 1; }
+.timeline-item .tl-year { font-family: var(--font-en); font-size: 28px; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1; margin-bottom: 8px; }
+.timeline-item .tl-text { font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
 
-/* ===== ACCESS ===== */
+/* Access */
 .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.access-info .access-label {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light);
-  margin-bottom: 8px;
-}
-.access-info .access-text {
-  font-family: var(--font-jp); font-size: 15px; font-weight: 400;
-  color: var(--ink); line-height: 1.9; margin-bottom: 24px;
-}
-.access-info .access-text:last-child { margin-bottom: 0; }
-.access-map {
-  width: 100%; height: 320px; background: var(--paper-warm);
-  border: 1px solid var(--line); border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-}
-.access-map span {
-  font-family: var(--font-en-sans); font-size: 13px; font-weight: 500;
-  color: var(--ink-light); letter-spacing: 0.04em;
-}
+.access-info .access-label { font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 8px; }
+.access-info .access-text { font-size: 15px; color: var(--ink); line-height: 1.9; margin-bottom: 24px; }
+.access-map { width: 100%; height: 320px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.access-map iframe { width: 100%; height: 100%; border: 0; }
 
-/* ===== CTA BLUE ===== */
-.cta-blue {
-  background: var(--blue-deep); padding: 80px 0; text-align: center;
-}
-.cta-blue .cta-title {
-  font-family: var(--font-jp); font-size: 26px; font-weight: 700;
-  color: var(--white); margin-bottom: 16px; letter-spacing: 0.04em;
-}
-.cta-blue .cta-text {
-  font-family: var(--font-jp); font-size: 14px; font-weight: 400;
-  color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 36px;
-}
-.cta-blue .cta-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 36px; border: 1px solid var(--white); border-radius: 100px;
-  font-family: var(--font-en-sans); font-size: 13px; font-weight: 600;
-  letter-spacing: 0.06em; color: var(--white); transition: all 0.25s;
-}
-.cta-blue .cta-btn:hover { background: var(--white); color: var(--blue-deep); }
+/* Office photos */
+.office-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.office-photos img { width: 100%; height: 240px; object-fit: cover; border-radius: 6px; border: 1px solid var(--line); }
 
-/* ===== FOOTER ===== */
-.footer {
-  background: var(--ink); color: rgba(255,255,255,0.5); padding: 64px 0 40px;
-}
-.footer-inner { display: flex; justify-content: space-between; align-items: start; margin-bottom: 48px; }
-.footer-logo {
-  font-family: var(--font-en-sans); font-size: 13px; font-weight: 700;
-  letter-spacing: 0.12em; color: var(--white); text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.footer-logo span { color: var(--blue); }
-.footer-sub {
-  font-family: var(--font-jp); font-size: 11px; font-weight: 300;
-  color: rgba(255,255,255,0.35); letter-spacing: 0.02em;
-}
-.footer-nav { display: flex; gap: 32px; }
-.footer-nav a {
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: rgba(255,255,255,0.45); transition: color 0.2s;
-}
-.footer-nav a:hover { color: var(--white); }
-.footer-copy {
-  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
-  font-family: var(--font-en-sans); font-size: 11px; font-weight: 400;
-  color: rgba(255,255,255,0.25); letter-spacing: 0.04em;
-}
+/* CTA */
+.cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
+.cta-blue__inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+.cta-blue__label { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .32em; opacity: .85; margin-bottom: 18px; }
+.cta-blue__title { font-weight: 900; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px; }
+.cta-blue__lead { font-size: 15px; line-height: 1.95; opacity: .9; }
+.cta-blue__buttons { display: grid; gap: 14px; }
+.cta-blue__btn { padding: 18px 28px; text-decoration: none; font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-radius: 999px; transition: transform .2s, opacity .2s; }
+.cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+.cta-blue__btn--primary { background: #fff; color: var(--blue); }
+.cta-blue__btn--outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+.cta-blue__btn .arrow { font-family: var(--font-en); font-style: italic; }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .feature-card { margin-left: -1px; margin-top: -1px; }
-  .vmv-grid { grid-template-columns: 1fr; }
-  .vmv-item { margin-left: 0; }
-}
+/* Footer */
+.hb-footer { padding: 56px 32px; background: var(--ink); color: #fff; }
+.hb-footer__inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.hb-footer__logo { font-size: 14px; font-weight: 700; opacity: .8; margin-bottom: 4px; }
+.hb-footer__address { font-size: 12px; opacity: .5; line-height: 1.7; }
+.hb-footer__copy { font-family: var(--font-en-sans); font-size: 11px; opacity: .4; }
+.hb-footer__links { display: flex; gap: 24px; }
+.hb-footer__links a { font-size: 12px; color: #fff; opacity: .5; text-decoration: none; transition: opacity .2s; }
+.hb-footer__links a:hover { opacity: .9; }
 
+/* Responsive */
+@media (max-width: 1024px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
   .container { padding: 0 24px; }
-  .header { height: 60px; }
-  .header-nav { gap: 16px; }
-  .header-nav a:not(.nav-pill) { display: none; }
-
-  .subhero { padding: 88px 0 56px; }
-  .subhero .en { font-size: 36px; }
-  .subhero .headline { font-size: 22px; }
-  .subhero .lead { font-size: 14px; }
-
-  .section { padding: 64px 0; }
-  .section-head { margin-bottom: 36px; }
-  .section-head .title { font-size: 22px; }
-
-  .overview-table th { width: 100px; padding: 14px 16px 14px 0; font-size: 13px; }
-  .overview-table td { font-size: 14px; padding: 14px 0; }
-
-  .rep-grid { grid-template-columns: 1fr; gap: 32px; }
-  .rep-photo { margin: 0 auto; }
-
-  .team-grid { grid-template-columns: 1fr; }
-  .team-card { padding: 28px; }
-  .team-card-header { flex-direction: column; text-align: center; gap: 16px; }
-
+  .header-nav a:not(.nav-pill) { display: none; } .hb-hamburger { display: block; }
+  .subhero { padding: 72px 0 56px; } .subhero .en { font-size: 28px; } .subhero .headline { font-size: 22px; }
+  .section { padding: 64px 0; } .section-head .title { font-size: 22px; }
+  .rep-grid { grid-template-columns: 1fr; gap: 32px; } .rep-photo { width: 100%; height: 320px; }
+  .team-grid { grid-template-columns: 1fr; } .team-card--wide { grid-column: 1; }
   .features-grid { grid-template-columns: 1fr; }
-  .feature-card { margin-left: 0; }
-
-  .access-grid { grid-template-columns: 1fr; }
-  .access-map { height: 240px; }
-
-  .footer-inner { flex-direction: column; gap: 32px; }
-  .footer-nav { flex-wrap: wrap; gap: 20px; }
-
-  .cta-blue { padding: 56px 0; }
-  .cta-blue .cta-title { font-size: 22px; }
-}
-
-@media (max-width: 480px) {
-  .container { padding: 0 16px; }
-  .subhero .en { font-size: 28px; }
-  .subhero .headline { font-size: 20px; }
-  .overview-table { display: block; }
-  .overview-table tbody { display: block; }
-  .overview-table tr { display: flex; flex-direction: column; padding: 14px 0; }
-  .overview-table th, .overview-table td { padding: 2px 0; width: 100%; }
-  .overview-table th { font-size: 11px; }
-  .overview-table td { font-size: 13px; }
-  .rep-photo { width: 180px; height: 225px; }
-  .vmv-item .vmv-number { font-size: 36px; }
-  .feature-card .feature-num { font-size: 32px; }
-  .timeline-item .tl-year { font-size: 22px; }
+  .access-grid { grid-template-columns: 1fr; } .access-map { height: 240px; }
+  .office-photos { grid-template-columns: 1fr; } .office-photos img { height: 200px; }
+  .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+  .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- Header -->
 <header class="header">
   <div class="container">
-    <div class="header-logo">Hatena<span>base</span> Tax Office</div>
+    <a href="./tax-accountant-preview.html" style="text-decoration:none;">
+      <div class="header-logo">はてなベース税理士事務所<span class="header-logo-sub">HatenaBase Tax Office</span></div>
+    </a>
     <nav class="header-nav">
-      <a href="#">Tax Advisor</a>
-      <a href="#">Financing</a>
+      <a href="./tax-advisor-preview.html">Tax Advisor</a>
+      <a href="./financing-support-preview.html">Financing</a>
       <a href="#">About</a>
-      <a href="#" class="nav-pill">Contact</a>
+      <a href="/contact" class="nav-pill">Contact</a>
     </nav>
+    <button class="hb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<!-- ===== SUBHERO ===== -->
+<!-- Subhero -->
 <section class="subhero">
   <div class="container">
     <div class="breadcrumb">
-      <a href="#">ホーム</a><span>›</span>
-      <a href="#">税理士事務所</a><span>›</span>
+      <a href="./tax-accountant-preview.html">ホーム</a><span>></span>
+      <a href="./tax-accountant-preview.html">税理士事務所</a><span>></span>
       私たちについて
     </div>
     <div class="en">About Us</div>
     <h1 class="headline">創業期・小規模法人に特化した税理士事務所</h1>
-    <span class="tag">A tax office built for startups.</span>
-    <p class="lead">「新しく始めたこの事業を必ず成功させたい」——そんな真摯な想いを持つ経営者様の、一番の味方でありたい。私たちは創業期の挑戦を支援する会計事務所です。</p>
+    <p class="lead">
+      「新しく始めたこの事業を必ず成功させたい」——そんな真摯な想いを持つ経営者様の、一番の味方でありたい。私たちは創業期の挑戦を支援する会計事務所です。<br><br>
+      2023年の設立以来、freee会計とSlackを活用し、ペーパーレスでスピーディな税務体験を提供してきました。大手監査法人出身の公認会計士と、AIエージェントを活用したDXの専門家がタッグを組み、バックオフィスの効率化と税務の質を両立しています。<br><br>
+      「難しいことは考えなくていい」——それが私たちが目指す税理士事務所の姿です。
+    </p>
   </div>
 </section>
 
-<!-- ===== OVERVIEW ===== -->
+<!-- Overview -->
 <section class="section section--paper">
   <div class="container">
     <div class="section-head">
@@ -442,48 +202,19 @@ img { max-width: 100%; display: block; }
     </div>
     <table class="overview-table">
       <tbody>
-        <tr><th>屋号</th><td>はてなベース税理士事務所</td></tr>
-        <tr><th>運営</th><td>田村直大税理士事務所</td></tr>
-        <tr><th>代表</th><td>田村 直大（たむら なおひろ）</td></tr>
+        <tr><th>屋号</th><td>はてなベース税理士事務所（田村直大税理士事務所）</td></tr>
+        <tr><th>代表</th><td>田村 直大（たむら なおひろ）｜税理士・公認会計士</td></tr>
         <tr><th>所在地</th><td>〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階</td></tr>
         <tr><th>設立</th><td>2023年10月</td></tr>
-        <tr><th>提携先</th><td>はてなベース株式会社 / 田村直大公認会計士事務所</td></tr>
-        <tr><th>資格</th><td>税理士 / 公認会計士</td></tr>
-        <tr><th>freee認定</th><td>freee認定アドバイザー 5つ星（最上位）</td></tr>
+        <tr><th>提携先</th><td>はてなベース株式会社</td></tr>
+        <tr><th>freee認定</th><td>freee認定アドバイザー（5つ星・最上位）</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<!-- ===== VISION / MISSION / VALUE ===== -->
+<!-- Representative -->
 <section class="section section--white">
-  <div class="container">
-    <div class="section-head">
-      <div class="label">Vision</div>
-      <h2 class="title">ビジョン・ミッション</h2>
-    </div>
-    <div class="vmv-grid">
-      <div class="vmv-item">
-        <div class="vmv-label">Vision</div>
-        <div class="vmv-number">01</div>
-        <div class="vmv-text">日本一創業期に強い<br>バックオフィス支援グループ</div>
-      </div>
-      <div class="vmv-item">
-        <div class="vmv-label">Mission</div>
-        <div class="vmv-number">02</div>
-        <div class="vmv-text">創業者が経営と営業に集中できるよう、<br>税金・経理・資金調達をまるっと引き受ける</div>
-      </div>
-      <div class="vmv-item">
-        <div class="vmv-label">Value</div>
-        <div class="vmv-number">03</div>
-        <div class="vmv-text">freee×IT×Slackで、税理士業界の<br>「当たり前」をアップデートする</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== REPRESENTATIVE ===== -->
-<section class="section section--paper">
   <div class="container">
     <div class="section-head">
       <div class="label">Representative</div>
@@ -491,35 +222,38 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="rep-grid">
       <div class="rep-photo">
-        <div class="photo-name">田村 直大</div>
-        <div class="photo-note">顔写真を掲載（顔出しOK）</div>
+        <img src="images/tamura-profile.jpg" alt="田村直大 代表税理士">
       </div>
       <div class="rep-info">
         <div class="rep-name">田村 直大</div>
         <div class="rep-name-en">Naohiro Tamura</div>
         <div class="rep-title">代表税理士 / 公認会計士</div>
-        <p class="rep-career">立教大学卒。PwCあらた有限責任監査法人（現 PwC Japan有限責任監査法人）にて約3.5年勤務。上場企業の監査業務・内部統制評価などに従事。2023年10月に田村直大税理士事務所を開設。</p>
+        <p class="rep-career">
+          立教大学卒。PwCあらた有限責任監査法人（現 PwC Japan有限責任監査法人）にて約3.5年勤務。上場企業の監査業務・内部統制評価などに従事し、財務諸表の信頼性を担保する専門的知見を習得。<br><br>
+          2023年10月に独立し、田村直大税理士事務所を開設。開業1年で60社以上の創業者に伴走。freee認定アドバイザー最上位5つ星を取得し、クラウド会計に完全特化した税務サービスを提供。<br><br>
+          大手監査法人で培った高品質な監査・会計の知見と、創業期に寄り添う柔軟さ・スピード感を兼ね備えた、新しい世代の税理士。
+        </p>
         <div class="rep-quote">
-          <p>「人生を賭ける事業に、最高のスタートダッシュを。私たちは創業期の挑戦を支援する会計事務所です。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。」</p>
+          <p>「人生を賭ける事業に、最高のスタートダッシュを。私たちは創業期の挑戦を支援する会計事務所です。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。未来を共に創造するパートナーとして、全力で伴走することをお約束します。」</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== TEAM ===== -->
-<section class="section section--white">
+<!-- Team -->
+<section class="section section--paper">
   <div class="container">
     <div class="section-head">
       <div class="label">Team</div>
       <h2 class="title">メンバー</h2>
     </div>
     <div class="team-grid">
-      <!-- Card 1: Setoguchi -->
+      <!-- Setoguchi -->
       <div class="team-card">
         <div class="team-card-header">
           <div class="team-avatar">
-            <div class="avatar-text">顔写真を掲載<br>（顔出しOK）</div>
+            <img src="images/setoguchi-profile.png" alt="世戸口 逸人">
           </div>
           <div>
             <div class="card-name">世戸口 逸人</div>
@@ -527,30 +261,57 @@ img { max-width: 100%; display: block; }
             <div class="card-title">パートナー / はてなベース株式会社 代表取締役</div>
           </div>
         </div>
-        <p class="card-desc">事務所の経営戦略・採用・新販路開拓・DX推進を統括。AIエージェントを活用したバックオフィスDXを専門とし、事務所の業務効率化を推進。</p>
+        <p class="card-desc">事務所の経営戦略・採用・新販路開拓・DX推進を統括。AIエージェントを活用したバックオフィスDXを専門とし、事務所の業務効率化と新しい価値創造を推進しています。</p>
       </div>
-      <!-- Card 2: Bookkeeping Team -->
+      <!-- Sato -->
       <div class="team-card">
         <div class="team-card-header">
-          <div class="team-avatar--icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-            </svg>
+          <div class="team-avatar--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
           </div>
           <div>
-            <div class="card-name">記帳代行チーム</div>
-            <div class="card-name-en" style="visibility:hidden;">-</div>
-            <div class="card-title">Bookkeeping Team</div>
+            <div class="card-name">佐藤</div>
+            <div class="card-name-en">Sato</div>
+            <div class="card-title">記帳代行チーム</div>
           </div>
         </div>
-        <p class="card-desc">複数名のスタッフが記帳代行を担当。freee会計の操作に精通したメンバーが正確かつ迅速に記帳を行います。記帳スタッフの成果物は税理士（田村）が最終チェック。品質を担保しています。</p>
+        <p class="card-desc">freee会計の記帳業務を担当。正確かつ迅速な仕訳入力で、クライアントの月次決算をサポートしています。細やかな確認作業で、記帳品質を支えるメンバーです。</p>
+      </div>
+      <!-- Kawakami -->
+      <div class="team-card">
+        <div class="team-card-header">
+          <div class="team-avatar--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
+          <div>
+            <div class="card-name">川上</div>
+            <div class="card-name-en">Kawakami</div>
+            <div class="card-title">記帳代行チーム</div>
+          </div>
+        </div>
+        <p class="card-desc">記帳代行および経費精算の処理を担当。複数のクライアントを並行して対応し、スケジュール通りの月次完了を実現しています。</p>
+      </div>
+      <!-- Makino -->
+      <div class="team-card">
+        <div class="team-card-header">
+          <div class="team-avatar--placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+          </div>
+          <div>
+            <div class="card-name">牧野</div>
+            <div class="card-name-en">Makino</div>
+            <div class="card-title">記帳代行チーム</div>
+          </div>
+        </div>
+        <p class="card-desc">freee会計での記帳・消込業務を担当。不明点をSlackで迅速に確認し、クライアントとのコミュニケーションもスムーズに行います。</p>
       </div>
     </div>
+    <p style="font-size: 13px; color: var(--ink-light); margin-top: 20px; line-height: 1.8;">※ 記帳スタッフの成果物は、すべて税理士（田村）が最終チェックを行い、品質を担保しています。</p>
   </div>
 </section>
 
-<!-- ===== FEATURES ===== -->
-<section class="section section--paper">
+<!-- Features -->
+<section class="section section--white">
   <div class="container">
     <div class="section-head">
       <div class="label">Features</div>
@@ -558,31 +319,54 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-num">01</div>
-        <div class="feature-title">freee会計100%</div>
-        <p class="feature-desc">freee認定アドバイザー最上位の5つ星を取得。</p>
+        <div class="feature-card__icon" style="background: #EEF3FF;">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;">
+            <circle cx="28" cy="28" r="26" stroke="#2864F0" stroke-width="1.5" fill="none"/>
+            <text x="28" y="32" font-family="Inter" font-size="16" fill="#2864F0" text-anchor="middle" font-weight="700">freee</text>
+          </svg>
+        </div>
+        <div class="feature-title">freee会計 100%</div>
+        <p class="feature-desc">freee認定アドバイザー最上位の5つ星を取得。freeeに完全特化した体制で、導入から活用まで一貫してサポートします。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">02</div>
-        <div class="feature-title">Slackで<br>コミュニケーション</div>
-        <p class="feature-desc">チャットでスピーディに対応。</p>
+        <div class="feature-card__icon" style="background: #F8F0F8;">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;">
+            <circle cx="28" cy="28" r="26" stroke="#4A154B" stroke-width="1.5" fill="none"/>
+            <rect x="20" y="20" width="7" height="7" rx="2" fill="#E01E5A"/>
+            <rect x="29" y="20" width="7" height="7" rx="2" fill="#36C5F0"/>
+            <rect x="20" y="29" width="7" height="7" rx="2" fill="#2EB67D"/>
+            <rect x="29" y="29" width="7" height="7" rx="2" fill="#ECB22E"/>
+          </svg>
+        </div>
+        <div class="feature-title">Slack完結</div>
+        <p class="feature-desc">お客様とのやり取りはすべてSlackで完結。チャットでスピーディに対応し、トピック別にスレッドで管理します。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">03</div>
-        <div class="feature-title">クラウド完結<br>ペーパーレス</div>
-        <p class="feature-desc">クラウドサイン、freee請求書、口座連携。</p>
+        <div class="feature-card__icon" style="background: var(--blue-light);">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;">
+            <circle cx="28" cy="28" r="26" stroke="#1F61AB" stroke-width="1.5" fill="none"/>
+            <path d="M18 30 C18 22, 24 20, 28 20 C30 14, 36 13, 39 17 C42 15, 46 20, 44 26 C48 27, 48 34, 44 35 L20 35 C16 35, 14 32, 18 30Z" fill="#E8EFF8" stroke="#1F61AB" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="feature-title">クラウド完結・ペーパーレス</div>
+        <p class="feature-desc">契約はクラウドサイン、請求書はfreee、口座連携も自動同期。紙の書類のやり取りは原則不要です。</p>
       </div>
       <div class="feature-card">
-        <div class="feature-num">04</div>
+        <div class="feature-card__icon" style="background: #F0F0F0;">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:56px;">
+            <circle cx="28" cy="28" r="26" stroke="#3A3A45" stroke-width="1.5" fill="none"/>
+            <text x="28" y="32" font-family="Inter" font-size="10" fill="#3A3A45" text-anchor="middle" font-weight="700">TKC</text>
+          </svg>
+        </div>
         <div class="feature-title">提携ネットワーク</div>
-        <p class="feature-desc">はてなベース株式会社、田村直大公認会計士事務所、提携社労士。</p>
+        <p class="feature-desc">はてなベース株式会社（DX支援・採用支援）、提携社労士（給与計算・社会保険）と連携し、バックオフィス全般をカバーします。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== HISTORY ===== -->
-<section class="section section--white">
+<!-- History -->
+<section class="section section--paper">
   <div class="container">
     <div class="section-head">
       <div class="label">History</div>
@@ -609,8 +393,8 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ===== ACCESS ===== -->
-<section class="section section--paper">
+<!-- Access -->
+<section class="section section--white">
   <div class="container">
     <div class="section-head">
       <div class="label">Access</div>
@@ -622,39 +406,61 @@ img { max-width: 100%; display: block; }
         <p class="access-text">〒160-0005<br>東京都新宿区愛住町23-1 Woody21ビル6階</p>
         <div class="access-label">Station</div>
         <p class="access-text">東京メトロ丸ノ内線「四谷三丁目駅」徒歩3分<br>都営新宿線「曙橋駅」徒歩5分</p>
+        <div class="access-label">Area</div>
+        <p class="access-text">オンライン対応のため全国対応可能。<br>対面は東京都内が中心。</p>
       </div>
       <div class="access-map">
-        <span>Google Map 埋め込み</span>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.5!2d139.7195!3d35.6895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188d30d8ab5555%3A0x0!2z5paw5a6_5Yy65oSb5L2P55S6MjMtMQ!5e0!3m2!1sja!2sjp!4v1700000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+    </div>
+
+    <!-- Office photos -->
+    <div class="office-photos">
+      <img src="images/office-1.jpg" alt="オフィス風景">
+      <img src="images/office-2.jpg" alt="オフィス風景">
     </div>
   </div>
 </section>
 
-<!-- ===== CTA BLUE ===== -->
+<!-- CTA -->
 <section class="cta-blue">
-  <div class="container">
-    <h2 class="cta-title">まずは無料相談から</h2>
-    <p class="cta-text">創業期の税務・会計・融資のお悩みをお気軽にご相談ください。</p>
-    <a href="#" class="cta-btn">無料相談を予約する&ensp;→</a>
+  <div class="cta-blue__inner">
+    <div>
+      <p class="cta-blue__label">CONTACT</p>
+      <h2 class="cta-blue__title">
+        まずは無料相談から。<br>
+        創業期の税務・会計・融資のお悩みを<br>
+        お気軽にご相談ください。
+      </h2>
+      <p class="cta-blue__lead">オンライン面談にも対応しています。初回相談は無料です。</p>
+    </div>
+    <div class="cta-blue__buttons">
+      <a href="/contact" class="cta-blue__btn cta-blue__btn--primary">
+        <span>日程調整はこちら</span><span class="arrow">→</span>
+      </a>
+      <a href="/contact" class="cta-blue__btn cta-blue__btn--outline">
+        <span>お問い合わせフォーム</span><span class="arrow">↗</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">Hatena<span>base</span> Tax Office</div>
-        <div class="footer-sub">はてなベース税理士事務所（田村直大税理士事務所）</div>
-      </div>
-      <nav class="footer-nav">
-        <a href="#">Tax Advisor</a>
-        <a href="#">Financing</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-      </nav>
+<!-- Footer -->
+<footer class="hb-footer">
+  <div class="hb-footer__inner">
+    <div>
+      <div class="hb-footer__logo">はてなベース税理士事務所</div>
+      <p class="hb-footer__address">運営: 田村直大税理士事務所<br>〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階</p>
     </div>
-    <div class="footer-copy">&copy; 2026 Hatenabase Tax Office. All rights reserved.</div>
+    <div style="text-align: right;">
+      <div class="hb-footer__links">
+        <a href="./tax-advisor-preview.html">税務顧問</a>
+        <a href="./financing-support-preview.html">融資支援</a>
+        <a href="#">私たちについて</a>
+        <a href="/contact">お問い合わせ</a>
+      </div>
+      <p class="hb-footer__copy" style="margin-top: 12px;">&copy; 2026 Hatenabase, inc.</p>
+    </div>
   </div>
 </footer>
 
