@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日程調整はこちら｜はてなベース税理士事務所</title>
+<meta name="description" content="はてなベース税理士事務所の無料相談をオンラインで予約。Zoom・Google Meetでの面談が基本。初回相談無料・事前準備不要。税務顧問・融資支援・スポット申告などお気軽にご予約ください。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --white: #FFFFFF; --paper: #FAFAFA; --paper-warm: #F5F4F0;
+  --ink: #0E0E14; --ink-soft: #3A3A45; --ink-light: #8A8A93;
+  --line: #E8E6DF; --blue: #1F61AB; --blue-deep: #0F3B72; --blue-light: #E8EFF8; --blue-ghost: #F4F8FD;
+  --font-en: "Cormorant Garamond", "Times New Roman", serif;
+  --font-en-sans: "Inter", system-ui, sans-serif;
+  --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* Header */
+.hb-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.hb-header__inner { max-width: 1280px; margin: 0 auto; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+.hb-header__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.hb-header__logo-text { font-family: var(--font-jp); font-weight: 700; font-size: 15px; letter-spacing: .02em; line-height: 1.3; }
+.hb-header__logo-sub { font-size: 10px; font-weight: 400; color: var(--ink-light); display: block; }
+.hb-header__nav { display: flex; gap: 28px; align-items: center; }
+.hb-header__nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
+.hb-header__nav a:hover { color: var(--blue); }
+.hb-header__cta { padding: 10px 24px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
+.hb-header__cta:hover { background: var(--blue-deep); }
+.hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+.hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; transition: .3s; }
+.hb-hamburger span:nth-child(1) { top: 9px; } .hb-hamburger span:nth-child(2) { top: 15px; } .hb-hamburger span:nth-child(3) { top: 21px; }
+
+/* SubHero */
+.hb-subhero { padding: 80px 32px 72px; background: var(--white); border-bottom: 1px solid var(--line); }
+.hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+.hb-subhero__crumb { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px; }
+.hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; } .hb-subhero__crumb a:hover { color: var(--blue); }
+.hb-subhero__en { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 16px; color: var(--blue); margin-bottom: 16px; letter-spacing: .04em; }
+.hb-subhero__jp { font-family: var(--font-jp); font-weight: 900; font-size: clamp(28px, 4vw, 48px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px; }
+.hb-subhero__lead { font-size: 15px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
+
+/* Section */
+.section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+.section--paper { background: var(--paper); }
+.section__inner { max-width: 1280px; margin: 0 auto; }
+.section__narrow { max-width: 860px; margin: 0 auto; }
+.hb-section-head { display: flex; align-items: baseline; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+.hb-section-head__en { font-family: var(--font-en-sans); font-size: 11px; font-weight: 500; letter-spacing: .3em; color: var(--blue); display: flex; align-items: center; gap: 10px; }
+.hb-section-head__en::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.hb-section-head__jp { font-family: var(--font-jp); font-weight: 700; font-size: 28px; letter-spacing: -.01em; color: var(--ink); }
+
+/* Booking layout */
+.booking-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 48px; align-items: start; }
+.booking-placeholder { border: 2px dashed var(--line); border-radius: 12px; min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; background: var(--paper); }
+.booking-placeholder__icon { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 16px; }
+.booking-placeholder__icon svg { width: 32px; height: 32px; }
+.booking-placeholder__text { font-size: 14px; color: var(--ink-light); text-align: center; line-height: 1.8; }
+
+/* Info card */
+.info-card { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 36px 32px; }
+.info-card__item { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.info-card__item:first-child { padding-top: 0; }
+.info-card__item:last-child { border-bottom: none; padding-bottom: 0; }
+.info-card__icon { width: 44px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; border-radius: 10px; background: var(--blue-light); }
+.info-card__icon svg { width: 22px; height: 22px; }
+.info-card__content { flex: 1; }
+.info-card__label { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.info-card__desc { font-size: 13px; color: var(--ink-soft); line-height: 1.9; }
+
+/* Agenda cards */
+.agenda-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.agenda-card { background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 36px 28px; transition: border-color .2s, background .2s; }
+.agenda-card:hover { border-color: var(--blue); background: var(--blue-ghost); }
+.agenda-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 32px; color: var(--blue); margin-bottom: 8px; }
+.agenda-card__icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 12px; margin-bottom: 16px; }
+.agenda-card__icon svg { width: 24px; height: 24px; }
+.agenda-card__title { font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.agenda-card__time { font-family: var(--font-en-sans); font-size: 12px; color: var(--ink-light); letter-spacing: .04em; margin-bottom: 12px; }
+.agenda-card__desc { font-size: 13px; color: var(--ink-soft); line-height: 1.9; }
+
+/* FAQ */
+.faq-list { max-width: 860px; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q { display: flex; align-items: flex-start; gap: 16px; padding: 24px 0 12px; cursor: pointer; }
+.faq-q__badge { font-family: var(--font-en-sans); font-size: 12px; font-weight: 700; color: var(--blue); background: var(--blue-light); width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.faq-q__text { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.7; }
+.faq-a { display: flex; align-items: flex-start; gap: 16px; padding: 0 0 24px; }
+.faq-a__badge { font-family: var(--font-en-sans); font-size: 12px; font-weight: 700; color: var(--ink-light); background: var(--paper); width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.faq-a__text { font-size: 14px; color: var(--ink-soft); line-height: 2; }
+
+/* Contact CTA */
+.contact-cta { text-align: center; max-width: 640px; margin: 0 auto; }
+.contact-cta__text { font-size: 15px; color: var(--ink-soft); line-height: 2; margin-bottom: 32px; }
+.contact-cta__btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; transition: background .3s, transform .2s; }
+.contact-cta__btn:hover { background: var(--blue-deep); transform: translateX(4px); }
+.contact-cta__btn .arrow { font-family: var(--font-en); font-style: italic; font-size: 18px; }
+
+/* CTA Blue */
+.cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
+.cta-blue__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+.cta-blue__label { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .32em; opacity: .85; margin-bottom: 18px; }
+.cta-blue__title { font-weight: 900; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px; }
+.cta-blue__lead { font-size: 15px; line-height: 1.95; opacity: .9; }
+.cta-blue__buttons { display: grid; gap: 14px; }
+.cta-blue__btn { padding: 18px 28px; text-decoration: none; font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-radius: 999px; transition: transform .2s, opacity .2s; }
+.cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+.cta-blue__btn--primary { background: #fff; color: var(--blue); }
+.cta-blue__btn--outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+.cta-blue__btn .arrow { font-family: var(--font-en); font-style: italic; }
+
+/* Footer */
+.hb-footer { padding: 56px 32px; background: var(--ink); color: #fff; }
+.hb-footer__inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.hb-footer__logo { font-size: 14px; font-weight: 700; opacity: .8; margin-bottom: 4px; }
+.hb-footer__address { font-size: 12px; opacity: .5; line-height: 1.7; }
+.hb-footer__copy { font-family: var(--font-en-sans); font-size: 11px; opacity: .4; }
+.hb-footer__links { display: flex; gap: 24px; }
+.hb-footer__links a { font-size: 12px; color: #fff; opacity: .5; text-decoration: none; transition: opacity .2s; }
+.hb-footer__links a:hover { opacity: .9; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .agenda-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .hb-header__nav { display: none; } .hb-hamburger { display: block; }
+  .hb-subhero { padding: 60px 20px 48px; } .hb-subhero__jp { font-size: 26px; }
+  .section { padding: 64px 20px; }
+  .booking-grid { grid-template-columns: 1fr; }
+  .booking-grid .info-card { order: -1; }
+  .booking-placeholder { min-height: 400px; }
+  .agenda-grid { grid-template-columns: 1fr; }
+  .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+  .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
+  .hb-section-head { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="hb-header">
+  <div class="hb-header__inner">
+    <a href="./tax-accountant-preview.html" class="hb-header__logo">
+      <span class="hb-header__logo-text">はてなベース税理士事務所<span class="hb-header__logo-sub">HatenaBase Tax Office</span></span>
+    </a>
+    <nav class="hb-header__nav">
+      <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+      <a href="./financing-support-preview.html">FINANCING</a>
+      <a href="./about-us-preview.html">ABOUT</a>
+      <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
+    </nav>
+    <button class="hb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- SubHero -->
+<section class="hb-subhero">
+  <div class="hb-subhero__inner">
+    <p class="hb-subhero__crumb"><a href="./tax-accountant-preview.html">HOME</a> &nbsp;/&nbsp; <a href="./tax-accountant-preview.html">TAX OFFICE</a> &nbsp;/&nbsp; SCHEDULE</p>
+    <p class="hb-subhero__en">Schedule a Meeting</p>
+    <h1 class="hb-subhero__jp">
+      無料相談の日程を予約する
+    </h1>
+    <p class="hb-subhero__lead">
+      初回のご相談は無料です。税務顧問・融資支援・スポット申告など、どんな内容でもお気軽にご予約ください。<br><br>
+      オンライン（Zoom / Google Meet）での面談が基本です。ご希望の方は新宿オフィスでの対面も承ります。<br><br>
+      所要時間は30〜60分程度。事前準備は不要です。現状の経理体制をお伺いし、最適なプランをご提案します。
+    </p>
+  </div>
+</section>
+
+<!-- Section: 面談の予約 -->
+<section class="section">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">BOOKING</span>
+      <span class="hb-section-head__jp">面談の予約</span>
+    </div>
+    <div class="booking-grid">
+      <!-- Left: Timerex placeholder -->
+      <div class="booking-placeholder">
+        <div class="booking-placeholder__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <rect x="8" y="14" width="3" height="3" rx="0.5"/>
+          </svg>
+        </div>
+        <p class="booking-placeholder__text">ここにTimerexの日程調整カレンダーが<br>埋め込まれます</p>
+      </div>
+
+      <!-- Right: Info card -->
+      <div class="info-card">
+        <!-- Video camera -->
+        <div class="info-card__item">
+          <div class="info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="13" height="12" rx="2"/>
+              <path d="M15 10l5-3v10l-5-3"/>
+            </svg>
+          </div>
+          <div class="info-card__content">
+            <div class="info-card__label">面談方法</div>
+            <div class="info-card__desc">オンライン（Zoom / Google Meet）。<br>ご希望の方は対面（新宿オフィス）も可。</div>
+          </div>
+        </div>
+        <!-- Clock -->
+        <div class="info-card__item">
+          <div class="info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+          </div>
+          <div class="info-card__content">
+            <div class="info-card__label">所要時間</div>
+            <div class="info-card__desc">30〜60分程度</div>
+          </div>
+        </div>
+        <!-- Yen -->
+        <div class="info-card__item">
+          <div class="info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20"/>
+              <path d="M6 8l6 6 6-6"/>
+              <line x1="7" y1="16" x2="17" y2="16"/>
+              <line x1="7" y1="19" x2="17" y2="19"/>
+            </svg>
+          </div>
+          <div class="info-card__content">
+            <div class="info-card__label">費用</div>
+            <div class="info-card__desc">初回相談は無料</div>
+          </div>
+        </div>
+        <!-- Calendar -->
+        <div class="info-card__item">
+          <div class="info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+          </div>
+          <div class="info-card__content">
+            <div class="info-card__label">対応時間</div>
+            <div class="info-card__desc">平日 9:00〜18:00（土日祝休み）。<br>ご要望があれば調整可能です。</div>
+          </div>
+        </div>
+        <!-- Globe -->
+        <div class="info-card__item">
+          <div class="info-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/>
+            </svg>
+          </div>
+          <div class="info-card__content">
+            <div class="info-card__label">対応エリア</div>
+            <div class="info-card__desc">オンラインのため全国対応可能</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: 面談当日の流れ -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">AGENDA</span>
+      <span class="hb-section-head__jp">面談当日の流れ</span>
+    </div>
+    <div class="agenda-grid">
+      <!-- 01 Hearing -->
+      <div class="agenda-card">
+        <div class="agenda-card__num">01</div>
+        <div class="agenda-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M17 11h2a2 2 0 012 2v1a2 2 0 01-2 2h-1"/>
+          </svg>
+        </div>
+        <div class="agenda-card__title">ヒアリング</div>
+        <div class="agenda-card__time">15 min</div>
+        <div class="agenda-card__desc">現在の経理体制・事業内容・お困りごとをお伺いします。</div>
+      </div>
+      <!-- 02 Proposal -->
+      <div class="agenda-card">
+        <div class="agenda-card__num">02</div>
+        <div class="agenda-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14,2 14,8 20,8"/>
+            <path d="M9 18a3 3 0 003-3V9"/>
+            <circle cx="12" cy="9" r="1" fill="#1F61AB" stroke="none"/>
+          </svg>
+        </div>
+        <div class="agenda-card__title">ご提案</div>
+        <div class="agenda-card__time">15 min</div>
+        <div class="agenda-card__desc">お客様の状況に合わせたサービスプラン・料金をご説明します。融資をご検討の方には資金調達の可能性もお伝えします。</div>
+      </div>
+      <!-- 03 Q&A -->
+      <div class="agenda-card">
+        <div class="agenda-card__num">03</div>
+        <div class="agenda-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9 9a3 3 0 015.12 1.5c0 1.5-2.12 2-2.12 3.5"/>
+            <circle cx="12" cy="17.5" r="0.5" fill="#1F61AB" stroke="none"/>
+          </svg>
+        </div>
+        <div class="agenda-card__title">質疑応答</div>
+        <div class="agenda-card__time">15 min</div>
+        <div class="agenda-card__desc">ご不明点やご不安な点にお答えします。ご契約を急かすことは一切ありません。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: よくいただくご質問 -->
+<section class="section">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">FAQ</span>
+      <span class="hb-section-head__jp">よくいただくご質問</span>
+    </div>
+    <div class="faq-list">
+      <!-- Q1 -->
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q__badge">Q</span>
+          <span class="faq-q__text">事前に準備するものはありますか？</span>
+        </div>
+        <div class="faq-a">
+          <span class="faq-a__badge">A</span>
+          <span class="faq-a__text">特にありません。ただし決算書や確定申告書の控えをお持ちの場合はご用意いただけると、具体的なアドバイスが可能です。</span>
+        </div>
+      </div>
+      <!-- Q2 -->
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q__badge">Q</span>
+          <span class="faq-q__text">法人設立前ですが相談できますか？</span>
+        </div>
+        <div class="faq-a">
+          <span class="faq-a__badge">A</span>
+          <span class="faq-a__text">はい、大歓迎です。設立時期・届出のタイミングなどもアドバイスします。</span>
+        </div>
+      </div>
+      <!-- Q3 -->
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q__badge">Q</span>
+          <span class="faq-q__text">当日はどこに接続すればいいですか？</span>
+        </div>
+        <div class="faq-a">
+          <span class="faq-a__badge">A</span>
+          <span class="faq-a__text">ご予約確定後にZoom / Google Meetのリンクをメールでお送りします。</span>
+        </div>
+      </div>
+      <!-- Q4 -->
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q__badge">Q</span>
+          <span class="faq-q__text">相談したら必ず契約しないといけませんか？</span>
+        </div>
+        <div class="faq-a">
+          <span class="faq-a__badge">A</span>
+          <span class="faq-a__text">いいえ。ご契約を急かすことは一切ありません。ご検討の上、ご連絡ください。</span>
+        </div>
+      </div>
+      <!-- Q5 -->
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q__badge">Q</span>
+          <span class="faq-q__text">土日でも面談できますか？</span>
+        </div>
+        <div class="faq-a">
+          <span class="faq-a__badge">A</span>
+          <span class="faq-a__text">基本は平日対応ですが、ご要望があれば土日も調整可能です。お気軽にご相談ください。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section: お問い合わせフォームもご利用いただけます -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">CONTACT</span>
+      <span class="hb-section-head__jp">お問い合わせフォームもご利用いただけます</span>
+    </div>
+    <div class="contact-cta">
+      <p class="contact-cta__text">日程の候補が合わない場合や、まずはメールでご相談されたい方はお問い合わせフォームをご利用ください。通常1営業日以内にご返信いたします。</p>
+      <a href="./contact-preview.html" class="contact-cta__btn">
+        お問い合わせフォームへ
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="hb-footer">
+  <div class="hb-footer__inner">
+    <div>
+      <div class="hb-footer__logo">はてなベース税理士事務所</div>
+      <p class="hb-footer__address">運営: 田村直大税理士事務所<br>〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階</p>
+    </div>
+    <div style="text-align: right;">
+      <div class="hb-footer__links">
+        <a href="./tax-accountant-preview.html">事務所トップ</a>
+        <a href="./tax-advisor-preview.html">税務顧問</a>
+        <a href="./about-us-preview.html">私たちについて</a>
+        <a href="./contact-preview.html">お問い合わせ</a>
+      </div>
+      <p class="hb-footer__copy" style="margin-top: 12px;">&copy; 2026 Hatenabase, inc.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
