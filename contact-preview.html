@@ -233,10 +233,6 @@ img { max-width: 100%; display: block; }
                 <label for="bt_corp">法人</label>
               </div>
               <div class="form-radio">
-                <input type="radio" name="business_type" id="bt_sole" value="個人事業主">
-                <label for="bt_sole">個人事業主</label>
-              </div>
-              <div class="form-radio">
                 <input type="radio" name="business_type" id="bt_pre" value="法人設立予定">
                 <label for="bt_pre">法人設立予定</label>
               </div>
@@ -296,26 +292,6 @@ img { max-width: 100%; display: block; }
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="fiscal_month">決算月<span class="required">*</span></label>
-            <select id="fiscal_month" name="fiscal_month" class="form-select" required>
-              <option value="" disabled selected>選択してください</option>
-              <option value="1月">1月</option>
-              <option value="2月">2月</option>
-              <option value="3月">3月</option>
-              <option value="4月">4月</option>
-              <option value="5月">5月</option>
-              <option value="6月">6月</option>
-              <option value="7月">7月</option>
-              <option value="8月">8月</option>
-              <option value="9月">9月</option>
-              <option value="10月">10月</option>
-              <option value="11月">11月</option>
-              <option value="12月">12月</option>
-              <option value="未定">未定</option>
-            </select>
-          </div>
-
-          <div class="form-group">
             <label class="form-label" for="revenue">事業規模・年商見込み<span class="required">*</span></label>
             <select id="revenue" name="revenue" class="form-select" required>
               <option value="" disabled selected>選択してください</option>
@@ -366,10 +342,6 @@ img { max-width: 100%; display: block; }
           <div class="form-group">
             <span class="form-label">当事務所を知ったきっかけ<span class="optional">任意</span></span>
             <div class="form-checkbox-group">
-              <div class="form-checkbox">
-                <input type="checkbox" name="referral[]" id="ref_freee" value="freee紹介">
-                <label for="ref_freee">freee紹介</label>
-              </div>
               <div class="form-checkbox">
                 <input type="checkbox" name="referral[]" id="ref_bank" value="金融機関">
                 <label for="ref_bank">金融機関</label>
@@ -436,50 +408,6 @@ img { max-width: 100%; display: block; }
             </div>
           </div>
 
-          <!-- 相談内容 -->
-          <div class="form-section-title">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            相談内容
-          </div>
-
-          <div class="form-group">
-            <span class="form-label">具体的な相談内容<span class="optional">任意</span></span>
-            <div class="form-checkbox-group">
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_bookkeeping" value="記帳代行">
-                <label for="topic_bookkeeping">記帳代行</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_tax_return" value="確定申告・決算">
-                <label for="topic_tax_return">確定申告・決算</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_incorporation" value="法人設立">
-                <label for="topic_incorporation">法人設立</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_financing" value="融資・資金調達">
-                <label for="topic_financing">融資・資金調達</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_freee" value="freee導入・移行">
-                <label for="topic_freee">freee導入・移行</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_tax_saving" value="節税対策">
-                <label for="topic_tax_saving">節税対策</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_change" value="税理士変更">
-                <label for="topic_change">税理士変更</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="topic[]" id="topic_other" value="その他">
-                <label for="topic_other">その他</label>
-              </div>
-            </div>
-          </div>
-
           <div class="form-group">
             <label class="form-label" for="message">自由記述<span class="optional">任意</span></label>
             <textarea id="message" name="message" class="form-textarea" placeholder="ご相談内容やご質問がございましたら、お気軽にご記入ください。"></textarea>
@@ -526,7 +454,7 @@ img { max-width: 100%; display: block; }
             </div>
             <div>
               <div class="sidebar-info__label">面談方法</div>
-              <div class="sidebar-info__text">オンライン（Zoom / Google Meet）</div>
+              <div class="sidebar-info__text">オンライン（Google Meet）</div>
             </div>
           </div>
 
@@ -537,7 +465,7 @@ img { max-width: 100%; display: block; }
             </div>
             <div>
               <div class="sidebar-info__label">所要時間</div>
-              <div class="sidebar-info__text">初回面談は30分程度</div>
+              <div class="sidebar-info__text">30分</div>
             </div>
           </div>
 
