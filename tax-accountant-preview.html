@@ -99,9 +99,20 @@
       background: var(--white); overflow: hidden;
       border-bottom: 1px solid var(--line);
     }
+    .hb-hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' fill='none'%3E%3Ccircle cx='400' cy='300' r='50' stroke='%231F61AB' stroke-width='1.2' opacity='.18'/%3E%3Ccircle cx='400' cy='300' r='100' stroke='%231F61AB' stroke-width='1' opacity='.15'/%3E%3Ccircle cx='400' cy='300' r='150' stroke='%231F61AB' stroke-width='.8' opacity='.13'/%3E%3Ccircle cx='400' cy='300' r='200' stroke='%231F61AB' stroke-width='.7' opacity='.11'/%3E%3Ccircle cx='400' cy='300' r='250' stroke='%231F61AB' stroke-width='.6' opacity='.09'/%3E%3Ccircle cx='400' cy='300' r='300' stroke='%231F61AB' stroke-width='.5' opacity='.07'/%3E%3Cline x1='0' y1='300' x2='800' y2='300' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Cline x1='400' y1='0' x2='400' y2='600' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Ccircle cx='400' cy='300' r='6' fill='%231F61AB' opacity='.15'/%3E%3Ccircle cx='480' cy='180' r='18' fill='%236BA3DC' opacity='.18'/%3E%3Ccircle cx='490' cy='190' r='6' fill='%233A7FCC' opacity='.22'/%3E%3Ccircle cx='250' cy='150' r='30' stroke='%231F61AB' stroke-width='.5' opacity='.10'/%3E%3Ccircle cx='250' cy='150' r='60' stroke='%231F61AB' stroke-width='.4' opacity='.07'/%3E%3Ccircle cx='250' cy='150' r='90' stroke='%231F61AB' stroke-width='.3' opacity='.05'/%3E%3Ccircle cx='600' cy='450' r='25' stroke='%231F61AB' stroke-width='.5' opacity='.08'/%3E%3Ccircle cx='600' cy='450' r='50' stroke='%231F61AB' stroke-width='.4' opacity='.06'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hb-hero > * { position: relative; z-index: 1; }
     .hb-hero__inner {
       max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      max-width: 720px;
     }
     .hb-hero__crumb {
       font-family: var(--font-en-sans); font-size: 11px;
@@ -128,10 +139,6 @@
       text-decoration: none; transition: background .3s;
     }
     .hb-hero__btn:hover { background: var(--blue-deep); }
-    .hb-hero__visual {
-      display: flex; justify-content: center; align-items: center;
-    }
-    .hb-hero__visual svg { width: 100%; max-width: 480px; height: auto; }
 
     /* ====== Section base ====== */
     .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
@@ -404,9 +411,7 @@
 
     /* ====== Responsive ====== */
     @media (max-width: 1024px) {
-      .hb-hero__inner { grid-template-columns: 1fr; gap: 40px; }
-      .hb-hero__visual { order: -1; }
-      .hb-hero__visual svg { max-width: 360px; }
+      .hb-hero__inner { max-width: 100%; }
       .feat-grid { grid-template-columns: repeat(3, 1fr); }
       .msg-grid { grid-template-columns: 280px 1fr; gap: 40px; }
       .msg-photo { width: 280px; height: 360px; }
@@ -417,7 +422,6 @@
       .hb-hamburger { display: block; }
       .hb-hero { padding: 60px 20px 48px; }
       .hb-hero__title { font-size: 26px; }
-      .hb-hero__visual svg { max-width: 280px; }
       .section { padding: 64px 20px; }
       .feat-grid { grid-template-columns: 1fr 1fr; }
       .msg-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -477,142 +481,6 @@
           無料相談を予約する
           <span style="font-family:var(--font-en);font-style:italic;">→</span>
         </a>
-      </div>
-      <div class="hb-hero__visual">
-        <!-- Modern geometric illustration — grid + dots + gradient mesh -->
-        <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#fff"/>
-              <stop offset="100%" stop-color="#F4F8FD"/>
-            </linearGradient>
-            <linearGradient id="barGradUp" x1="0" y1="1" x2="0" y2="0">
-              <stop offset="0%" stop-color="#1F61AB"/>
-              <stop offset="100%" stop-color="#6BA3DC"/>
-            </linearGradient>
-          </defs>
-
-          <!-- === Geometric background: concentric circles + crosshair === -->
-          <!-- Concentric circles (center: 320, 220) -->
-          <circle cx="320" cy="220" r="40" stroke="#1F61AB" stroke-width="1" fill="none" opacity=".18"/>
-          <circle cx="320" cy="220" r="80" stroke="#1F61AB" stroke-width=".8" fill="none" opacity=".16"/>
-          <circle cx="320" cy="220" r="120" stroke="#1F61AB" stroke-width=".7" fill="none" opacity=".13"/>
-          <circle cx="320" cy="220" r="160" stroke="#1F61AB" stroke-width=".6" fill="none" opacity=".11"/>
-          <circle cx="320" cy="220" r="200" stroke="#1F61AB" stroke-width=".5" fill="none" opacity=".09"/>
-          <circle cx="320" cy="220" r="240" stroke="#1F61AB" stroke-width=".5" fill="none" opacity=".07"/>
-          <circle cx="320" cy="220" r="280" stroke="#1F61AB" stroke-width=".5" fill="none" opacity=".05"/>
-          <!-- Crosshair lines -->
-          <line x1="0" y1="220" x2="520" y2="220" stroke="#1F61AB" stroke-width=".6" opacity=".12"/>
-          <line x1="320" y1="0" x2="320" y2="440" stroke="#1F61AB" stroke-width=".6" opacity=".12"/>
-          <!-- Accent filled circle -->
-          <circle cx="320" cy="220" r="6" fill="#1F61AB" opacity=".15"/>
-          <circle cx="370" cy="130" r="18" fill="#6BA3DC" opacity=".18"/>
-          <circle cx="380" cy="140" r="6" fill="#3A7FCC" opacity=".22"/>
-
-          <!-- === Floating card: Dashboard === -->
-          <g transform="translate(40, 60)">
-            <rect width="260" height="170" rx="12" fill="url(#cardGrad)" stroke="#E8E6DF" stroke-width="1" filter="drop-shadow(0 4px 16px rgba(14,14,20,.06))"/>
-            <!-- Header bar -->
-            <rect x="0" y="0" width="260" height="36" rx="12" fill="#fff"/>
-            <rect x="0" y="24" width="260" height="12" fill="#fff"/>
-            <circle cx="20" cy="18" r="4" fill="#E8524A" opacity=".7"/>
-            <circle cx="32" cy="18" r="4" fill="#F0C040" opacity=".7"/>
-            <circle cx="44" cy="18" r="4" fill="#2EB67D" opacity=".7"/>
-            <rect x="70" y="14" width="120" height="8" rx="4" fill="#F5F4F0"/>
-            <!-- Chart area -->
-            <!-- Grid lines -->
-            <line x1="24" y1="56" x2="236" y2="56" stroke="#E8E6DF" stroke-width=".5" stroke-dasharray="4 4"/>
-            <line x1="24" y1="80" x2="236" y2="80" stroke="#E8E6DF" stroke-width=".5" stroke-dasharray="4 4"/>
-            <line x1="24" y1="104" x2="236" y2="104" stroke="#E8E6DF" stroke-width=".5" stroke-dasharray="4 4"/>
-            <line x1="24" y1="128" x2="236" y2="128" stroke="#E8E6DF" stroke-width=".5" stroke-dasharray="4 4"/>
-            <!-- Bar chart -->
-            <rect x="36" y="98" width="16" height="50" rx="3" fill="#E8EFF8"/>
-            <rect x="62" y="78" width="16" height="70" rx="3" fill="#E8EFF8"/>
-            <rect x="88" y="88" width="16" height="60" rx="3" fill="#6BA3DC" opacity=".5"/>
-            <rect x="114" y="68" width="16" height="80" rx="3" fill="#3A7FCC" opacity=".6"/>
-            <rect x="140" y="58" width="16" height="90" rx="3" fill="url(#barGradUp)" opacity=".8"/>
-            <rect x="166" y="48" width="16" height="100" rx="3" fill="#1F61AB"/>
-            <!-- Trend line -->
-            <polyline points="44,95 70,76 96,84 122,65 148,54 174,44" stroke="#0F3B72" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <circle cx="174" cy="44" r="3.5" fill="#fff" stroke="#1F61AB" stroke-width="2"/>
-            <!-- Legend -->
-            <rect x="200" y="52" width="8" height="8" rx="2" fill="#1F61AB"/>
-            <rect x="212" y="54" width="20" height="4" rx="2" fill="#E8E6DF"/>
-            <rect x="200" y="66" width="8" height="8" rx="2" fill="#6BA3DC" opacity=".5"/>
-            <rect x="212" y="68" width="16" height="4" rx="2" fill="#E8E6DF"/>
-          </g>
-
-          <!-- === Floating card: KPI metrics === -->
-          <g transform="translate(200, 260)">
-            <rect width="200" height="80" rx="10" fill="url(#cardGrad)" stroke="#E8E6DF" stroke-width="1" filter="drop-shadow(0 4px 12px rgba(14,14,20,.05))"/>
-            <!-- Metric 1 -->
-            <text x="28" y="34" font-family="Inter" font-weight="600" font-size="20" fill="#1F61AB">90</text>
-            <text x="54" y="34" font-family="Inter" font-weight="300" font-size="11" fill="#8A8A93">件</text>
-            <text x="28" y="50" font-family="Zen Kaku Gothic New" font-size="9" fill="#8A8A93">融資支援</text>
-            <!-- Divider -->
-            <line x1="100" y1="18" x2="100" y2="64" stroke="#E8E6DF" stroke-width="1"/>
-            <!-- Metric 2 -->
-            <text x="124" y="34" font-family="Inter" font-weight="600" font-size="20" fill="#1F61AB">8</text>
-            <text x="138" y="34" font-family="Inter" font-weight="300" font-size="11" fill="#8A8A93">億円+</text>
-            <text x="124" y="50" font-family="Zen Kaku Gothic New" font-size="9" fill="#8A8A93">総調達額</text>
-            <!-- Sparkline -->
-            <polyline points="28,64 42,60 56,62 70,56 84,58" stroke="#2EB67D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".5"/>
-            <polyline points="124,64 138,60 152,58 166,54 180,50" stroke="#2EB67D" stroke-width="1.5" stroke-linecap="round" fill="none" opacity=".5"/>
-          </g>
-
-          <!-- === Floating card: Checklist === -->
-          <g transform="translate(320, 70)">
-            <rect width="160" height="140" rx="10" fill="url(#cardGrad)" stroke="#E8E6DF" stroke-width="1" filter="drop-shadow(0 4px 12px rgba(14,14,20,.05))"/>
-            <text x="20" y="28" font-family="Zen Kaku Gothic New" font-weight="700" font-size="11" fill="#0E0E14">ご契約の流れ</text>
-            <!-- Step items -->
-            <g transform="translate(20, 42)">
-              <circle cx="6" cy="6" r="6" fill="#1F61AB"/>
-              <text x="6" y="9" font-family="Inter" font-size="7" fill="#fff" text-anchor="middle" font-weight="600">1</text>
-              <text x="18" y="9" font-family="Zen Kaku Gothic New" font-size="10" fill="#3A3A45">無料相談</text>
-              <line x1="6" y1="14" x2="6" y2="26" stroke="#E8EFF8" stroke-width="1.5"/>
-            </g>
-            <g transform="translate(20, 68)">
-              <circle cx="6" cy="6" r="6" fill="#3A7FCC"/>
-              <text x="6" y="9" font-family="Inter" font-size="7" fill="#fff" text-anchor="middle" font-weight="600">2</text>
-              <text x="18" y="9" font-family="Zen Kaku Gothic New" font-size="10" fill="#3A3A45">お見積り</text>
-              <line x1="6" y1="14" x2="6" y2="26" stroke="#E8EFF8" stroke-width="1.5"/>
-            </g>
-            <g transform="translate(20, 94)">
-              <circle cx="6" cy="6" r="6" fill="#6BA3DC"/>
-              <text x="6" y="9" font-family="Inter" font-size="7" fill="#fff" text-anchor="middle" font-weight="600">3</text>
-              <text x="18" y="9" font-family="Zen Kaku Gothic New" font-size="10" fill="#3A3A45">ご契約</text>
-              <line x1="6" y1="14" x2="6" y2="26" stroke="#E8EFF8" stroke-width="1.5"/>
-            </g>
-            <g transform="translate(20, 120)">
-              <circle cx="6" cy="6" r="6" fill="#2EB67D"/>
-              <text x="6" y="9" font-family="Inter" font-size="7" fill="#fff" text-anchor="middle" font-weight="600">4</text>
-              <text x="18" y="9" font-family="Zen Kaku Gothic New" font-size="10" fill="#3A3A45">業務開始</text>
-            </g>
-            <!-- Check marks -->
-            <path d="M128 50 l3 3 6-6" stroke="#2EB67D" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-            <path d="M128 76 l3 3 6-6" stroke="#2EB67D" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-          </g>
-
-          <!-- === Floating badge: freee 5-star === -->
-          <g transform="translate(30, 280)">
-            <rect width="120" height="44" rx="22" fill="#fff" stroke="#E8E6DF" stroke-width="1" filter="drop-shadow(0 2px 8px rgba(14,14,20,.04))"/>
-            <text x="18" y="22" font-family="Inter" font-weight="700" font-size="13" fill="#2864F0" letter-spacing="-.02em">freee</text>
-            <!-- 5 stars -->
-            <g transform="translate(16, 28)">
-              <polygon points="4,0 5.2,2.8 8,3 6,5 6.4,8 4,6.5 1.6,8 2,5 0,3 2.8,2.8" fill="#F0C040" transform="scale(.65)"/>
-              <polygon points="4,0 5.2,2.8 8,3 6,5 6.4,8 4,6.5 1.6,8 2,5 0,3 2.8,2.8" fill="#F0C040" transform="translate(7,0) scale(.65)"/>
-              <polygon points="4,0 5.2,2.8 8,3 6,5 6.4,8 4,6.5 1.6,8 2,5 0,3 2.8,2.8" fill="#F0C040" transform="translate(14,0) scale(.65)"/>
-              <polygon points="4,0 5.2,2.8 8,3 6,5 6.4,8 4,6.5 1.6,8 2,5 0,3 2.8,2.8" fill="#F0C040" transform="translate(21,0) scale(.65)"/>
-              <polygon points="4,0 5.2,2.8 8,3 6,5 6.4,8 4,6.5 1.6,8 2,5 0,3 2.8,2.8" fill="#F0C040" transform="translate(28,0) scale(.65)"/>
-            </g>
-            <text x="64" y="36" font-family="Zen Kaku Gothic New" font-size="7" fill="#8A8A93">認定アドバイザー</text>
-          </g>
-
-          <!-- === Secondary concentric rings (top-left) === -->
-          <circle cx="80" cy="80" r="30" stroke="#1F61AB" stroke-width=".5" fill="none" opacity=".12"/>
-          <circle cx="80" cy="80" r="60" stroke="#1F61AB" stroke-width=".5" fill="none" opacity=".09"/>
-          <circle cx="80" cy="80" r="90" stroke="#1F61AB" stroke-width=".4" fill="none" opacity=".06"/>
-        </svg>
       </div>
     </div>
   </section>
@@ -710,10 +578,10 @@
         </div>
         <div class="about-card">
           <div class="about-card__icon">
-            <!-- freee logo -->
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="30" stroke="#2864F0" stroke-width="1.5" fill="#EEF3FF"/>
-              <text x="32" y="38" font-family="Inter" font-size="14" fill="#2864F0" text-anchor="middle" font-weight="600">freee</text>
+            <!-- freee official logo -->
+            <svg viewBox="0 0 120 46.348" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;height:auto;">
+              <path d="M106.798 24.938a4.74 4.74 0 0 0 4.9 3.636c4.247 0 7.335-4.11 8.3-7.479l-1.25-.265c-.919 3.257-3.653 5.782-6.19 5.782s-2.973-1.659-2.973-2.7c3.463-.691 6.3-1.811 6.3-4.6 0-1.267-.867-2.532-3.169-2.532-3.124 0-5.37 2.789-5.939 5.456-1.189 2.832-3.828 5.082-6.215 5.082-2.879 0-3.182-2-3.182-2.887 3.017-.545 6.754-1.777 6.754-4.825 0-1.628-1.1-2.824-3.4-2.824-3.6 0-5.911 3.276-6.422 6.161-1.325 2.973-4.078 5.2-6.649 5.2-2.969 0-3.461-1.927-3.461-3.166 2.88-.547 7.28-1.756 7.28-5.165 0-1.563-.973-3.031-3.634-3.031-4.242 0-6.719 4.211-6.964 7.135a11.122 11.122 0 0 1-1.631.139c-2 0-1.759-1.528-1.445-3.143.452-2.323-.8-4.131-3.227-4.131-2.779 0-4.831 2.747-5.973 5.464.646-3.322.088-5.359-3.909-5.359a17.556 17.556 0 0 0-6.16 1.456s.813-4.194.813-4.194c1.007-5.179 2.365-6.27 4.058-6.27 1.341 0 2.232.8 3.317 2.2l.582-3.012a7.614 7.614 0 0 0-3.974-1.091c-4 0-6.657 2.905-7.766 8.608l-1.045 5.388a44.946 44.946 0 0 1-15.547 3.276l-.338 1.734a46.61 46.61 0 0 0 15.5-3.02l-1.99 10.231c-.974 5.011-2.286 6.275-4.038 6.275-1.631 0-2.61-1.3-3.317-2.2l-.583 3.012a7.739 7.739 0 0 0 4.059 1.091c3.679 0 6.508-2.671 7.662-8.608l2.217-11.414a19.768 19.768 0 0 1 5.73-1.657c1.881 0 2.226.638 1.738 3.186l-1.88 9.637 3.563-.242.953-4.9c.541-2.783 2.456-6.785 4.919-6.785 1.24 0 1.51.946 1.278 2.138-.6 3.1 1.234 3.888 3.4 3.888a20.512 20.512 0 0 0 3.048-.186 5.415 5.415 0 0 0 5.771 4.931c3.2 0 5.929-2.1 7.738-4.765a5.039 5.039 0 0 0 5.234 3.832c2.936.005 5.478-2.04 7.157-4.487Zm5.794-6.666c.54 0 1.019.379 1.019 1.2 0 1.771-2.221 2.626-3.955 3.013-.001-1.347 1.457-4.213 2.936-4.213Zm-11.993.117c.579 0 1.089.387 1.089 1.3 0 1.848-2.375 2.79-4.232 3.206.001-1.451 1.612-4.506 3.143-4.506Zm-12.9.066c.585 0 1.2.382 1.2 1.452 0 2-2.606 3.03-4.627 3.478.007-1.697 1.788-4.929 3.43-4.929ZM28.017 21.276a54.792 54.792 0 0 1-10.978-1.1A29.832 29.832 0 0 0 33.15 0L10.665 17.3c-1.257.968-1.587.637-2.782.637a7.2 7.2 0 0 0-4.983 2 2.114 2.114 0 0 1-1.329.8L0 21.129l2.991.656c2.385.524 2.928.913 4.241 2.617l16.9 21.946a24.837 24.837 0 0 0-5.927-18.021 16.135 16.135 0 0 0 5.23-.91 7.83 7.83 0 0 1 3.451-.576h8.96c.121-.6-.106-.779-.99-.9l-6.931-.964c.307-.219.729-.6 1.047-.859a3.531 3.531 0 0 1 1.9-.979 50.594 50.594 0 0 0 5.41-1.616c.755-.264.636-.542.793-1.008a51.529 51.529 0 0 1-9.058.761Z" fill="#2864f0"/>
+              <path d="M7.183 21.708a1.114 1.114 0 1 1 1.115-1.115 1.115 1.115 0 0 1-1.115 1.115ZM18.052 26.965A14.81 14.81 0 0 1 7.893 22.95c2.385-.731 5.45-.826 9.473-.4a97.142 97.142 0 0 0 10.16 1 14.8 14.8 0 0 1-9.474 3.415Z" fill="#fff"/>
             </svg>
           </div>
           <h3 class="about-card__title">freee会計 100%</h3>
@@ -721,13 +589,12 @@
         </div>
         <div class="about-card">
           <div class="about-card__icon">
-            <!-- Slack logo -->
-            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="30" stroke="#4A154B" stroke-width="1.5" fill="#F8F0F8"/>
-              <rect x="22" y="22" width="8" height="8" rx="2" fill="#E01E5A"/>
-              <rect x="34" y="22" width="8" height="8" rx="2" fill="#36C5F0"/>
-              <rect x="22" y="34" width="8" height="8" rx="2" fill="#2EB67D"/>
-              <rect x="34" y="34" width="8" height="8" rx="2" fill="#ECB22E"/>
+            <!-- Slack official logo -->
+            <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;height:48px;">
+              <path d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386" fill="#36C5F0"/>
+              <path d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387" fill="#2EB67D"/>
+              <path d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386" fill="#ECB22E"/>
+              <path d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336 0v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.386" fill="#E01E5A"/>
             </svg>
           </div>
           <h3 class="about-card__title">Slack完結</h3>
