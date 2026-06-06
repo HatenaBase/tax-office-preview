@@ -186,8 +186,8 @@
 
     /* ====== Team ====== */
     .team-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 24px; max-width: 880px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
     .team-card {
       border: 1px solid var(--line); border-radius: 6px;
@@ -408,7 +408,7 @@
     @media (max-width: 1024px) {
       .reason-grid { grid-template-columns: 1fr 1fr; }
       .case-grid { grid-template-columns: 1fr 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; max-width: none; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 767px) {
@@ -499,60 +499,20 @@
         500〜2,000万円単位の調達サイズを中心に、創業3年と個人での活動を含め累計120件の調達をサポートしてきました。
       </p>
 
-      <!-- Industry Breakdown -->
-      <div style="margin-top: 48px; display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center;">
-        <div>
-          <svg viewBox="0 0 200 200" width="280" height="280">
-            <!-- Pie chart segments -->
-            <!-- システム受託開発/SES 31.3% = 112.68deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#1F61AB" stroke-width="40"
-              stroke-dasharray="157.08 344.92" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
-            <!-- AI 25% = 90deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#3A7FCC" stroke-width="40"
-              stroke-dasharray="125.66 376.34" stroke-dashoffset="-157.08" transform="rotate(-90 100 100)"/>
-            <!-- マーケティング 15.6% = 56.16deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#6BA3DC" stroke-width="40"
-              stroke-dasharray="78.41 423.59" stroke-dashoffset="-282.74" transform="rotate(-90 100 100)"/>
-            <!-- コンサルティング 12.5% = 45deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#94C1E8" stroke-width="40"
-              stroke-dasharray="62.83 439.17" stroke-dashoffset="-361.15" transform="rotate(-90 100 100)"/>
-            <!-- 飲食 9.4% = 33.84deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#B8D7F0" stroke-width="40"
-              stroke-dasharray="47.12 454.88" stroke-dashoffset="-423.98" transform="rotate(-90 100 100)"/>
-            <!-- その他 6.3% = 22.68deg -->
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#D9E9F6" stroke-width="40"
-              stroke-dasharray="31.62 470.38" stroke-dashoffset="-471.10" transform="rotate(-90 100 100)"/>
-            <!-- Center circle -->
-            <circle cx="100" cy="100" r="60" fill="white"/>
-            <text x="100" y="95" text-anchor="middle" font-family="Inter" font-size="11" fill="#8A8A93" letter-spacing=".1em">INDUSTRY</text>
-            <text x="100" y="115" text-anchor="middle" font-family="Zen Kaku Gothic New" font-size="11" fill="#3A3A45">業界別内訳</text>
-          </svg>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #1F61AB; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">システム受託開発/SES <strong style="color: var(--ink);">31.3%</strong></span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #3A7FCC; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">AI <strong style="color: var(--ink);">25.0%</strong></span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #6BA3DC; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">マーケティング <strong style="color: var(--ink);">15.6%</strong></span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #94C1E8; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">コンサルティング <strong style="color: var(--ink);">12.5%</strong></span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #B8D7F0; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">飲食 <strong style="color: var(--ink);">9.4%</strong></span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <span style="width: 14px; height: 14px; border-radius: 3px; background: #D9E9F6; flex-shrink: 0;"></span>
-            <span style="font-size: 14px; color: var(--ink-soft);">その他 <strong style="color: var(--ink);">6.3%</strong></span>
-          </div>
+      <!-- Supported Industries -->
+      <div style="margin-top: 48px;">
+        <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 20px;">SUPPORTED INDUSTRIES — 支援実績のある業種</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">システム受託開発 / SES</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">AI / SaaS</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">マーケティング</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">コンサルティング</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">飲食</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">不動産</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">EC / 小売</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">クリエイティブ</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">医療・福祉</span>
+          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">その他</span>
         </div>
       </div>
 
@@ -659,6 +619,20 @@
           <div class="team-card__org">はてなベース株式会社</div>
           <p class="team-card__desc">慶應義塾大学在学中に創業1期目のベンチャー企業を2年間経験し、新規事業部の立ち上げを行う。現在ははてなベース社の資金調達をリードしつつ、金融機関とのネットワークを活かして数千万単位の資金調達をサポートしている。</p>
         </div>
+        <!-- Member 3 -->
+        <div class="team-card">
+          <div class="team-card__avatar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <div class="team-card__name">増田 和也</div>
+          <div class="team-card__name-en">Kazuya Masuda</div>
+          <div class="team-card__title">ファイナンス・経営企画</div>
+          <div class="team-card__org">はてなベース株式会社</div>
+          <p class="team-card__desc">管理会計/ファイナンスを軸とした実務経験が豊富。山田コンサルティンググループにて事業再生・財務DD・金融機関交渉を担当後、リディッシュ株式会社にて飲食店を中心とした創業融資・補助金申請を数十件担当。事業計画策定から資金調達交渉まで一気通貫で経営者に寄り添ったサポートが可能。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -681,7 +655,7 @@
           </div>
           <div class="case-card__label">CASE 01</div>
           <h3 class="case-card__title">IT系スタートアップ（ひとり法人）</h3>
-          <div class="case-card__amount">500<span>万円</span></div>
+          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">創業融資</div>
           <p class="case-card__bank">日本政策金融公庫</p>
           <p class="case-card__desc">設立直後で実績なし。事業計画書の精度と代表の経験をアピールし、満額回答を獲得しました。</p>
         </div>
@@ -697,7 +671,7 @@
           </div>
           <div class="case-card__label">CASE 02</div>
           <h3 class="case-card__title">飲食店（新規開業）</h3>
-          <div class="case-card__amount">1,500<span>万円</span></div>
+          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">開業資金一括調達</div>
           <p class="case-card__bank">日本政策金融公庫</p>
           <p class="case-card__desc">店舗取得費・内装工事費・運転資金を一括申請。月次シミュレーションの精度が決め手となりました。</p>
         </div>
@@ -713,7 +687,7 @@
           </div>
           <div class="case-card__label">CASE 03</div>
           <h3 class="case-card__title">コンサルティング業（2期目）</h3>
-          <div class="case-card__amount">800<span>万円</span></div>
+          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">民間金融機関からの調達</div>
           <p class="case-card__bank">民間銀行（保証協会付）</p>
           <p class="case-card__desc">1期目の決算書を活かし、公庫以外の民間金融機関からの調達に成功しました。</p>
         </div>
@@ -762,42 +736,7 @@
         <p class="pricing-note__desc">着手金（5万円）は成功報酬に含まれるため、融資成功時に追加で差し引かれます。万が一融資が不成立となった場合、成功報酬は発生しません。着手金以外の追加費用はかかりません。</p>
       </div>
 
-      <!-- Calculation example -->
-      <div class="price-example">
-        <h3 class="price-example__title">計算例</h3>
-        <table class="price-table">
-          <thead>
-            <tr>
-              <th style="text-align:left; padding-left:24px;">融資実行額</th>
-              <th>成功報酬（一般 5%）</th>
-              <th>成功報酬（顧問客 4%）</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>300万円</td>
-              <td>150,000円</td>
-              <td>120,000円</td>
-            </tr>
-            <tr>
-              <td>500万円</td>
-              <td>250,000円</td>
-              <td>200,000円</td>
-            </tr>
-            <tr>
-              <td>1,000万円</td>
-              <td>500,000円</td>
-              <td>400,000円</td>
-            </tr>
-            <tr>
-              <td>2,000万円</td>
-              <td>1,000,000円</td>
-              <td>800,000円</td>
-            </tr>
-          </tbody>
-        </table>
-        <p style="font-size: 12px; color: var(--ink-light); margin-top: 12px; line-height: 1.7;">※ 上記は税抜表示です。着手金5万円は成功報酬に含まれます。</p>
-      </div>
+      <p style="font-size: 12px; color: var(--ink-light); margin-top: 24px; line-height: 1.7;">※ 上記は税抜表示です。詳細は無料相談時にご案内いたします。</p>
     </div>
   </section>
 
@@ -871,7 +810,7 @@
         </div>
         <div class="faq-item">
           <p class="faq-item__q">着手金と成功報酬の関係は？</p>
-          <p class="faq-item__a">着手金5万円はご契約時にお支払いいただきますが、融資成功時にはこの5万円が成功報酬に充当されます。たとえば融資実行額500万円・成功報酬5%の場合、成功報酬25万円から着手金5万円を差し引いた20万円が追加のお支払いとなります。</p>
+          <p class="faq-item__a">着手金5万円はご契約時にお支払いいただきますが、融資成功時にはこの5万円が成功報酬に充当されます。具体的な費用は無料相談時に詳しくご案内いたします。</p>
         </div>
         <div class="faq-item">
           <p class="faq-item__q">融資実行までどのくらいかかりますか？</p>
