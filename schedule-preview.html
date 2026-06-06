@@ -142,6 +142,21 @@ img { max-width: 100%; display: block; }
   .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
   .hb-section-head { flex-direction: column; gap: 8px; }
 }
+
+/* Geometric pattern for SubHero */
+.hb-subhero, .subhero { position: relative; overflow: hidden; }
+.hb-subhero::before, .subhero::before {
+  content: '';
+  position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+  background-image:
+    radial-gradient(circle at 70% 50%, transparent 39px, transparent 40px),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' fill='none'%3E%3Ccircle cx='300' cy='200' r='40' stroke='%231F61AB' stroke-width='.5' opacity='.08'/%3E%3Ccircle cx='300' cy='200' r='80' stroke='%231F61AB' stroke-width='.5' opacity='.07'/%3E%3Ccircle cx='300' cy='200' r='120' stroke='%231F61AB' stroke-width='.5' opacity='.06'/%3E%3Ccircle cx='300' cy='200' r='160' stroke='%231F61AB' stroke-width='.5' opacity='.05'/%3E%3Ccircle cx='300' cy='200' r='200' stroke='%231F61AB' stroke-width='.5' opacity='.04'/%3E%3Cline x1='0' y1='200' x2='600' y2='200' stroke='%231F61AB' stroke-width='.4' opacity='.05'/%3E%3Cline x1='300' y1='0' x2='300' y2='400' stroke='%231F61AB' stroke-width='.4' opacity='.05'/%3E%3Ccircle cx='300' cy='200' r='5' fill='%231F61AB' opacity='.06'/%3E%3Ccircle cx='350' cy='120' r='14' fill='%236BA3DC' opacity='.08'/%3E%3Ccircle cx='358' cy='128' r='5' fill='%233A7FCC' opacity='.1'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 0;
+}
+.hb-subhero > *, .subhero > * { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
