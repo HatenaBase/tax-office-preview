@@ -200,6 +200,7 @@
       margin-bottom: 20px;
     }
     .team-card__avatar svg { width: 32px; height: 32px; }
+    .team-card__avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
     .team-card__name {
       font-size: 18px; font-weight: 700; margin-bottom: 2px;
     }
@@ -492,28 +493,6 @@
         <span class="hb-section-head__en">PERFORMANCE</span>
         <span class="hb-section-head__jp">実績</span>
       </div>
-      <div class="stats-grid">
-        <div class="stat-cell">
-          <div class="stat-cell__number">8億+</div>
-          <div class="stat-cell__label">累計調達実績</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-cell__number">90+</div>
-          <div class="stat-cell__label">累計支援件数</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-cell__number">120+</div>
-          <div class="stat-cell__label">個人含む累計調達サポート件数</div>
-        </div>
-        <div class="stat-cell">
-          <div class="stat-cell__number">0円</div>
-          <div class="stat-cell__label">融資不成立時の成功報酬</div>
-        </div>
-      </div>
-      <p style="font-size: 14px; color: var(--ink-soft); line-height: 2; margin-top: 32px; max-width: 800px;">
-        500〜2,000万円単位の調達サイズを中心に、創業3年と個人での活動を含め累計120件の調達をサポートしてきました。
-      </p>
-
       <!-- Supported Industries -->
       <div style="margin-top: 48px;">
         <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 20px;">SUPPORTED INDUSTRIES — 支援実績のある業種</p>
@@ -535,10 +514,10 @@
       <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line);">
         <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 24px;">PARTNER BANKS — はてなベース株式会社経由にて金融機関をご紹介</p>
         <div style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
-          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">日本政策金融公庫</span>
-          <span style="font-size: 15px; font-weight: 700; color: #1E3A8A; letter-spacing: .02em;">MIZUHO</span>
-          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">きらぼし銀行</span>
-          <span style="font-size: 15px; font-weight: 700; color: var(--ink-soft); letter-spacing: .02em;">第一勧業信用組合</span>
+          <img src="images/banks/jfc.svg" alt="日本政策金融公庫" style="height: 28px; width: auto;">
+          <img src="images/banks/mizuho.svg" alt="みずほ銀行" style="height: 28px; width: auto;">
+          <img src="images/banks/kiraboshi.png" alt="きらぼし銀行" style="height: 32px; width: auto;">
+          <img src="images/banks/daiichi-kangyo.svg" alt="第一勧業信用組合" style="height: 26px; width: auto;">
         </div>
       </div>
     </div>
@@ -549,7 +528,7 @@
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">REASON</span>
-        <span class="hb-section-head__jp">選ばれる3つの理由</span>
+        <span class="hb-section-head__jp">弊社の融資支援の特徴</span>
       </div>
       <div class="reason-grid">
         <!-- Reason 01 -->
@@ -562,8 +541,8 @@
             </svg>
           </div>
           <div class="reason-card__num">01</div>
-          <h3 class="reason-card__title">スタートアップに特化</h3>
-          <p class="reason-card__desc">数十社のVC・アクセラレーターと連携し、スタートアップの資金調達に特化しています。メンタリングや勉強会を通じて、創業期の経営者に寄り添った支援を提供。エクイティとデットの最適なバランスをご提案します。</p>
+          <h3 class="reason-card__title">創業期の銀行融資に特化</h3>
+          <p class="reason-card__desc">日本政策金融公庫を中心に、創業期の銀行融資に特化しています。創業融資の実績を多く有しており、創業期の経営者に寄り添った支援を提供。事業計画書の作成から融資面談の対策まで一貫してサポートします。</p>
         </div>
         <!-- Reason 02 -->
         <div class="reason-card">
@@ -609,10 +588,7 @@
         <!-- Member 1 -->
         <div class="team-card">
           <div class="team-card__avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
+            <img src="images/setoguchi-profile.png" alt="世戸口 逸人">
           </div>
           <div class="team-card__name">世戸口 逸人</div>
           <div class="team-card__name-en">Hayato Setoguchi</div>
@@ -623,10 +599,7 @@
         <!-- Member 2 -->
         <div class="team-card">
           <div class="team-card__avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
+            <img src="images/miwa-profile.png" alt="三輪 衛">
           </div>
           <div class="team-card__name">三輪 衛</div>
           <div class="team-card__name-en">Mamoru Miwa</div>
@@ -637,10 +610,7 @@
         <!-- Member 3 -->
         <div class="team-card">
           <div class="team-card__avatar">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
-            </svg>
+            <img src="images/masuda-profile.jpg" alt="増田 和也">
           </div>
           <div class="team-card__name">増田 和也</div>
           <div class="team-card__name-en">Kazuya Masuda</div>
