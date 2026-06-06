@@ -161,7 +161,7 @@
 
     /* ====== Features (5-col grid) ====== */
     .feat-grid {
-      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
       border-top: 1px solid var(--line); border-left: 1px solid var(--line);
     }
     .feat-card {
@@ -622,16 +622,9 @@
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">FEATURES</span>
-        <span class="hb-section-head__jp">5つの特徴</span>
+        <span class="hb-section-head__jp">4つの特徴</span>
       </div>
       <div class="feat-grid">
-        <div class="feat-card">
-          <div class="feat-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="feat-card__title">法人の節税に強い</h3>
-          <p class="feat-card__desc">創業期・小規模法人のサポート経験が豊富。事業フェーズに合わせた節税アドバイスで、手元資金を最大化します。</p>
-        </div>
         <div class="feat-card">
           <div class="feat-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -686,7 +679,7 @@
           <p class="msg-body">
             私たちは、創業期から売上5億円規模までの中小企業に強い会計事務所です。<br><br>
             「新しく始めたこの事業を必ず成功させたい」——私たちは、そんな真摯な想いを持つ経営者様の、一番の味方でありたいと願っています。<br><br>
-            代表の田村は大手監査法人出身の公認会計士・税理士。freeeとSlackを駆使したオンライン完結型の体制で、経営者と伴走します。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。
+            代表の田村は大手監査法人出身の公認会計士・税理士。オンライン完結型の体制で、経営者と伴走します。一人で悩まず、あなたの熱い想いを私たちにお聞かせください。
           </p>
         </div>
       </div>
@@ -793,7 +786,7 @@
           </div>
           <h3 class="svc2-card__title">資金調達支援</h3>
           <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績で、創業期の資金調達を成功に導きます。成果報酬型だから、リスクなく始められます。</p>
-          <p class="svc2-card__price">着手金 ¥50,000 + 成功報酬 5%（顧問客 4%）</p>
+          <p class="svc2-card__price">着手金 ¥50,000 + 成功報酬 5%</p>
           <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
         </a>
       </div>
@@ -845,26 +838,49 @@
         <span class="hb-section-head__en">FLOW</span>
         <span class="hb-section-head__jp">ご契約の流れ</span>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);">
-        <div style="padding: 40px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center;">
-          <div style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); margin-bottom: 12px;">01</div>
-          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">無料相談</h3>
-          <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.8;">オンライン面談で<br>ご要望をヒアリング</p>
+      <div style="max-width: 640px; margin: 0 auto;">
+        <!-- Step 01 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">01</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">無料相談</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">オンライン面談（Zoom / Google Meet）にて、現在の経理状況やご要望をヒアリングします。所要時間は約30分。事前準備は不要です。</p>
+          </div>
         </div>
-        <div style="padding: 40px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center;">
-          <div style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); margin-bottom: 12px;">02</div>
-          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">お見積り</h3>
-          <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.8;">ご要望に合わせた<br>プラン・料金をご提案</p>
+        <!-- Step 02 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">02</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">お見積り</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">ヒアリング内容をもとに、最適なプランと料金をご提案します。年商規模・業種・記帳頻度に応じたわかりやすい料金体系です。</p>
+          </div>
         </div>
-        <div style="padding: 40px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center;">
-          <div style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); margin-bottom: 12px;">03</div>
-          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">ご契約</h3>
-          <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.8;">ペーパーレスで<br>オンライン完結</p>
+        <!-- Step 03 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">03</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">ご契約</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">電子契約でオンライン完結。紙の郵送は一切不要です。契約後、Slackワークスペースへご招待し、専用チャンネルを開設します。</p>
+          </div>
         </div>
-        <div style="padding: 40px 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center;">
-          <div style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); margin-bottom: 12px;">04</div>
-          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">業務開始</h3>
-          <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.8;">Slack・freeeで<br>チャット完結の税務体験</p>
+        <!-- Step 04 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">04</div>
+          </div>
+          <div>
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">業務開始</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">freee会計のセットアップ・口座連携を行い、記帳代行を開始します。毎月の資料共有はSlackで完結。不明点はチャットでいつでもご質問いただけます。</p>
+          </div>
         </div>
       </div>
     </div>
@@ -880,7 +896,7 @@
           お問い合わせください。
         </h2>
         <p class="cta-blue__lead">
-          初回のご相談は無料です。オンライン面談にも対応しています。
+          初回のご相談は無料です。オンラインにて対応いたします。
         </p>
       </div>
       <div class="cta-blue__buttons">
