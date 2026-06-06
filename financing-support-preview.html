@@ -184,44 +184,6 @@
       font-size: 14px; line-height: 2; color: var(--ink-soft);
     }
 
-    /* ====== Service Grid ====== */
-    .svc-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
-    }
-    .svc-card {
-      padding: 48px 36px;
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      display: flex; flex-direction: column;
-      transition: background .3s;
-    }
-    .svc-card:hover { background: var(--blue-ghost); }
-    .svc-card__icon {
-      width: 56px; height: 56px; margin-bottom: 24px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--blue-light); border-radius: 14px;
-    }
-    .svc-card__icon svg { width: 24px; height: 24px; }
-    .svc-card__head {
-      display: flex; align-items: baseline; gap: 14px; margin-bottom: 18px;
-    }
-    .svc-card__num {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 36px; color: var(--blue); line-height: 1;
-    }
-    .svc-card__en {
-      font-family: var(--font-en-sans); font-size: 11px;
-      letter-spacing: .28em; color: var(--ink-light);
-    }
-    .svc-card__title {
-      font-family: var(--font-jp); font-weight: 700; font-size: 20px;
-      line-height: 1.4; letter-spacing: -.01em; margin-bottom: 14px;
-    }
-    .svc-card__desc {
-      font-size: 14px; line-height: 2; color: var(--ink-soft);
-    }
-
     /* ====== Team ====== */
     .team-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -445,7 +407,6 @@
     /* ====== Responsive ====== */
     @media (max-width: 1024px) {
       .reason-grid { grid-template-columns: 1fr 1fr; }
-      .svc-grid { grid-template-columns: 1fr 1fr; }
       .case-grid { grid-template-columns: 1fr 1fr; }
       .team-grid { grid-template-columns: 1fr 1fr; max-width: none; }
     }
@@ -459,8 +420,6 @@
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .reason-grid { grid-template-columns: 1fr; }
       .reason-card { padding: 36px 24px; }
-      .svc-grid { grid-template-columns: 1fr; }
-      .svc-card { padding: 36px 24px; }
       .team-grid { grid-template-columns: 1fr; }
       .case-grid { grid-template-columns: 1fr; }
       .flow-v-step { grid-template-columns: 60px 1fr; gap: 16px; }
@@ -659,67 +618,6 @@
           <div class="reason-card__num">03</div>
           <h3 class="reason-card__title">事業計画書作成まで<br>丸っと</h3>
           <p class="reason-card__desc">起業家にしかできないコア業務に注力いただくために、融資申請に必要な情報をヒアリングし、事業計画書の作成と面談対策まで一貫して行います。書類作成の手間を大幅に削減し、経営に集中できる環境をつくります。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Service -->
-  <section class="section" id="service">
-    <div class="section__inner">
-      <div class="hb-section-head">
-        <span class="hb-section-head__en">SERVICE</span>
-        <span class="hb-section-head__jp">支援内容</span>
-      </div>
-      <div class="svc-grid">
-        <!-- Service 01 -->
-        <div class="svc-card">
-          <div class="svc-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 9h18"/>
-              <path d="M9 3v18"/>
-              <path d="M13 13h4M13 17h4"/>
-            </svg>
-          </div>
-          <div class="svc-card__head">
-            <span class="svc-card__num">01</span>
-            <span class="svc-card__en">BUSINESS PLAN</span>
-          </div>
-          <h3 class="svc-card__title">事業計画書の作成</h3>
-          <p class="svc-card__desc">事業内容・市場環境・収支見込みをヒアリングし、金融機関が求める書式・ロジックに沿った事業計画書を作成します。売上シミュレーション（月次損益・資金繰り予測）も含みます。</p>
-        </div>
-        <!-- Service 02 -->
-        <div class="svc-card">
-          <div class="svc-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M3 10h18"/>
-              <path d="M8 3v3M16 3v3"/>
-              <rect x="6" y="14" width="4" height="4" rx="1"/>
-              <rect x="14" y="14" width="4" height="4" rx="1"/>
-            </svg>
-          </div>
-          <div class="svc-card__head">
-            <span class="svc-card__num">02</span>
-            <span class="svc-card__en">BANK NEGOTIATION</span>
-          </div>
-          <h3 class="svc-card__title">金融機関との折衝</h3>
-          <p class="svc-card__desc">日本政策金融公庫をはじめとする金融機関への申込手続きをサポート。担当者の紹介、面談日程の調整、追加資料の準備まで伴走します。</p>
-        </div>
-        <!-- Service 03 -->
-        <div class="svc-card">
-          <div class="svc-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <div class="svc-card__head">
-            <span class="svc-card__num">03</span>
-            <span class="svc-card__en">POST-FINANCING</span>
-          </div>
-          <h3 class="svc-card__title">融資後フォローアップ</h3>
-          <p class="svc-card__desc">融資実行後も顧問契約を通じて、資金繰り管理・追加融資のタイミングアドバイス・返済計画の見直しなどをサポート。調達した資金を最大限活かす経営支援を行います。</p>
         </div>
       </div>
     </div>
