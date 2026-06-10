@@ -229,16 +229,8 @@ img { max-width: 100%; display: block; }
             <span class="form-label">事業区分<span class="required">*</span></span>
             <div class="form-radio-group">
               <div class="form-radio">
-                <input type="radio" name="business_type" id="bt_corp" value="法人">
+                <input type="radio" name="business_type" id="bt_corp" value="法人" checked>
                 <label for="bt_corp">法人</label>
-              </div>
-              <div class="form-radio">
-                <input type="radio" name="business_type" id="bt_pre" value="法人設立予定">
-                <label for="bt_pre">法人設立予定</label>
-              </div>
-              <div class="form-radio">
-                <input type="radio" name="business_type" id="bt_other" value="その他">
-                <label for="bt_other">その他</label>
               </div>
             </div>
           </div>
@@ -254,7 +246,7 @@ img { max-width: 100%; display: block; }
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="company">会社名・屋号<span class="required">*</span></label>
+            <label class="form-label" for="company">会社名<span class="required">*</span></label>
             <input type="text" id="company" name="company" class="form-input" placeholder="株式会社サンプル" required>
           </div>
 
@@ -383,15 +375,11 @@ img { max-width: 100%; display: block; }
           </div>
 
           <div class="form-group">
-            <span class="form-label">検討中のプラン<span class="optional">任意</span></span>
+            <span class="form-label">依頼したい業務<span class="optional">任意</span></span>
             <div class="form-checkbox-group">
               <div class="form-checkbox">
                 <input type="checkbox" name="plan[]" id="plan_advisor" value="税務顧問">
                 <label for="plan_advisor">税務顧問</label>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" name="plan[]" id="plan_spot" value="スポット申告">
-                <label for="plan_spot">スポット申告</label>
               </div>
               <div class="form-checkbox">
                 <input type="checkbox" name="plan[]" id="plan_finance" value="融資支援">
@@ -417,9 +405,24 @@ img { max-width: 100%; display: block; }
           <div class="form-agreement">
             <input type="checkbox" id="privacy" name="privacy" required>
             <span>
-              <a href="#">個人情報の取り扱い</a>に同意する<span class="required" style="margin-left: 2px;">*</span><br>
-              ご入力いただいた個人情報は、お問い合わせへの対応およびサービスのご案内にのみ使用いたします。
+              <a href="#privacy-policy" style="text-decoration: underline;">個人情報の取り扱い</a>に同意する<span class="required" style="margin-left: 2px;">*</span>
             </span>
+          </div>
+
+          <!-- 個人情報の取り扱い -->
+          <div id="privacy-policy" style="margin-top: 16px; padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; font-size: 13px; color: var(--ink-soft); line-height: 1.85; max-height: 200px; overflow-y: auto;">
+            <p style="font-weight: 700; margin-bottom: 8px;">個人情報の取り扱いについて</p>
+            <p style="margin-bottom: 8px;">田村直大税理士事務所（以下「当事務所」）は、お客様の個人情報を以下のとおり取り扱います。</p>
+            <p style="margin-bottom: 4px;"><strong>1. 利用目的</strong></p>
+            <p style="margin-bottom: 8px;">ご入力いただいた個人情報は、お問い合わせへのご回答、サービスのご案内、お見積りの作成、および顧問契約の締結・履行のために使用いたします。</p>
+            <p style="margin-bottom: 4px;"><strong>2. 第三者提供</strong></p>
+            <p style="margin-bottom: 8px;">お客様の同意なく、個人情報を第三者に提供することはありません。ただし、法令に基づく場合を除きます。</p>
+            <p style="margin-bottom: 4px;"><strong>3. 安全管理</strong></p>
+            <p style="margin-bottom: 8px;">個人情報の漏洩、滅失、毀損の防止のため、適切な安全管理措置を講じます。</p>
+            <p style="margin-bottom: 4px;"><strong>4. 開示・訂正・削除</strong></p>
+            <p style="margin-bottom: 8px;">お客様ご本人から個人情報の開示・訂正・削除のご請求があった場合は、速やかに対応いたします。</p>
+            <p><strong>5. お問い合わせ窓口</strong></p>
+            <p>田村直大税理士事務所<br>〒160-0005 東京都新宿区愛住町23-1 Woody21ビル6階</p>
           </div>
 
           <!-- 送信 -->
