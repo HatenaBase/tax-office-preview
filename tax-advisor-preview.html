@@ -37,7 +37,7 @@
     .hb-header__nav { display: flex; gap: 28px; align-items: center; }
     .hb-header__nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
     .hb-header__nav a:hover { color: var(--blue); }
-    .hb-header__cta { padding: 10px 24px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
+    .hb-header__cta { padding: 10px 24px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
     .hb-header__cta:hover { background: var(--blue-deep); }
     .hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
     .hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; transition: .3s; }
@@ -183,7 +183,7 @@
       <nav class="hb-header__nav">
         <a href="#strength">STRENGTH</a>
         <a href="#scope">SCOPE</a>
-        <a href="#pricing">PRICING</a>
+
         <a href="#flow">FLOW</a>
         <a href="#faq">FAQ</a>
         <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
@@ -354,85 +354,22 @@
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- Pricing (個別見積り誘導) -->
   <section class="section section--paper" id="pricing">
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">PRICING</span>
-        <span class="hb-section-head__jp">料金表</span>
+        <span class="hb-section-head__jp">料金について</span>
       </div>
-
-      <!-- Standard -->
-      <div class="price-block">
-        <h3 class="price-block__title">税務顧問料金表</h3>
-        <p class="price-block__desc">記帳代行・税務相談・届出代行・年末調整・法定調書・決算・申告まで、すべて含んだ料金です。年間売上高に応じた明朗な料金体系で、追加費用の心配がありません。</p>
-        <p class="price-block__unit">円（税抜）</p>
-        <table class="price-table">
-          <thead><tr><th>年間売上高</th><th>月額顧問料</th><th>決算料</th><th>年間報酬</th></tr></thead>
-          <tbody>
-            <tr><td>1,000万円未満</td><td>20,000</td><td>0</td><td>240,000</td></tr>
-            <tr><td>1,000万円以上 2,000万円未満</td><td>25,000</td><td>0</td><td>300,000</td></tr>
-            <tr><td>2,000万円以上 3,000万円未満</td><td>25,000</td><td>50,000</td><td>350,000</td></tr>
-            <tr><td>3,000万円以上 5,000万円未満</td><td>30,000</td><td>100,000</td><td>460,000</td></tr>
-            <tr><td>5,000万円以上 1億円未満</td><td>40,000</td><td>150,000</td><td>630,000</td></tr>
-            <tr><td>1億円以上 2億円未満</td><td>50,000</td><td>200,000</td><td>800,000</td></tr>
-            <tr><td>2億円以上 3億円未満</td><td>70,000</td><td>300,000</td><td>1,140,000</td></tr>
-            <tr><td>3億円以上 4億円未満</td><td>90,000</td><td>400,000</td><td>1,480,000</td></tr>
-            <tr><td>4億円以上 5億円未満</td><td>110,000</td><td>500,000</td><td>1,820,000</td></tr>
-          </tbody>
-        </table>
-        <p class="price-block__note">※ 年間売上高5億円以上は別途ご相談ください。<br>※ 年間売上高2,000万円未満の場合、決算料は発生いたしません（決算料0円）。<br>※ 年間売上高2,000万円以上かつ、消費税申告義務がある場合、決算料とは別途消費税申告料が5万円（税別）発生いたします。</p>
-      </div>
-
-      <!-- Store -->
-      <div class="price-block">
-        <h3 class="price-block__title">税務顧問料金表（店舗型経営）</h3>
-        <p class="price-block__desc">飲食店・小売店など、実店舗を構えるビジネスの場合、現金取引やレジ会計の処理が発生するため、通常料金に割増が適用されます。</p>
-        <p class="price-block__unit">円（税抜）</p>
-        <table class="price-table">
-          <thead><tr><th>年間売上高</th><th>月額顧問料</th><th>決算料</th><th>年間報酬</th></tr></thead>
-          <tbody>
-            <tr><td>1,000万円未満</td><td>25,000</td><td>0</td><td>300,000</td></tr>
-            <tr><td>1,000万円以上 2,000万円未満</td><td>30,000</td><td>0</td><td>360,000</td></tr>
-            <tr><td>2,000万円以上 3,000万円未満</td><td>30,000</td><td>50,000</td><td>410,000</td></tr>
-            <tr><td>3,000万円以上 5,000万円未満</td><td>35,000</td><td>100,000</td><td>520,000</td></tr>
-            <tr><td>5,000万円以上 1億円未満</td><td>45,000</td><td>150,000</td><td>690,000</td></tr>
-            <tr><td>1億円以上 2億円未満</td><td>60,000</td><td>200,000</td><td>920,000</td></tr>
-            <tr><td>2億円以上 3億円未満</td><td>80,000</td><td>300,000</td><td>1,260,000</td></tr>
-            <tr><td>3億円以上 4億円未満</td><td>100,000</td><td>400,000</td><td>1,600,000</td></tr>
-            <tr><td>4億円以上 5億円未満</td><td>120,000</td><td>500,000</td><td>1,940,000</td></tr>
-          </tbody>
-        </table>
-        <p class="price-block__note">※ 2店舗目以降は、店舗ごとの売上に応じて表の金額の半額が追加されます。<br>※ 通常の法人よりも仕訳量・現金管理の工数が増加するため、店舗型料金を設定しております。<br>※ 年間売上高2,000万円未満の場合、決算料は発生いたしません（決算料0円）。<br>※ 年間売上高2,000万円以上かつ、消費税申告義務がある場合、決算料とは別途消費税申告料が5万円（税別）発生いたします。</p>
-      </div>
-
-      <!-- Additional -->
-      <div class="price-block">
-        <h3 class="price-block__title">追加料金</h3>
-        <p class="price-block__desc">通常は顧問料に含まれますが、以下の条件に該当する場合のみ追加料金が発生します。</p>
-        <table class="addon-table">
-          <thead><tr><th>項目</th><th>条件</th><th>追加料金</th></tr></thead>
-          <tbody>
-            <tr><td>年末調整</td><td>従業員5名超の場合</td><td>5名追加ごとに5,000円（税抜）</td></tr>
-            <tr><td>償却資産申告書</td><td>提出先が複数ある場合</td><td>1箇所追加につき5,000円（税抜）</td></tr>
-            <tr><td>源泉所得税徴収高計算書</td><td>納期の特例適用外（毎月納付）の場合</td><td>月額3,000円（税抜）</td></tr>
-          </tbody>
-        </table>
-        <p class="price-block__note">※ 給与の支給人員が常時10人以上の場合、納期の特例は利用できません。</p>
-      </div>
-
-      <!-- Payment -->
-      <div class="price-block">
-        <h3 class="price-block__title">お支払い方法</h3>
-        <p class="price-block__desc">月額顧問料はクレジットカード払いとなります。毎月の請求書発行や振込の手間がなく、自動で決済が完了するため、経営者様のご負担を最小限にしています。</p>
-        <table class="addon-table">
-          <thead><tr><th>項目</th><th>お支払いタイミング</th><th>詳細</th></tr></thead>
-          <tbody>
-            <tr><td>月額顧問料</td><td>当月発生・当月払い</td><td>毎月のクレジットカード自動引落。請求書の確認や振込作業は不要です。</td></tr>
-            <tr><td>決算料（申告料）</td><td>申告完了後</td><td>請求書を送付いたしますので、銀行振込にてお支払いください。</td></tr>
-          </tbody>
-        </table>
-        <p class="price-block__note">※ Visa / Mastercard / JCB / American Express / Diners Club に対応しています。</p>
+      <div style="max-width: 720px;">
+        <p style="font-size: 16px; font-weight: 700; margin-bottom: 16px; line-height: 1.6;">お客様の事業内容・規模に応じて、最適なプランをご提案します。</p>
+        <p style="font-size: 15px; color: var(--ink-soft); line-height: 2; margin-bottom: 32px;">
+          料金は事業内容・年間売上高・仕訳量などを総合的にヒアリングしたうえで、個別にお見積りいたします。<br>
+          初回のご相談は無料ですので、まずはお気軽にお問い合わせください。
+        </p>
+        <a href="./contact-preview.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .3s;">
+          無料相談・お見積りはこちら <span style="font-family: var(--font-en); font-style: italic;">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -561,7 +498,6 @@
               <li>個人事業主の方</li>
               <li>せどりなど取引が大量に発生する業種</li>
               <li>不動産業、建設業</li>
-              <li>製造業、原価計算がある小売業及び卸売業</li>
               <li>金融業</li>
               <li>医院・クリニック、介護・福祉</li>
               <li>NPO、一般社団法人、一般財団法人</li>
@@ -569,10 +505,8 @@
             </ul>
             <p style="font-weight: 700; margin-bottom: 4px;">その他</p>
             <ul style="padding-left: 20px; line-height: 1.85;">
-              <li>手形取引もしくは、外貨建口座をお持ちの場合</li>
-              <li>ボーナスや手当自体の金額の決定を弊所に依頼する場合</li>
+              <li>手形取引をお持ちの場合</li>
               <li>前期売上が5億円超、または従業員数（業務委託者は除く）30人超</li>
-              <li>資本金1億円以上</li>
             </ul>
           </div>
         </div>

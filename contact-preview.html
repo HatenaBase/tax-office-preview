@@ -31,7 +31,7 @@ img { max-width: 100%; display: block; }
 .hb-header__nav { display: flex; gap: 28px; align-items: center; }
 .hb-header__nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
 .hb-header__nav a:hover { color: var(--blue); }
-.hb-header__cta { padding: 10px 24px; background: var(--ink); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
+.hb-header__cta { padding: 10px 24px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
 .hb-header__cta:hover { background: var(--blue-deep); }
 .hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
 .hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; transition: .3s; }
@@ -397,6 +397,60 @@ img { max-width: 100%; display: block; }
           </div>
 
           <div class="form-group">
+            <label class="form-label">以下に該当する場合はお受けできない場合がございます <span class="optional">確認</span></label>
+            <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 20px 24px; margin-top: 8px;">
+              <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.6;">以下に該当する場合、ご対応が難しい場合がございます。該当する項目がありましたらチェックをお願いします。</p>
+              <div class="form-checkbox-group" style="flex-direction: column; gap: 8px;">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="個人事業主">
+                  <span class="form-checkbox-custom"></span>
+                  <span>個人事業主である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="せどり・大量取引">
+                  <span class="form-checkbox-custom"></span>
+                  <span>せどりなど取引が大量に発生する業種である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="不動産・建設業">
+                  <span class="form-checkbox-custom"></span>
+                  <span>不動産業・建設業である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="金融業">
+                  <span class="form-checkbox-custom"></span>
+                  <span>金融業である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="医院・介護・福祉">
+                  <span class="form-checkbox-custom"></span>
+                  <span>医院・クリニック、介護・福祉事業である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="NPO・社団・財団">
+                  <span class="form-checkbox-custom"></span>
+                  <span>NPO、一般社団法人、一般財団法人である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="風俗業">
+                  <span class="form-checkbox-custom"></span>
+                  <span>キャバクラ、クラブ、風俗業である</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="手形取引">
+                  <span class="form-checkbox-custom"></span>
+                  <span>手形取引がある</span>
+                </label>
+                <label class="form-checkbox-label">
+                  <input type="checkbox" name="screening[]" value="売上5億超・従業員30人超">
+                  <span class="form-checkbox-custom"></span>
+                  <span>前期売上が5億円超、または従業員数30人超である</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="form-label" for="message">自由記述<span class="optional">任意</span></label>
             <textarea id="message" name="message" class="form-textarea" placeholder="ご相談内容やご質問がございましたら、お気軽にご記入ください。"></textarea>
           </div>
@@ -438,15 +492,6 @@ img { max-width: 100%; display: block; }
 
       <!-- Right: Sidebar -->
       <div class="sidebar">
-        <!-- 日程調整カード -->
-        <div class="sidebar-card sidebar-card--schedule">
-          <div class="sidebar-card__title">今すぐ日程を確定したい方</div>
-          <p class="sidebar-card__text">お急ぎの方はTimerexで直接ご予約いただけます。</p>
-          <a href="./schedule-preview.html" class="sidebar-card__btn">
-            <span>日程調整はこちら</span>
-            <span class="arrow">&rarr;</span>
-          </a>
-        </div>
 
         <!-- 補足情報 -->
         <div class="sidebar-info">
@@ -524,7 +569,7 @@ img { max-width: 100%; display: block; }
       </div>
       <div class="faq-item">
         <p class="faq-item__q">どのくらいで返信がもらえますか？</p>
-        <p class="faq-item__a">メールにてご返信いたします。お急ぎの場合は、日程調整ページから直接オンライン面談をご予約いただくことも可能です。</p>
+        <p class="faq-item__a">通常1営業日以内にメールにてご返信いたします。</p>
       </div>
       <div class="faq-item">
         <p class="faq-item__q">まだ法人設立前ですが相談できますか？</p>
