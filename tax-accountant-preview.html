@@ -246,42 +246,36 @@
     }
     .about-link:hover { text-decoration: underline; }
 
-    /* ====== Service (2 cards) ====== */
+    /* ====== Service (6 cards grid) ====== */
     .svc-grid2 {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
       border-top: 1px solid var(--line); border-left: 1px solid var(--line);
     }
     .svc2-card {
-      padding: 56px 48px;
+      padding: 36px 32px;
       border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
       text-decoration: none; color: var(--ink);
       display: flex; flex-direction: column;
       transition: background .3s;
     }
     .svc2-card:hover { background: var(--blue-ghost); }
-    .svc2-card__icon {
-      width: 72px; height: 72px; margin-bottom: 28px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--blue-light); border-radius: 16px;
-    }
-    .svc2-card__icon svg { width: 36px; height: 36px; }
     .svc2-card__head {
-      display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px;
+      display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;
     }
     .svc2-card__num {
       font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 36px; color: var(--blue); line-height: 1;
+      font-size: 28px; color: var(--blue); line-height: 1;
     }
     .svc2-card__en {
-      font-family: var(--font-en-sans); font-size: 11px;
-      letter-spacing: .28em; color: var(--ink-light);
+      font-family: var(--font-en-sans); font-size: 10px; font-weight: 500;
+      letter-spacing: .15em; color: var(--ink-light);
     }
     .svc2-card__title {
-      font-weight: 700; font-size: 24px; line-height: 1.4;
-      letter-spacing: -.01em; margin-bottom: 16px;
+      font-weight: 700; font-size: 17px; line-height: 1.4;
+      margin-bottom: 10px;
     }
     .svc2-card__desc {
-      font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 24px;
+      font-size: 13px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 16px;
     }
     .svc2-card__price {
       font-family: var(--font-en-sans); font-size: 14px; font-weight: 600;
@@ -413,6 +407,7 @@
     @media (max-width: 1024px) {
       .hb-hero__inner { max-width: 100%; }
       .feat-grid { grid-template-columns: repeat(3, 1fr); }
+      .svc-grid2 { grid-template-columns: repeat(2, 1fr); }
       .msg-grid { grid-template-columns: 280px 1fr; gap: 40px; }
       .msg-photo { width: 280px; height: 360px; }
     }
@@ -428,7 +423,7 @@
       .msg-photo { width: 100%; height: 320px; }
       .about-grid { grid-template-columns: 1fr; }
       .svc-grid2 { grid-template-columns: 1fr; }
-      .svc2-card { padding: 36px 24px; }
+      .svc2-card { padding: 28px 24px; }
       .voice-grid { grid-template-columns: 1fr; }
       .voice-card { grid-template-columns: 1fr; }
       .voice-card__thumb { width: 100%; height: 160px; }
@@ -525,35 +520,6 @@
     </div>
   </section>
 
-  <!-- Representative Message -->
-  <section class="section" id="message">
-    <div class="section__inner">
-      <div class="hb-section-head">
-        <span class="hb-section-head__en">MESSAGE</span>
-        <span class="hb-section-head__jp">代表メッセージ</span>
-      </div>
-      <div class="msg-grid">
-        <div class="msg-photo">
-          <img src="images/tamura-profile.jpg" alt="田村直大 代表税理士">
-        </div>
-        <div>
-          <p class="msg-label">REPRESENTATIVE</p>
-          <p class="msg-name">田村 直大（Naohiro Tamura）</p>
-          <p class="msg-role">代表税理士 / 公認会計士｜大手監査法人 出身</p>
-          <h2 class="msg-title">
-            経理が自走する仕組みをつくり、<br>
-            経営者の挑戦を支え続けます。
-          </h2>
-          <p class="msg-body">
-            私たちが目指すのは、経営者が経理のことを気にせず本業に集中できる「経理が自走する状態」をつくることです。<br><br>
-            記帳代行や決算申告をただ引き受けるだけでなく、freee会計の自動化設計やSlackでのリアルタイム連携を通じて、経営者が何もしなくても経理業務が回り続ける仕組みを構築します。創業期の立ち上げから上場準備に至るまで、事業のフェーズが変わっても、経理が足を引っ張らない体制を一緒につくっていきます。<br><br>
-            大手監査法人出身の公認会計士・税理士として、上場企業レベルの品質基準と、スタートアップに必要なスピード感を両立させます。一人で悩まず、まずはお気軽にご相談ください。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- About Us -->
   <section class="section section--paper" id="about">
     <div class="section__inner">
@@ -619,75 +585,54 @@
       </div>
       <div class="svc-grid2">
         <a href="./tax-advisor-preview.html" class="svc2-card">
-          <div class="svc2-card__icon">
-            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
-              <rect x="6" y="4" width="24" height="28" rx="3"/>
-              <line x1="11" y1="12" x2="25" y2="12"/>
-              <line x1="11" y1="17" x2="25" y2="17"/>
-              <line x1="11" y1="22" x2="20" y2="22"/>
-              <path d="M22 26l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
           <div class="svc2-card__head">
             <span class="svc2-card__num">01</span>
             <span class="svc2-card__en">TAX ADVISOR</span>
           </div>
           <h3 class="svc2-card__title">税務顧問</h3>
-          <p class="svc2-card__desc">記帳から決算・申告まで、まるっとおまかせ。顧問として日常のご相談から記帳代行、年末調整、決算申告まで、会社の税金のことをワンストップでお引き受けします。あなたの事業に精通した専門家が、同世代の経営者として気軽に相談できるパートナーになります。</p>
+          <p class="svc2-card__desc">記帳から決算・申告まで、まるっとおまかせ。顧問として日常のご相談から記帳代行、年末調整、決算申告まで、会社の税金のことをワンストップでお引き受けします。</p>
           <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
         </a>
         <a href="./financing-support-preview.html" class="svc2-card">
-          <div class="svc2-card__icon">
-            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
-              <rect x="4" y="8" width="28" height="20" rx="3"/>
-              <circle cx="18" cy="18" r="5"/>
-              <line x1="8" y1="8" x2="8" y2="28"/>
-              <line x1="28" y1="8" x2="28" y2="28"/>
-              <text x="18" y="21" font-family="Inter" font-size="8" fill="#1F61AB" text-anchor="middle" font-weight="600">¥</text>
-            </svg>
-          </div>
           <div class="svc2-card__head">
             <span class="svc2-card__num">02</span>
             <span class="svc2-card__en">FINANCING</span>
           </div>
           <h3 class="svc2-card__title">資金調達支援</h3>
-          <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績で、創業期の資金調達を成功に導きます。成果報酬型だから、リスクなく始められます。</p>
+          <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績で、創業期の資金調達を成功に導きます。</p>
           <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
         </a>
-      </div>
-      <h3 style="font-size: 18px; font-weight: 700; margin-top: 56px; margin-bottom: 24px; color: var(--ink);">その他のサービス</h3>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);">
-        <div style="padding: 36px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s;" onmouseover="this.style.background='var(--blue-ghost)'" onmouseout="this.style.background=''">
-          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
-            <span style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); line-height: 1;">03</span>
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--ink-light);">CLOUD ACCOUNTING</span>
+        <div class="svc2-card">
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">03</span>
+            <span class="svc2-card__en">CLOUD ACCOUNTING</span>
           </div>
-          <h4 style="font-weight: 700; font-size: 17px; margin-bottom: 10px;">クラウド会計ソフト導入支援</h4>
-          <p style="font-size: 13px; line-height: 1.85; color: var(--ink-soft);">freee会計の導入・初期設定から日常運用まで。銀行口座・クレカ連携、請求書設定、自動仕訳ルールの構築まで一貫サポートします。</p>
+          <h3 class="svc2-card__title">クラウド会計ソフト導入支援</h3>
+          <p class="svc2-card__desc">freee会計の導入・初期設定から日常運用まで。銀行口座・クレカ連携、請求書設定、自動仕訳ルールの構築まで一貫サポートします。</p>
         </div>
-        <div style="padding: 36px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s;" onmouseover="this.style.background='var(--blue-ghost)'" onmouseout="this.style.background=''">
-          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
-            <span style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); line-height: 1;">04</span>
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--ink-light);">VALUATION</span>
+        <div class="svc2-card">
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">04</span>
+            <span class="svc2-card__en">VALUATION</span>
           </div>
-          <h4 style="font-weight: 700; font-size: 17px; margin-bottom: 10px;">株価算定</h4>
-          <p style="font-size: 13px; line-height: 1.85; color: var(--ink-soft);">M&A・事業承継・ストックオプション発行に必要な株価算定。DCF法・類似会社比較法など、目的に応じた適切な手法で算定します。</p>
+          <h3 class="svc2-card__title">株価算定</h3>
+          <p class="svc2-card__desc">M&A・事業承継・ストックオプション発行に必要な株価算定。DCF法・類似会社比較法など、目的に応じた適切な手法で算定します。</p>
         </div>
-        <div style="padding: 36px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s;" onmouseover="this.style.background='var(--blue-ghost)'" onmouseout="this.style.background=''">
-          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
-            <span style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); line-height: 1;">05</span>
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--ink-light);">STOCK OPTION</span>
+        <div class="svc2-card">
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">05</span>
+            <span class="svc2-card__en">STOCK OPTION</span>
           </div>
-          <h4 style="font-weight: 700; font-size: 17px; margin-bottom: 10px;">ストックオプション評価</h4>
-          <p style="font-size: 13px; line-height: 1.85; color: var(--ink-soft);">ストックオプション制度の設計支援から公正価値の評価まで。税制適格要件の確認、会計処理のアドバイスも対応します。</p>
+          <h3 class="svc2-card__title">ストックオプション評価</h3>
+          <p class="svc2-card__desc">ストックオプション制度の設計支援から公正価値の評価まで。税制適格要件の確認、会計処理のアドバイスも対応します。</p>
         </div>
-        <div style="padding: 36px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s;" onmouseover="this.style.background='var(--blue-ghost)'" onmouseout="this.style.background=''">
-          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
-            <span style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); line-height: 1;">06</span>
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--ink-light);">DUE DILIGENCE</span>
+        <div class="svc2-card">
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">06</span>
+            <span class="svc2-card__en">DUE DILIGENCE</span>
           </div>
-          <h4 style="font-weight: 700; font-size: 17px; margin-bottom: 10px;">財務デューデリジェンス</h4>
-          <p style="font-size: 13px; line-height: 1.85; color: var(--ink-soft);">M&A・投資判断に必要な財務財務デューデリジェンス。対象企業の財務状況を精査し、リスクと機会を明確化します。</p>
+          <h3 class="svc2-card__title">財務デューデリジェンス</h3>
+          <p class="svc2-card__desc">M&A・投資判断に必要な財務デューデリジェンス。対象企業の財務状況を精査し、リスクと機会を明確化します。</p>
         </div>
       </div>
     </div>

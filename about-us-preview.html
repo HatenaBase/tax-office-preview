@@ -38,10 +38,24 @@ img { max-width: 100%; display: block; }
 .hb-hamburger span:nth-child(1) { top: 9px; } .hb-hamburger span:nth-child(2) { top: 15px; } .hb-hamburger span:nth-child(3) { top: 21px; }
 
 /* Section head */
-.section-head { margin-bottom: 48px; }
-.section-head .label { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 12px; }
-.section-head .label::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
-.section-head .title { font-family: var(--font-jp); font-size: 26px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); line-height: 1.5; }
+.hb-section-head {
+  display: flex; align-items: baseline; gap: 18px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--line);
+  margin-bottom: 48px;
+}
+.hb-section-head__en {
+  font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+  letter-spacing: .3em; color: var(--blue);
+  display: flex; align-items: center; gap: 10px;
+}
+.hb-section-head__en::before {
+  content: ''; display: inline-block;
+  width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+}
+.hb-section-head__jp {
+  font-family: var(--font-jp); font-weight: 700; font-size: 28px;
+  letter-spacing: -.01em; color: var(--ink);
+}
 
 /* Subhero */
 .subhero { padding: 100px 0 80px; background: var(--white); border-bottom: 1px solid var(--line); }
@@ -146,7 +160,7 @@ img { max-width: 100%; display: block; }
   .container { padding: 0 24px; }
   .header-nav a:not(.nav-pill) { display: none; } .hb-hamburger { display: block; }
   .subhero { padding: 72px 0 56px; } .subhero .en { font-size: 28px; } .subhero .headline { font-size: 22px; }
-  .section { padding: 64px 0; } .section-head .title { font-size: 22px; }
+  .section { padding: 64px 0; } .hb-section-head { flex-direction: column; gap: 8px; } .hb-section-head__jp { font-size: 22px; }
   .rep-grid { grid-template-columns: 1fr; gap: 32px; } .rep-photo { width: 100%; height: 320px; }
   .team-grid { grid-template-columns: 1fr; } .team-card--wide { grid-column: 1; }
   .features-grid { grid-template-columns: 1fr; }
@@ -211,9 +225,9 @@ img { max-width: 100%; display: block; }
 <!-- Overview -->
 <section class="section section--paper">
   <div class="container">
-    <div class="section-head">
-      <div class="label">Overview</div>
-      <h2 class="title">事務所概要</h2>
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">OVERVIEW</span>
+      <span class="hb-section-head__jp">事務所概要</span>
     </div>
     <table class="overview-table">
       <tbody>
@@ -231,9 +245,9 @@ img { max-width: 100%; display: block; }
 <!-- Representative -->
 <section class="section section--white">
   <div class="container">
-    <div class="section-head">
-      <div class="label">Representative</div>
-      <h2 class="title">代表</h2>
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">REPRESENTATIVE</span>
+      <span class="hb-section-head__jp">代表</span>
     </div>
     <div class="rep-grid">
       <div class="rep-photo">
@@ -256,9 +270,9 @@ img { max-width: 100%; display: block; }
 <!-- Team -->
 <section class="section section--paper">
   <div class="container">
-    <div class="section-head">
-      <div class="label">Team</div>
-      <h2 class="title">メンバー</h2>
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">TEAM</span>
+      <span class="hb-section-head__jp">メンバー</span>
     </div>
     <div class="team-grid">
       <!-- Setoguchi -->
@@ -310,9 +324,9 @@ img { max-width: 100%; display: block; }
 <!-- Features -->
 <section class="section section--white">
   <div class="container">
-    <div class="section-head">
-      <div class="label">Features</div>
-      <h2 class="title">事務所の特徴</h2>
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">FEATURES</span>
+      <span class="hb-section-head__jp">事務所の特徴</span>
     </div>
     <div class="features-grid">
       <div class="feature-card">
@@ -365,9 +379,9 @@ img { max-width: 100%; display: block; }
 <!-- Access -->
 <section class="section section--white">
   <div class="container">
-    <div class="section-head">
-      <div class="label">Access</div>
-      <h2 class="title">アクセス</h2>
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">ACCESS</span>
+      <span class="hb-section-head__jp">アクセス</span>
     </div>
     <div class="access-grid">
       <div class="access-info">
