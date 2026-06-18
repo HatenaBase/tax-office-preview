@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>融資支援サービス｜はてなベース税理士事務所</title>
-  <meta name="description" content="創業融資の事業計画書作成から金融機関との折衝まで一貫サポート。成功報酬5%以下、融資不成立時は0円。はてなベース税理士事務所。">
+  <title>田村事業部｜創業期のお客様をフルサポート｜はてなベース税理士事務所</title>
+  <meta name="description" content="創業期・中小企業のお客様向け。記帳・届出・決算・申告・融資支援まで、事業に精通した専門家がフルサポート。freee認定5つ星。はてなベース税理士事務所 田村事業部。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -25,416 +25,136 @@
       --font-en-sans: "Inter", system-ui, sans-serif;
       --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
     }
-
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
-    /* ====== Header ====== */
-    .hb-header {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-    }
-    .hb-header__inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 16px 32px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .hb-header__logo {
-      display: flex; align-items: center; gap: 12px;
-      text-decoration: none; color: var(--ink);
-    }
-    .hb-header__logo-text {
-      font-family: var(--font-jp); font-weight: 700;
-      font-size: 15px; letter-spacing: .02em; line-height: 1.3;
-    }
-    .hb-header__logo-sub {
-      font-size: 10px; font-weight: 400;
-      color: var(--ink-light); display: block;
-    }
-    .hb-header__nav {
-      display: flex; gap: 28px; align-items: center;
-    }
-    .hb-header__nav a {
-      font-family: var(--font-en-sans);
-      font-size: 12px; font-weight: 500; letter-spacing: .04em;
-      color: var(--ink-soft); text-decoration: none;
-      transition: color .2s;
-    }
+    /* Header */
+    .hb-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .hb-header__inner { max-width: 1280px; margin: 0 auto; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .hb-header__logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+    .hb-header__logo-text { font-family: var(--font-jp); font-weight: 700; font-size: 15px; letter-spacing: .02em; line-height: 1.3; }
+    .hb-header__logo-sub { font-size: 10px; font-weight: 400; color: var(--ink-light); display: block; }
+    .hb-header__nav { display: flex; gap: 28px; align-items: center; }
+    .hb-header__nav a { font-family: var(--font-en-sans); font-size: 12px; font-weight: 500; letter-spacing: .04em; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
     .hb-header__nav a:hover { color: var(--blue); }
-    .hb-header__cta {
-      padding: 10px 24px; background: var(--blue); color: #fff;
-      border-radius: 999px; font-size: 12px; font-weight: 600;
-      letter-spacing: .04em; text-decoration: none;
-      transition: background .3s;
-    }
+    .hb-header__cta { padding: 10px 24px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-decoration: none; transition: background .3s; }
     .hb-header__cta:hover { background: var(--blue-deep); }
-    .hb-hamburger {
-      display: none; background: none; border: none;
-      cursor: pointer; width: 32px; height: 32px; position: relative;
-    }
-    .hb-hamburger span {
-      display: block; width: 20px; height: 1.5px;
-      background: var(--ink); position: absolute; left: 6px;
-      transition: .3s;
-    }
-    .hb-hamburger span:nth-child(1) { top: 9px; }
-    .hb-hamburger span:nth-child(2) { top: 15px; }
-    .hb-hamburger span:nth-child(3) { top: 21px; }
+    .hb-hamburger { display: none; background: none; border: none; cursor: pointer; width: 32px; height: 32px; position: relative; }
+    .hb-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--ink); position: absolute; left: 6px; transition: .3s; }
+    .hb-hamburger span:nth-child(1) { top: 9px; } .hb-hamburger span:nth-child(2) { top: 15px; } .hb-hamburger span:nth-child(3) { top: 21px; }
 
-    /* ====== SubHero ====== */
-    .hb-subhero {
-      position: relative; padding: 80px 32px 72px;
-      background: var(--white); overflow: hidden;
-      border-bottom: 1px solid var(--line);
-    }
+    /* SubHero */
+    .hb-subhero { position: relative; padding: 80px 32px 72px; background: var(--white); overflow: hidden; border-bottom: 1px solid var(--line); }
     .hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
-    .hb-subhero__crumb {
-      font-family: var(--font-en-sans); font-size: 11px;
-      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px;
-    }
+    .hb-subhero__crumb { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px; }
     .hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; }
     .hb-subhero__crumb a:hover { color: var(--blue); }
-    .hb-subhero__en {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 16px; color: var(--blue); margin-bottom: 16px;
-      letter-spacing: .04em;
-    }
-    .hb-subhero__jp {
-      font-family: var(--font-jp); font-weight: 900;
-      font-size: clamp(28px, 4vw, 52px); line-height: 1.25;
-      letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px;
-    }
-    .hb-subhero__lead {
-      font-size: 15px; line-height: 2; color: var(--ink-soft);
-      max-width: 720px;
-    }
+    .hb-subhero__en { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 16px; color: var(--blue); margin-bottom: 16px; letter-spacing: .04em; }
+    .hb-subhero__jp { font-family: var(--font-jp); font-weight: 900; font-size: clamp(28px, 4vw, 52px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px; }
+    .hb-subhero__lead { font-size: 15px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
 
-    /* ====== Section Head ====== */
-    .hb-section-head {
-      display: flex; align-items: baseline; gap: 18px;
-      padding-bottom: 18px; border-bottom: 1px solid var(--line);
-      margin-bottom: 48px;
-    }
-    .hb-section-head__en {
-      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
-      letter-spacing: .3em; color: var(--blue);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .hb-section-head__en::before {
-      content: ''; display: inline-block;
-      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
-    }
-    .hb-section-head__jp {
-      font-family: var(--font-jp); font-weight: 700; font-size: 28px;
-      letter-spacing: -.01em; color: var(--ink);
-    }
-
-    /* ====== Section base ====== */
+    /* Section */
     .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
     .section--paper { background: var(--paper); }
     .section--warm { background: var(--paper-warm); }
     .section__inner { max-width: 1280px; margin: 0 auto; }
+    .hb-section-head { display: flex; align-items: baseline; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+    .hb-section-head__en { font-family: var(--font-en-sans); font-size: 11px; font-weight: 500; letter-spacing: .3em; color: var(--blue); display: flex; align-items: center; gap: 10px; }
+    .hb-section-head__en::before { content: ''; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+    .hb-section-head__jp { font-family: var(--font-jp); font-weight: 700; font-size: 28px; letter-spacing: -.01em; color: var(--ink); }
 
-    /* ====== Stats ====== */
-    .stats-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
-    }
-    .stat-cell {
-      padding: 40px 24px; text-align: center;
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-    }
-    .stat-cell__number {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 48px; color: var(--blue); line-height: 1; margin-bottom: 8px;
-    }
-    .stat-cell__label {
-      font-size: 13px; color: var(--ink-soft);
-    }
+    /* Strength cards */
+    .str-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .str-card { padding: 48px 40px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
+    .str-card:hover { background: var(--blue-ghost); }
+    .str-card__icon { width: 56px; height: 56px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 14px; }
+    .str-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+    .str-card__title { font-weight: 700; font-size: 20px; line-height: 1.4; margin-bottom: 14px; }
+    .str-card__desc { font-size: 14px; line-height: 2; color: var(--ink-soft); }
 
-    /* ====== Reason Cards ====== */
-    .reason-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
-    }
-    .reason-card {
-      padding: 48px 36px;
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      transition: background .3s;
-    }
-    .reason-card:hover { background: var(--blue-ghost); }
-    .reason-card__icon {
-      width: 56px; height: 56px; margin-bottom: 24px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--blue-light); border-radius: 14px;
-    }
-    .reason-card__icon svg { width: 24px; height: 24px; }
-    .reason-card__num {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 36px; color: var(--blue); line-height: 1; margin-bottom: 8px;
-    }
-    .reason-card__title {
-      font-weight: 700; font-size: 20px; line-height: 1.4;
-      margin-bottom: 14px; letter-spacing: -.01em;
-    }
-    .reason-card__desc {
-      font-size: 14px; line-height: 2; color: var(--ink-soft);
-    }
+    /* Scope */
+    .scope-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .scope-card { padding: 32px 24px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
+    .scope-card:hover { background: var(--blue-ghost); }
+    .scope-card__icon { width: 40px; height: 40px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 10px; }
+    .scope-card__icon svg { width: 20px; height: 20px; }
+    .scope-card__title { font-weight: 700; font-size: 15px; margin-bottom: 8px; line-height: 1.4; }
+    .scope-card__desc { font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
+    .scope-card__note { font-size: 12px; color: var(--blue); margin-top: 6px; font-weight: 500; }
 
-    /* ====== Team ====== */
-    .team-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .team-card {
-      border: 1px solid var(--line); border-radius: 6px;
-      padding: 36px; background: var(--white);
-    }
-    .team-card__avatar {
-      width: 80px; height: 80px; border-radius: 50%;
-      background: var(--blue-light); border: 1px solid var(--line);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 20px;
-    }
-    .team-card__avatar svg { width: 32px; height: 32px; }
-    .team-card__avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .team-card__name {
-      font-size: 18px; font-weight: 700; margin-bottom: 2px;
-    }
-    .team-card__name-en {
-      font-family: var(--font-en-sans); font-size: 12px;
-      color: var(--ink-light); margin-bottom: 6px;
-    }
-    .team-card__title {
-      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
-      letter-spacing: .04em; color: var(--blue); margin-bottom: 4px;
-    }
-    .team-card__org {
-      font-size: 12px; color: var(--ink-light); margin-bottom: 16px;
-    }
-    .team-card__desc {
-      font-size: 14px; color: var(--ink-soft); line-height: 2;
-    }
-
-    /* ====== Case Grid ====== */
-    .case-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
-    }
-    .case-card {
-      padding: 40px 32px;
-      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
-      transition: background .3s;
-    }
-    .case-card:hover { background: var(--blue-ghost); }
-    .case-card__icon {
-      width: 48px; height: 48px; margin-bottom: 18px;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--blue-light); border-radius: 12px;
-    }
-    .case-card__icon svg { width: 22px; height: 22px; }
-    .case-card__label {
-      font-family: var(--font-en-sans); font-size: 10px; font-weight: 600;
-      letter-spacing: .2em; color: var(--blue); margin-bottom: 10px;
-    }
-    .case-card__title {
-      font-weight: 700; font-size: 16px; margin-bottom: 8px;
-    }
-    .case-card__amount {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 32px; color: var(--blue); margin-bottom: 6px; line-height: 1.2;
-    }
-    .case-card__amount span {
-      font-family: var(--font-jp); font-style: normal; font-weight: 400;
-      font-size: 14px; color: var(--ink-soft);
-    }
-    .case-card__bank {
-      font-size: 13px; color: var(--ink-light); margin-bottom: 12px;
-    }
-    .case-card__desc {
-      font-size: 13px; color: var(--ink-soft); line-height: 1.8;
-    }
-
-    /* ====== Pricing ====== */
-    .price-table {
-      width: 100%; border-collapse: collapse; margin-bottom: 32px;
-    }
-    .price-table th {
-      font-family: var(--font-jp); font-weight: 700; font-size: 13px;
-      padding: 14px 20px; text-align: center;
-      background: var(--blue); color: #fff;
-      border: 1px solid var(--blue-deep);
-    }
-    .price-table td {
-      font-size: 14px; font-weight: 500;
-      padding: 14px 20px; text-align: center;
-      border: 1px solid var(--line); color: var(--ink);
-    }
-    .price-table td:first-child {
-      font-family: var(--font-jp); font-weight: 400;
-      text-align: left; padding-left: 24px;
-    }
+    /* Pricing */
+    .price-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .price-table th { font-family: var(--font-jp); font-weight: 700; font-size: 13px; padding: 14px 16px; text-align: center; background: var(--blue); color: #fff; border: 1px solid var(--blue-deep); }
+    .price-table td { font-family: var(--font-en-sans); font-size: 14px; font-weight: 500; padding: 14px 16px; text-align: center; border: 1px solid var(--line); color: var(--ink); }
+    .price-table td:first-child { font-family: var(--font-jp); font-weight: 400; text-align: left; padding-left: 24px; }
     .price-table tbody tr:nth-child(even) { background: var(--blue-ghost); }
     .price-table tbody tr:hover { background: var(--blue-light); }
+    .price-block + .price-block { margin-top: 56px; }
+    .price-block__title { font-weight: 700; font-size: 20px; margin-bottom: 6px; }
+    .price-block__desc { font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.85; }
+    .price-block__unit { font-size: 12px; color: var(--ink-light); text-align: right; margin-bottom: 8px; }
+    .price-block__note { font-size: 13px; color: var(--ink-soft); margin-top: 14px; line-height: 1.85; }
 
-    .pricing-note {
-      margin-top: 24px; padding: 24px 32px;
-      background: var(--blue-ghost); border-left: 3px solid var(--blue);
-      border-radius: 0 4px 4px 0;
-    }
-    .pricing-note__title {
-      font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--blue-deep);
-    }
-    .pricing-note__desc {
-      font-size: 13px; color: var(--ink-soft); line-height: 1.8;
-    }
+    /* Addon table */
+    .addon-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .addon-table th { font-weight: 700; font-size: 13px; padding: 14px 20px; text-align: left; background: var(--paper-warm); color: var(--ink); border-bottom: 2px solid var(--line); }
+    .addon-table td { font-size: 14px; padding: 14px 20px; border-bottom: 1px solid var(--line); color: var(--ink-soft); line-height: 1.7; }
+    .addon-table td:first-child { font-weight: 500; color: var(--ink); width: 220px; }
 
-    .price-example { margin-top: 40px; }
-    .price-example__title {
-      font-weight: 700; font-size: 16px; margin-bottom: 16px;
-    }
-
-    /* ====== Flow (vertical) ====== */
+    /* Flow (vertical with arrows) */
     .flow-vertical { max-width: 800px; }
-    .flow-v-step {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 28px; padding: 32px 0; position: relative;
-    }
-    .flow-v-step__num {
-      font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 40px; color: var(--blue); line-height: 1;
-    }
-    .flow-v-step__title {
-      font-weight: 700; font-size: 18px; margin-bottom: 10px;
-    }
-    .flow-v-step__period {
-      font-size: 12px; color: var(--blue); font-weight: 500;
-      margin-bottom: 8px;
-    }
-    .flow-v-step__desc {
-      font-size: 14px; line-height: 2; color: var(--ink-soft);
-    }
-    .flow-v-arrow {
-      display: flex; justify-content: center; padding: 8px 0;
-    }
+    .flow-v-step { display: grid; grid-template-columns: 80px 1fr; gap: 28px; padding: 32px 0; position: relative; }
+    .flow-v-step + .flow-v-step { border-top: none; }
+    .flow-v-step__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 40px; color: var(--blue); line-height: 1; }
+    .flow-v-step__title { font-weight: 700; font-size: 18px; margin-bottom: 10px; }
+    .flow-v-step__desc { font-size: 14px; line-height: 2; color: var(--ink-soft); }
+    .flow-v-arrow { display: flex; justify-content: center; padding: 8px 0; }
     .flow-v-arrow svg { width: 24px; height: 32px; }
 
-    /* ====== FAQ ====== */
-    .faq-item {
-      padding: 28px 0; border-bottom: 1px solid var(--line);
-    }
-    .faq-item__q {
-      font-family: var(--font-jp); font-weight: 700; font-size: 15px;
-      color: var(--ink); margin-bottom: 10px; cursor: pointer;
-    }
-    .faq-item__q::before {
-      content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans);
-      font-weight: 600; color: var(--blue);
-    }
-    .faq-item__a {
-      font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px;
-    }
+    /* FAQ */
+    .faq-item { padding: 28px 0; border-bottom: 1px solid var(--line); }
+    .faq-item__q { font-weight: 700; font-size: 15px; margin-bottom: 10px; cursor: pointer; }
+    .faq-item__q::before { content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans); font-weight: 600; color: var(--blue); }
+    .faq-item__a { font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
 
-    /* ====== CTA Section (Blue) ====== */
-    .cta-blue {
-      padding: 96px 32px; background: var(--blue); color: #fff;
-    }
-    .cta-blue__inner {
-      max-width: 1280px; margin: 0 auto;
-      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
-    }
-    .cta-blue__label {
-      font-family: var(--font-en-sans); font-size: 11px;
-      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
-    }
-    .cta-blue__title {
-      font-family: var(--font-jp); font-weight: 900;
-      font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px;
-    }
-    .cta-blue__lead {
-      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
-    }
+    /* CTA */
+    .cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
+    .cta-blue__inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center; }
+    .cta-blue__label { font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .32em; opacity: .85; margin-bottom: 18px; }
+    .cta-blue__title { font-weight: 900; font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px; }
+    .cta-blue__lead { font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px; }
     .cta-blue__buttons { display: grid; gap: 14px; }
-    .cta-blue__btn {
-      padding: 18px 28px; text-decoration: none;
-      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
-      display: flex; justify-content: space-between; align-items: center;
-      border-radius: 999px;
-      transition: transform .2s, opacity .2s;
-    }
+    .cta-blue__btn { padding: 18px 28px; text-decoration: none; font-size: 15px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; border-radius: 999px; transition: transform .2s, opacity .2s; }
     .cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
-    .cta-blue__btn--primary {
-      background: #fff; color: var(--blue);
-    }
-    .cta-blue__btn--outline {
-      background: transparent; color: #fff;
-      border: 1px solid rgba(255,255,255,.5);
-    }
-    .cta-blue__btn .arrow {
-      font-family: var(--font-en); font-style: italic;
-    }
+    .cta-blue__btn--primary { background: #fff; color: var(--blue); }
+    .cta-blue__btn--outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); }
+    .cta-blue__btn .arrow { font-family: var(--font-en); font-style: italic; }
 
-    /* ====== Footer ====== */
-    .hb-footer {
-      padding: 56px 32px; background: var(--ink); color: #fff;
-    }
-    .hb-footer__inner {
-      max-width: 1280px; margin: 0 auto;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .hb-footer__logo {
-      font-family: var(--font-jp); font-size: 14px; font-weight: 700;
-      opacity: .8; margin-bottom: 4px;
-    }
-    .hb-footer__address {
-      font-size: 12px; opacity: .5; line-height: 1.7;
-    }
-    .hb-footer__copy {
-      font-family: var(--font-en-sans); font-size: 11px; opacity: .4;
-    }
-    .hb-footer__links {
-      display: flex; gap: 24px;
-    }
-    .hb-footer__links a {
-      font-size: 12px; color: #fff; opacity: .5;
-      text-decoration: none; transition: opacity .2s;
-    }
+    /* Footer */
+    .hb-footer { padding: 56px 32px; background: var(--ink); color: #fff; }
+    .hb-footer__inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .hb-footer__logo { font-family: var(--font-jp); font-size: 14px; font-weight: 700; opacity: .8; margin-bottom: 4px; }
+    .hb-footer__address { font-size: 12px; opacity: .5; line-height: 1.7; }
+    .hb-footer__copy { font-family: var(--font-en-sans); font-size: 11px; opacity: .4; }
+    .hb-footer__links { display: flex; gap: 24px; }
+    .hb-footer__links a { font-size: 12px; color: #fff; opacity: .5; text-decoration: none; transition: opacity .2s; }
     .hb-footer__links a:hover { opacity: .9; }
 
-    /* ====== Responsive ====== */
-    @media (max-width: 1024px) {
-      .reason-grid { grid-template-columns: 1fr 1fr; }
-      .case-grid { grid-template-columns: 1fr 1fr; }
-      .team-grid { grid-template-columns: 1fr 1fr; }
-    }
-
+    /* Responsive */
+    @media (max-width: 1024px) { .str-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 767px) {
-      .hb-header__nav { display: none; }
-      .hb-hamburger { display: block; }
-      .hb-subhero { padding: 60px 20px 48px; }
-      .hb-subhero__jp { font-size: 26px; }
+      .hb-header__nav { display: none; } .hb-hamburger { display: block; }
+      .hb-subhero { padding: 60px 20px 48px; } .hb-subhero__jp { font-size: 26px; }
       .section { padding: 64px 20px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .reason-grid { grid-template-columns: 1fr; }
-      .reason-card { padding: 36px 24px; }
-      .team-grid { grid-template-columns: 1fr; }
-      .case-grid { grid-template-columns: 1fr; }
-      .flow-v-step { grid-template-columns: 60px 1fr; gap: 16px; }
-      .flow-v-step__num { font-size: 28px; }
+      .str-grid { grid-template-columns: 1fr; } .str-card { padding: 36px 24px; }
+      .scope-grid { grid-template-columns: 1fr 1fr; }
+      .price-table { font-size: 12px; } .price-table td, .price-table th { padding: 10px 8px; }
+      .flow-v-step { grid-template-columns: 60px 1fr; gap: 16px; } .flow-v-step__num { font-size: 28px; }
       .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
       .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
       .hb-section-head { flex-direction: column; gap: 8px; }
-      .price-table { font-size: 12px; }
-      .price-table td, .price-table th { padding: 10px 8px; }
     }
-
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 480px) { .scope-grid { grid-template-columns: 1fr; } }
   
 /* Geometric pattern for SubHero */
 .hb-subhero, .subhero { position: relative; overflow: hidden; }
@@ -461,9 +181,12 @@
         <img src="data:image/png;base64,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" alt="Hatenabase" style="height:32px;width:auto;">
       </a>
       <nav class="hb-header__nav">
-        <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
-        <a href="./financing-support-preview.html">FINANCING</a>
-        <a href="./about-us-preview.html">ABOUT</a>
+        <a href="./tax-accountant-preview.html">TOP</a>
+        <a href="#strength">STRENGTH</a>
+        <a href="#scope">SCOPE</a>
+
+        <a href="#flow">FLOW</a>
+        <a href="#faq">FAQ</a>
         <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
       </nav>
       <button class="hb-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -473,250 +196,206 @@
   <!-- SubHero -->
   <section class="hb-subhero">
     <div class="hb-subhero__inner">
-      <p class="hb-subhero__crumb"><a href="./tax-accountant-preview.html">HOME</a> &nbsp;/&nbsp; <a href="./tax-accountant-preview.html">TAX OFFICE</a> &nbsp;/&nbsp; FINANCING</p>
-      <p class="hb-subhero__en">Financing Support</p>
+      <p class="hb-subhero__crumb"><a href="./tax-accountant-preview.html">HOME</a> &nbsp;/&nbsp; <a href="./tax-accountant-preview.html">TAX OFFICE</a> &nbsp;/&nbsp; TAMURA DIVISION</p>
+      <p class="hb-subhero__en">Tamura Division</p>
       <h1 class="hb-subhero__jp">
-        人生を賭ける事業に、<br>
-        最高のスタートダッシュを。
+        創業期のお客様を<br>
+        フルサポートする<br>
+        田村事業部。
       </h1>
       <p class="hb-subhero__lead">
-        創業期の融資は、日本政策金融公庫を足がかりに始まります。ひとり法人やスタートアップ、300〜2,000万円規模の資金調達を得意としています。<br><br>
-        事業計画書の作成から金融機関の紹介、面談対策まで一貫サポート。経営者の想いを数字に落とし込み、資金調達を成功に導きます。
+        田村事業部は、創業期・中小企業のお客様に特化した事業部です。<br><br>
+        あなたの事業の理解に精通した専門家が、創業期に直面する日々の業務課題——記帳・届出・決算・税務相談まで、すべてお引き受けします。<br><br>
+        難しいことは考えなくて大丈夫。会計ソフトの操作も、税務署への届出も、すべて私たちが対応します。経営者ご自身は、売上を上げるための経営と営業に集中してください。
       </p>
     </div>
   </section>
 
-  <!-- Performance -->
-  <section class="section">
+  <!-- Member -->
+  <section class="section" id="member">
     <div class="section__inner">
       <div class="hb-section-head">
-        <span class="hb-section-head__en">PERFORMANCE</span>
-        <span class="hb-section-head__jp">実績</span>
+        <span class="hb-section-head__en">MEMBER</span>
+        <span class="hb-section-head__jp">担当者紹介</span>
       </div>
-      <!-- Supported Industries -->
-      <div style="margin-top: 48px;">
-        <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 20px;">SUPPORTED INDUSTRIES — 支援実績のある業種</p>
-        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">システム受託開発 / SES</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">AI / SaaS</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">マーケティング</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">コンサルティング</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">飲食</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">不動産</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">EC / 小売</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">クリエイティブ</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">医療・福祉</span>
-          <span style="padding: 8px 20px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-soft);">その他</span>
+      <div style="display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; max-width: 900px;">
+        <div style="width: 280px; height: 340px; overflow: hidden; border-radius: 8px;">
+          <img src="./images/tamura-profile.jpg" alt="田村" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
         </div>
-      </div>
-
-      <!-- Bank Partners -->
-      <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line);">
-        <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .3em; color: var(--ink-light); margin-bottom: 24px;">PARTNER BANKS — はてなベース株式会社経由にて金融機関をご紹介</p>
-        <div style="display: flex; gap: 48px; align-items: center; flex-wrap: wrap;">
-          <img src="images/banks/jfc.svg" alt="日本政策金融公庫" style="height: 32px; width: auto;">
-          <img src="images/banks/mizuho.svg" alt="みずほ銀行" style="height: 24px; width: auto;">
-          <img src="images/banks/kiraboshi.png" alt="きらぼし銀行" style="height: 32px; width: auto;">
-          <img src="images/banks/daiichi-kangyo.png" alt="第一勧業信用組合" style="height: 30px; width: auto;">
+        <div>
+          <p style="font-family: var(--font-en-sans); font-size: 11px; letter-spacing: .2em; color: var(--blue); margin-bottom: 12px;">DIVISION LEAD</p>
+          <p style="font-weight: 700; font-size: 20px; margin-bottom: 6px;">田村</p>
+          <p style="font-size: 13px; color: var(--ink-light); margin-bottom: 24px;">税理士</p>
+          <p style="font-size: 15px; line-height: 2; color: var(--ink-soft);">
+            創業期・中小企業のお客様を中心に、記帳代行から決算申告、融資支援まで幅広くサポートしています。<br><br>
+            「経理のことはよくわからない」「何から始めればいいかわからない」——そんなお客様にこそ、安心してお任せいただける体制を整えています。事業の成長に集中していただけるよう、バックオフィスの負担をまるごとお引き受けします。
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reason -->
-  <section class="section section--paper" id="reason">
+  <!-- Strength -->
+  <section class="section section--paper" id="strength">
     <div class="section__inner">
       <div class="hb-section-head">
-        <span class="hb-section-head__en">REASON</span>
-        <span class="hb-section-head__jp">弊社の融資支援の特徴</span>
+        <span class="hb-section-head__en">STRENGTH</span>
+        <span class="hb-section-head__jp">税務顧問の特長</span>
       </div>
-      <div class="reason-grid">
-        <!-- Reason 01 -->
-        <div class="reason-card">
-          <div class="reason-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
+      <div class="str-grid">
+        <div class="str-card">
+          <div class="str-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
-          <div class="reason-card__num">01</div>
-          <h3 class="reason-card__title">創業期の銀行融資に特化</h3>
-          <p class="reason-card__desc">日本政策金融公庫を中心に、創業期の銀行融資に特化しています。創業融資の実績を多く有しており、創業期の経営者に寄り添った支援を提供。事業計画書の作成から融資面談の対策まで一貫してサポートします。</p>
+          <div class="str-card__num">01</div>
+          <h3 class="str-card__title">事業を理解した専門家が伴走</h3>
+          <p class="str-card__desc">お客様の事業内容を深く理解した担当者が、日々の「これどうすればいい？」に寄り添います。創業期ならではの悩み——役員報酬の設定、経費の線引き、届出のタイミングなど、チャットで実務に即したアドバイスを提供。気軽に相談できる安心感があります。</p>
         </div>
-        <!-- Reason 02 -->
-        <div class="reason-card">
-          <div class="reason-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 17a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1"/>
-              <path d="M7 17V9a5 5 0 0110 0v8"/>
-              <path d="M5 17h14"/>
-              <path d="M3 21h18"/>
-              <path d="M7 17H5a1 1 0 01-1-1v-2a1 1 0 011-1h2"/>
-              <path d="M17 17h2a1 1 0 001-1v-2a1 1 0 00-1-1h-2"/>
+        <div class="str-card">
+          <div class="str-card__icon" style="background: #EEF3FF;">
+            <!-- freee official logo -->
+            <svg viewBox="0 0 120 46.348" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:auto;">
+              <path d="M106.798 24.938a4.74 4.74 0 0 0 4.9 3.636c4.247 0 7.335-4.11 8.3-7.479l-1.25-.265c-.919 3.257-3.653 5.782-6.19 5.782s-2.973-1.659-2.973-2.7c3.463-.691 6.3-1.811 6.3-4.6 0-1.267-.867-2.532-3.169-2.532-3.124 0-5.37 2.789-5.939 5.456-1.189 2.832-3.828 5.082-6.215 5.082-2.879 0-3.182-2-3.182-2.887 3.017-.545 6.754-1.777 6.754-4.825 0-1.628-1.1-2.824-3.4-2.824-3.6 0-5.911 3.276-6.422 6.161-1.325 2.973-4.078 5.2-6.649 5.2-2.969 0-3.461-1.927-3.461-3.166 2.88-.547 7.28-1.756 7.28-5.165 0-1.563-.973-3.031-3.634-3.031-4.242 0-6.719 4.211-6.964 7.135a11.122 11.122 0 0 1-1.631.139c-2 0-1.759-1.528-1.445-3.143.452-2.323-.8-4.131-3.227-4.131-2.779 0-4.831 2.747-5.973 5.464.646-3.322.088-5.359-3.909-5.359a17.556 17.556 0 0 0-6.16 1.456s.813-4.194.813-4.194c1.007-5.179 2.365-6.27 4.058-6.27 1.341 0 2.232.8 3.317 2.2l.582-3.012a7.614 7.614 0 0 0-3.974-1.091c-4 0-6.657 2.905-7.766 8.608l-1.045 5.388a44.946 44.946 0 0 1-15.547 3.276l-.338 1.734a46.61 46.61 0 0 0 15.5-3.02l-1.99 10.231c-.974 5.011-2.286 6.275-4.038 6.275-1.631 0-2.61-1.3-3.317-2.2l-.583 3.012a7.739 7.739 0 0 0 4.059 1.091c3.679 0 6.508-2.671 7.662-8.608l2.217-11.414a19.768 19.768 0 0 1 5.73-1.657c1.881 0 2.226.638 1.738 3.186l-1.88 9.637 3.563-.242.953-4.9c.541-2.783 2.456-6.785 4.919-6.785 1.24 0 1.51.946 1.278 2.138-.6 3.1 1.234 3.888 3.4 3.888a20.512 20.512 0 0 0 3.048-.186 5.415 5.415 0 0 0 5.771 4.931c3.2 0 5.929-2.1 7.738-4.765a5.039 5.039 0 0 0 5.234 3.832c2.936.005 5.478-2.04 7.157-4.487Zm5.794-6.666c.54 0 1.019.379 1.019 1.2 0 1.771-2.221 2.626-3.955 3.013-.001-1.347 1.457-4.213 2.936-4.213Zm-11.993.117c.579 0 1.089.387 1.089 1.3 0 1.848-2.375 2.79-4.232 3.206.001-1.451 1.612-4.506 3.143-4.506Zm-12.9.066c.585 0 1.2.382 1.2 1.452 0 2-2.606 3.03-4.627 3.478.007-1.697 1.788-4.929 3.43-4.929ZM28.017 21.276a54.792 54.792 0 0 1-10.978-1.1A29.832 29.832 0 0 0 33.15 0L10.665 17.3c-1.257.968-1.587.637-2.782.637a7.2 7.2 0 0 0-4.983 2 2.114 2.114 0 0 1-1.329.8L0 21.129l2.991.656c2.385.524 2.928.913 4.241 2.617l16.9 21.946a24.837 24.837 0 0 0-5.927-18.021 16.135 16.135 0 0 0 5.23-.91 7.83 7.83 0 0 1 3.451-.576h8.96c.121-.6-.106-.779-.99-.9l-6.931-.964c.307-.219.729-.6 1.047-.859a3.531 3.531 0 0 1 1.9-.979 50.594 50.594 0 0 0 5.41-1.616c.755-.264.636-.542.793-1.008a51.529 51.529 0 0 1-9.058.761Z" fill="#2864f0"/>
+              <path d="M7.183 21.708a1.114 1.114 0 1 1 1.115-1.115 1.115 1.115 0 0 1-1.115 1.115ZM18.052 26.965A14.81 14.81 0 0 1 7.893 22.95c2.385-.731 5.45-.826 9.473-.4a97.142 97.142 0 0 0 10.16 1 14.8 14.8 0 0 1-9.474 3.415Z" fill="#fff"/>
             </svg>
           </div>
-          <div class="reason-card__num">02</div>
-          <h3 class="reason-card__title">金融機関担当者の<br>ご紹介</h3>
-          <p class="reason-card__desc">都内登記の場合、日本政策金融公庫の担当者を優先的にご紹介します。税理士事務所からの紹介により一定の信頼性が担保された状態で融資審査に臨めるため、スムーズな資金調達が可能です。</p>
+          <div class="str-card__num">02</div>
+          <h3 class="str-card__title">freee認定アドバイザー 5つ星</h3>
+          <p class="str-card__desc">freee認定アドバイザー最上位の5つ星を取得。freee会計100%の事務所だから、これまでfreeeを使ってきた事業者様も、新しくfreeeを導入される事業者様も安心です。導入設定から日常の活用まで一貫してサポートします。</p>
         </div>
-        <!-- Reason 03 -->
-        <div class="reason-card">
-          <div class="reason-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <path d="M16 13H8M16 17H8M10 9H8"/>
+        <div class="str-card">
+          <div class="str-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="str-card__num">03</div>
+          <h3 class="str-card__title">お客様の手間は最小限に</h3>
+          <p class="str-card__desc">面倒な経理作業はすべて弊所が巻き取ります。必要な資料を共有いただくだけで、記帳から届出、決算・申告まで完了。お客様に業務負荷をほとんど感じさせません。</p>
+        </div>
+        <div class="str-card">
+          <div class="str-card__icon" style="background: #F8F0F8;">
+            <!-- Slack logo -->
+            <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px;">
+              <path d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386" fill="#36C5F0"/>
+              <path d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387" fill="#2EB67D"/>
+              <path d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386" fill="#ECB22E"/>
+              <path d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336 0v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.386" fill="#E01E5A"/>
             </svg>
           </div>
-          <div class="reason-card__num">03</div>
-          <h3 class="reason-card__title">事業計画書作成まで<br>丸っと</h3>
-          <p class="reason-card__desc">起業家にしかできないコア業務に注力いただくために、融資申請に必要な情報をヒアリングし、事業計画書の作成と面談対策まで一貫して行います。書類作成の手間を大幅に削減し、経営に集中できる環境をつくります。</p>
+          <div class="str-card__num">04</div>
+          <h3 class="str-card__title">Slackでスピーディーに対応</h3>
+          <p class="str-card__desc">コミュニケーションはSlackで完結。チャットで気軽にやり取りできるため、メールのような堅苦しさはありません。スレッドでトピックを分けるから、複数の相談が同時に進んでも混乱が生じない設計です。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team -->
-  <section class="section section--paper" id="team">
+  <!-- Scope: 顧問料 -->
+  <section class="section" id="scope">
     <div class="section__inner">
       <div class="hb-section-head">
-        <span class="hb-section-head__en">TEAM</span>
-        <span class="hb-section-head__jp">担当メンバー</span>
+        <span class="hb-section-head__en">SCOPE</span>
+        <span class="hb-section-head__jp">顧問料に含まれる業務</span>
       </div>
-      <div class="team-grid">
-        <!-- Member 1 -->
-        <div class="team-card">
-          <div class="team-card__avatar">
-            <img src="images/setoguchi-profile.png" alt="世戸口 逸人">
-          </div>
-          <div class="team-card__name">世戸口 逸人</div>
-          <div class="team-card__name-en">Hayato Setoguchi</div>
-          <div class="team-card__title">会計アドバイザリー 代表取締役</div>
-          <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">ベンチャーキャピタルとの接点を多く持ち、スタートアップの協調融資をこれまで数十社担当。前職のリディッシュ株式会社/クロスポイント税理士法人にて飲食業界に特化した資金調達支援を担当したことから、スモールビジネスの資金調達の知見を多く有する。</p>
+      <p style="font-size: 15px; color: var(--ink-soft); margin-bottom: 32px; line-height: 1.85;">月額顧問料に以下の業務がすべて含まれています。個別に追加費用は発生しません（条件付き項目を除く）。</p>
+      <div class="scope-grid">
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M3 10h14M3 6h14M3 14h10"/></svg></div>
+          <div class="scope-card__title">税務相談</div>
+          <div class="scope-card__desc">日常的な税務に関するご質問にSlackで随時お答えします。「これは経費になる？」「届出は必要？」など、些細なことでもお気軽にどうぞ。※面談はオンラインで決算時のみとなります。</div>
         </div>
-        <!-- Member 2 -->
-        <div class="team-card">
-          <div class="team-card__avatar">
-            <img src="images/miwa-profile.png" alt="三輪 衛">
-          </div>
-          <div class="team-card__name">三輪 衛</div>
-          <div class="team-card__name-en">Mamoru Miwa</div>
-          <div class="team-card__title">会計コンサルティング事業部 事業部長</div>
-          <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">慶應義塾大学在学中に創業1期目のベンチャー企業を2年間経験し、新規事業部の立ち上げを行う。現在ははてなベース社の資金調達をリードしつつ、金融機関とのネットワークを活かして数千万単位の資金調達をサポートしている。</p>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 6h6M7 10h6M7 14h4"/></svg></div>
+          <div class="scope-card__title">税務書類届出代行</div>
+          <div class="scope-card__desc">法人設立届出書・青色申告承認申請書・給与支払事務所開設届出書など、税務署への届出書類を代理で作成・提出します（作成に工数がかかる届出書類は別途料金が発生します）。</div>
         </div>
-        <!-- Member 3 -->
-        <div class="team-card">
-          <div class="team-card__avatar">
-            <img src="images/masuda-profile.jpg" alt="増田 和也">
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M6 9h4M6 12h3"/><circle cx="14" cy="10" r="2"/></svg></div>
+          <div class="scope-card__title">記帳代行</div>
+          <div class="scope-card__desc">freee会計への仕訳入力をすべて代行します。お客様側での会計ソフト操作は基本的に不要。資料を共有するだけでOKです。※一部freee請求書の操作はご対応いただく場合がございます。</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M4 16V6a2 2 0 012-2h8a2 2 0 012 2v10"/><path d="M2 16h16"/><path d="M8 8h4"/></svg></div>
+          <div class="scope-card__title">年末調整</div>
+          <div class="scope-card__desc">従業員の年末調整業務を代行します。源泉徴収票の作成、各種控除の計算・反映まで対応。</div>
+          <div class="scope-card__note">5名分</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M4 4h12v12H4z"/><path d="M4 8h12M8 4v12"/></svg></div>
+          <div class="scope-card__title">法定調書の作成・申告</div>
+          <div class="scope-card__desc">給与所得の源泉徴収票、報酬等の支払調書など法定調書の作成・税務署への提出を行います。</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="3" y="6" width="14" height="10" rx="2"/><path d="M7 6V4a3 3 0 016 0v2"/></svg></div>
+          <div class="scope-card__title">償却資産申告書</div>
+          <div class="scope-card__desc">固定資産に関する償却資産の申告書を作成・提出します。</div>
+          <div class="scope-card__note">1箇所分</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l3 2"/></svg></div>
+          <div class="scope-card__title">源泉所得税徴収高計算書</div>
+          <div class="scope-card__desc">源泉所得税の納付を年2回にまとめる「納期の特例」適用時の計算書を作成・提出します。</div>
+          <div class="scope-card__note">毎月対応の場合は別途料金3,000円/月が発生します。</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.3L10 14.5 5.1 17l.9-5.3-4-3.9 5.5-.8z"/></svg></div>
+          <div class="scope-card__title">節税アドバイス</div>
+          <div class="scope-card__desc">事業フェーズに合わせた節税策をご提案。役員報酬の設定、経費計上のポイント、各種特例の適用などをアドバイスします。</div>
+          <div class="scope-card__note">※スタンダードプランのみ</div>
+        </div>
+        <div class="scope-card">
+          <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M3 17l4-4m0 4l-4-4"/><path d="M10 5h7M10 9h7M10 13h5"/></svg></div>
+          <div class="scope-card__title">経費削減アドバイス</div>
+          <div class="scope-card__desc">不要な支出の見直し、より効率的な経費構造へのアドバイスを行い、キャッシュフローの改善を支援します。</div>
+          <div class="scope-card__note">※スタンダードプランのみ</div>
+        </div>
+      </div>
+
+      <!-- 決算料 -->
+      <div style="margin-top: 64px;">
+        <div class="hb-section-head">
+          <span class="hb-section-head__en">SETTLEMENT</span>
+          <span class="hb-section-head__jp">決算料に含まれる業務</span>
+        </div>
+        <p style="font-size: 15px; color: var(--ink-soft); margin-bottom: 32px; line-height: 1.85;">決算料は年1回、決算月に発生します。決算書の作成から税務申告の提出まで、以下がすべて含まれます。</p>
+        <div class="scope-grid">
+          <div class="scope-card">
+            <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="2" y="2" width="16" height="16" rx="2"/><path d="M6 10l3 3 5-6"/></svg></div>
+            <div class="scope-card__title">決算書の作成</div>
+            <div class="scope-card__desc">貸借対照表・損益計算書・株主資本等変動計算書など、決算書一式を正確に作成します。金融機関への提出にも対応した信頼性の高い決算書です。</div>
           </div>
-          <div class="team-card__name">増田 和也</div>
-          <div class="team-card__name-en">Kazuya Masuda</div>
-          <div class="team-card__title">ファイナンス・経営企画</div>
-          <div class="team-card__org">はてなベース株式会社</div>
-          <p class="team-card__desc">早稲田大学商学部卒。経営コンサルティングファームにて事業再生DD・M&Aに従事後、ベンチャー企業で数十件の資金調達支援を実施。ディープテック企業では最大20億円規模の補助金申請・財務管理を担当し、同社代表取締役に就任。2026年、はてなベースに参画。</p>
+          <div class="scope-card">
+            <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M4 4h12v14H4z"/><path d="M8 2v4M12 2v4"/><path d="M7 10h6M7 13h4"/></svg></div>
+            <div class="scope-card__title">法人税申告書の作成・提出</div>
+            <div class="scope-card__desc">法人税（所得税）の申告書を作成し、e-Taxで電子申告を行います。別表の作成から提出まで一貫して対応します。</div>
+          </div>
+          <div class="scope-card">
+            <div class="scope-card__icon"><svg viewBox="0 0 20 20" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M4 16V6l6-4 6 4v10"/><path d="M8 16v-4h4v4"/></svg></div>
+            <div class="scope-card__title">消費税申告書の作成・提出</div>
+            <div class="scope-card__desc">消費税の申告書を作成し、e-Taxで電子申告を行います。インボイス制度への対応・アドバイスも含みます。</div>
+            <div class="scope-card__note">※年商2,000万円以上の場合は、決算料とは別途料金5万円（税抜）が発生します。</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Case -->
-  <section class="section" id="case">
-    <div class="section__inner">
-      <div class="hb-section-head">
-        <span class="hb-section-head__en">CASE</span>
-        <span class="hb-section-head__jp">事例紹介</span>
-      </div>
-      <div class="case-grid">
-        <!-- Case 01 -->
-        <div class="case-card">
-          <div class="case-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2"/>
-              <path d="M8 21h8M12 17v4"/>
-            </svg>
-          </div>
-          <div class="case-card__label">CASE 01</div>
-          <h3 class="case-card__title">IT系スタートアップ（ひとり法人）</h3>
-          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">創業融資</div>
-          <p class="case-card__bank">日本政策金融公庫</p>
-          <p class="case-card__desc">設立直後で実績なし。事業計画書の精度と代表の経験をアピールし、満額回答を獲得しました。</p>
-        </div>
-        <!-- Case 02 -->
-        <div class="case-card">
-          <div class="case-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 21h18"/>
-              <path d="M5 21V7l7-4 7 4v14"/>
-              <path d="M9 21v-6h6v6"/>
-              <path d="M9 10h.01M15 10h.01"/>
-            </svg>
-          </div>
-          <div class="case-card__label">CASE 02</div>
-          <h3 class="case-card__title">飲食店（新規開業）</h3>
-          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">開業資金一括調達</div>
-          <p class="case-card__bank">日本政策金融公庫</p>
-          <p class="case-card__desc">店舗取得費・内装工事費・運転資金を一括申請。月次シミュレーションの精度が決め手となりました。</p>
-        </div>
-        <!-- Case 03 -->
-        <div class="case-card">
-          <div class="case-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-              <path d="M16 3.13a4 4 0 010 7.75"/>
-            </svg>
-          </div>
-          <div class="case-card__label">CASE 03</div>
-          <h3 class="case-card__title">コンサルティング業（2期目）</h3>
-          <div class="case-card__amount" style="font-size: 20px; font-style: normal; font-family: var(--font-jp);">民間金融機関からの調達</div>
-          <p class="case-card__bank">民間銀行（保証協会付）</p>
-          <p class="case-card__desc">1期目の決算書を活かし、公庫以外の民間金融機関からの調達に成功しました。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
+  <!-- Pricing (個別見積り誘導) -->
   <section class="section section--paper" id="pricing">
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">PRICING</span>
-        <span class="hb-section-head__jp">料金体系</span>
+        <span class="hb-section-head__jp">料金について</span>
       </div>
-
-      <!-- Main pricing table -->
-      <table class="price-table">
-        <thead>
-          <tr>
-            <th style="text-align:left; padding-left:24px;">項目</th>
-            <th>料金</th>
-            <th>備考</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>着手金</td>
-            <td style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 18px;">¥50,000<span style="font-family: var(--font-jp); font-style: normal; font-size: 12px; color: var(--ink-light);"> （税抜）</span></td>
-            <td style="text-align: left; font-size: 13px; color: var(--ink-soft);">ご契約時にお支払い。成功報酬に含みます。</td>
-          </tr>
-          <tr>
-            <td>成功報酬</td>
-            <td style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 18px;">5%<span style="font-family: var(--font-jp); font-style: normal; font-size: 12px; color: var(--ink-light);"> （融資実行額）</span></td>
-            <td style="text-align: left; font-size: 13px; color: var(--ink-soft);">融資が実行された場合のみ発生。</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="pricing-note">
-        <p class="pricing-note__title">融資不成立の場合、成功報酬は0円</p>
-        <p class="pricing-note__desc">着手金（5万円）は成功報酬に含まれるため、融資成功時に追加で差し引かれます。万が一融資が不成立となった場合、成功報酬は発生しません。着手金以外の追加費用はかかりません。</p>
+      <div style="max-width: 720px;">
+        <p style="font-size: 16px; font-weight: 700; margin-bottom: 16px; line-height: 1.6;">お客様の事業内容・規模に応じて、最適なプランをご提案します。</p>
+        <p style="font-size: 15px; color: var(--ink-soft); line-height: 2; margin-bottom: 32px;">
+          料金は事業内容・年間売上高・仕訳量などを総合的にヒアリングしたうえで、個別にお見積りいたします。<br>
+          初回のご相談は無料ですので、まずはお気軽にお問い合わせください。
+        </p>
+        <a href="./contact-preview.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .3s;">
+          無料相談・お見積りはこちら <span style="font-family: var(--font-en); font-style: italic;">→</span>
+        </a>
       </div>
-
-      <p style="font-size: 12px; color: var(--ink-light); margin-top: 24px; line-height: 1.7;">※ 上記は税抜表示です。詳細は無料相談時にご案内いたします。</p>
     </div>
   </section>
 
@@ -725,59 +404,94 @@
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">FLOW</span>
-        <span class="hb-section-head__jp">ご依頼の流れ</span>
+        <span class="hb-section-head__jp">ご契約から記帳代行開始までの流れ</span>
       </div>
+      <p style="font-size: 15px; color: var(--ink-soft); margin-bottom: 40px; line-height: 1.85;">お問い合わせから記帳代行が開始するまで、通常2〜3週間程度です。<br>以下の4ステップで、スムーズに顧問契約をスタートできます。</p>
       <div class="flow-vertical">
-        <!-- Step 01 -->
         <div class="flow-v-step">
           <div class="flow-v-step__num">01</div>
           <div>
-            <h3 class="flow-v-step__title">無料相談</h3>
-            <p class="flow-v-step__desc">資金調達の要望・事業内容をヒアリングし、融資可能性の初期診断を行います。どの制度が使えるか、いくら調達できそうかを一緒に整理します。</p>
+            <h3 class="flow-v-step__title">ヒアリング</h3>
+            <p class="flow-v-step__desc">オンラインで現状の経理体制・事業内容をお伺いしてお見積りをお送りします。所要時間は30分程度。もちろん無料です。</p>
           </div>
         </div>
         <div class="flow-v-arrow">
           <svg viewBox="0 0 24 32" fill="none"><path d="M12 0v28M6 22l6 6 6-6" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <!-- Step 02 -->
         <div class="flow-v-step">
           <div class="flow-v-step__num">02</div>
           <div>
-            <h3 class="flow-v-step__title">事業計画書作成</h3>
-            <p class="flow-v-step__period">目安: 2〜3週間</p>
-            <p class="flow-v-step__desc">金融機関向けの事業計画書・売上シミュレーションを作成します。面談で聞かれるポイントと回答のコツもお伝えし、万全の準備を整えます。</p>
+            <h3 class="flow-v-step__title">契約</h3>
+            <p class="flow-v-step__desc">契約手続きはすべてオンラインで完結。面倒な紙面でのやりとりや押印は不要です。</p>
           </div>
         </div>
         <div class="flow-v-arrow">
           <svg viewBox="0 0 24 32" fill="none"><path d="M12 0v28M6 22l6 6 6-6" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <!-- Step 03 -->
         <div class="flow-v-step">
           <div class="flow-v-step__num">03</div>
           <div>
-            <h3 class="flow-v-step__title">金融機関への申込</h3>
-            <p class="flow-v-step__period">目安: 1〜2週間</p>
-            <p class="flow-v-step__desc">担当者の紹介、面談日程調整、追加資料の準備まで伴走します。自分で窓口を探す手間はありません。</p>
+            <h3 class="flow-v-step__title">契約時お手続き</h3>
+            <p class="flow-v-step__desc">契約手続後は、アンケートのご回答やfreeeへのご招待など所定のお手続きをお願いいたします。また、キックオフMTGを開催して、記帳代行の進め方をご説明いたします。</p>
           </div>
         </div>
         <div class="flow-v-arrow">
           <svg viewBox="0 0 24 32" fill="none"><path d="M12 0v28M6 22l6 6 6-6" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <!-- Step 04 -->
         <div class="flow-v-step">
           <div class="flow-v-step__num">04</div>
           <div>
-            <h3 class="flow-v-step__title">融資実行</h3>
-            <p class="flow-v-step__period">申込から約1〜2ヶ月</p>
-            <p class="flow-v-step__desc">融資実行後の資金繰り管理もサポート。顧問契約を通じて、追加融資のタイミングや返済計画の見直しまで継続的に支援します。</p>
+            <h3 class="flow-v-step__title">記帳代行開始</h3>
+            <p class="flow-v-step__desc">毎月の資料をご提供いただき、事務所側でfreeeにて記帳します。不明点や不足資料があればSlackにて確認いたします。</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Monthly Bookkeeping -->
+  <section class="section section--paper">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">BOOKKEEPING</span>
+        <span class="hb-section-head__jp">月次記帳代行の進め方</span>
+      </div>
+      <div style="max-width: 800px;">
+        <div style="display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line);">
+          <div style="font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: .2em; color: var(--blue); padding-top: 4px;">YOUR TASK</div>
+          <div>
+            <p style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">お客様にご準備いただくもの</p>
+            <ul style="font-size: 14px; color: var(--ink-soft); line-height: 2.2; padding-left: 20px;">
+              <li>売上請求書の発行（freee請求書推奨）</li>
+              <li>役員報酬及び給与計算の情報</li>
+              <li>毎月の経費資料・領収書・契約書等の共有</li>
+            </ul>
+          </div>
+        </div>
+        <div style="text-align: center; padding: 12px 0;">
+          <svg viewBox="0 0 24 32" fill="none" style="width: 24px;"><path d="M12 0v28M6 22l6 6 6-6" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div style="display: grid; grid-template-columns: 100px 1fr; gap: 32px; margin-top: 12px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--line);">
+          <div style="font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; letter-spacing: .2em; color: var(--blue); padding-top: 4px;">OUR TASK</div>
+          <div>
+            <p style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">事務所が行う作業</p>
+            <ul style="font-size: 14px; color: var(--ink-soft); line-height: 2.2; padding-left: 20px;">
+              <li>freeeにて記帳（仕訳入力・消込・残高確認）</li>
+              <li>不明点・不足資料の確認（Slackで随時）</li>
+              <li>記帳完了報告（毎月の記帳が完了したらお知らせ）</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-light); line-height: 1.8;">
+          ※ できるだけ立替や現金取引は行わず、freeeに連携している決済手段で日々の取引を行っていただくことで、質問や資料のやり取りを減らし、貴社のご負担を軽減できます。<br>
+          ※ 売上請求書はfreee請求書のご利用を推奨。「保存して取引を登録」機能で売上計上まで自動化できます。
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
-  <section class="section section--paper" id="faq">
+  <section class="section" id="faq">
     <div class="section__inner">
       <div class="hb-section-head">
         <span class="hb-section-head__en">FAQ</span>
@@ -785,24 +499,40 @@
       </div>
       <div style="max-width: 800px;">
         <div class="faq-item">
-          <p class="faq-item__q">料金体系を教えてください。</p>
-          <p class="faq-item__a">着手金5万円（税抜）＋成功報酬（融資実行額の5%）です。着手金は成功報酬に含まれます。融資が不成立の場合、成功報酬は0円です。</p>
+          <p class="faq-item__q">freee以外の会計ソフトでも対応できますか？</p>
+          <p class="faq-item__a">弊所はfreee会計100%の事務所です。現在他のソフトをご利用の場合は、freeeへの移行をサポートいたします。freeeの利用料やソフト移行は弊所の顧問料には含まれません。</p>
         </div>
         <div class="faq-item">
-          <p class="faq-item__q">着手金と成功報酬の関係は？</p>
-          <p class="faq-item__a">着手金5万円はご契約時にお支払いいただきますが、融資成功時にはこの5万円が成功報酬に充当されます。具体的な費用は無料相談時に詳しくご案内いたします。</p>
+          <p class="faq-item__q">スポットで決算申告だけお願いすることは可能ですか？</p>
+          <p class="faq-item__a">顧問契約とのセットであれば可能です。料金につきましては別途お見積りとなります。</p>
         </div>
         <div class="faq-item">
-          <p class="faq-item__q">融資実行までどのくらいかかりますか？</p>
-          <p class="faq-item__a">ご相談から融資実行まで、一般的に1〜2ヶ月程度です。事業計画書の作成に2〜3週間、金融機関への申込・審査に1〜2ヶ月が目安です。事業計画の準備状況や金融機関の審査状況により前後します。</p>
+          <p class="faq-item__q">途中で解約することはできますか？</p>
+          <p class="faq-item__a">顧問契約は1年契約ですが、契約期間中でも解約は可能です。</p>
         </div>
         <div class="faq-item">
-          <p class="faq-item__q">日本政策金融公庫以外の金融機関にも対応していますか？</p>
-          <p class="faq-item__a">はい、信用金庫・地方銀行・民間銀行（保証協会付融資）など幅広い金融機関に対応しております。お客様の事業フェーズや資金ニーズに応じて、最適な金融機関をご提案します。</p>
+          <p class="faq-item__q">得意な業種はありますか？</p>
+          <p class="faq-item__a">IT・Web系のスタートアップ、コンサルティングのお客様が多く、得意です。</p>
         </div>
         <div class="faq-item">
-          <p class="faq-item__q">税務顧問契約なしでも融資支援だけお願いできますか？</p>
-          <p class="faq-item__a">はい、融資支援単体でもお受けしております。ただし、顧問契約をいただくと融資後の資金繰り管理・月次決算まで一貫して対応できるため、融資との相性が最も良いプランです。</p>
+          <p class="faq-item__q">顧問契約に必要な条件はありますか？</p>
+          <div class="faq-item__a">
+            <p style="margin-bottom: 12px;">以下に該当する場合、ご契約を受け付けておりません。</p>
+            <p style="font-weight: 700; margin-bottom: 4px;">業種について</p>
+            <ul style="padding-left: 20px; margin-bottom: 12px; line-height: 1.85;">
+              <li>個人事業主の方</li>
+              <li>せどりなど取引が大量に発生する業種</li>
+              <li>不動産業、建設業</li>
+              <li>金融業</li>
+              <li>医院・クリニック、介護・福祉</li>
+              <li>NPO、一般社団法人、一般財団法人</li>
+              <li>キャバクラ、クラブ、風俗業</li>
+            </ul>
+            <p style="font-weight: 700; margin-bottom: 4px;">その他</p>
+            <ul style="padding-left: 20px; line-height: 1.85;">
+              <li>手形取引をお持ちの場合</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -824,9 +554,6 @@
       <div class="cta-blue__buttons">
         <a href="./contact-preview.html" class="cta-blue__btn cta-blue__btn--primary">
           <span>お見積り相談はこちら</span><span class="arrow">→</span>
-        </a>
-        <a href="./contact-preview.html" class="cta-blue__btn cta-blue__btn--outline">
-          <span>お問い合わせ・資料請求はこちら</span><span class="arrow">↗</span>
         </a>
       </div>
     </div>
