@@ -63,7 +63,7 @@ img { max-width: 100%; display: block; }
 .sidebar-card { border: 1px solid var(--line); border-radius: 8px; padding: 28px; background: var(--white); margin-bottom: 20px; }
 .sidebar-card--schedule { background: var(--blue-ghost); border-color: var(--blue-light); }
 .sidebar-card__title { font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.5; }
-.sidebar-card__text { font-size: 13px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 16px; }
+.sidebar-card__text { font-size: 13px; color: var(--ink); line-height: 1.85; margin-bottom: 16px; }
 .sidebar-card__btn { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: var(--blue); color: #fff; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .3s, transform .2s; }
 .sidebar-card__btn:hover { background: var(--blue-deep); transform: translateX(4px); }
 .sidebar-card__btn .arrow { font-family: var(--font-en); font-style: italic; }
@@ -74,7 +74,7 @@ img { max-width: 100%; display: block; }
 .sidebar-info__icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 10px; }
 .sidebar-info__icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .sidebar-info__label { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-.sidebar-info__text { font-size: 13px; color: var(--ink-soft); line-height: 1.6; }
+.sidebar-info__text { font-size: 13px; color: var(--ink); line-height: 1.6; }
 
 /* Form */
 .form-section-title { font-size: 14px; font-weight: 700; color: var(--ink); padding: 10px 0; margin-bottom: 20px; margin-top: 36px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
@@ -83,7 +83,7 @@ img { max-width: 100%; display: block; }
 .form-group { margin-bottom: 20px; }
 .form-label { display: block; font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.5; }
 .form-label .required { color: #D93025; font-size: 12px; font-weight: 600; margin-left: 4px; }
-.form-label .optional { color: var(--ink-light); font-size: 11px; font-weight: 400; margin-left: 4px; }
+.form-label .optional { color: var(--ink-soft); font-size: 11px; font-weight: 400; margin-left: 4px; }
 .form-input,
 .form-select,
 .form-textarea { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; font-size: 15px; font-family: var(--font-jp); color: var(--ink); background: var(--white); transition: border-color .2s, box-shadow .2s; outline: none; -webkit-appearance: none; appearance: none; }
@@ -114,6 +114,13 @@ img { max-width: 100%; display: block; }
 .form-checkbox input:checked + label::before { border-color: var(--blue); background: var(--blue); }
 .form-checkbox input:checked + label::after { content: ''; position: absolute; left: 22px; top: 50%; width: 5px; height: 9px; border: solid var(--white); border-width: 0 2px 2px 0; transform: translateY(-55%) rotate(45deg); }
 
+/* Screening checkbox labels */
+.form-checkbox-label { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--ink); cursor: pointer; transition: all .2s; background: var(--white); user-select: none; }
+.form-checkbox-label:hover { border-color: var(--blue); }
+.form-checkbox-label input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--blue); flex-shrink: 0; cursor: pointer; }
+.form-checkbox-label input[type="checkbox"]:checked ~ span:last-child { color: var(--blue); font-weight: 500; }
+.form-checkbox-custom { display: none; }
+
 /* Agreement */
 .form-agreement { display: flex; align-items: flex-start; gap: 12px; padding: 20px 24px; background: var(--paper); border-radius: 8px; margin-top: 28px; }
 .form-agreement input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--blue); flex-shrink: 0; cursor: pointer; }
@@ -130,7 +137,7 @@ img { max-width: 100%; display: block; }
 .faq-item { padding: 28px 0; border-bottom: 1px solid var(--line); }
 .faq-item__q { font-weight: 700; font-size: 15px; margin-bottom: 10px; cursor: pointer; }
 .faq-item__q::before { content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans); font-weight: 600; color: var(--blue); }
-.faq-item__a { font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
+.faq-item__a { font-size: 14px; line-height: 1.9; color: var(--ink); padding-left: 28px; }
 
 /* Footer */
 .hb-footer { padding: 56px 32px; background: var(--ink); color: #fff; }
