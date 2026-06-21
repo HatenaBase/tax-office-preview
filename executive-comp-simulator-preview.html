@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>役員報酬シミュレーション｜はてなベース税理士事務所</title>
+  <meta name="description" content="役員報酬の最適額を簡易シミュレーション。手取り・税金・社会保険料のバランスを可視化し、法人と個人のトータル手残りを最大化する報酬設計を支援します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #FAFAFA;
+      --paper-warm: #F5F4F0;
+      --ink: #0E0E14;
+      --ink-soft: #3A3A45;
+      --ink-light: #8A8A93;
+      --line: #E8E6DF;
+      --line-soft: #F0EEE8;
+      --blue: #1F61AB;
+      --blue-deep: #0F3B72;
+      --blue-light: #E8EFF8;
+      --blue-ghost: #F4F8FD;
+      --font-en: "Cormorant Garamond", "Times New Roman", serif;
+      --font-en-sans: "Inter", system-ui, sans-serif;
+      --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+    /* ====== Header ====== */
+    .hb-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-header__logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .hb-header__logo-text {
+      font-family: var(--font-jp); font-weight: 700;
+      font-size: 15px; letter-spacing: .02em; line-height: 1.3;
+    }
+    .hb-header__logo-sub {
+      font-size: 10px; font-weight: 400;
+      color: var(--ink-light); display: block;
+    }
+    .hb-header__nav {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .hb-header__nav a {
+      font-family: var(--font-en-sans);
+      font-size: 12px; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .2s;
+    }
+    .hb-header__nav a:hover { color: var(--blue); }
+    .hb-header__cta {
+      padding: 10px 24px; background: var(--blue); color: #fff !important;
+      border-radius: 999px; font-size: 12px; font-weight: 600;
+      letter-spacing: .04em; text-decoration: none;
+      transition: background .3s;
+    }
+    .hb-header__cta:hover { background: var(--blue-deep); }
+    .hb-hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 32px; height: 32px; position: relative;
+    }
+    .hb-hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--ink); position: absolute; left: 6px;
+      transition: .3s;
+    }
+    .hb-hamburger span:nth-child(1) { top: 9px; }
+    .hb-hamburger span:nth-child(2) { top: 15px; }
+    .hb-hamburger span:nth-child(3) { top: 21px; }
+
+    /* ====== Mobile Nav ====== */
+    .hb-mobile-nav {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255,255,255,.98); z-index: 99;
+      flex-direction: column; justify-content: center; align-items: center; gap: 32px;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .hb-mobile-nav.is-open {
+      display: flex; opacity: 1; pointer-events: auto;
+    }
+    .hb-mobile-nav a {
+      font-family: var(--font-en-sans); font-size: 16px; font-weight: 500;
+      letter-spacing: .06em; color: var(--ink); text-decoration: none;
+    }
+    .hb-mobile-nav a:hover { color: var(--blue); }
+
+    /* ====== SubHero ====== */
+    .hb-subhero {
+      position: relative; padding: 80px 32px 72px;
+      background: var(--white); overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-subhero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+      background-image:
+        radial-gradient(circle at 70% 50%, transparent 39px, transparent 40px),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' fill='none'%3E%3Ccircle cx='400' cy='300' r='50' stroke='%231F61AB' stroke-width='1.2' opacity='.18'/%3E%3Ccircle cx='400' cy='300' r='100' stroke='%231F61AB' stroke-width='1' opacity='.15'/%3E%3Ccircle cx='400' cy='300' r='150' stroke='%231F61AB' stroke-width='.8' opacity='.13'/%3E%3Ccircle cx='400' cy='300' r='200' stroke='%231F61AB' stroke-width='.7' opacity='.11'/%3E%3Ccircle cx='400' cy='300' r='250' stroke='%231F61AB' stroke-width='.6' opacity='.09'/%3E%3Ccircle cx='400' cy='300' r='300' stroke='%231F61AB' stroke-width='.5' opacity='.07'/%3E%3Cline x1='0' y1='300' x2='800' y2='300' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Cline x1='400' y1='0' x2='400' y2='600' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      pointer-events: none; z-index: 0;
+    }
+    .hb-subhero > * { position: relative; z-index: 1; }
+    .hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+    .hb-subhero__crumb {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px;
+    }
+    .hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; }
+    .hb-subhero__crumb a:hover { color: var(--blue); }
+    .hb-subhero__en {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--blue); margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .hb-subhero__jp {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(28px, 4vw, 52px); line-height: 1.25;
+      letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px;
+    }
+    .hb-subhero__lead {
+      font-size: 15px; line-height: 2; color: var(--ink-soft);
+      max-width: 720px;
+    }
+
+    /* ====== Section Head ====== */
+    .hb-section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .hb-section-head__en {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-section-head__en::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    }
+    .hb-section-head__jp {
+      font-family: var(--font-jp); font-weight: 700; font-size: 28px;
+      letter-spacing: -.01em; color: var(--ink);
+    }
+
+    /* ====== Section base ====== */
+    .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .section--paper { background: var(--paper); }
+    .section--warm { background: var(--paper-warm); }
+    .section__inner { max-width: 1280px; margin: 0 auto; }
+
+    /* ====== Simulator Form ====== */
+    .sim-layout {
+      display: grid; grid-template-columns: 400px 1fr; gap: 48px;
+      align-items: start;
+    }
+
+    .sim-form {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 36px;
+      position: sticky; top: 100px;
+    }
+    .sim-form__title {
+      font-weight: 700; font-size: 16px; margin-bottom: 28px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--line-soft);
+      color: var(--ink);
+    }
+    .sim-form__group {
+      margin-bottom: 24px;
+    }
+    .sim-form__group:last-child { margin-bottom: 0; }
+    .sim-form__label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .sim-form__label-sub {
+      font-weight: 400; font-size: 12px; color: var(--ink-light);
+      margin-left: 4px;
+    }
+    .sim-form__input-wrap {
+      position: relative;
+    }
+    .sim-form__input {
+      width: 100%; padding: 12px 60px 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-family: var(--font-en); font-size: 20px; font-weight: 400;
+      color: var(--ink); background: var(--white);
+      outline: none; transition: border-color .2s;
+      -moz-appearance: textfield;
+    }
+    .sim-form__input::-webkit-outer-spin-button,
+    .sim-form__input::-webkit-inner-spin-button {
+      -webkit-appearance: none; margin: 0;
+    }
+    .sim-form__input:focus { border-color: var(--blue); }
+    .sim-form__unit {
+      position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+      font-size: 14px; color: var(--ink-light); pointer-events: none;
+    }
+
+    .sim-form__slider-wrap {
+      margin-top: 12px;
+    }
+    .sim-form__slider {
+      width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
+      background: var(--line); border-radius: 3px; outline: none;
+      cursor: pointer;
+    }
+    .sim-form__slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--blue); cursor: pointer;
+      border: 3px solid var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+    .sim-form__slider::-moz-range-thumb {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--blue); cursor: pointer;
+      border: 3px solid var(--white);
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+    .sim-form__slider-labels {
+      display: flex; justify-content: space-between;
+      font-family: var(--font-en-sans); font-size: 11px; color: var(--ink-light);
+      margin-top: 6px;
+    }
+
+    .sim-form__select {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-family: var(--font-jp); font-size: 14px;
+      color: var(--ink); background: var(--white);
+      outline: none; cursor: pointer; transition: border-color .2s;
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A8A93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    .sim-form__select:focus { border-color: var(--blue); }
+
+    .sim-form__radio-group {
+      display: flex; gap: 12px;
+    }
+    .sim-form__radio-label {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-size: 13px; font-weight: 500; color: var(--ink-soft);
+      cursor: pointer; transition: all .2s;
+    }
+    .sim-form__radio-label:hover { border-color: var(--blue); color: var(--blue); }
+    .sim-form__radio-label.is-active {
+      border-color: var(--blue); background: var(--blue-ghost);
+      color: var(--blue); font-weight: 700;
+    }
+    .sim-form__radio-label input {
+      display: none;
+    }
+
+    /* ====== Results ====== */
+    .sim-results {
+      min-height: 400px;
+    }
+
+    .sim-main-card {
+      background: var(--blue-ghost); border: 1px solid var(--blue-light);
+      border-radius: 8px; padding: 40px; margin-bottom: 32px;
+      text-align: center;
+    }
+    .sim-main-card__label {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue); margin-bottom: 8px;
+    }
+    .sim-main-card__sub {
+      font-size: 13px; color: var(--ink-soft); margin-bottom: 12px;
+    }
+    .sim-main-card__value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 64px; color: var(--blue); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .sim-main-card__value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 18px; color: var(--ink-soft);
+    }
+    .sim-main-card__total-label {
+      font-size: 12px; color: var(--ink-light); margin-top: 16px; margin-bottom: 4px;
+    }
+    .sim-main-card__total-value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 32px; color: var(--ink); line-height: 1;
+    }
+    .sim-main-card__total-value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 14px; color: var(--ink-soft);
+    }
+
+    /* ====== Bar Chart ====== */
+    .sim-bar {
+      margin-bottom: 32px; padding: 28px;
+      background: var(--white); border: 1px solid var(--line); border-radius: 8px;
+    }
+    .sim-bar__title {
+      font-weight: 700; font-size: 14px; margin-bottom: 20px;
+      color: var(--ink);
+    }
+    .sim-bar__track {
+      width: 100%; height: 40px; display: flex; border-radius: 6px;
+      overflow: hidden; margin-bottom: 16px;
+    }
+    .sim-bar__seg {
+      height: 100%; transition: width .4s ease;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
+      color: #fff; white-space: nowrap; min-width: 0; overflow: hidden;
+    }
+    .sim-bar__seg--take-home { background: var(--blue); }
+    .sim-bar__seg--personal-tax { background: #5A9BD5; }
+    .sim-bar__seg--corp-tax { background: #F4A940; }
+    .sim-bar__seg--corp-si { background: #E07050; }
+    .sim-bar__legend {
+      display: flex; flex-wrap: wrap; gap: 16px;
+    }
+    .sim-bar__legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--ink-soft);
+    }
+    .sim-bar__legend-dot {
+      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ====== Detail Tables ====== */
+    .sim-tables {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-bottom: 32px;
+    }
+    .sim-detail-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; overflow: hidden;
+    }
+    .sim-detail-card__header {
+      padding: 16px 24px;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      font-weight: 700; font-size: 14px; color: var(--ink);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sim-detail-card__header-icon {
+      width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+      background: var(--blue-light); border-radius: 6px;
+    }
+    .sim-detail-card__header-icon svg { width: 14px; height: 14px; }
+    .sim-detail-card__body { padding: 0; }
+    .sim-detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .sim-detail-row:last-child { border-bottom: none; }
+    .sim-detail-row__label { font-weight: 400; }
+    .sim-detail-row__value {
+      font-family: var(--font-en); font-style: italic; font-weight: 400;
+      font-size: 18px; color: var(--ink);
+    }
+    .sim-detail-row__value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 12px; color: var(--ink-light); margin-left: 2px;
+    }
+    .sim-detail-row--highlight {
+      background: var(--blue-ghost);
+    }
+    .sim-detail-row--highlight .sim-detail-row__label {
+      font-weight: 700; color: var(--ink);
+    }
+    .sim-detail-row--highlight .sim-detail-row__value {
+      color: var(--blue); font-weight: 400; font-size: 20px;
+    }
+    .sim-detail-row--negative .sim-detail-row__value {
+      color: #C05040;
+    }
+
+    /* ====== Disclaimer ====== */
+    .sim-disclaimer {
+      margin-top: 24px; padding: 24px 32px;
+      background: var(--paper-warm); border-left: 3px solid var(--line);
+      border-radius: 0 4px 4px 0;
+    }
+    .sim-disclaimer p {
+      font-size: 12px; line-height: 1.8; color: var(--ink-light);
+    }
+
+    /* ====== CTA Section ====== */
+    .cta-blue {
+      padding: 96px 32px; background: var(--blue); color: #fff;
+    }
+    .cta-blue__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+    }
+    .cta-blue__label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
+    }
+    .cta-blue__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px;
+    }
+    .cta-blue__lead {
+      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
+    }
+    .cta-blue__buttons { display: grid; gap: 14px; }
+    .cta-blue__btn {
+      padding: 18px 28px; text-decoration: none;
+      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+      border-radius: 999px; transition: transform .2s, opacity .2s;
+    }
+    .cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+    .cta-blue__btn--primary { background: #fff; color: var(--blue); }
+    .cta-blue__btn--outline {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .cta-blue__btn .arrow {
+      font-family: var(--font-en); font-style: italic;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 1024px) {
+      .sim-layout { grid-template-columns: 1fr; }
+      .sim-form { position: static; }
+    }
+
+    @media (max-width: 767px) {
+      .hb-header__nav { display: none; }
+      .hb-hamburger { display: block; }
+      .hb-subhero { padding: 60px 20px 48px; }
+      .hb-subhero__jp { font-size: 26px; }
+      .section { padding: 64px 20px; }
+      .sim-layout { gap: 32px; }
+      .sim-form { padding: 24px; }
+      .sim-main-card { padding: 28px 20px; }
+      .sim-main-card__value { font-size: 44px; }
+      .sim-main-card__total-value { font-size: 24px; }
+      .sim-tables { grid-template-columns: 1fr; }
+      .sim-detail-row { padding: 12px 16px; }
+      .sim-detail-row__value { font-size: 16px; }
+      .sim-bar { padding: 20px; }
+      .sim-bar__track { height: 32px; }
+      .sim-bar__seg { font-size: 10px; }
+      .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+      .hb-section-head { flex-direction: column; gap: 8px; }
+      .sim-form__radio-group { flex-direction: column; }
+      .sim-disclaimer { padding: 16px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .sim-main-card__value { font-size: 36px; }
+      .sim-bar__legend { gap: 10px; }
+      .sim-bar__legend-item { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<header class="hb-header">
+  <div class="hb-header__inner">
+    <a class="hb-header__logo" href="./tax-accountant-preview.html">
+      <div class="hb-header__logo-text">
+        はてなベース税理士事務所
+        <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
+      </div>
+    </a>
+    <nav class="hb-header__nav">
+      <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+      <a href="./financing-support-preview.html">FINANCING</a>
+      <a href="./about-us-preview.html">ABOUT US</a>
+      <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
+    </nav>
+    <button class="hb-hamburger" onclick="document.querySelector('.hb-mobile-nav').classList.toggle('is-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== Mobile Nav ====== -->
+<div class="hb-mobile-nav">
+  <a href="./tax-advisor-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">TAX ADVISOR</a>
+  <a href="./financing-support-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">FINANCING</a>
+  <a href="./about-us-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">ABOUT US</a>
+  <a href="./contact-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">CONTACT</a>
+</div>
+
+<!-- ====== SubHero ====== -->
+<section class="hb-subhero">
+  <div class="hb-subhero__inner">
+    <div class="hb-subhero__crumb">
+      <a href="./tax-accountant-preview.html">HOME</a>&ensp;/&ensp;TOOLS&ensp;/&ensp;EXECUTIVE COMPENSATION SIMULATOR
+    </div>
+    <div class="hb-subhero__en">Executive Compensation Simulator</div>
+    <h1 class="hb-subhero__jp">役員報酬シミュレーション</h1>
+    <p class="hb-subhero__lead">
+      役員報酬の金額を変えると、個人の手取り・法人の手残りはどう変わるか。<br>
+      税金と社会保険料のバランスを可視化し、最適な報酬設計をサポートします。
+    </p>
+  </div>
+</section>
+
+<!-- ====== Simulator Section ====== -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <div class="hb-section-head__en">SIMULATION</div>
+      <div class="hb-section-head__jp">報酬額シミュレーション</div>
+    </div>
+
+    <div class="sim-layout">
+      <!-- ====== Input Form ====== -->
+      <div class="sim-form">
+        <div class="sim-form__title">条件を入力</div>
+
+        <!-- 1. 会社の利益 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="profit">
+            会社の利益<span class="sim-form__label-sub">（役員報酬控除前）</span>
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="profit" class="sim-form__input" value="1000" min="0" max="50000" step="10">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 2. 役員報酬 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="comp">
+            役員報酬<span class="sim-form__label-sub">（年額）</span>
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="comp" class="sim-form__input" value="600" min="0" max="1000" step="10">
+            <span class="sim-form__unit">万円</span>
+          </div>
+          <div class="sim-form__slider-wrap">
+            <input type="range" id="compSlider" class="sim-form__slider" value="600" min="0" max="1000" step="10">
+            <div class="sim-form__slider-labels">
+              <span>0万円</span>
+              <span id="sliderMax">1,000万円</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 扶養家族 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="dependents">扶養家族</label>
+          <select id="dependents" class="sim-form__select">
+            <option value="0">0人</option>
+            <option value="1">1人</option>
+            <option value="2">2人</option>
+            <option value="3">3人以上</option>
+          </select>
+        </div>
+
+        <!-- 4. 社会保険 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label">社会保険の加入状況</label>
+          <div class="sim-form__radio-group">
+            <label class="sim-form__radio-label is-active" data-value="kyokai">
+              <input type="radio" name="insurance" value="kyokai" checked>
+              協会けんぽ
+            </label>
+            <label class="sim-form__radio-label" data-value="kokuho">
+              <input type="radio" name="insurance" value="kokuho">
+              国民健康保険
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== Results ====== -->
+      <div class="sim-results">
+
+        <!-- Main Card -->
+        <div class="sim-main-card">
+          <div class="sim-main-card__label">PERSONAL TAKE-HOME</div>
+          <div class="sim-main-card__sub">個人の手取り年額</div>
+          <div class="sim-main-card__value" id="takeHome">0<span> 万円</span></div>
+          <div class="sim-main-card__total-label">トータル手残り（個人手取り + 法人手残り）</div>
+          <div class="sim-main-card__total-value" id="totalRemaining">0<span> 万円</span></div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="sim-bar">
+          <div class="sim-bar__title">構成比</div>
+          <div class="sim-bar__track" id="barTrack">
+            <div class="sim-bar__seg sim-bar__seg--take-home" id="barTakeHome" style="width:50%"></div>
+            <div class="sim-bar__seg sim-bar__seg--personal-tax" id="barPersonalTax" style="width:20%"></div>
+            <div class="sim-bar__seg sim-bar__seg--corp-tax" id="barCorpTax" style="width:20%"></div>
+            <div class="sim-bar__seg sim-bar__seg--corp-si" id="barCorpSI" style="width:10%"></div>
+          </div>
+          <div class="sim-bar__legend">
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:var(--blue)"></div>
+              個人の手取り
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#5A9BD5"></div>
+              個人の税・社保
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#F4A940"></div>
+              法人税等
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#E07050"></div>
+              法人社保負担
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Tables -->
+        <div class="sim-tables">
+          <!-- Personal -->
+          <div class="sim-detail-card">
+            <div class="sim-detail-card__header">
+              <div class="sim-detail-card__header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+              </div>
+              個人（役員）
+            </div>
+            <div class="sim-detail-card__body">
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">役員報酬（年額）</div>
+                <div class="sim-detail-row__value" id="rowComp">600<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">所得税</div>
+                <div class="sim-detail-row__value" id="rowIncomeTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">住民税</div>
+                <div class="sim-detail-row__value" id="rowResidentTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">社会保険料（個人負担）</div>
+                <div class="sim-detail-row__value" id="rowPersonalSI">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--highlight">
+                <div class="sim-detail-row__label">個人の手取り</div>
+                <div class="sim-detail-row__value" id="rowTakeHome">0<span>万円</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Corporate -->
+          <div class="sim-detail-card">
+            <div class="sim-detail-card__header">
+              <div class="sim-detail-card__header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+              </div>
+              法人
+            </div>
+            <div class="sim-detail-card__body">
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">法人所得</div>
+                <div class="sim-detail-row__value" id="rowCorpIncome">400<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">法人税等</div>
+                <div class="sim-detail-row__value" id="rowCorpTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">社会保険料（会社負担）</div>
+                <div class="sim-detail-row__value" id="rowCorpSI">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--highlight">
+                <div class="sim-detail-row__label">法人の手残り</div>
+                <div class="sim-detail-row__value" id="rowCorpRemaining">0<span>万円</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="sim-disclaimer">
+          <p>
+            本シミュレーションは概算です。実際の税額は各種控除・税制改正等により異なります。詳細な検討は税理士にご相談ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-blue">
+  <div class="cta-blue__inner">
+    <div>
+      <div class="cta-blue__label">CONTACT US</div>
+      <h2 class="cta-blue__title">最適な役員報酬設計を<br>プロと一緒に考えませんか</h2>
+      <p class="cta-blue__lead">
+        シミュレーション結果をもとに、各種控除の適用や社会保険の最適化を含めた<br>
+        精緻な報酬設計をご提案いたします。初回相談は無料です。
+      </p>
+    </div>
+    <div class="cta-blue__buttons">
+      <a href="./contact-preview.html" class="cta-blue__btn cta-blue__btn--primary">
+        プロに相談する <span class="arrow">&rarr;</span>
+      </a>
+      <a href="./tax-advisor-preview.html" class="cta-blue__btn cta-blue__btn--outline">
+        税務顧問サービスを見る <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer style="background: #0E0E14; color: rgba(255,255,255,.85); padding: 64px 32px 32px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">SERVICE</div>
+        <a href="./tax-advisor-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">税務顧問</a>
+        <a href="./financing-support-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">融資支援</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">TOOLS</div>
+        <a href="./executive-comp-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">役員報酬シミュレーション</a>
+        <a href="./financing-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">融資診断シミュレーション</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">ABOUT</div>
+        <a href="./about-us-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">私たちについて</a>
+        <a href="./contact-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">お問い合わせ</a>
+      </div>
+    </div>
+    <!-- Group Companies -->
+    <div style="padding-top: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 24px;">GROUP COMPANIES</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Inc.</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース株式会社</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">DX・AI・経営管理コンサルティング</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Tax Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース税理士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">税務・会計・月次決算の専門家集団</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Labor Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース社会保険労務士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">労務・人事・社会保険の専門家集団</div>
+        </div>
+      </div>
+      <div style="margin-top: 18px; font-family: var(--font-en-sans); font-size: 10.5px; color: rgba(255,255,255,.45); line-height: 1.7;">共通所在地：東京都新宿区愛住町23-1 woody21 6階</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 11px; color: rgba(255,255,255,.4);">
+      <div>Copyright &copy; 2026 HatenaBase Inc.</div>
+      <a href="./contact-preview.html" style="color: rgba(255,255,255,.4); text-decoration: none;">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // ====== DOM References ======
+  const profitInput    = document.getElementById('profit');
+  const compInput      = document.getElementById('comp');
+  const compSlider     = document.getElementById('compSlider');
+  const sliderMaxLabel = document.getElementById('sliderMax');
+  const dependentsSelect = document.getElementById('dependents');
+  const radioLabels    = document.querySelectorAll('.sim-form__radio-label');
+
+  // Result elements
+  const elTakeHome       = document.getElementById('takeHome');
+  const elTotalRemaining = document.getElementById('totalRemaining');
+  const elRowComp        = document.getElementById('rowComp');
+  const elRowIncomeTax   = document.getElementById('rowIncomeTax');
+  const elRowResidentTax = document.getElementById('rowResidentTax');
+  const elRowPersonalSI  = document.getElementById('rowPersonalSI');
+  const elRowTakeHome    = document.getElementById('rowTakeHome');
+  const elRowCorpIncome  = document.getElementById('rowCorpIncome');
+  const elRowCorpTax     = document.getElementById('rowCorpTax');
+  const elRowCorpSI      = document.getElementById('rowCorpSI');
+  const elRowCorpRemaining = document.getElementById('rowCorpRemaining');
+
+  // Bar segments
+  const barTakeHome   = document.getElementById('barTakeHome');
+  const barPersonalTax = document.getElementById('barPersonalTax');
+  const barCorpTax    = document.getElementById('barCorpTax');
+  const barCorpSI     = document.getElementById('barCorpSI');
+
+  // ====== Calculation Functions ======
+
+  /**
+   * Calculate salary income deduction (給与所得控除)
+   * @param {number} income - annual salary in 万円
+   * @returns {number} deduction in 万円
+   */
+  function calcSalaryDeduction(income) {
+    if (income <= 0) return 0;
+    if (income <= 162.5) return 55;
+    if (income <= 180) return income * 0.4 - 10;
+    if (income <= 360) return income * 0.3 + 8;
+    if (income <= 660) return income * 0.2 + 44;
+    if (income <= 850) return income * 0.1 + 110;
+    return 195;
+  }
+
+  /**
+   * Calculate income tax (所得税)
+   * @param {number} taxableIncome - taxable income in 万円
+   * @returns {number} tax in 万円
+   */
+  function calcIncomeTax(taxableIncome) {
+    if (taxableIncome <= 0) return 0;
+    // Rates in 万円 basis
+    if (taxableIncome <= 195) return taxableIncome * 0.05;
+    if (taxableIncome <= 330) return taxableIncome * 0.10 - 9.75;
+    if (taxableIncome <= 695) return taxableIncome * 0.20 - 42.75;
+    if (taxableIncome <= 900) return taxableIncome * 0.23 - 63.6;
+    if (taxableIncome <= 1800) return taxableIncome * 0.33 - 153.6;
+    if (taxableIncome <= 4000) return taxableIncome * 0.40 - 279.6;
+    return taxableIncome * 0.45 - 479.6;
+  }
+
+  /**
+   * Calculate corporate tax (法人税等) - simplified effective rate
+   * @param {number} corpIncome - corporate income in 万円
+   * @returns {number} tax in 万円
+   */
+  function calcCorpTax(corpIncome) {
+    if (corpIncome <= 0) return 0;
+    let tax = 0;
+    if (corpIncome <= 400) {
+      tax = corpIncome * 0.22;
+    } else if (corpIncome <= 800) {
+      tax = 400 * 0.22 + (corpIncome - 400) * 0.25;
+    } else {
+      tax = 400 * 0.22 + 400 * 0.25 + (corpIncome - 800) * 0.35;
+    }
+    return tax;
+  }
+
+  /**
+   * Calculate social insurance premium (personal share)
+   * @param {number} comp - annual compensation in 万円
+   * @param {string} type - 'kyokai' or 'kokuho'
+   * @returns {number} premium in 万円
+   */
+  function calcPersonalSI(comp, type) {
+    if (comp <= 0) return 0;
+    if (type === 'kyokai') {
+      // Approx 15% of comp (employee share)
+      return comp * 0.15;
+    } else {
+      // National Health Insurance: roughly 10% (no pension component in simple model)
+      return comp * 0.10;
+    }
+  }
+
+  /**
+   * Calculate social insurance premium (company share)
+   * @param {number} comp - annual compensation in 万円
+   * @param {string} type - 'kyokai' or 'kokuho'
+   * @returns {number} premium in 万円
+   */
+  function calcCorpSI(comp, type) {
+    if (comp <= 0) return 0;
+    if (type === 'kyokai') {
+      return comp * 0.15;
+    } else {
+      // No company share for NHI
+      return 0;
+    }
+  }
+
+  // ====== Format ======
+  function fmt(val) {
+    return Math.round(val).toLocaleString('ja-JP');
+  }
+
+  // ====== Main Calculation ======
+  function calculate() {
+    const profit = parseFloat(profitInput.value) || 0;
+    let comp = parseFloat(compInput.value) || 0;
+    const dependents = parseInt(dependentsSelect.value) || 0;
+    const insuranceType = document.querySelector('input[name="insurance"]:checked').value;
+
+    // Clamp comp to profit
+    if (comp > profit) {
+      comp = profit;
+      compInput.value = comp;
+      compSlider.value = comp;
+    }
+
+    // Update slider max
+    compSlider.max = profit;
+    sliderMaxLabel.textContent = fmt(profit) + '万円';
+
+    // ---- Personal Side ----
+    const salaryDeduction = calcSalaryDeduction(comp);
+    const personalSI = calcPersonalSI(comp, insuranceType);
+    const basicDeduction = 48; // 基礎控除
+    const dependentDeduction = 38 * dependents; // 扶養控除(簡易)
+
+    let taxableIncome = comp - salaryDeduction - personalSI - basicDeduction - dependentDeduction;
+    if (taxableIncome < 0) taxableIncome = 0;
+
+    const incomeTax = calcIncomeTax(taxableIncome);
+    // 復興特別所得税 2.1%
+    const incomeTaxWithSurtax = incomeTax * 1.021;
+    const residentTax = taxableIncome * 0.10;
+    const personalTakeHome = comp - incomeTaxWithSurtax - residentTax - personalSI;
+
+    // ---- Corporate Side ----
+    const corpIncome = profit - comp;
+    const corpTax = calcCorpTax(corpIncome);
+    const corpSI = calcCorpSI(comp, insuranceType);
+    const corpRemaining = corpIncome - corpTax - corpSI;
+
+    // ---- Totals ----
+    const totalRemaining = personalTakeHome + corpRemaining;
+    const personalTaxAndSI = incomeTaxWithSurtax + residentTax + personalSI;
+
+    // ---- Update DOM ----
+    elTakeHome.innerHTML = fmt(Math.round(personalTakeHome)) + '<span> 万円</span>';
+    elTotalRemaining.innerHTML = fmt(Math.round(totalRemaining)) + '<span> 万円</span>';
+
+    elRowComp.innerHTML = fmt(Math.round(comp)) + '<span>万円</span>';
+    elRowIncomeTax.innerHTML = '-' + fmt(Math.round(incomeTaxWithSurtax)) + '<span>万円</span>';
+    elRowResidentTax.innerHTML = '-' + fmt(Math.round(residentTax)) + '<span>万円</span>';
+    elRowPersonalSI.innerHTML = '-' + fmt(Math.round(personalSI)) + '<span>万円</span>';
+    elRowTakeHome.innerHTML = fmt(Math.round(personalTakeHome)) + '<span>万円</span>';
+
+    elRowCorpIncome.innerHTML = fmt(Math.round(corpIncome)) + '<span>万円</span>';
+    elRowCorpTax.innerHTML = '-' + fmt(Math.round(corpTax)) + '<span>万円</span>';
+    elRowCorpSI.innerHTML = '-' + fmt(Math.round(corpSI)) + '<span>万円</span>';
+    elRowCorpRemaining.innerHTML = fmt(Math.round(corpRemaining)) + '<span>万円</span>';
+
+    // ---- Bar Chart ----
+    const total = profit > 0 ? profit : 1;
+    const pctTakeHome = Math.max(0, (personalTakeHome / total) * 100);
+    const pctPersonalTax = Math.max(0, (personalTaxAndSI / total) * 100);
+    const pctCorpTax = Math.max(0, (corpTax / total) * 100);
+    const pctCorpSI = Math.max(0, (corpSI / total) * 100);
+
+    barTakeHome.style.width = pctTakeHome + '%';
+    barPersonalTax.style.width = pctPersonalTax + '%';
+    barCorpTax.style.width = pctCorpTax + '%';
+    barCorpSI.style.width = pctCorpSI + '%';
+
+    // Show labels only if segment is wide enough
+    barTakeHome.textContent = pctTakeHome > 8 ? Math.round(pctTakeHome) + '%' : '';
+    barPersonalTax.textContent = pctPersonalTax > 8 ? Math.round(pctPersonalTax) + '%' : '';
+    barCorpTax.textContent = pctCorpTax > 8 ? Math.round(pctCorpTax) + '%' : '';
+    barCorpSI.textContent = pctCorpSI > 8 ? Math.round(pctCorpSI) + '%' : '';
+  }
+
+  // ====== Event Listeners ======
+
+  // Profit input
+  profitInput.addEventListener('input', function() {
+    calculate();
+  });
+
+  // Comp text input
+  compInput.addEventListener('input', function() {
+    compSlider.value = this.value;
+    calculate();
+  });
+
+  // Comp slider
+  compSlider.addEventListener('input', function() {
+    compInput.value = this.value;
+    calculate();
+  });
+
+  // Dependents
+  dependentsSelect.addEventListener('change', calculate);
+
+  // Radio buttons
+  radioLabels.forEach(function(label) {
+    label.addEventListener('click', function() {
+      radioLabels.forEach(function(l) { l.classList.remove('is-active'); });
+      this.classList.add('is-active');
+      this.querySelector('input').checked = true;
+      calculate();
+    });
+  });
+
+  // Initial calculation
+  calculate();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>融資診断シミュレーション｜はてなベース税理士事務所</title>
+  <meta name="description" content="創業融資・日本政策金融公庫の融資可能額を簡易診断。自己資金や事業経験から借入可能額の目安をシミュレーションできます。はてなベース税理士事務所。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #FAFAFA;
+      --paper-warm: #F5F4F0;
+      --ink: #0E0E14;
+      --ink-soft: #3A3A45;
+      --ink-light: #8A8A93;
+      --line: #E8E6DF;
+      --line-soft: #F0EEE8;
+      --blue: #1F61AB;
+      --blue-deep: #0F3B72;
+      --blue-light: #E8EFF8;
+      --blue-ghost: #F4F8FD;
+      --font-en: "Cormorant Garamond", "Times New Roman", serif;
+      --font-en-sans: "Inter", system-ui, sans-serif;
+      --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+    /* ====== Header ====== */
+    .hb-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-header__logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .hb-header__logo-text {
+      font-family: var(--font-jp); font-weight: 700;
+      font-size: 15px; letter-spacing: .02em; line-height: 1.3;
+    }
+    .hb-header__logo-sub {
+      font-size: 10px; font-weight: 400;
+      color: var(--ink-light); display: block;
+    }
+    .hb-header__nav {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .hb-header__nav a {
+      font-family: var(--font-en-sans);
+      font-size: 12px; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .2s;
+    }
+    .hb-header__nav a:hover { color: var(--blue); }
+    .hb-header__cta {
+      padding: 10px 24px; background: var(--blue); color: #fff !important;
+      border-radius: 999px; font-size: 12px; font-weight: 600;
+      letter-spacing: .04em; text-decoration: none;
+      transition: background .3s;
+    }
+    .hb-header__cta:hover { background: var(--blue-deep); color: #fff !important; }
+    .hb-hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 32px; height: 32px; position: relative;
+    }
+    .hb-hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--ink); position: absolute; left: 6px;
+      transition: .3s;
+    }
+    .hb-hamburger span:nth-child(1) { top: 9px; }
+    .hb-hamburger span:nth-child(2) { top: 15px; }
+    .hb-hamburger span:nth-child(3) { top: 21px; }
+
+    /* ====== Mobile Nav ====== */
+    .hb-mobile-nav {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,.98); z-index: 99;
+      flex-direction: column; justify-content: center; align-items: center; gap: 28px;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .hb-mobile-nav.is-open { display: flex; }
+    .hb-mobile-nav a {
+      font-family: var(--font-en-sans); font-size: 14px; font-weight: 500;
+      letter-spacing: .06em; color: var(--ink-soft); text-decoration: none;
+      padding: 12px 24px; transition: color .2s;
+    }
+    .hb-mobile-nav a:hover { color: var(--blue); }
+    .hb-mobile-nav .hb-header__cta {
+      margin-top: 12px; padding: 14px 32px; font-size: 14px;
+    }
+
+    /* ====== SubHero ====== */
+    .hb-subhero {
+      position: relative; padding: 80px 32px 72px;
+      background: var(--white); overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-subhero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' fill='none'%3E%3Ccircle cx='400' cy='300' r='50' stroke='%231F61AB' stroke-width='1.2' opacity='.18'/%3E%3Ccircle cx='400' cy='300' r='100' stroke='%231F61AB' stroke-width='1' opacity='.15'/%3E%3Ccircle cx='400' cy='300' r='150' stroke='%231F61AB' stroke-width='.8' opacity='.13'/%3E%3Ccircle cx='400' cy='300' r='200' stroke='%231F61AB' stroke-width='.7' opacity='.11'/%3E%3Ccircle cx='400' cy='300' r='250' stroke='%231F61AB' stroke-width='.6' opacity='.09'/%3E%3Ccircle cx='400' cy='300' r='300' stroke='%231F61AB' stroke-width='.5' opacity='.07'/%3E%3Cline x1='0' y1='300' x2='800' y2='300' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Cline x1='400' y1='0' x2='400' y2='600' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Ccircle cx='400' cy='300' r='6' fill='%231F61AB' opacity='.15'/%3E%3Ccircle cx='480' cy='180' r='18' fill='%236BA3DC' opacity='.18'/%3E%3Ccircle cx='490' cy='190' r='6' fill='%233A7FCC' opacity='.22'/%3E%3Ccircle cx='250' cy='150' r='30' stroke='%231F61AB' stroke-width='.5' opacity='.10'/%3E%3Ccircle cx='250' cy='150' r='60' stroke='%231F61AB' stroke-width='.4' opacity='.07'/%3E%3Ccircle cx='250' cy='150' r='90' stroke='%231F61AB' stroke-width='.3' opacity='.05'/%3E%3Ccircle cx='600' cy='450' r='25' stroke='%231F61AB' stroke-width='.5' opacity='.08'/%3E%3Ccircle cx='600' cy='450' r='50' stroke='%231F61AB' stroke-width='.4' opacity='.06'/%3E%3C/svg%3E");
+      background-size: cover; background-position: center;
+      pointer-events: none; z-index: 0;
+    }
+    .hb-subhero > * { position: relative; z-index: 1; }
+    .hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+    .hb-subhero__crumb {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px;
+    }
+    .hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; }
+    .hb-subhero__crumb a:hover { color: var(--blue); }
+    .hb-subhero__en {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--blue); margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .hb-subhero__jp {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(28px, 4vw, 52px); line-height: 1.25;
+      letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px;
+    }
+    .hb-subhero__lead {
+      font-size: 15px; line-height: 2; color: var(--ink-soft);
+      max-width: 720px;
+    }
+
+    /* ====== Section Head ====== */
+    .hb-section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .hb-section-head__en {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-section-head__en::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    }
+    .hb-section-head__jp {
+      font-family: var(--font-jp); font-weight: 700; font-size: 28px;
+      letter-spacing: -.01em; color: var(--ink);
+    }
+
+    /* ====== Section base ====== */
+    .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .section--paper { background: var(--paper); }
+    .section--warm { background: var(--paper-warm); }
+    .section__inner { max-width: 1280px; margin: 0 auto; }
+
+    /* ====== Simulator Form ====== */
+    .sim-form { max-width: 880px; margin: 0 auto; }
+
+    .sim-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; padding: 40px; margin-bottom: 24px;
+    }
+    .sim-card__title {
+      font-weight: 700; font-size: 16px; margin-bottom: 24px;
+      padding-bottom: 12px; border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sim-card__title-num {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
+      letter-spacing: .08em; color: var(--white); background: var(--blue);
+      width: 24px; height: 24px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sim-radio-group {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .sim-radio-label {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 20px 24px; border: 2px solid var(--line);
+      border-radius: 8px; cursor: pointer; transition: all .25s;
+      background: var(--white);
+    }
+    .sim-radio-label:hover { border-color: var(--blue); background: var(--blue-ghost); }
+    .sim-radio-label.is-active {
+      border-color: var(--blue); background: var(--blue-ghost);
+      box-shadow: 0 0 0 1px var(--blue);
+    }
+    .sim-radio-label input { display: none; }
+    .sim-radio-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      border: 2px solid var(--line); flex-shrink: 0; margin-top: 1px;
+      position: relative; transition: border-color .2s;
+    }
+    .sim-radio-label.is-active .sim-radio-dot { border-color: var(--blue); }
+    .sim-radio-label.is-active .sim-radio-dot::after {
+      content: ''; position: absolute; top: 3px; left: 3px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--blue);
+    }
+    .sim-radio-text__main { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .sim-radio-text__sub { font-size: 12px; color: var(--ink-light); line-height: 1.6; }
+
+    .sim-fields {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .sim-field { display: flex; flex-direction: column; gap: 8px; }
+    .sim-field--full { grid-column: 1 / -1; }
+    .sim-field__label {
+      font-size: 13px; font-weight: 600; color: var(--ink);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .sim-field__label-required {
+      font-size: 10px; font-weight: 600; color: var(--white);
+      background: var(--blue); padding: 1px 6px; border-radius: 3px;
+    }
+    .sim-field__input {
+      font-family: var(--font-jp); font-size: 15px; font-weight: 500;
+      padding: 12px 16px; border: 1px solid var(--line);
+      border-radius: 6px; background: var(--white);
+      color: var(--ink); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .sim-field__input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(31,97,171,.1);
+    }
+    .sim-field__unit {
+      display: flex; align-items: center; gap: 0;
+    }
+    .sim-field__unit .sim-field__input {
+      border-radius: 6px 0 0 6px; flex: 1;
+      text-align: right; font-family: var(--font-en), var(--font-jp);
+    }
+    .sim-field__unit-text {
+      font-size: 13px; font-weight: 600; color: var(--ink-soft);
+      background: var(--paper); border: 1px solid var(--line);
+      border-left: none; border-radius: 0 6px 6px 0;
+      padding: 12px 14px; white-space: nowrap;
+    }
+    .sim-field select.sim-field__input {
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8A93' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px; cursor: pointer;
+    }
+
+    .sim-check-group {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .sim-check-label {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border: 1px solid var(--line);
+      border-radius: 6px; cursor: pointer; font-size: 14px;
+      transition: all .2s; background: var(--white);
+    }
+    .sim-check-label:hover { border-color: var(--blue); }
+    .sim-check-label.is-checked {
+      border-color: var(--blue); background: var(--blue-ghost);
+      color: var(--blue); font-weight: 600;
+    }
+    .sim-check-label input { display: none; }
+    .sim-check-box {
+      width: 18px; height: 18px; border: 2px solid var(--line);
+      border-radius: 4px; display: flex; align-items: center; justify-content: center;
+      transition: all .2s; flex-shrink: 0;
+    }
+    .sim-check-label.is-checked .sim-check-box {
+      background: var(--blue); border-color: var(--blue);
+    }
+    .sim-check-box svg { width: 12px; height: 12px; opacity: 0; transition: opacity .2s; }
+    .sim-check-label.is-checked .sim-check-box svg { opacity: 1; }
+
+    /* Dynamic field panel */
+    .sim-panel {
+      overflow: hidden; max-height: 0; opacity: 0;
+      transition: max-height .4s ease, opacity .3s ease, margin .3s ease;
+      margin-top: 0;
+    }
+    .sim-panel.is-visible {
+      max-height: 600px; opacity: 1; margin-top: 24px;
+    }
+
+    /* ====== Submit Button ====== */
+    .sim-submit-wrap { text-align: center; margin-top: 36px; }
+    .sim-submit {
+      font-family: var(--font-jp); font-size: 16px; font-weight: 700;
+      padding: 18px 56px; background: var(--blue); color: #fff;
+      border: none; border-radius: 999px; cursor: pointer;
+      transition: background .3s, transform .2s;
+      letter-spacing: .02em;
+    }
+    .sim-submit:hover { background: var(--blue-deep); transform: translateY(-1px); }
+    .sim-submit:active { transform: translateY(0); }
+
+    /* ====== Result Section ====== */
+    .sim-result {
+      display: none; max-width: 880px; margin: 0 auto;
+      animation: fadeInUp .5s ease both;
+    }
+    .sim-result.is-visible { display: block; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sim-result__main {
+      background: var(--blue-ghost); border: 1px solid var(--blue-light);
+      border-radius: 8px; padding: 48px; text-align: center; margin-bottom: 24px;
+    }
+    .sim-result__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 20px; border-radius: 999px;
+      font-size: 14px; font-weight: 700; margin-bottom: 24px;
+    }
+    .sim-result__badge--green { background: #E6F4EA; color: #1B7A3D; }
+    .sim-result__badge--yellow { background: #FFF8E1; color: #9A6700; }
+    .sim-result__badge--red { background: #FDECEA; color: #C62828; }
+
+    .sim-result__label {
+      font-size: 13px; color: var(--ink-light); margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .sim-result__amount {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: clamp(40px, 6vw, 64px); color: var(--blue); line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .sim-result__amount-unit {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 18px; color: var(--ink-soft);
+    }
+    .sim-result__range-text {
+      font-size: 14px; color: var(--ink-soft); margin-top: 8px;
+    }
+
+    /* Result detail cards */
+    .sim-result__cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+      border-top: 1px solid var(--line); border-left: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+    .sim-result__card {
+      padding: 32px 24px; text-align: center;
+      border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+    .sim-result__card-label {
+      font-size: 12px; color: var(--ink-light); margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .sim-result__card-value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 36px; color: var(--blue); line-height: 1.1;
+    }
+    .sim-result__card-unit {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .sim-result__card-note {
+      font-size: 11px; color: var(--ink-light); margin-top: 8px;
+    }
+
+    /* Chart & Advice grid */
+    .sim-result__detail-grid {
+      display: grid; grid-template-columns: 280px 1fr; gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    /* Donut Chart */
+    .sim-chart-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; padding: 32px; text-align: center;
+    }
+    .sim-chart-card__title {
+      font-size: 13px; font-weight: 600; color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .sim-donut {
+      width: 160px; height: 160px; margin: 0 auto 20px;
+      border-radius: 50%; position: relative;
+    }
+    .sim-donut__center {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 90px; height: 90px; background: var(--white);
+      border-radius: 50%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .sim-donut__center-label { font-size: 10px; color: var(--ink-light); }
+    .sim-donut__center-value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 22px; color: var(--blue); line-height: 1;
+    }
+    .sim-chart-legend {
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+      margin: 0 auto; width: fit-content;
+    }
+    .sim-chart-legend__item {
+      display: flex; align-items: center; gap: 8px; font-size: 12px;
+      color: var(--ink-soft);
+    }
+    .sim-chart-legend__dot {
+      width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0;
+    }
+
+    /* Advice */
+    .sim-advice-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; padding: 32px;
+    }
+    .sim-advice-card__title {
+      font-size: 14px; font-weight: 700; color: var(--ink);
+      margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sim-advice-card__title svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .sim-advice-list { list-style: none; }
+    .sim-advice-list li {
+      font-size: 14px; line-height: 1.85; color: var(--ink-soft);
+      padding: 12px 0; border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .sim-advice-list li:last-child { border-bottom: none; }
+    .sim-advice-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--blue); flex-shrink: 0; margin-top: 8px;
+    }
+
+    /* Disclaimer */
+    .sim-disclaimer {
+      background: var(--paper); border-left: 3px solid var(--line);
+      border-radius: 0 4px 4px 0; padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+    .sim-disclaimer p {
+      font-size: 12px; line-height: 1.85; color: var(--ink-light);
+    }
+    .sim-disclaimer p + p { margin-top: 8px; }
+    .sim-disclaimer strong {
+      color: var(--ink-soft); font-weight: 600;
+    }
+
+    /* ====== CTA Section (Blue) ====== */
+    .cta-blue {
+      padding: 96px 32px; background: var(--blue); color: #fff;
+    }
+    .cta-blue__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+    }
+    .cta-blue__label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
+    }
+    .cta-blue__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px;
+    }
+    .cta-blue__lead {
+      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
+    }
+    .cta-blue__buttons { display: grid; gap: 14px; }
+    .cta-blue__btn {
+      padding: 18px 28px; text-decoration: none;
+      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+      border-radius: 999px; transition: transform .2s, opacity .2s;
+    }
+    .cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+    .cta-blue__btn--primary { background: #fff; color: var(--blue); }
+    .cta-blue__btn--outline {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .cta-blue__btn .arrow {
+      font-family: var(--font-en); font-style: italic;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 1024px) {
+      .sim-result__detail-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 767px) {
+      .hb-header__nav { display: none; }
+      .hb-hamburger { display: block; }
+      .hb-subhero { padding: 60px 20px 48px; }
+      .hb-subhero__jp { font-size: 26px; }
+      .section { padding: 64px 20px; }
+      .hb-section-head { flex-direction: column; gap: 8px; }
+      .sim-card { padding: 28px 20px; }
+      .sim-radio-group { grid-template-columns: 1fr; }
+      .sim-fields { grid-template-columns: 1fr; }
+      .sim-result__main { padding: 32px 20px; }
+      .sim-result__cards { grid-template-columns: 1fr; }
+      .sim-result__detail-grid { grid-template-columns: 1fr; }
+      .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+      .sim-check-group { flex-direction: column; }
+      .sim-check-label { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .sim-result__amount { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<header class="hb-header">
+  <div class="hb-header__inner">
+    <a class="hb-header__logo" href="./tax-accountant-preview.html">
+      <div class="hb-header__logo-text">
+        はてなベース税理士事務所
+        <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
+      </div>
+    </a>
+    <nav class="hb-header__nav">
+      <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+      <a href="./financing-support-preview.html">FINANCING</a>
+      <a href="./about-us-preview.html">ABOUT US</a>
+      <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
+    </nav>
+    <button class="hb-hamburger" onclick="document.querySelector('.hb-mobile-nav').classList.toggle('is-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== Mobile Nav ====== -->
+<div class="hb-mobile-nav">
+  <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+  <a href="./financing-support-preview.html">FINANCING</a>
+  <a href="./about-us-preview.html">ABOUT US</a>
+  <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
+</div>
+
+<!-- ====== SubHero ====== -->
+<section class="hb-subhero">
+  <div class="hb-subhero__inner">
+    <div class="hb-subhero__crumb">
+      <a href="./tax-accountant-preview.html">HOME</a>&ensp;/&ensp;TOOLS&ensp;/&ensp;FINANCING SIMULATOR
+    </div>
+    <div class="hb-subhero__en">Financing Diagnosis Simulator</div>
+    <h1 class="hb-subhero__jp">融資診断シミュレーション</h1>
+    <p class="hb-subhero__lead">
+      創業融資・日本政策金融公庫での融資可能額を簡易診断するツールです。<br>
+      自己資金や事業経験をもとに「いくらくらい借りられそうか」をざっくり把握できます。
+    </p>
+  </div>
+</section>
+
+<!-- ====== Simulator Section ====== -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">SIMULATOR</span>
+      <span class="hb-section-head__jp">融資可能額を診断する</span>
+    </div>
+
+    <div class="sim-form" id="simForm">
+
+      <!-- Step 1: 融資の種類 -->
+      <div class="sim-card">
+        <div class="sim-card__title">
+          <span class="sim-card__title-num">1</span>
+          融資の種類を選んでください
+        </div>
+        <div class="sim-radio-group">
+          <label class="sim-radio-label is-active" data-value="startup" onclick="selectType(this, 'startup')">
+            <input type="radio" name="loanType" value="startup" checked>
+            <div class="sim-radio-dot"></div>
+            <div>
+              <div class="sim-radio-text__main">創業融資</div>
+              <div class="sim-radio-text__sub">これから起業する方、起業後2期未満の方向け</div>
+            </div>
+          </label>
+          <label class="sim-radio-label" data-value="existing" onclick="selectType(this, 'existing')">
+            <input type="radio" name="loanType" value="existing">
+            <div class="sim-radio-dot"></div>
+            <div>
+              <div class="sim-radio-text__main">既存事業の融資</div>
+              <div class="sim-radio-text__sub">運転資金・設備資金の追加調達をお考えの方向け</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Step 2: 創業融資 -->
+      <div class="sim-panel is-visible" id="panelStartup">
+        <div class="sim-card">
+          <div class="sim-card__title">
+            <span class="sim-card__title-num">2</span>
+            創業融資の詳細
+          </div>
+          <div class="sim-fields">
+            <div class="sim-field">
+              <label class="sim-field__label">
+                自己資金
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-field__unit">
+                <input type="text" class="sim-field__input" id="selfFund" value="300" inputmode="numeric">
+                <span class="sim-field__unit-text">万円</span>
+              </div>
+            </div>
+            <div class="sim-field">
+              <label class="sim-field__label">
+                事業経験年数
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <select class="sim-field__input" id="experience">
+                <option value="none">未経験</option>
+                <option value="1-3">1〜3年</option>
+                <option value="3-5">3〜5年</option>
+                <option value="5+">5年以上</option>
+              </select>
+            </div>
+            <div class="sim-field sim-field--full">
+              <label class="sim-field__label">
+                資金使途
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-check-group">
+                <label class="sim-check-label is-checked" onclick="toggleCheck(this)">
+                  <input type="checkbox" name="purposeStartup" value="equipment" checked>
+                  <div class="sim-check-box">
+                    <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  設備資金
+                </label>
+                <label class="sim-check-label is-checked" onclick="toggleCheck(this)">
+                  <input type="checkbox" name="purposeStartup" value="working" checked>
+                  <div class="sim-check-box">
+                    <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  運転資金
+                </label>
+              </div>
+            </div>
+            <div class="sim-field">
+              <label class="sim-field__label">
+                希望借入額
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-field__unit">
+                <input type="text" class="sim-field__input" id="desiredAmount" value="1000" inputmode="numeric">
+                <span class="sim-field__unit-text">万円</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: 既存事業 -->
+      <div class="sim-panel" id="panelExisting">
+        <div class="sim-card">
+          <div class="sim-card__title">
+            <span class="sim-card__title-num">2</span>
+            既存事業の詳細
+          </div>
+          <div class="sim-fields">
+            <div class="sim-field">
+              <label class="sim-field__label">
+                直近年商
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-field__unit">
+                <input type="text" class="sim-field__input" id="annualRevenue" value="5000" inputmode="numeric">
+                <span class="sim-field__unit-text">万円</span>
+              </div>
+            </div>
+            <div class="sim-field">
+              <label class="sim-field__label">
+                直近営業利益
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-field__unit">
+                <input type="text" class="sim-field__input" id="operatingProfit" value="500" inputmode="numeric">
+                <span class="sim-field__unit-text">万円</span>
+              </div>
+            </div>
+            <div class="sim-field">
+              <label class="sim-field__label">
+                既存借入残高
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-field__unit">
+                <input type="text" class="sim-field__input" id="existingDebt" value="0" inputmode="numeric">
+                <span class="sim-field__unit-text">万円</span>
+              </div>
+            </div>
+            <div class="sim-field">
+              <label class="sim-field__label">
+                業歴
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <select class="sim-field__input" id="businessHistory">
+                <option value="2-3">2〜3年</option>
+                <option value="3-5">3〜5年</option>
+                <option value="5-10">5〜10年</option>
+                <option value="10+">10年以上</option>
+              </select>
+            </div>
+            <div class="sim-field sim-field--full">
+              <label class="sim-field__label">
+                資金使途
+                <span class="sim-field__label-required">必須</span>
+              </label>
+              <div class="sim-check-group">
+                <label class="sim-check-label is-checked" onclick="toggleCheck(this)">
+                  <input type="checkbox" name="purposeExisting" value="equipment" checked>
+                  <div class="sim-check-box">
+                    <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  設備資金
+                </label>
+                <label class="sim-check-label is-checked" onclick="toggleCheck(this)">
+                  <input type="checkbox" name="purposeExisting" value="working" checked>
+                  <div class="sim-check-box">
+                    <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  運転資金
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="sim-submit-wrap">
+        <button class="sim-submit" onclick="calculate()">
+          融資可能額を診断する &nbsp;&rarr;
+        </button>
+      </div>
+    </div>
+
+    <!-- ====== Result ====== -->
+    <div class="sim-result" id="simResult">
+
+      <div style="height: 48px;"></div>
+
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">RESULT</span>
+        <span class="hb-section-head__jp">診断結果</span>
+      </div>
+
+      <!-- Main Result -->
+      <div class="sim-result__main">
+        <div id="resultBadge" class="sim-result__badge sim-result__badge--green"></div>
+        <div class="sim-result__label">融資可能額の目安</div>
+        <div class="sim-result__amount" id="resultAmount"></div>
+        <div class="sim-result__range-text" id="resultRangeText"></div>
+      </div>
+
+      <!-- Detail Cards -->
+      <div class="sim-result__cards">
+        <div class="sim-result__card">
+          <div class="sim-result__card-label">融資可能額の目安</div>
+          <div class="sim-result__card-value" id="cardRange"></div>
+          <div class="sim-result__card-note" id="cardRangeNote"></div>
+        </div>
+        <div class="sim-result__card">
+          <div class="sim-result__card-label">月々の返済目安</div>
+          <div class="sim-result__card-value" id="cardMonthly"></div>
+          <div class="sim-result__card-note">金利2.0% / 7年返済</div>
+        </div>
+        <div class="sim-result__card">
+          <div class="sim-result__card-label">債務償還年数</div>
+          <div class="sim-result__card-value" id="cardRepayYears"></div>
+          <div class="sim-result__card-note" id="cardRepayNote"></div>
+        </div>
+      </div>
+
+      <!-- Chart & Advice -->
+      <div class="sim-result__detail-grid">
+        <!-- Donut Chart -->
+        <div class="sim-chart-card">
+          <div class="sim-chart-card__title">資金構成</div>
+          <div class="sim-donut" id="donutChart">
+            <div class="sim-donut__center">
+              <div class="sim-donut__center-label">借入比率</div>
+              <div class="sim-donut__center-value" id="donutRatio"></div>
+            </div>
+          </div>
+          <div class="sim-chart-legend">
+            <div class="sim-chart-legend__item">
+              <div class="sim-chart-legend__dot" style="background: var(--blue);"></div>
+              <span>借入金 <span id="legendBorrow"></span></span>
+            </div>
+            <div class="sim-chart-legend__item">
+              <div class="sim-chart-legend__dot" style="background: var(--blue-light);"></div>
+              <span>自己資金 <span id="legendSelf"></span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advice -->
+        <div class="sim-advice-card">
+          <div class="sim-advice-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            融資成功に向けたアドバイス
+          </div>
+          <ul class="sim-advice-list" id="adviceList"></ul>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="sim-disclaimer">
+        <p>本診断は一般的な融資審査基準に基づく概算です。実際の融資可否・金額は金融機関の審査により異なります。より正確な診断は融資の専門家にご相談ください。</p>
+        <p><strong>はてなベース税理士事務所は日本政策金融公庫での創業融資を50件超、3億円超の実績があります。</strong></p>
+      </div>
+
+      <!-- Re-calculate -->
+      <div class="sim-submit-wrap" style="margin-bottom: 0;">
+        <button class="sim-submit" style="background: var(--ink);" onclick="resetForm()">
+          &larr;&nbsp; 条件を変えて再診断する
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-blue">
+  <div class="cta-blue__inner">
+    <div>
+      <div class="cta-blue__label">FREE CONSULTATION</div>
+      <h2 class="cta-blue__title">融資のプロに<br>無料で相談しませんか</h2>
+      <p class="cta-blue__lead">シミュレーション結果をもとに、より正確な融資可能額の診断と最適な調達戦略をご提案します。初回相談は完全無料です。</p>
+    </div>
+    <div class="cta-blue__buttons">
+      <a href="./contact-preview.html" class="cta-blue__btn cta-blue__btn--primary">
+        融資の無料相談をする
+        <span class="arrow">&rarr;</span>
+      </a>
+      <a href="./financing-support-preview.html" class="cta-blue__btn cta-blue__btn--outline">
+        融資支援サービスの詳細を見る
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer style="background: #0E0E14; color: rgba(255,255,255,.85); padding: 64px 32px 32px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">SERVICE</div>
+        <a href="./tax-advisor-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">税務顧問</a>
+        <a href="./financing-support-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">融資支援</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">TOOLS</div>
+        <a href="./executive-comp-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">役員報酬シミュレーション</a>
+        <a href="./financing-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">融資診断シミュレーション</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">ABOUT</div>
+        <a href="./about-us-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">私たちについて</a>
+        <a href="./contact-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">お問い合わせ</a>
+      </div>
+    </div>
+    <!-- Group Companies -->
+    <div style="padding-top: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 24px;">GROUP COMPANIES</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Inc.</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース株式会社</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">DX・AI・経営管理コンサルティング</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Tax Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース税理士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">税務・会計・月次決算の専門家集団</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Labor Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース社会保険労務士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">労務・人事・社会保険の専門家集団</div>
+        </div>
+      </div>
+      <div style="margin-top: 18px; font-family: var(--font-en-sans); font-size: 10.5px; color: rgba(255,255,255,.45); line-height: 1.7;">共通所在地：東京都新宿区愛住町23-1 woody21 6階</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 11px; color: rgba(255,255,255,.4);">
+      <div>Copyright &copy; 2026 HatenaBase Inc.</div>
+      <a href="./contact-preview.html" style="color: rgba(255,255,255,.4); text-decoration: none;">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ====== Form Interaction ======
+
+function selectType(el, type) {
+  // Update radio labels
+  document.querySelectorAll('.sim-radio-label').forEach(function(label) {
+    label.classList.remove('is-active');
+  });
+  el.classList.add('is-active');
+  el.querySelector('input').checked = true;
+
+  // Toggle panels
+  var panelStartup = document.getElementById('panelStartup');
+  var panelExisting = document.getElementById('panelExisting');
+
+  if (type === 'startup') {
+    panelStartup.classList.add('is-visible');
+    panelExisting.classList.remove('is-visible');
+  } else {
+    panelStartup.classList.remove('is-visible');
+    panelExisting.classList.add('is-visible');
+  }
+
+  // Hide result when switching
+  document.getElementById('simResult').classList.remove('is-visible');
+}
+
+function toggleCheck(el) {
+  var input = el.querySelector('input');
+  // Toggle will happen after click, so we check current state
+  setTimeout(function() {
+    if (input.checked) {
+      el.classList.add('is-checked');
+    } else {
+      el.classList.remove('is-checked');
+    }
+  }, 0);
+}
+
+function parseNum(val) {
+  return parseFloat(String(val).replace(/[,，]/g, '')) || 0;
+}
+
+function formatNum(n) {
+  return Math.round(n).toLocaleString('ja-JP');
+}
+
+// ====== Calculate ======
+
+function calculate() {
+  var type = document.querySelector('input[name="loanType"]:checked').value;
+  var result;
+
+  if (type === 'startup') {
+    result = calcStartup();
+  } else {
+    result = calcExisting();
+  }
+
+  renderResult(result);
+
+  // Scroll to result
+  var resultEl = document.getElementById('simResult');
+  resultEl.classList.add('is-visible');
+  setTimeout(function() {
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+function calcStartup() {
+  var selfFund = parseNum(document.getElementById('selfFund').value);
+  var experience = document.getElementById('experience').value;
+  var desired = parseNum(document.getElementById('desiredAmount').value);
+
+  // Determine multiplier range based on experience
+  var minMult, maxMult;
+  switch (experience) {
+    case '5+':  minMult = 4; maxMult = 6; break;
+    case '3-5': minMult = 3; maxMult = 5; break;
+    case '1-3': minMult = 2; maxMult = 4; break;
+    default:    minMult = 1; maxMult = 2; break;
+  }
+
+  var minAmount = selfFund * minMult;
+  var maxAmount = selfFund * maxMult;
+
+  // Check fund purpose for cap
+  var purposes = [];
+  document.querySelectorAll('input[name="purposeStartup"]:checked').forEach(function(cb) {
+    purposes.push(cb.value);
+  });
+
+  var hasWorking = purposes.indexOf('working') >= 0;
+  var hasEquipment = purposes.indexOf('equipment') >= 0;
+
+  // Apply JFC caps
+  var cap = 3000;
+  if (hasWorking && !hasEquipment) {
+    cap = 1500;
+  }
+
+  minAmount = Math.min(minAmount, cap);
+  maxAmount = Math.min(maxAmount, cap);
+
+  // Determine feasibility
+  var midAmount = (minAmount + maxAmount) / 2;
+  var level;
+  if (desired <= minAmount) {
+    level = 'green';
+  } else if (desired <= maxAmount) {
+    level = 'yellow';
+  } else if (desired <= maxAmount * 1.3) {
+    level = 'yellow';
+  } else {
+    level = 'red';
+  }
+
+  // Monthly payment (average of range, 2%, 7 years)
+  var loanForMonthly = midAmount;
+  var monthly = calcMonthlyPayment(loanForMonthly, 2.0, 7);
+
+  // Debt repayment years (assume cash flow = rough estimate based on self fund income)
+  var estimatedCF = selfFund * 0.3; // Conservative estimate for startup
+  if (estimatedCF <= 0) estimatedCF = 1;
+  var repayYears = midAmount / estimatedCF;
+
+  // Advice
+  var advice = generateStartupAdvice(selfFund, experience, desired, minAmount, maxAmount, level, purposes);
+
+  return {
+    type: 'startup',
+    minAmount: minAmount,
+    maxAmount: maxAmount,
+    midAmount: midAmount,
+    desired: desired,
+    level: level,
+    monthly: monthly,
+    repayYears: repayYears,
+    selfFund: selfFund,
+    advice: advice,
+    purposes: purposes
+  };
+}
+
+function calcExisting() {
+  var revenue = parseNum(document.getElementById('annualRevenue').value);
+  var profit = parseNum(document.getElementById('operatingProfit').value);
+  var existingDebt = parseNum(document.getElementById('existingDebt').value);
+  var history = document.getElementById('businessHistory').value;
+
+  var purposes = [];
+  document.querySelectorAll('input[name="purposeExisting"]:checked').forEach(function(cb) {
+    purposes.push(cb.value);
+  });
+
+  var hasWorking = purposes.indexOf('working') >= 0;
+  var hasEquipment = purposes.indexOf('equipment') >= 0;
+
+  var monthlyRevenue = revenue / 12;
+
+  // Working capital: 3-6 months of monthly revenue
+  var workingMin = monthlyRevenue * 3;
+  var workingMax = monthlyRevenue * 6;
+
+  // Equipment: 5-7x operating profit
+  var equipMin = profit * 5;
+  var equipMax = profit * 7;
+
+  var minAmount, maxAmount;
+
+  if (hasWorking && hasEquipment) {
+    minAmount = Math.max(workingMin, equipMin);
+    maxAmount = Math.max(workingMax, equipMax);
+  } else if (hasWorking) {
+    minAmount = workingMin;
+    maxAmount = workingMax;
+  } else if (hasEquipment) {
+    minAmount = equipMin;
+    maxAmount = equipMax;
+  } else {
+    minAmount = workingMin;
+    maxAmount = workingMax;
+  }
+
+  // Subtract existing debt
+  minAmount = Math.max(0, minAmount - existingDebt);
+  maxAmount = Math.max(0, maxAmount - existingDebt);
+
+  var midAmount = (minAmount + maxAmount) / 2;
+
+  // Debt repayment years
+  var cashflow = profit * 0.7; // 70% of operating profit
+  if (cashflow <= 0) cashflow = 1;
+  var repayYears = (existingDebt + midAmount) / cashflow;
+
+  // Level
+  var level;
+  if (repayYears <= 7) {
+    level = 'green';
+  } else if (repayYears <= 10) {
+    level = 'yellow';
+  } else {
+    level = 'red';
+  }
+
+  // Monthly payment
+  var monthly = calcMonthlyPayment(midAmount, 2.0, 7);
+
+  // Advice
+  var advice = generateExistingAdvice(revenue, profit, existingDebt, history, minAmount, maxAmount, repayYears, level);
+
+  return {
+    type: 'existing',
+    minAmount: minAmount,
+    maxAmount: maxAmount,
+    midAmount: midAmount,
+    desired: 0,
+    level: level,
+    monthly: monthly,
+    repayYears: repayYears,
+    selfFund: 0,
+    revenue: revenue,
+    profit: profit,
+    existingDebt: existingDebt,
+    advice: advice,
+    purposes: purposes
+  };
+}
+
+function calcMonthlyPayment(principal, ratePercent, years) {
+  // principal is in 万円
+  var r = ratePercent / 100 / 12;
+  var n = years * 12;
+  if (r === 0) return principal / n;
+  var payment = principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+  return payment;
+}
+
+function generateStartupAdvice(selfFund, experience, desired, minAmt, maxAmt, level, purposes) {
+  var advice = [];
+
+  if (level === 'red') {
+    var shortfall = desired - maxAmt;
+    advice.push('希望額に対して自己資金が不足しています。自己資金をあと' + formatNum(Math.ceil(shortfall / 3)) + '万円積み増すと融資枠が広がります。');
+  } else if (level === 'yellow') {
+    advice.push('希望額は融資可能レンジ内ですが、審査通過には事業計画の作り込みが重要になります。');
+  } else {
+    advice.push('自己資金に対して希望額は適正な範囲です。事業計画の質が審査のポイントになります。');
+  }
+
+  if (experience === 'none') {
+    advice.push('業界未経験の場合、融資倍率が下がる傾向があります。創業前に同業界での経験を積むことで評価が上がります。');
+  }
+
+  advice.push('日本政策金融公庫への申請では、6ヶ月以上のコツコツとした自己資金積立が高く評価されます。見せ金は逆効果です。');
+
+  if (purposes.indexOf('equipment') >= 0) {
+    advice.push('設備資金は見積書の提出が必須です。複数社の相見積もりを取ることで審査がスムーズになります。');
+  }
+
+  return advice;
+}
+
+function generateExistingAdvice(revenue, profit, existingDebt, history, minAmt, maxAmt, repayYears, level) {
+  var advice = [];
+
+  if (level === 'red') {
+    advice.push('債務償還年数が' + Math.round(repayYears) + '年と長めです。既存借入の繰上返済や利益改善を検討してください。');
+  } else if (level === 'yellow') {
+    advice.push('債務償還年数は10年以内の目安ギリギリです。追加の担保・保証人の準備で審査通過率が上がります。');
+  } else {
+    advice.push('財務状況は良好で、融資の可能性は高いと見込まれます。');
+  }
+
+  if (profit / revenue < 0.05) {
+    advice.push('営業利益率が5%未満です。利益率の改善が審査での評価向上につながります。');
+  }
+
+  if (existingDebt > 0) {
+    advice.push('既存借入の返済実績（延滞なし）は新規融資の審査でプラスに評価されます。');
+  }
+
+  advice.push('直近3期分の決算書と今後の事業計画書を準備しておくと、審査がスムーズに進みます。');
+
+  if (history === '2-3') {
+    advice.push('業歴が浅いため、月次の試算表を整備し、経営管理体制をアピールすることが重要です。');
+  }
+
+  return advice;
+}
+
+// ====== Render Result ======
+
+function renderResult(r) {
+  // Badge
+  var badgeEl = document.getElementById('resultBadge');
+  badgeEl.className = 'sim-result__badge';
+  if (r.level === 'green') {
+    badgeEl.classList.add('sim-result__badge--green');
+    badgeEl.textContent = '\u{1F7E2} 融資の可能性が高い';
+  } else if (r.level === 'yellow') {
+    badgeEl.classList.add('sim-result__badge--yellow');
+    badgeEl.textContent = '\u{1F7E1} 融資の可能性あり（要相談）';
+  } else {
+    badgeEl.classList.add('sim-result__badge--red');
+    badgeEl.textContent = '\u{1F534} 現状では難しい可能性あり';
+  }
+
+  // Main amount
+  var amountEl = document.getElementById('resultAmount');
+  amountEl.innerHTML = formatNum(r.minAmount) + '<span class="sim-result__amount-unit">万円</span> 〜 ' + formatNum(r.maxAmount) + '<span class="sim-result__amount-unit">万円</span>';
+
+  // Range text
+  var rangeTextEl = document.getElementById('resultRangeText');
+  if (r.type === 'startup' && r.desired > 0) {
+    rangeTextEl.textContent = '希望借入額 ' + formatNum(r.desired) + '万円 に対する診断結果です';
+  } else {
+    rangeTextEl.textContent = 'お客様の事業状況に基づく融資可能額の目安です';
+  }
+
+  // Detail cards
+  document.getElementById('cardRange').innerHTML = formatNum(r.minAmount) + ' <span class="sim-result__card-unit">〜</span> ' + formatNum(r.maxAmount) + '<span class="sim-result__card-unit"> 万円</span>';
+  document.getElementById('cardRangeNote').textContent = r.type === 'startup' ? '日本政策金融公庫 新創業融資制度' : '金融機関融資（運転・設備）';
+
+  document.getElementById('cardMonthly').innerHTML = formatNum(Math.round(r.monthly)) + '<span class="sim-result__card-unit"> 万円/月</span>';
+
+  var repayEl = document.getElementById('cardRepayYears');
+  var repayNote = document.getElementById('cardRepayNote');
+  if (r.type === 'existing') {
+    repayEl.innerHTML = Math.round(r.repayYears * 10) / 10 + '<span class="sim-result__card-unit"> 年</span>';
+    repayNote.textContent = r.repayYears <= 10 ? '10年以内：審査通過の目安' : '10年超：要改善';
+  } else {
+    repayEl.innerHTML = '&mdash;';
+    repayNote.textContent = '創業融資では算出対象外';
+  }
+
+  // Donut chart
+  var selfFundForChart = r.type === 'startup' ? r.selfFund : (r.revenue ? Math.round(r.revenue * 0.1) : 0);
+  var borrowForChart = r.midAmount;
+  var total = selfFundForChart + borrowForChart;
+  var borrowRatio = total > 0 ? Math.round(borrowForChart / total * 100) : 0;
+  var selfRatio = 100 - borrowRatio;
+
+  var deg = Math.round(borrowRatio / 100 * 360);
+  var donutEl = document.getElementById('donutChart');
+  donutEl.style.background = 'conic-gradient(#1F61AB 0deg ' + deg + 'deg, #E8EFF8 ' + deg + 'deg 360deg)';
+
+  document.getElementById('donutRatio').textContent = borrowRatio + '%';
+  document.getElementById('legendBorrow').textContent = formatNum(borrowForChart) + '万円';
+  document.getElementById('legendSelf').textContent = formatNum(selfFundForChart) + '万円';
+
+  // Advice
+  var adviceList = document.getElementById('adviceList');
+  adviceList.innerHTML = '';
+  r.advice.forEach(function(text) {
+    var li = document.createElement('li');
+    li.textContent = text;
+    adviceList.appendChild(li);
+  });
+}
+
+function resetForm() {
+  document.getElementById('simResult').classList.remove('is-visible');
+  setTimeout(function() {
+    document.getElementById('simForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+}
+
+// Input formatting - allow only numbers
+document.querySelectorAll('.sim-field__input[type="text"]').forEach(function(input) {
+  input.addEventListener('input', function() {
+    this.value = this.value.replace(/[^\d]/g, '');
+  });
+});
+</script>
+
+</body>
+</html>
