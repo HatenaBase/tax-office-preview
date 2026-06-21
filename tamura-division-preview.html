@@ -154,6 +154,11 @@
       .hb-footer__inner { flex-direction: column; text-align: center; gap: 20px; }
       .hb-section-head { flex-direction: column; gap: 8px; }
     }
+    @media (max-width: 767px) {
+      #tools [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      #tools [style*="grid-template-columns: 280px"] { grid-template-columns: 1fr !important; }
+      #tools [style*="padding: 48px"] { padding: 28px !important; }
+    }
     @media (max-width: 480px) { .scope-grid { grid-template-columns: 1fr; } }
   
 /* Geometric pattern for SubHero */
@@ -505,6 +510,162 @@
     </div>
   </section>
 
+  <!-- Simulation Tools -->
+  <section class="section section--warm" id="tools">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">TOOLS</span>
+        <span class="hb-section-head__jp">シミュレーションツール</span>
+      </div>
+      <p style="font-size: 15px; line-height: 2; color: var(--ink-soft); margin-bottom: 48px; max-width: 720px;">
+        創業期によくある「法人化すべき？」「役員報酬いくらにする？」「融資の返済は大丈夫？」を、<br>
+        具体的な数字で確認できます。計算根拠もすべて表示しています。
+      </p>
+
+      <!-- Tool 1: 法人化シミュレーション -->
+      <div style="background: #fff; border-radius: 16px; padding: 48px; margin-bottom: 32px; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,.04);">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px;">
+          <div style="width: 48px; height: 48px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">⚖️</div>
+          <div>
+            <p style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .2em; color: var(--blue); font-weight: 500;">TOOL 01</p>
+            <h3 style="font-weight: 700; font-size: 20px;">法人化 vs 個人事業 税負担比較</h3>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.8;">
+          年間の事業所得を入力すると、個人事業主のまま続ける場合と法人化した場合の税負担概算を比較できます。
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <div>
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">年間事業所得（経費控除後）</label>
+            <div style="position: relative;">
+              <input type="number" id="tool1-income" value="8000000" step="100000" style="width: 100%; padding: 14px 60px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+              <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">円</span>
+            </div>
+            <input type="range" id="tool1-slider" min="3000000" max="30000000" step="500000" value="8000000" style="width: 100%; margin-top: 12px; accent-color: var(--blue);">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-light); margin-top: 4px;">
+              <span>300万円</span><span>3,000万円</span>
+            </div>
+          </div>
+          <div id="tool1-result" style="background: var(--blue-ghost); border-radius: 12px; padding: 24px;">
+            <!-- JS fills -->
+          </div>
+        </div>
+        <details style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <summary style="font-size: 13px; font-weight: 600; color: var(--blue); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l4 4-4 4"/></svg>
+            計算根拠を表示
+          </summary>
+          <div id="tool1-basis" style="margin-top: 16px; font-size: 12px; color: var(--ink-soft); line-height: 2; background: var(--paper); padding: 20px; border-radius: 8px; font-family: var(--font-en-sans), var(--font-jp);">
+            <!-- JS fills -->
+          </div>
+        </details>
+      </div>
+
+      <!-- Tool 2: 役員報酬シミュレーション -->
+      <div style="background: #fff; border-radius: 16px; padding: 48px; margin-bottom: 32px; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,.04);">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px;">
+          <div style="width: 48px; height: 48px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">💰</div>
+          <div>
+            <p style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .2em; color: var(--blue); font-weight: 500;">TOOL 02</p>
+            <h3 style="font-weight: 700; font-size: 20px;">役員報酬の最適額シミュレーション</h3>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.8;">
+          法人の利益見込みを入力すると、法人税＋個人の所得税・住民税・社会保険料の合計が最も少なくなる役員報酬の目安を算出します。
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <div>
+            <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">法人の年間利益見込み（役員報酬控除前）</label>
+            <div style="position: relative;">
+              <input type="number" id="tool2-profit" value="12000000" step="100000" style="width: 100%; padding: 14px 60px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+              <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">円</span>
+            </div>
+            <input type="range" id="tool2-slider" min="3000000" max="50000000" step="500000" value="12000000" style="width: 100%; margin-top: 12px; accent-color: var(--blue);">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-light); margin-top: 4px;">
+              <span>300万円</span><span>5,000万円</span>
+            </div>
+          </div>
+          <div id="tool2-result" style="background: var(--blue-ghost); border-radius: 12px; padding: 24px;">
+            <!-- JS fills -->
+          </div>
+        </div>
+        <details style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <summary style="font-size: 13px; font-weight: 600; color: var(--blue); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l4 4-4 4"/></svg>
+            計算根拠を表示
+          </summary>
+          <div id="tool2-basis" style="margin-top: 16px; font-size: 12px; color: var(--ink-soft); line-height: 2; background: var(--paper); padding: 20px; border-radius: 8px; font-family: var(--font-en-sans), var(--font-jp);">
+            <!-- JS fills -->
+          </div>
+        </details>
+      </div>
+
+      <!-- Tool 3: 創業融資 返済シミュレーション -->
+      <div style="background: #fff; border-radius: 16px; padding: 48px; margin-bottom: 0; border: 1px solid var(--line); box-shadow: 0 2px 12px rgba(0,0,0,.04);">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 8px;">
+          <div style="width: 48px; height: 48px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px;">🏦</div>
+          <div>
+            <p style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .2em; color: var(--blue); font-weight: 500;">TOOL 03</p>
+            <h3 style="font-weight: 700; font-size: 20px;">創業融資 返済シミュレーション</h3>
+          </div>
+        </div>
+        <p style="font-size: 13px; color: var(--ink-soft); margin-bottom: 28px; line-height: 1.8;">
+          日本政策金融公庫の新創業融資を想定し、借入額・金利・返済期間から月々の返済額と総返済額を算出します。据置期間にも対応。
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <div>
+            <div style="margin-bottom: 18px;">
+              <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">借入額</label>
+              <div style="position: relative;">
+                <input type="number" id="tool3-amount" value="5000000" step="500000" style="width: 100%; padding: 14px 60px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+                <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">円</span>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px;">
+              <div>
+                <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">金利（年）</label>
+                <div style="position: relative;">
+                  <input type="number" id="tool3-rate" value="2.0" step="0.1" min="0.1" max="5.0" style="width: 100%; padding: 14px 40px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+                  <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">%</span>
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">返済期間</label>
+                <div style="position: relative;">
+                  <input type="number" id="tool3-years" value="7" step="1" min="1" max="20" style="width: 100%; padding: 14px 40px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+                  <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">年</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <label style="font-size: 13px; font-weight: 600; display: block; margin-bottom: 8px;">据置期間</label>
+              <div style="position: relative;">
+                <input type="number" id="tool3-grace" value="6" step="1" min="0" max="24" style="width: 100%; padding: 14px 60px 14px 16px; border: 1px solid var(--line); border-radius: 8px; font-size: 16px; font-family: var(--font-en-sans); outline: none; transition: border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--line)'">
+                <span style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: 14px; color: var(--ink-light);">ヶ月</span>
+              </div>
+            </div>
+          </div>
+          <div id="tool3-result" style="background: var(--blue-ghost); border-radius: 12px; padding: 24px;">
+            <!-- JS fills -->
+          </div>
+        </div>
+        <details style="margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px;">
+          <summary style="font-size: 13px; font-weight: 600; color: var(--blue); cursor: pointer; list-style: none; display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l4 4-4 4"/></svg>
+            計算根拠を表示
+          </summary>
+          <div id="tool3-basis" style="margin-top: 16px; font-size: 12px; color: var(--ink-soft); line-height: 2; background: var(--paper); padding: 20px; border-radius: 8px; font-family: var(--font-en-sans), var(--font-jp);">
+            <!-- JS fills -->
+          </div>
+        </details>
+      </div>
+
+      <p style="font-size: 12px; color: var(--ink-light); margin-top: 24px; line-height: 1.8;">
+        ※ 本シミュレーションは概算です。実際の税額は各種控除・特例により異なります。正確な試算は無料相談にてご案内いたします。
+      </p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-blue">
     <div class="cta-blue__inner">
@@ -535,6 +696,7 @@
           <a href="./tamura-division-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">税務顧問</a>
           <a href="./ariura-division-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">アドバイザリー</a>
           <a href="./financing-support-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">融資支援</a>
+          <a href="#tools" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">シミュレーション</a>
         </div>
         <div>
           <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">ABOUT</div>
@@ -569,6 +731,260 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  // === Utility ===
+  const fmt = n => n.toLocaleString('ja-JP');
+  const fmtMan = n => (n / 10000).toFixed(1).replace(/\.0$/, '') + '万円';
+
+  // === Tool 1: 法人化 vs 個人事業 ===
+  function calcTool1() {
+    const income = Number(document.getElementById('tool1-income').value) || 0;
+
+    // --- 個人事業 ---
+    // 所得税（2024年税率）
+    const incomeTaxBrackets = [
+      [1950000, 0.05, 0], [3300000, 0.10, 97500], [6950000, 0.20, 427500],
+      [9000000, 0.23, 636000], [18000000, 0.33, 1536000], [40000000, 0.40, 2796000],
+      [Infinity, 0.45, 4796000]
+    ];
+    const basicDeduction = 480000;
+    const blueDeduction = 650000;
+    const taxablePersonal = Math.max(income - basicDeduction - blueDeduction, 0);
+    let incomeTax = 0;
+    for (const [limit, rate, deduct] of incomeTaxBrackets) {
+      if (taxablePersonal <= limit) { incomeTax = taxablePersonal * rate - deduct; break; }
+    }
+    incomeTax = Math.max(incomeTax, 0);
+    const reconstructionTax = Math.floor(incomeTax * 0.021);
+    const residentTaxPersonal = Math.floor(taxablePersonal * 0.10);
+    const jigyoTax = income > 2900000 ? Math.floor((income - 2900000) * 0.05) : 0;
+    const nhiFull = Math.min(Math.floor(income * 0.11), 1060000); // 国保概算
+    const totalPersonal = Math.floor(incomeTax) + reconstructionTax + residentTaxPersonal + jigyoTax + nhiFull;
+
+    // --- 法人 ---
+    const salary = Math.floor(income * 0.6); // 仮に6割を役員報酬
+    const salaryIncome = salary - Math.min(salary * 0.3, 1950000) - 550000; // 給与所得控除概算
+    const taxableCorp = Math.max(income - salary, 0);
+    const corpTax = taxableCorp <= 8000000 ? Math.floor(taxableCorp * 0.15) : Math.floor(8000000 * 0.15 + (taxableCorp - 8000000) * 0.2352);
+    const corpResident = Math.floor(corpTax * 0.174) + 70000; // 法人住民税（均等割7万）
+    const corpJigyo = Math.floor(taxableCorp * 0.07); // 事業税概算
+    const taxableSalary = Math.max(salaryIncome - basicDeduction, 0);
+    let personalIncomeTaxCorp = 0;
+    for (const [limit, rate, deduct] of incomeTaxBrackets) {
+      if (taxableSalary <= limit) { personalIncomeTaxCorp = taxableSalary * rate - deduct; break; }
+    }
+    personalIncomeTaxCorp = Math.max(personalIncomeTaxCorp, 0);
+    const residentTaxCorp = Math.floor(taxableSalary * 0.10);
+    const shahoRate = 0.298; // 社会保険料率（会社+個人）
+    const shahoBase = Math.min(salary, 13560000);
+    const shahoCorp = Math.floor(shahoBase * shahoRate);
+    const totalCorp = Math.floor(corpTax) + corpResident + corpJigyo + Math.floor(personalIncomeTaxCorp) + residentTaxCorp + shahoCorp;
+
+    const diff = totalPersonal - totalCorp;
+    const resultEl = document.getElementById('tool1-result');
+    resultEl.innerHTML = `
+      <div style="margin-bottom: 16px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">個人事業の場合</p>
+        <p style="font-size: 22px; font-weight: 700; font-family: var(--font-en-sans); color: var(--ink);">¥${fmt(totalPersonal)}</p>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">法人化した場合</p>
+        <p style="font-size: 22px; font-weight: 700; font-family: var(--font-en-sans); color: var(--blue);">¥${fmt(totalCorp)}</p>
+      </div>
+      <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">${diff > 0 ? '法人化で年間' : '個人事業が年間'}</p>
+        <p style="font-size: 18px; font-weight: 700; color: ${diff > 0 ? '#16a34a' : '#dc2626'};">${diff > 0 ? '▼' : '▲'} ¥${fmt(Math.abs(diff))} ${diff > 0 ? 'おトク' : '有利'}</p>
+      </div>
+    `;
+
+    document.getElementById('tool1-basis').innerHTML = `
+      <p style="font-weight: 600; margin-bottom: 8px;">【個人事業】</p>
+      <p>課税所得 = ${fmt(income)} − 基礎控除48万 − 青色控除65万 = ${fmt(taxablePersonal)}</p>
+      <p>所得税 = ${fmt(Math.floor(incomeTax))}（累進課税）+ 復興特別税 ${fmt(reconstructionTax)}</p>
+      <p>住民税 = 課税所得 × 10% = ${fmt(residentTaxPersonal)}</p>
+      <p>個人事業税 = (${fmt(income)} − 290万) × 5% = ${fmt(jigyoTax)}</p>
+      <p>国民健康保険 = 概算 ${fmt(nhiFull)}（上限106万円）</p>
+      <p style="font-weight: 600; margin-top: 12px; margin-bottom: 8px;">【法人化】（役員報酬: ${fmtMan(salary)} で試算）</p>
+      <p>法人税 = 法人所得 ${fmt(taxableCorp)} × 税率 = ${fmt(Math.floor(corpTax))}</p>
+      <p>法人住民税 = ${fmt(corpResident)}（均等割7万円含む）</p>
+      <p>法人事業税 = ${fmt(corpJigyo)}</p>
+      <p>個人所得税+住民税 = ${fmt(Math.floor(personalIncomeTaxCorp) + residentTaxCorp)}</p>
+      <p>社会保険料（会社+個人）= ${fmt(shahoCorp)}</p>
+      <p style="margin-top: 8px; font-size: 11px; opacity: .7;">※ 役員報酬は利益の60%で仮定。実際は最適額が異なります（Tool 02で詳細試算可）</p>
+    `;
+  }
+
+  // === Tool 2: 役員報酬最適額 ===
+  function calcTool2() {
+    const profit = Number(document.getElementById('tool2-profit').value) || 0;
+    const incomeTaxBrackets = [
+      [1950000, 0.05, 0], [3300000, 0.10, 97500], [6950000, 0.20, 427500],
+      [9000000, 0.23, 636000], [18000000, 0.33, 1536000], [40000000, 0.40, 2796000],
+      [Infinity, 0.45, 4796000]
+    ];
+    const basicDeduction = 480000;
+
+    let bestSalary = 0, bestTotal = Infinity;
+    const results = [];
+
+    for (let salary = 0; salary <= profit; salary += 100000) {
+      // 法人側
+      const corpIncome = profit - salary;
+      const corpTax = corpIncome <= 8000000 ? corpIncome * 0.15 : 8000000 * 0.15 + (corpIncome - 8000000) * 0.2352;
+      const corpResident = corpTax * 0.174 + 70000;
+      const corpJigyo = corpIncome * 0.07;
+
+      // 個人側
+      let deduction = 0;
+      if (salary <= 1625000) deduction = 550000;
+      else if (salary <= 1800000) deduction = salary * 0.4 - 100000;
+      else if (salary <= 3600000) deduction = salary * 0.3 + 80000;
+      else if (salary <= 6600000) deduction = salary * 0.2 + 440000;
+      else if (salary <= 8500000) deduction = salary * 0.1 + 1100000;
+      else deduction = 1950000;
+      const salaryIncome = Math.max(salary - deduction, 0);
+      const taxable = Math.max(salaryIncome - basicDeduction, 0);
+
+      let incomeTax = 0;
+      for (const [limit, rate, deduct] of incomeTaxBrackets) {
+        if (taxable <= limit) { incomeTax = taxable * rate - deduct; break; }
+      }
+      incomeTax = Math.max(incomeTax, 0);
+      const residentTax = taxable * 0.10;
+      const shahoBase = Math.min(salary, 13560000);
+      const shaho = shahoBase * 0.298;
+
+      const total = corpTax + corpResident + corpJigyo + incomeTax + residentTax + shaho;
+      if (total < bestTotal) { bestTotal = total; bestSalary = salary; }
+    }
+
+    // Recalc best for display
+    const corpIncome = profit - bestSalary;
+    const corpTax = corpIncome <= 8000000 ? corpIncome * 0.15 : 8000000 * 0.15 + (corpIncome - 8000000) * 0.2352;
+    let deduction = 0;
+    if (bestSalary <= 1625000) deduction = 550000;
+    else if (bestSalary <= 1800000) deduction = bestSalary * 0.4 - 100000;
+    else if (bestSalary <= 3600000) deduction = bestSalary * 0.3 + 80000;
+    else if (bestSalary <= 6600000) deduction = bestSalary * 0.2 + 440000;
+    else if (bestSalary <= 8500000) deduction = bestSalary * 0.1 + 1100000;
+    else deduction = 1950000;
+
+    const monthSalary = Math.floor(bestSalary / 12);
+    const effectiveRate = ((bestTotal / profit) * 100).toFixed(1);
+
+    document.getElementById('tool2-result').innerHTML = `
+      <div style="margin-bottom: 16px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">最適役員報酬（年額）</p>
+        <p style="font-size: 22px; font-weight: 700; font-family: var(--font-en-sans); color: var(--blue);">¥${fmt(bestSalary)}</p>
+        <p style="font-size: 13px; color: var(--ink-soft); margin-top: 4px;">月額 ¥${fmt(monthSalary)}</p>
+      </div>
+      <div style="margin-bottom: 16px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">税・社保の合計負担額</p>
+        <p style="font-size: 18px; font-weight: 700; font-family: var(--font-en-sans); color: var(--ink);">¥${fmt(Math.floor(bestTotal))}</p>
+      </div>
+      <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">実効負担率</p>
+        <p style="font-size: 18px; font-weight: 700; color: var(--ink);">${effectiveRate}%</p>
+      </div>
+    `;
+
+    document.getElementById('tool2-basis').innerHTML = `
+      <p style="font-weight: 600; margin-bottom: 8px;">【計算方法】</p>
+      <p>役員報酬を0円〜利益全額まで10万円刻みで全パターン試算し、以下の合計が最小となる額を算出：</p>
+      <p style="margin-top: 8px;">① 法人税等 = 法人所得 × 税率（800万以下: 15%、超過: 23.52%）+ 住民税均等割7万</p>
+      <p>② 法人事業税 = 法人所得 × 7%</p>
+      <p>③ 個人所得税 = (給与所得 − 給与所得控除 − 基礎控除) × 累進税率</p>
+      <p>④ 個人住民税 = 課税所得 × 10%</p>
+      <p>⑤ 社会保険料 = 報酬月額 × 29.8%（健保+厚年、会社+本人）</p>
+      <p style="margin-top: 12px; font-weight: 600;">【今回の結果】</p>
+      <p>利益 ${fmtMan(profit)} → 報酬 ${fmtMan(bestSalary)}（月額${fmtMan(monthSalary * 12 / 12)}）/ 法人所得 ${fmtMan(corpIncome)}</p>
+      <p>給与所得控除 = ${fmt(Math.floor(deduction))}</p>
+      <p style="margin-top: 8px; font-size: 11px; opacity: .7;">※ 配偶者控除・扶養控除・小規模企業共済等は未考慮。実務では±数十万の調整を行います</p>
+    `;
+  }
+
+  // === Tool 3: 創業融資返済 ===
+  function calcTool3() {
+    const amount = Number(document.getElementById('tool3-amount').value) || 0;
+    const rate = Number(document.getElementById('tool3-rate').value) || 2.0;
+    const years = Number(document.getElementById('tool3-years').value) || 7;
+    const grace = Number(document.getElementById('tool3-grace').value) || 0;
+
+    const monthlyRate = rate / 100 / 12;
+    const totalMonths = years * 12;
+    const repayMonths = totalMonths - grace;
+
+    // 据置期間中の利息
+    const graceInterest = amount * monthlyRate * grace;
+
+    // 元利均等返済（据置後）
+    let monthlyPayment = 0;
+    if (monthlyRate === 0) {
+      monthlyPayment = amount / repayMonths;
+    } else {
+      monthlyPayment = amount * monthlyRate * Math.pow(1 + monthlyRate, repayMonths) / (Math.pow(1 + monthlyRate, repayMonths) - 1);
+    }
+    const totalRepay = monthlyPayment * repayMonths + graceInterest;
+    const totalInterest = totalRepay - amount;
+    const graceMonthlyInterest = Math.floor(amount * monthlyRate);
+
+    document.getElementById('tool3-result').innerHTML = `
+      <div style="margin-bottom: 14px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">月々の返済額（据置後）</p>
+        <p style="font-size: 22px; font-weight: 700; font-family: var(--font-en-sans); color: var(--blue);">¥${fmt(Math.floor(monthlyPayment))}</p>
+      </div>
+      ${grace > 0 ? `<div style="margin-bottom: 14px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">据置期間中の月額（利息のみ）</p>
+        <p style="font-size: 16px; font-weight: 600; font-family: var(--font-en-sans); color: var(--ink);">¥${fmt(graceMonthlyInterest)}</p>
+      </div>` : ''}
+      <div style="margin-bottom: 14px;">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">総返済額</p>
+        <p style="font-size: 16px; font-weight: 600; font-family: var(--font-en-sans); color: var(--ink);">¥${fmt(Math.floor(totalRepay))}</p>
+      </div>
+      <div style="padding-top: 12px; border-top: 1px solid var(--line);">
+        <p style="font-size: 11px; color: var(--ink-light); margin-bottom: 4px;">うち利息総額</p>
+        <p style="font-size: 16px; font-weight: 700; color: #dc2626;">¥${fmt(Math.floor(totalInterest))}</p>
+      </div>
+    `;
+
+    document.getElementById('tool3-basis').innerHTML = `
+      <p style="font-weight: 600; margin-bottom: 8px;">【計算条件】</p>
+      <p>借入額: ${fmt(amount)}円 / 金利: ${rate}% / 返済期間: ${years}年（${totalMonths}ヶ月）/ 据置: ${grace}ヶ月</p>
+      <p style="margin-top: 12px; font-weight: 600;">【元利均等返済の計算式】</p>
+      <p>月々返済額 = 借入額 × 月利 × (1+月利)^返済月数 ÷ ((1+月利)^返済月数 − 1)</p>
+      <p style="margin-top: 8px;">月利 = ${rate}% ÷ 12 = ${(monthlyRate * 100).toFixed(4)}%</p>
+      <p>返済月数 = ${totalMonths}ヶ月 − 据置${grace}ヶ月 = ${repayMonths}ヶ月</p>
+      ${grace > 0 ? `<p>据置期間利息 = ${fmt(amount)} × ${(monthlyRate * 100).toFixed(4)}% × ${grace}ヶ月 = ${fmt(Math.floor(graceInterest))}</p>` : ''}
+      <p style="margin-top: 12px; font-weight: 600;">【参考: 日本政策金融公庫 新創業融資制度】</p>
+      <p>融資限度額: 3,000万円（うち運転資金1,500万円）</p>
+      <p>基準利率: 2.0%〜2.8%（無担保・無保証人）</p>
+      <p>返済期間: 設備資金20年以内 / 運転資金7年以内</p>
+      <p>据置期間: 設備2年以内 / 運転2年以内</p>
+    `;
+  }
+
+  // === Event Listeners ===
+  // Tool 1
+  const tool1Income = document.getElementById('tool1-income');
+  const tool1Slider = document.getElementById('tool1-slider');
+  tool1Income.addEventListener('input', () => { tool1Slider.value = tool1Income.value; calcTool1(); });
+  tool1Slider.addEventListener('input', () => { tool1Income.value = tool1Slider.value; calcTool1(); });
+
+  // Tool 2
+  const tool2Profit = document.getElementById('tool2-profit');
+  const tool2Slider = document.getElementById('tool2-slider');
+  tool2Profit.addEventListener('input', () => { tool2Slider.value = tool2Profit.value; calcTool2(); });
+  tool2Slider.addEventListener('input', () => { tool2Profit.value = tool2Slider.value; calcTool2(); });
+
+  // Tool 3
+  ['tool3-amount', 'tool3-rate', 'tool3-years', 'tool3-grace'].forEach(id => {
+    document.getElementById(id).addEventListener('input', calcTool3);
+  });
+
+  // Initial calculation
+  calcTool1(); calcTool2(); calcTool3();
+  </script>
 
 </body>
 </html>
