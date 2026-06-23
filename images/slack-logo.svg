@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Slack logo - official brand colors -->
+  <!-- E01E5A (pink), 36C5F0 (blue), 2EB67D (green), ECB22E (yellow) -->
+  <g transform="translate(256,256)">
+    <!-- Top-left: blue -->
+    <rect x="-120" y="-180" width="50" height="130" rx="25" fill="#36C5F0"/>
+    <rect x="-120" y="-180" width="130" height="50" rx="25" fill="#36C5F0"/>
+    <!-- Top-right: green -->
+    <rect x="70" y="-180" width="50" height="130" rx="25" fill="#2EB67D"/>
+    <rect x="-10" y="-100" width="130" height="50" rx="25" fill="#2EB67D"/>
+    <!-- Bottom-left: yellow -->
+    <rect x="-120" y="50" width="50" height="130" rx="25" fill="#ECB22E"/>
+    <rect x="-120" y="50" width="130" height="50" rx="25" fill="#ECB22E"/>
+    <!-- Bottom-right: pink -->
+    <rect x="70" y="50" width="50" height="130" rx="25" fill="#E01E5A"/>
+    <rect x="-10" y="130" width="130" height="50" rx="25" fill="#E01E5A"/>
+  </g>
+</svg>

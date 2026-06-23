@@ -247,36 +247,42 @@
     }
     .about-link:hover { text-decoration: underline; }
 
-    /* ====== Service (6 cards grid) ====== */
+    /* ====== Service (3 cards) ====== */
     .svc-grid2 {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
       border-top: 1px solid var(--line); border-left: 1px solid var(--line);
     }
     .svc2-card {
-      padding: 36px 32px;
+      padding: 56px 48px;
       border-right: 1px solid var(--line); border-bottom: 1px solid var(--line);
       text-decoration: none; color: var(--ink);
       display: flex; flex-direction: column;
       transition: background .3s;
     }
     .svc2-card:hover { background: var(--blue-ghost); }
+    .svc2-card__icon {
+      width: 72px; height: 72px; margin-bottom: 28px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--blue-light); border-radius: 16px;
+    }
+    .svc2-card__icon svg { width: 36px; height: 36px; }
     .svc2-card__head {
-      display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;
+      display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px;
     }
     .svc2-card__num {
       font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 28px; color: var(--blue); line-height: 1;
+      font-size: 36px; color: var(--blue); line-height: 1;
     }
     .svc2-card__en {
-      font-family: var(--font-en-sans); font-size: 10px; font-weight: 500;
-      letter-spacing: .15em; color: var(--ink-light);
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .28em; color: var(--ink-light);
     }
     .svc2-card__title {
-      font-weight: 700; font-size: 17px; line-height: 1.4;
-      margin-bottom: 10px;
+      font-weight: 700; font-size: 24px; line-height: 1.4;
+      letter-spacing: -.01em; margin-bottom: 16px;
     }
     .svc2-card__desc {
-      font-size: 13px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 16px;
+      font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 24px;
     }
     .svc2-card__price {
       font-family: var(--font-en-sans); font-size: 14px; font-weight: 600;
@@ -408,7 +414,6 @@
     @media (max-width: 1024px) {
       .hb-hero__inner { max-width: 100%; }
       .feat-grid { grid-template-columns: repeat(3, 1fr); }
-      .svc-grid2 { grid-template-columns: repeat(2, 1fr); }
       .msg-grid { grid-template-columns: 280px 1fr; gap: 40px; }
       .msg-photo { width: 280px; height: 360px; }
     }
@@ -424,7 +429,7 @@
       .msg-photo { width: 100%; height: 320px; }
       .about-grid { grid-template-columns: 1fr; }
       .svc-grid2 { grid-template-columns: 1fr; }
-      .svc2-card { padding: 28px 24px; }
+      .svc2-card { padding: 36px 24px; }
       .voice-grid { grid-template-columns: 1fr; }
       .voice-card { grid-template-columns: 1fr; }
       .voice-card__thumb { width: 100%; height: 160px; }
@@ -471,31 +476,14 @@
           クラウド会計に特化した<br>新宿区の税理士事務所。
         </h1>
         <p class="hb-hero__lead">
-          freee認定アドバイザー最上位5つ星。創業期のスタートアップから成長フェーズ、上場準備に至るまで、あらゆるステージの企業を支援するクラウド会計特化型の税理士事務所です。<br><br>
-          創業期・中小企業のお客様を支える<strong>税務顧問</strong>と、高度な税務・上場企業向けの<strong>アドバイザリー</strong>——2つの専門領域で、記帳代行から財務デューデリジェンスまで幅広い税務ニーズに対応します。<br><br>
-          freee会計、Slack、Google Workspaceを活用し、オンライン完結型の税務体験を提供します。まずは気軽にご相談ください。
+          創業期のスタートアップから成長フェーズ、上場準備企業、上場企業に至るまで、あらゆるステージの企業を支援するクラウド会計特化型の税理士事務所です。<br><br>
+          創業期・中小企業のお客様を支えるスタートアップ・グロース支援部と、上場準備企業、上場企業のお客様を支えるミドルマーケット支援部—2つの専門領域で、記帳代行から高度な税務相談まで幅広い税務ニーズに対応します。<br><br>
+          「自分でやらなきゃ」を手放して、まずは気軽にご相談ください。
         </p>
         <a href="./contact-preview.html" class="hb-hero__btn">
           お問い合わせはこちら
           <span style="font-family:var(--font-en);font-style:italic;">→</span>
         </a>
-
-        <!-- 事業分岐リンク -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; max-width: 560px;">
-          <a href="./tamura-division-preview.html" style="display: block; padding: 24px 28px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s;" onmouseover="this.style.borderColor='#1F61AB';this.style.transform='translateX(4px)'" onmouseout="this.style.borderColor='#E8E6DF';this.style.transform='none'">
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--blue);">TAX ADVISORY</span>
-            <span style="display: block; font-weight: 700; font-size: 16px; margin: 8px 0 6px;">税務顧問</span>
-            <span style="display: block; font-size: 12px; color: var(--ink-light);">創業期・中小企業のお客様向け</span>
-            <span style="display: block; margin-top: 12px; font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: .1em;">VIEW MORE <span style="font-family:var(--font-en);font-style:italic;">→</span></span>
-          </a>
-          <a href="./ariura-division-preview.html" style="display: block; padding: 24px 28px; border: 1px solid var(--line); text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s;" onmouseover="this.style.borderColor='#1F61AB';this.style.transform='translateX(4px)'" onmouseout="this.style.borderColor='#E8E6DF';this.style.transform='none'">
-            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--blue);">ADVISORY</span>
-            <span style="display: block; font-weight: 700; font-size: 16px; margin: 8px 0 6px;">アドバイザリー</span>
-            <span style="display: block; font-size: 12px; color: var(--ink-light);">高度な税務・上場企業向け</span>
-            <span style="display: block; margin-top: 12px; font-family: var(--font-en-sans); font-size: 11px; font-weight: 600; color: var(--blue); letter-spacing: .1em;">VIEW MORE <span style="font-family:var(--font-en);font-style:italic;">→</span></span>
-          </a>
-        </div>
-
       </div>
     </div>
   </section>
@@ -509,20 +497,61 @@
       </div>
       <div class="feat-grid">
         <div class="feat-card">
-          <h3 class="feat-card__title">2つの専門領域で幅広く対応</h3>
-          <p class="feat-card__desc">創業期の記帳代行・決算・申告を担う税務顧問と、株価算定・ストックオプション評価・財務デューデリジェンスなどの高度な業務を担うアドバイザリー。事業ステージに応じた最適な専門チームが対応します。</p>
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M16 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/><rect x="15" y="3" width="7" height="10" rx="1.5"/><line x1="17" y1="6" x2="20" y2="6"/><line x1="17" y1="8.5" x2="20" y2="8.5"/></svg>
+          </div>
+          <h3 class="feat-card__title">公認会計士・税理士が代表</h3>
+          <p class="feat-card__desc">会計と税務、両方の専門性を活かしたサービスを提供。監査法人出身の公認会計士・税理士が代表を務め、会計・税務の両側面からお客様の課題を的確にカバーします。</p>
         </div>
         <div class="feat-card">
-          <h3 class="feat-card__title">経理がわからなくてもOK</h3>
-          <p class="feat-card__desc">請求書や領収書などの資料を共有いただくだけで、記帳から決算申告まですべてお任せいただけます。freeeの操作方法がわからなくても大丈夫。経理の知識がなくても、専任の担当者が一つひとつ丁寧に対応します。経営者は経営と営業に集中してください。</p>
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001.08 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1.08z"/></svg>
+          </div>
+          <h3 class="feat-card__title">DX/AXを得意とするコンサル会社を併設</h3>
+          <p class="feat-card__desc">AI・クラウドを活用したバックオフィスDXを専門とするコンサルティング会社を併設。経理のDX化・自動化も一気通貫で対応します。</p>
         </div>
         <div class="feat-card">
-          <h3 class="feat-card__title">freee会計100%・完全ペーパーレス</h3>
-          <p class="feat-card__desc">当事務所はfreee会計100%。銀行口座・クレジットカードの自動連携、請求書の自動取込み、経費精算のスマホ対応まで、freeeの機能をフル活用した完全クラウド・完全ペーパーレスの体制です。紙のやり取りや郵送は一切不要。全国どこからでもオンラインで業務が完結します。</p>
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="feat-card__title">社労士事務所併設でワンストップ対応</h3>
+          <p class="feat-card__desc">提携社労士事務所と連携し、税務・労務・社会保険まで、バックオフィス業務をワンストップで対応。窓口を一本化できます。</p>
         </div>
         <div class="feat-card">
-          <h3 class="feat-card__title">freee認定アドバイザー 5つ星</h3>
-          <p class="feat-card__desc">freee認定アドバイザー最上位の5つ星を取得。freeeに完全特化した体制で、導入から活用まで安心です。</p>
+          <div class="feat-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0110 0v2"/><line x1="12" y1="14" x2="12" y2="16"/><circle cx="12" cy="14" r="1" fill="#1F61AB"/></svg>
+          </div>
+          <h3 class="feat-card__title">融資を専門で行う事業部</h3>
+          <p class="feat-card__desc">日本政策金融公庫を中心とした創業融資の専門事業部を設置。累計90件超・総調達額8億円超の実績で、資金調達を成功に導きます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Representative Message -->
+  <section class="section" id="message">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">MESSAGE</span>
+        <span class="hb-section-head__jp">代表メッセージ</span>
+      </div>
+      <div class="msg-grid">
+        <div class="msg-photo">
+          <img src="images/tamura-profile.jpg" alt="田村直大 代表税理士">
+        </div>
+        <div>
+          <p class="msg-label">REPRESENTATIVE</p>
+          <p class="msg-name">田村 直大（Naohiro Tamura）</p>
+          <p class="msg-role">代表税理士 / 公認会計士｜大手監査法人 出身</p>
+          <h2 class="msg-title">
+            経理が自走する仕組みをつくり、<br>
+            経営者の挑戦を支え続けます。
+          </h2>
+          <p class="msg-body">
+            私たちが目指すのは、経営者が経理のことを気にせず本業に集中できる「経理が自走する状態」をつくることです。<br><br>
+            記帳代行や決算申告をただ引き受けるだけでなく、freee会計の自動化設計やSlackでのリアルタイム連携を通じて、経営者が何もしなくても経理業務が回り続ける仕組みを構築します。創業期の立ち上げから上場準備に至るまで、事業のフェーズが変わっても、経理が足を引っ張らない体制を一緒につくっていきます。<br><br>
+            大手監査法人出身の公認会計士・税理士として、上場企業レベルの品質基準と、スタートアップに必要なスピード感を両立させます。一人で悩まず、まずはお気軽にご相談ください。
+          </p>
         </div>
       </div>
     </div>
@@ -537,14 +566,45 @@
       </div>
       <div class="about-grid">
         <div class="about-card">
+          <div class="about-card__icon">
+            <!-- Online icon -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#1F61AB" stroke-width="1.5" fill="#E8EFF8"/>
+              <rect x="18" y="20" width="28" height="18" rx="2" stroke="#1F61AB" stroke-width="1.5" fill="none"/>
+              <line x1="28" y1="38" x2="28" y2="42" stroke="#1F61AB" stroke-width="1.5"/>
+              <line x1="36" y1="38" x2="36" y2="42" stroke="#1F61AB" stroke-width="1.5"/>
+              <line x1="24" y1="42" x2="40" y2="42" stroke="#1F61AB" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3 class="about-card__title">オンライン完結</h3>
           <p class="about-card__desc">チャットツールとクラウド会計で業務が完結。場所を問わず、スピーディな税務支援を提供します。</p>
         </div>
         <div class="about-card">
-          <h3 class="about-card__title">freee会計 100%</h3>
-          <p class="about-card__desc">freee認定アドバイザー最上位5つ星を取得。freeeに完全特化した体制で安心です。</p>
+          <div class="about-card__icon">
+            <!-- Two branches icon -->
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="30" stroke="#1F61AB" stroke-width="1.5" fill="#E8EFF8"/>
+              <circle cx="32" cy="18" r="3" stroke="#1F61AB" stroke-width="1.5" fill="none"/>
+              <line x1="32" y1="21" x2="32" y2="30" stroke="#1F61AB" stroke-width="1.5"/>
+              <path d="M32 30 L22 40" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M32 30 L42 40" stroke="#1F61AB" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="22" cy="42" r="3" stroke="#1F61AB" stroke-width="1.5" fill="none"/>
+              <circle cx="42" cy="42" r="3" stroke="#1F61AB" stroke-width="1.5" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="about-card__title">2つの専門部門</h3>
+          <p class="about-card__desc">スタートアップ・グロース支援部とミドルマーケット支援部。企業のステージに合わせた専門チームが対応します。</p>
         </div>
         <div class="about-card">
+          <div class="about-card__icon">
+            <!-- Slack official logo -->
+            <svg viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:48px;height:48px;">
+              <path d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386" fill="#36C5F0"/>
+              <path d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387" fill="#2EB67D"/>
+              <path d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386" fill="#ECB22E"/>
+              <path d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336 0v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.386" fill="#E01E5A"/>
+            </svg>
+          </div>
           <h3 class="about-card__title">Slack完結</h3>
           <p class="about-card__desc">コミュニケーションはSlackで完結。チャットでレスポンス良く、いつでも気軽にやり取りできます。</p>
         </div>
@@ -565,45 +625,69 @@
         <span class="hb-section-head__en">SERVICE</span>
         <span class="hb-section-head__jp">サービス紹介</span>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);">
-        <a href="./tamura-division-preview.html" class="svc2-card" style="padding: 48px 40px;">
+      <div class="svc-grid2">
+        <a href="./tamura-division-preview.html" class="svc2-card">
+          <div class="svc2-card__icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
+              <rect x="6" y="4" width="24" height="28" rx="3"/>
+              <line x1="11" y1="12" x2="25" y2="12"/>
+              <line x1="11" y1="17" x2="25" y2="17"/>
+              <line x1="11" y1="22" x2="20" y2="22"/>
+              <path d="M22 26l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="svc2-card__head">
             <span class="svc2-card__num">01</span>
-            <span class="svc2-card__en">TAX ADVISORY</span>
+            <span class="svc2-card__en">TAX ADVISOR</span>
           </div>
-          <h3 class="svc2-card__title" style="font-size: 22px; margin-bottom: 14px;">税務顧問</h3>
-          <p style="font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 16px; letter-spacing: .08em;">創業期・中小企業のお客様向け</p>
-          <p class="svc2-card__desc">記帳代行・決算申告・税務届出・年末調整・創業融資支援まで、創業期の業務課題をまるごとお引き受けします。事業に精通した専門家が、freee会計×Slackで日々の疑問にもスピーディーに対応。経営者は経営に集中できます。</p>
-          <span class="svc2-card__link" style="margin-top: 24px;">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
+          <h3 class="svc2-card__title">税務顧問</h3>
+          <p class="svc2-card__desc">記帳代行・決算申告・税務届出・年末調整・創業融資支援まで、創業期の業務課題を丸ごとお引き受けするスタートアップ・グロース支援部。外形標準課税の税額計算、グループ通算制度、組織再編税制、決算短信開示のための四半期税金計算まで、上場準備フェーズ、上場後の業務課題を解決するミドルマーケット支援部。企業のステージに合わせた対応部門が存在する組織体制。</p>
+          <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
         </a>
-        <a href="./ariura-division-preview.html" class="svc2-card" style="padding: 48px 40px;">
+        <a href="./financing-support-preview.html" class="svc2-card">
+          <div class="svc2-card__icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
+              <rect x="4" y="8" width="28" height="20" rx="3"/>
+              <circle cx="18" cy="18" r="5"/>
+              <line x1="8" y1="8" x2="8" y2="28"/>
+              <line x1="28" y1="8" x2="28" y2="28"/>
+              <text x="18" y="21" font-family="Inter" font-size="8" fill="#1F61AB" text-anchor="middle" font-weight="600">¥</text>
+            </svg>
+          </div>
           <div class="svc2-card__head">
             <span class="svc2-card__num">02</span>
-            <span class="svc2-card__en">ADVISORY</span>
-          </div>
-          <h3 class="svc2-card__title" style="font-size: 22px; margin-bottom: 14px;">アドバイザリー</h3>
-          <p style="font-size: 12px; font-weight: 600; color: var(--blue); margin-bottom: 16px; letter-spacing: .08em;">高度な税務・上場企業向け</p>
-          <p class="svc2-card__desc">財務デューデリジェンス・株価算定・ストックオプション評価・上場企業の税務申告・PMI支援・IPO支援など、高度な専門性を要する業務に対応します。上場準備からFAS領域まで、確かな実務経験でサポートします。</p>
-          <span class="svc2-card__link" style="margin-top: 24px;">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
-        </a>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-left: 1px solid var(--line);">
-        <a href="./financing-support-preview.html" class="svc2-card" style="padding: 36px 40px;">
-          <div class="svc2-card__head">
-            <span class="svc2-card__num">03</span>
             <span class="svc2-card__en">FINANCING</span>
           </div>
           <h3 class="svc2-card__title">資金調達支援</h3>
-          <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績。</p>
+          <p class="svc2-card__desc">日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績で、創業期の資金調達を成功に導きます。成果報酬型だから、リスクなく始められます。</p>
           <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
         </a>
-        <div class="svc2-card" style="padding: 36px 40px;">
-          <div class="svc2-card__head">
-            <span class="svc2-card__num">04</span>
-            <span class="svc2-card__en">CLOUD ACCOUNTING</span>
+        <a href="./ariura-division-preview.html" class="svc2-card">
+          <div class="svc2-card__icon">
+            <svg viewBox="0 0 36 36" fill="none" stroke="#1F61AB" stroke-width="1.5">
+              <circle cx="18" cy="18" r="13"/>
+              <path d="M18 11v7l5 3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 8l-2-3M23 8l2-3M10 14l-3-1M26 14l3-1" stroke-linecap="round"/>
+            </svg>
           </div>
-          <h3 class="svc2-card__title">クラウド会計ソフト導入支援</h3>
-          <p class="svc2-card__desc">freee会計の導入・初期設定から日常運用まで。銀行口座・クレカ連携、請求書設定、自動仕訳ルールの構築まで一貫サポートします。</p>
+          <div class="svc2-card__head">
+            <span class="svc2-card__num">03</span>
+            <span class="svc2-card__en">ADVISORY</span>
+          </div>
+          <h3 class="svc2-card__title">アドバイザリー</h3>
+          <p class="svc2-card__desc">税務デューデリジェンス・株価算定・ストックオプション評価・株式報酬制度の設計など、高度な専門性を要する税務業務に対応します。</p>
+          <span class="svc2-card__link">READ MORE <span style="font-family:var(--font-en);font-style:italic;">↗</span></span>
+        </a>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 700; margin-top: 56px; margin-bottom: 24px; color: var(--ink);">その他のサービス</h3>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line);">
+        <div style="padding: 36px 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s;" onmouseover="this.style.background='var(--blue-ghost)'" onmouseout="this.style.background=''">
+          <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;">
+            <span style="font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 28px; color: var(--blue); line-height: 1;">04</span>
+            <span style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .15em; color: var(--ink-light);">CLOUD ACCOUNTING</span>
+          </div>
+          <h4 style="font-weight: 700; font-size: 17px; margin-bottom: 10px;">クラウド会計ソフト導入支援</h4>
+          <p style="font-size: 13px; line-height: 1.85; color: var(--ink-soft);">freee会計の導入・初期設定から日常運用まで。銀行口座・クレカ連携、請求書設定、自動仕訳ルールの構築まで一貫サポートします。</p>
         </div>
       </div>
     </div>
@@ -647,6 +731,61 @@
     </div>
   </section>
 
+  <!-- Flow (契約の流れ) -->
+  <section class="section" id="flow">
+    <div class="section__inner">
+      <div class="hb-section-head">
+        <span class="hb-section-head__en">FLOW</span>
+        <span class="hb-section-head__jp">ご契約の流れ</span>
+      </div>
+      <div style="max-width: 640px; margin: 0 auto;">
+        <!-- Step 01 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">01</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">無料相談</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">オンライン面談（Google Meet）にて、現在の経理状況やご要望をヒアリングします。所要時間は約30分。事前準備は不要です。</p>
+          </div>
+        </div>
+        <!-- Step 02 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">02</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">お見積り</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">ヒアリング内容をもとに、最適なプランと料金をご提案します。</p>
+          </div>
+        </div>
+        <!-- Step 03 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">03</div>
+            <div style="width: 2px; height: 48px; background: linear-gradient(var(--blue), var(--blue-light));"></div>
+          </div>
+          <div style="padding-bottom: 24px;">
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">ご契約</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">電子契約でオンライン完結。紙の郵送は一切不要です。契約後、Slackのお客様専用チャンネルにご招待します。</p>
+          </div>
+        </div>
+        <!-- Step 04 -->
+        <div style="display: flex; gap: 24px; align-items: flex-start;">
+          <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-en); font-weight: 600; font-size: 16px;">04</div>
+          </div>
+          <div>
+            <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 6px;">業務開始</h3>
+            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.85;">キックオフMTGを行い、記帳代行を開始。毎月の資料共有はGoogleドライブで完結。不明点はSlackチャットでいつでもご質問いただけます。※以降、面談は決算時のみの年1回となります。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-blue">
     <div class="cta-blue__inner">
@@ -676,7 +815,6 @@
         <div>
           <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">SERVICE</div>
           <a href="./tamura-division-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">税務顧問</a>
-          <a href="./ariura-division-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">アドバイザリー</a>
           <a href="./financing-support-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">融資支援</a>
         </div>
         <div>
@@ -703,12 +841,12 @@
           <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
             <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Tax Office</div>
             <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース税理士事務所</div>
-            <div style="font-size: 11px; opacity: .65; line-height: 1.7;">税務・会計・月次決算</div>
+            <div style="font-size: 11px; opacity: .65; line-height: 1.7;">税務・会計・月次決算の専門家集団</div>
           </div>
           <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
             <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Labor Office</div>
             <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース社会保険労務士事務所</div>
-            <div style="font-size: 11px; opacity: .65; line-height: 1.7;">労務・人事・社会保険</div>
+            <div style="font-size: 11px; opacity: .65; line-height: 1.7;">労務・人事・社会保険の専門家集団</div>
           </div>
         </div>
         <div style="margin-top: 18px; font-family: var(--font-en-sans); font-size: 10.5px; color: rgba(255,255,255,.45); line-height: 1.7;">共通所在地：東京都新宿区愛住町23-1 woody21 6階</div>
