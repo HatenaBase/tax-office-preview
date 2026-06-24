@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="./favicon.png">
+  <title>賃上げ促進税制シミュレーション｜はてなベース税理士事務所</title>
+  <meta name="description" content="令和6年度税制改正対応。賃上げ促進税制の税額控除額を簡易シミュレーション。給与増加率・教育訓練費・認定制度から控除額を自動計算します。はてなベース税理士事務所。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --paper: #FAFAFA;
+      --paper-warm: #F5F4F0;
+      --ink: #0E0E14;
+      --ink-soft: #3A3A45;
+      --ink-light: #8A8A93;
+      --line: #E8E6DF;
+      --line-soft: #F0EEE8;
+      --blue: #1F61AB;
+      --blue-deep: #0F3B72;
+      --blue-light: #E8EFF8;
+      --blue-ghost: #F4F8FD;
+      --font-en: "Cormorant Garamond", "Times New Roman", serif;
+      --font-en-sans: "Inter", system-ui, sans-serif;
+      --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+
+    /* ====== Header ====== */
+    .hb-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-header__inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 16px 32px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .hb-header__logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--ink);
+    }
+    .hb-header__logo-text {
+      font-family: var(--font-jp); font-weight: 700;
+      font-size: 15px; letter-spacing: .02em; line-height: 1.3;
+    }
+    .hb-header__logo-sub {
+      font-size: 10px; font-weight: 400;
+      color: var(--ink-light); display: block;
+    }
+    .hb-header__nav {
+      display: flex; gap: 28px; align-items: center;
+    }
+    .hb-header__nav a {
+      font-family: var(--font-en-sans);
+      font-size: 12px; font-weight: 500; letter-spacing: .04em;
+      color: var(--ink-soft); text-decoration: none;
+      transition: color .2s;
+    }
+    .hb-header__nav a:hover { color: var(--blue); }
+    .hb-header__cta {
+      padding: 10px 24px; background: var(--blue); color: #fff !important;
+      border-radius: 999px; font-size: 12px; font-weight: 600;
+      letter-spacing: .04em; text-decoration: none;
+      transition: background .3s;
+    }
+    .hb-header__cta:hover { background: var(--blue-deep); color: #fff !important; }
+    .hb-hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; width: 32px; height: 32px; position: relative;
+    }
+    .hb-hamburger span {
+      display: block; width: 20px; height: 1.5px;
+      background: var(--ink); position: absolute; left: 6px;
+      transition: .3s;
+    }
+    .hb-hamburger span:nth-child(1) { top: 9px; }
+    .hb-hamburger span:nth-child(2) { top: 15px; }
+    .hb-hamburger span:nth-child(3) { top: 21px; }
+
+    /* ====== Mobile Nav ====== */
+    .hb-mobile-nav {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(255,255,255,.98); z-index: 99;
+      flex-direction: column; justify-content: center; align-items: center; gap: 28px;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    }
+    .hb-mobile-nav.is-open { display: flex; }
+    .hb-mobile-nav a {
+      font-family: var(--font-en-sans); font-size: 14px; font-weight: 500;
+      letter-spacing: .06em; color: var(--ink-soft); text-decoration: none;
+      padding: 12px 24px; transition: color .2s;
+    }
+    .hb-mobile-nav a:hover { color: var(--blue); }
+    .hb-mobile-nav .hb-header__cta {
+      margin-top: 12px; padding: 14px 32px; font-size: 14px;
+    }
+
+    /* ====== SubHero ====== */
+    .hb-subhero {
+      position: relative; padding: 80px 32px 72px;
+      background: var(--white); overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+    .hb-subhero::before {
+      content: '';
+      position: absolute; top: 0; right: 0; width: 50%; height: 100%;
+      background-image:
+        radial-gradient(circle at 70% 50%, transparent 39px, transparent 40px),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' fill='none'%3E%3Ccircle cx='400' cy='300' r='50' stroke='%231F61AB' stroke-width='1.2' opacity='.18'/%3E%3Ccircle cx='400' cy='300' r='100' stroke='%231F61AB' stroke-width='1' opacity='.15'/%3E%3Ccircle cx='400' cy='300' r='150' stroke='%231F61AB' stroke-width='.8' opacity='.13'/%3E%3Ccircle cx='400' cy='300' r='200' stroke='%231F61AB' stroke-width='.7' opacity='.11'/%3E%3Ccircle cx='400' cy='300' r='250' stroke='%231F61AB' stroke-width='.6' opacity='.09'/%3E%3Ccircle cx='400' cy='300' r='300' stroke='%231F61AB' stroke-width='.5' opacity='.07'/%3E%3Cline x1='0' y1='300' x2='800' y2='300' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3Cline x1='400' y1='0' x2='400' y2='600' stroke='%231F61AB' stroke-width='.8' opacity='.10'/%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      pointer-events: none; z-index: 0;
+    }
+    .hb-subhero > * { position: relative; z-index: 1; }
+    .hb-subhero__inner { max-width: 1280px; margin: 0 auto; }
+    .hb-subhero__crumb {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .2em; color: var(--ink-light); margin-bottom: 32px;
+    }
+    .hb-subhero__crumb a { color: var(--ink-light); text-decoration: none; }
+    .hb-subhero__crumb a:hover { color: var(--blue); }
+    .hb-subhero__en {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 16px; color: var(--blue); margin-bottom: 16px;
+      letter-spacing: .04em;
+    }
+    .hb-subhero__jp {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(28px, 4vw, 52px); line-height: 1.25;
+      letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px;
+    }
+    .hb-subhero__lead {
+      font-size: 15px; line-height: 2; color: var(--ink-soft);
+      max-width: 720px;
+    }
+
+    /* ====== Section Head ====== */
+    .hb-section-head {
+      display: flex; align-items: baseline; gap: 18px;
+      padding-bottom: 18px; border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+    .hb-section-head__en {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hb-section-head__en::before {
+      content: ''; display: inline-block;
+      width: 8px; height: 8px; border-radius: 50%; background: var(--blue);
+    }
+    .hb-section-head__jp {
+      font-family: var(--font-jp); font-weight: 700; font-size: 28px;
+      letter-spacing: -.01em; color: var(--ink);
+    }
+
+    /* ====== Section base ====== */
+    .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .section--paper { background: var(--paper); }
+    .section--warm { background: var(--paper-warm); }
+    .section__inner { max-width: 1280px; margin: 0 auto; }
+
+    /* ====== Simulator Form ====== */
+    .sim-layout {
+      display: grid; grid-template-columns: 420px 1fr; gap: 48px;
+      align-items: start;
+    }
+
+    .sim-form {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 36px;
+      position: sticky; top: 100px;
+    }
+    .sim-form__title {
+      font-weight: 700; font-size: 16px; margin-bottom: 28px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--line-soft);
+      color: var(--ink);
+    }
+    .sim-form__group {
+      margin-bottom: 20px;
+    }
+    .sim-form__group:last-child { margin-bottom: 0; }
+    .sim-form__label {
+      display: block; font-size: 13px; font-weight: 700;
+      color: var(--ink); margin-bottom: 8px;
+    }
+    .sim-form__label-sub {
+      font-weight: 400; font-size: 12px; color: var(--ink-light);
+      margin-left: 4px;
+    }
+    .sim-form__input-wrap {
+      position: relative;
+    }
+    .sim-form__input {
+      width: 100%; padding: 12px 60px 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-family: var(--font-en); font-size: 20px; font-weight: 400;
+      color: var(--ink); background: var(--white);
+      outline: none; transition: border-color .2s;
+      -moz-appearance: textfield;
+    }
+    .sim-form__input::-webkit-outer-spin-button,
+    .sim-form__input::-webkit-inner-spin-button {
+      -webkit-appearance: none; margin: 0;
+    }
+    .sim-form__input:focus { border-color: var(--blue); }
+    .sim-form__unit {
+      position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+      font-size: 14px; color: var(--ink-light); pointer-events: none;
+    }
+
+    .sim-form__select {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-family: var(--font-jp); font-size: 14px;
+      color: var(--ink); background: var(--white);
+      outline: none; cursor: pointer; transition: border-color .2s;
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A8A93' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    .sim-form__select:focus { border-color: var(--blue); }
+
+    .sim-form__radio-group {
+      display: flex; gap: 12px;
+    }
+    .sim-form__radio-label {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 8px; padding: 12px 16px;
+      border: 1px solid var(--line); border-radius: 6px;
+      font-size: 13px; font-weight: 500; color: var(--ink-soft);
+      cursor: pointer; transition: all .2s;
+    }
+    .sim-form__radio-label:hover { border-color: var(--blue); color: var(--blue); }
+    .sim-form__radio-label.is-active {
+      border-color: var(--blue); background: var(--blue-ghost);
+      color: var(--blue); font-weight: 700;
+    }
+    .sim-form__radio-label input {
+      display: none;
+    }
+
+    /* ====== Results ====== */
+    .sim-results {
+      min-height: 400px;
+    }
+
+    .sim-main-card {
+      background: var(--blue-ghost); border: 1px solid var(--blue-light);
+      border-radius: 8px; padding: 40px; margin-bottom: 32px;
+      text-align: center;
+    }
+    .sim-main-card__label {
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 500;
+      letter-spacing: .3em; color: var(--blue); margin-bottom: 8px;
+    }
+    .sim-main-card__sub {
+      font-size: 13px; color: var(--ink-soft); margin-bottom: 12px;
+    }
+    .sim-main-card__value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 64px; color: var(--blue); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .sim-main-card__value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 18px; color: var(--ink-soft);
+    }
+    .sim-main-card__total-label {
+      font-size: 12px; color: var(--ink-light); margin-top: 16px; margin-bottom: 4px;
+    }
+    .sim-main-card__total-value {
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 32px; color: var(--ink); line-height: 1;
+    }
+    .sim-main-card__total-value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 14px; color: var(--ink-soft);
+    }
+
+    /* ====== Badge ====== */
+    .sim-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; margin-bottom: 16px;
+    }
+    .sim-badge--green { background: #E6F4EA; color: #1B7A3D; }
+    .sim-badge--red { background: #FDECEA; color: #C62828; }
+
+    /* ====== Bar Chart ====== */
+    .sim-bar {
+      margin-bottom: 32px; padding: 28px;
+      background: var(--white); border: 1px solid var(--line); border-radius: 8px;
+    }
+    .sim-bar__title {
+      font-weight: 700; font-size: 14px; margin-bottom: 20px;
+      color: var(--ink);
+    }
+    .sim-bar__track {
+      width: 100%; height: 40px; display: flex; border-radius: 6px;
+      overflow: hidden; margin-bottom: 16px;
+    }
+    .sim-bar__seg {
+      height: 100%; transition: width .4s ease;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
+      color: #fff; white-space: nowrap; min-width: 0; overflow: hidden;
+    }
+    .sim-bar__seg--base { background: var(--blue); }
+    .sim-bar__seg--up1 { background: #5A9BD5; }
+    .sim-bar__seg--up2 { background: #F4A940; }
+    .sim-bar__seg--up3 { background: #6DC08E; }
+    .sim-bar__legend {
+      display: flex; flex-wrap: wrap; gap: 16px;
+    }
+    .sim-bar__legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--ink-soft);
+    }
+    .sim-bar__legend-dot {
+      width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ====== Detail Tables ====== */
+    .sim-tables {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-bottom: 32px;
+    }
+    .sim-detail-card {
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 8px; overflow: hidden;
+    }
+    .sim-detail-card--full { grid-column: 1 / -1; }
+    .sim-detail-card__header {
+      padding: 16px 24px;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      font-weight: 700; font-size: 14px; color: var(--ink);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sim-detail-card__header-icon {
+      width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;
+      background: var(--blue-light); border-radius: 6px;
+    }
+    .sim-detail-card__header-icon svg { width: 14px; height: 14px; }
+    .sim-detail-card__body { padding: 0; }
+    .sim-detail-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line-soft);
+      font-size: 14px; color: var(--ink-soft);
+    }
+    .sim-detail-row:last-child { border-bottom: none; }
+    .sim-detail-row__label { font-weight: 400; }
+    .sim-detail-row__value {
+      font-family: var(--font-en); font-style: italic; font-weight: 400;
+      font-size: 18px; color: var(--ink);
+    }
+    .sim-detail-row__value span {
+      font-family: var(--font-jp); font-style: normal; font-weight: 400;
+      font-size: 12px; color: var(--ink-light); margin-left: 2px;
+    }
+    .sim-detail-row--highlight {
+      background: var(--blue-ghost);
+    }
+    .sim-detail-row--highlight .sim-detail-row__label {
+      font-weight: 700; color: var(--ink);
+    }
+    .sim-detail-row--highlight .sim-detail-row__value {
+      color: var(--blue); font-weight: 400; font-size: 20px;
+    }
+
+    /* ====== Disclaimer ====== */
+    .sim-disclaimer {
+      margin-top: 24px; padding: 24px 32px;
+      background: var(--paper-warm); border-left: 3px solid var(--line);
+      border-radius: 0 4px 4px 0;
+    }
+    .sim-disclaimer p {
+      font-size: 12px; line-height: 1.8; color: var(--ink-light);
+    }
+
+    /* ====== Explanation Section ====== */
+    .explanation {
+      max-width: 1280px; margin: 0 auto;
+    }
+    .explanation__block {
+      margin-bottom: 48px;
+    }
+    .explanation__block:last-child { margin-bottom: 0; }
+    .explanation__title {
+      font-weight: 700; font-size: 18px; color: var(--ink);
+      margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .explanation__title::before {
+      content: ''; display: inline-block;
+      width: 4px; height: 20px; background: var(--blue); border-radius: 2px;
+    }
+    .explanation__text {
+      font-size: 14px; line-height: 2; color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+    .explanation__list {
+      list-style: none; margin-bottom: 16px;
+    }
+    .explanation__list li {
+      font-size: 14px; line-height: 2; color: var(--ink-soft);
+      padding-left: 20px; position: relative;
+    }
+    .explanation__list li::before {
+      content: ''; position: absolute; left: 0; top: 12px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+    }
+    .explanation__table {
+      width: 100%; border-collapse: collapse; margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .explanation__table th {
+      background: var(--blue); color: #fff;
+      padding: 12px 16px; text-align: left; font-weight: 600;
+      font-size: 13px;
+    }
+    .explanation__table td {
+      padding: 12px 16px; border-bottom: 1px solid var(--line-soft);
+      color: var(--ink-soft);
+    }
+    .explanation__table tr:last-child td { border-bottom: none; }
+    .explanation__table tr:nth-child(even) td { background: var(--paper); }
+    .explanation__link {
+      font-size: 13px; color: var(--blue); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .explanation__link:hover { text-decoration: underline; }
+    .explanation__links {
+      display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+    }
+
+    /* ====== CTA Section ====== */
+    .cta-blue {
+      padding: 96px 32px; background: var(--blue); color: #fff;
+    }
+    .cta-blue__inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: center;
+    }
+    .cta-blue__label {
+      font-family: var(--font-en-sans); font-size: 11px;
+      letter-spacing: .32em; opacity: .85; margin-bottom: 18px;
+    }
+    .cta-blue__title {
+      font-family: var(--font-jp); font-weight: 900;
+      font-size: clamp(24px, 3.2vw, 40px); line-height: 1.35; margin-bottom: 20px;
+    }
+    .cta-blue__lead {
+      font-size: 15px; line-height: 1.95; opacity: .9; max-width: 560px;
+    }
+    .cta-blue__buttons { display: grid; gap: 14px; }
+    .cta-blue__btn {
+      padding: 18px 28px; text-decoration: none;
+      font-family: var(--font-jp); font-size: 15px; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+      border-radius: 999px; transition: transform .2s, opacity .2s;
+    }
+    .cta-blue__btn:hover { transform: translateX(4px); opacity: .9; }
+    .cta-blue__btn--primary { background: #fff; color: var(--blue); }
+    .cta-blue__btn--outline {
+      background: transparent; color: #fff;
+      border: 1px solid rgba(255,255,255,.5);
+    }
+    .cta-blue__btn .arrow {
+      font-family: var(--font-en); font-style: italic;
+    }
+
+    /* ====== Responsive ====== */
+    @media (max-width: 1024px) {
+      .sim-layout { grid-template-columns: 1fr; }
+      .sim-form { position: static; }
+    }
+
+    @media (max-width: 767px) {
+      .hb-header__nav { display: none; }
+      .hb-hamburger { display: block; }
+      .hb-subhero { padding: 60px 20px 48px; }
+      .hb-subhero__jp { font-size: 26px; }
+      .section { padding: 64px 20px; }
+      .sim-layout { gap: 32px; }
+      .sim-form { padding: 24px; }
+      .sim-main-card { padding: 28px 20px; }
+      .sim-main-card__value { font-size: 44px; }
+      .sim-main-card__total-value { font-size: 24px; }
+      .sim-tables { grid-template-columns: 1fr; }
+      .sim-detail-row { padding: 12px 16px; }
+      .sim-detail-row__value { font-size: 16px; }
+      .sim-bar { padding: 20px; }
+      .sim-bar__track { height: 32px; }
+      .sim-bar__seg { font-size: 10px; }
+      .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
+      .hb-section-head { flex-direction: column; gap: 8px; }
+      .sim-form__radio-group { flex-direction: column; }
+      .sim-disclaimer { padding: 16px 20px; }
+      .explanation__table { font-size: 12px; }
+      .explanation__table th, .explanation__table td { padding: 10px 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .sim-main-card__value { font-size: 36px; }
+      .sim-bar__legend { gap: 10px; }
+      .sim-bar__legend-item { font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<header class="hb-header">
+  <div class="hb-header__inner">
+    <a class="hb-header__logo" href="./tax-accountant-preview.html">
+      <div class="hb-header__logo-text">
+        はてなベース税理士事務所
+        <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
+      </div>
+    </a>
+    <nav class="hb-header__nav">
+      <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
+      <a href="./financing-support-preview.html">FINANCING</a>
+      <a href="./tools-preview.html">SIMULATION</a>
+      <a href="./about-us-preview.html">ABOUT US</a>
+      <a href="./contact-preview.html" class="hb-header__cta">CONTACT</a>
+    </nav>
+    <button class="hb-hamburger" onclick="document.querySelector('.hb-mobile-nav').classList.toggle('is-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====== Mobile Nav ====== -->
+<div class="hb-mobile-nav">
+  <a href="./tax-advisor-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">TAX ADVISOR</a>
+  <a href="./financing-support-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">FINANCING</a>
+  <a href="./tools-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">SIMULATION</a>
+  <a href="./about-us-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">ABOUT US</a>
+  <a href="./contact-preview.html" class="hb-header__cta" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">CONTACT</a>
+</div>
+
+<!-- ====== SubHero ====== -->
+<section class="hb-subhero">
+  <div class="hb-subhero__inner">
+    <div class="hb-subhero__crumb">
+      <a href="./tax-accountant-preview.html">HOME</a>&ensp;/&ensp;<a href="./tools-preview.html">TOOLS</a>&ensp;/&ensp;WAGE INCREASE TAX CREDIT SIMULATOR
+    </div>
+    <div class="hb-subhero__en">Wage Increase Tax Credit Simulator</div>
+    <h1 class="hb-subhero__jp">賃上げ促進税制シミュレーション</h1>
+    <p class="hb-subhero__lead">
+      令和6年度税制改正に対応。従業員の給与を引き上げた場合に受けられる税額控除額を簡易計算します。<br>
+      中小企業は最大40%、大企業は最大25%の控除率が適用されます。
+    </p>
+  </div>
+</section>
+
+<!-- ====== Simulator Section ====== -->
+<section class="section section--paper">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <div class="hb-section-head__en">SIMULATION</div>
+      <div class="hb-section-head__jp">税額控除シミュレーション</div>
+    </div>
+
+    <div class="sim-layout">
+      <!-- ====== Input Form ====== -->
+      <div class="sim-form">
+        <div class="sim-form__title">条件を入力</div>
+
+        <!-- 1. 資本金 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="capital">
+            資本金<span class="sim-form__label-sub">（中小企業判定用）</span>
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="capital" class="sim-form__input" value="1000" min="0" max="1000000" step="100">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 2. 前事業年度の給与等支給額 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="prevSalary">
+            前事業年度の給与等支給額
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="prevSalary" class="sim-form__input" value="5000" min="0" max="9999999" step="100">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 3. 当事業年度の給与等支給額 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="currSalary">
+            当事業年度の給与等支給額
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="currSalary" class="sim-form__input" value="5200" min="0" max="9999999" step="100">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 4. 前事業年度の教育訓練費 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="prevTraining">
+            前事業年度の教育訓練費
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="prevTraining" class="sim-form__input" value="50" min="0" max="999999" step="1">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 5. 当事業年度の教育訓練費 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="currTraining">
+            当事業年度の教育訓練費
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="currTraining" class="sim-form__input" value="60" min="0" max="999999" step="1">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 6. くるみん認定 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label">くるみん / プラチナくるみん認定</label>
+          <div class="sim-form__radio-group">
+            <label class="sim-form__radio-label" data-value="yes">
+              <input type="radio" name="kurumin" value="yes">
+              あり
+            </label>
+            <label class="sim-form__radio-label is-active" data-value="no">
+              <input type="radio" name="kurumin" value="no" checked>
+              なし
+            </label>
+          </div>
+        </div>
+
+        <!-- 7. えるぼし認定 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label">えるぼし（3段階目以上）/ プラチナえるぼし認定</label>
+          <div class="sim-form__radio-group">
+            <label class="sim-form__radio-label" data-value="yes">
+              <input type="radio" name="eruboshi" value="yes">
+              あり
+            </label>
+            <label class="sim-form__radio-label is-active" data-value="no">
+              <input type="radio" name="eruboshi" value="no" checked>
+              なし
+            </label>
+          </div>
+        </div>
+
+        <!-- 8. 当事業年度の法人税額 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="corpTax">
+            当事業年度の法人税額
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="corpTax" class="sim-form__input" value="300" min="0" max="9999999" step="10">
+            <span class="sim-form__unit">万円</span>
+          </div>
+        </div>
+
+        <!-- 9. 青色申告 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label">青色申告の届出</label>
+          <div class="sim-form__radio-group">
+            <label class="sim-form__radio-label is-active" data-value="yes">
+              <input type="radio" name="blueReturn" value="yes" checked>
+              あり
+            </label>
+            <label class="sim-form__radio-label" data-value="no">
+              <input type="radio" name="blueReturn" value="no">
+              なし
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====== Results ====== -->
+      <div class="sim-results">
+
+        <!-- Main Card -->
+        <div class="sim-main-card">
+          <div id="eligibilityBadge" class="sim-badge sim-badge--green">適用可能</div>
+          <div class="sim-main-card__label">TAX CREDIT AMOUNT</div>
+          <div class="sim-main-card__sub">税額控除額</div>
+          <div class="sim-main-card__value" id="creditAmount">0<span> 万円</span></div>
+          <div class="sim-main-card__total-label">適用控除率</div>
+          <div class="sim-main-card__total-value" id="creditRate">0<span> %</span></div>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="sim-bar">
+          <div class="sim-bar__title">控除率の内訳</div>
+          <div class="sim-bar__track" id="barTrack">
+            <div class="sim-bar__seg sim-bar__seg--base" id="barBase" style="width:0%"></div>
+            <div class="sim-bar__seg sim-bar__seg--up1" id="barUp1" style="width:0%"></div>
+            <div class="sim-bar__seg sim-bar__seg--up2" id="barUp2" style="width:0%"></div>
+            <div class="sim-bar__seg sim-bar__seg--up3" id="barUp3" style="width:0%"></div>
+          </div>
+          <div class="sim-bar__legend">
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:var(--blue)"></div>
+              基本控除
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#5A9BD5"></div>
+              上乗せ1（給与増加率）
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#F4A940"></div>
+              上乗せ2（教育訓練費）
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#6DC08E"></div>
+              上乗せ3（認定制度）
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Tables -->
+        <div class="sim-tables">
+          <!-- 判定結果 -->
+          <div class="sim-detail-card sim-detail-card--full">
+            <div class="sim-detail-card__header">
+              <div class="sim-detail-card__header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              </div>
+              適用判定
+            </div>
+            <div class="sim-detail-card__body">
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">企業区分</div>
+                <div class="sim-detail-row__value" id="rowCompanyType" style="font-style:normal; font-family:var(--font-jp); font-size:15px;">中小企業</div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">給与増加額</div>
+                <div class="sim-detail-row__value" id="rowSalaryIncrease">0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">給与増加率</div>
+                <div class="sim-detail-row__value" id="rowSalaryRate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">教育訓練費増加率</div>
+                <div class="sim-detail-row__value" id="rowTrainingRate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">青色申告</div>
+                <div class="sim-detail-row__value" id="rowBlueReturn" style="font-style:normal; font-family:var(--font-jp); font-size:15px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 控除内訳 -->
+          <div class="sim-detail-card">
+            <div class="sim-detail-card__header">
+              <div class="sim-detail-card__header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              </div>
+              控除率の内訳
+            </div>
+            <div class="sim-detail-card__body">
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">基本控除率</div>
+                <div class="sim-detail-row__value" id="rowBaseRate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">上乗せ1（給与増加率）</div>
+                <div class="sim-detail-row__value" id="rowUp1Rate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">上乗せ2（教育訓練費）</div>
+                <div class="sim-detail-row__value" id="rowUp2Rate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">上乗せ3（認定制度）</div>
+                <div class="sim-detail-row__value" id="rowUp3Rate">0<span>%</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--highlight">
+                <div class="sim-detail-row__label">合計控除率</div>
+                <div class="sim-detail-row__value" id="rowTotalRate">0<span>%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 控除額 -->
+          <div class="sim-detail-card">
+            <div class="sim-detail-card__header">
+              <div class="sim-detail-card__header-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              控除額の計算
+            </div>
+            <div class="sim-detail-card__body">
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">給与増加額 x 控除率</div>
+                <div class="sim-detail-row__value" id="rowRawCredit">0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row">
+                <div class="sim-detail-row__label">法人税額の20%（上限）</div>
+                <div class="sim-detail-row__value" id="rowTaxLimit">0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--highlight">
+                <div class="sim-detail-row__label">実際の控除額</div>
+                <div class="sim-detail-row__value" id="rowFinalCredit">0<span>万円</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="sim-disclaimer">
+          <p>
+            本シミュレーションは令和6年度税制改正に基づく概算です。実際の適用可否・控除額は個別の状況により異なります。適用にあたっては税理士にご相談ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Explanation Section ====== -->
+<section class="section">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <div class="hb-section-head__en">REFERENCE</div>
+      <div class="hb-section-head__jp">賃上げ促進税制の解説</div>
+    </div>
+
+    <div class="explanation">
+
+      <!-- 適用要件 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">適用要件</h3>
+        <p class="explanation__text">賃上げ促進税制の適用を受けるためには、以下の要件を全て満たす必要があります。</p>
+        <ul class="explanation__list">
+          <li>青色申告法人であること</li>
+          <li>当事業年度の雇用者給与等支給額が、前事業年度の雇用者給与等支給額を超えていること</li>
+          <li>中小企業：給与増加率が1.5%以上であること</li>
+          <li>大企業：給与増加率が3%以上であること</li>
+          <li>大企業の場合、マルチステークホルダー方針の公表等の追加要件あり</li>
+        </ul>
+      </div>
+
+      <!-- 中小企業と大企業の違い -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">中小企業と大企業の控除率比較</h3>
+        <p class="explanation__text">資本金の額又は出資金の額が1億円以下の法人は「中小企業者等」として、より有利な控除率が適用されます。</p>
+        <table class="explanation__table">
+          <thead>
+            <tr>
+              <th>区分</th>
+              <th>中小企業者等</th>
+              <th>大企業</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>基本控除率</td>
+              <td>増加率1.5%以上 → 15%</td>
+              <td>増加率3%以上 → 10%</td>
+            </tr>
+            <tr>
+              <td>上乗せ1</td>
+              <td>増加率2.5%以上 → +15%</td>
+              <td>増加率4%以上 → +5%</td>
+            </tr>
+            <tr>
+              <td>上乗せ2</td>
+              <td>教育訓練費増加率10%以上 → +10%</td>
+              <td>教育訓練費増加率20%以上 → +5%</td>
+            </tr>
+            <tr>
+              <td>上乗せ3</td>
+              <td>くるみん/えるぼし認定 → +5%</td>
+              <td>くるみん/えるぼし認定 → +5%</td>
+            </tr>
+            <tr>
+              <td>最大控除率</td>
+              <td>40%</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>控除上限</td>
+              <td>法人税額の20%</td>
+              <td>法人税額の20%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 給与等支給額の定義 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">給与等支給額の定義</h3>
+        <p class="explanation__text">「雇用者給与等支給額」とは、法人の国内雇用者に対して支給する給与等の支給額をいいます。具体的には以下が含まれます。</p>
+        <ul class="explanation__list">
+          <li>俸給、給料、賃金、歳費、賞与</li>
+          <li>これらの性質を有する給与（残業手当、休日出勤手当、職務手当等）</li>
+          <li>退職金は含まれない</li>
+          <li>役員及び役員の特殊関係者に対する給与は除外</li>
+          <li>給与所得控除前の金額（いわゆる額面給与）で判定</li>
+        </ul>
+      </div>
+
+      <!-- 教育訓練費の範囲 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">教育訓練費の範囲</h3>
+        <p class="explanation__text">上乗せ措置の判定に用いる「教育訓練費」には、以下が該当します。</p>
+        <ul class="explanation__list">
+          <li>法人が教育訓練等を自ら行う場合の外部講師謝金、施設使用料等</li>
+          <li>他の者に委託して教育訓練等を行わせる場合の委託費</li>
+          <li>他の者が行う教育訓練等に参加させる場合の参加費</li>
+          <li>教育訓練等のための教科書・教材の購入費用</li>
+          <li>eラーニング等のサービス利用料</li>
+        </ul>
+      </div>
+
+      <!-- 認定制度 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">くるみん認定・えるぼし認定について</h3>
+        <p class="explanation__text">上乗せ措置（+5%）の適用を受けるためには、以下のいずれかの認定を受けている必要があります。</p>
+        <ul class="explanation__list">
+          <li><strong>くるみん認定</strong>：次世代育成支援対策推進法に基づき、子育てサポート企業として厚生労働大臣の認定を受けた企業</li>
+          <li><strong>プラチナくるみん認定</strong>：くるみん認定企業のうち、より高い水準の取組を行った企業</li>
+          <li><strong>えるぼし認定（3段階目以上）</strong>：女性活躍推進法に基づき、女性の活躍推進に関する取組の実施状況が優良な企業として厚生労働大臣の認定を受けた企業</li>
+          <li><strong>プラチナえるぼし認定</strong>：えるぼし認定企業のうち、より高い水準の取組を行った企業</li>
+        </ul>
+      </div>
+
+      <!-- 控除限度額 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">控除限度額の計算方法</h3>
+        <p class="explanation__text">税額控除額は以下の計算式で算出されますが、法人税額の20%が上限となります。</p>
+        <ul class="explanation__list">
+          <li><strong>税額控除額</strong> = 雇用者給与等支給増加額 x 控除率</li>
+          <li><strong>控除上限額</strong> = 当事業年度の法人税額 x 20%</li>
+          <li>税額控除額が控除上限額を超える場合は、控除上限額が適用されます</li>
+          <li>控除しきれなかった金額は5年間の繰越が可能（令和6年改正で新設）</li>
+        </ul>
+      </div>
+
+      <!-- 参考リンク -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">参考リンク</h3>
+        <div class="explanation__links">
+          <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5927.htm" target="_blank" rel="noopener noreferrer" class="explanation__link">
+            国税庁 - 賃上げ促進税制に関する税額控除 &rarr;
+          </a>
+          <a href="https://www.meti.go.jp/policy/economy/jinzai/syotokukakudaisokushin/syotokukakudai.html" target="_blank" rel="noopener noreferrer" class="explanation__link">
+            経済産業省 - 賃上げ促進税制 &rarr;
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta-blue">
+  <div class="cta-blue__inner">
+    <div>
+      <div class="cta-blue__label">CONTACT US</div>
+      <h2 class="cta-blue__title">賃上げ促進税制の<br>適用をサポートします</h2>
+      <p class="cta-blue__lead">
+        本シミュレーションは概算値です。実際の適用にあたっては、給与等支給額の算定方法や各種要件の充足確認など、専門的な判断が必要です。税務顧問契約の中で、お客様に最適な賃上げ戦略と税額控除の適用をサポートいたします。
+      </p>
+    </div>
+    <div class="cta-blue__buttons">
+      <a href="./tamura-division-preview.html" class="cta-blue__btn cta-blue__btn--primary">
+        税務顧問サービスの詳細を見る <span class="arrow">&rarr;</span>
+      </a>
+      <a href="./contact-preview.html" class="cta-blue__btn cta-blue__btn--outline">
+        お問い合わせ <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Footer ====== -->
+<footer style="background: #0E0E14; color: rgba(255,255,255,.85); padding: 64px 32px 32px;">
+  <div style="max-width: 1280px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">SERVICE</div>
+        <a href="./tax-advisor-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">税務顧問</a>
+        <a href="./financing-support-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">融資支援</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">TOOLS</div>
+        <a href="./tools-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">シミュレーションツール</a>
+        <a href="./executive-comp-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">役員報酬シミュレーション</a>
+        <a href="./financing-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">融資診断シミュレーション</a>
+      </div>
+      <div>
+        <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">ABOUT</div>
+        <a href="./about-us-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">私たちについて</a>
+        <a href="./contact-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">お問い合わせ</a>
+      </div>
+    </div>
+    <!-- Group Companies -->
+    <div style="padding-top: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.1);">
+      <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 24px;">GROUP COMPANIES</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Inc.</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース株式会社</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">DX・AI・経営管理コンサルティング</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Tax Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース税理士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">税務・会計・月次決算の専門家集団</div>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,.12); border-radius: 8px; padding: 24px;">
+          <div style="font-family: var(--font-en-sans); font-size: 10px; letter-spacing: .22em; color: #E8EFF8; margin-bottom: 8px;">HatenaBase Labor Office</div>
+          <div style="font-size: 13.5px; font-weight: 600; margin-bottom: 6px;">はてなベース社会保険労務士事務所</div>
+          <div style="font-size: 11px; opacity: .65; line-height: 1.7;">労務・人事・社会保険の専門家集団</div>
+        </div>
+      </div>
+      <div style="margin-top: 18px; font-family: var(--font-en-sans); font-size: 10.5px; color: rgba(255,255,255,.45); line-height: 1.7;">共通所在地：東京都新宿区愛住町23-1 woody21 6階</div>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 24px; font-size: 11px; color: rgba(255,255,255,.4);">
+      <div>Copyright &copy; 2026 HatenaBase Inc.</div>
+      <a href="./contact-preview.html" style="color: rgba(255,255,255,.4); text-decoration: none;">お問い合わせ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // ====== DOM References ======
+  var capitalInput = document.getElementById('capital');
+  var prevSalaryInput = document.getElementById('prevSalary');
+  var currSalaryInput = document.getElementById('currSalary');
+  var prevTrainingInput = document.getElementById('prevTraining');
+  var currTrainingInput = document.getElementById('currTraining');
+  var corpTaxInput = document.getElementById('corpTax');
+
+  // Result elements
+  var elEligibilityBadge = document.getElementById('eligibilityBadge');
+  var elCreditAmount = document.getElementById('creditAmount');
+  var elCreditRate = document.getElementById('creditRate');
+  var elRowCompanyType = document.getElementById('rowCompanyType');
+  var elRowSalaryIncrease = document.getElementById('rowSalaryIncrease');
+  var elRowSalaryRate = document.getElementById('rowSalaryRate');
+  var elRowTrainingRate = document.getElementById('rowTrainingRate');
+  var elRowBlueReturn = document.getElementById('rowBlueReturn');
+  var elRowBaseRate = document.getElementById('rowBaseRate');
+  var elRowUp1Rate = document.getElementById('rowUp1Rate');
+  var elRowUp2Rate = document.getElementById('rowUp2Rate');
+  var elRowUp3Rate = document.getElementById('rowUp3Rate');
+  var elRowTotalRate = document.getElementById('rowTotalRate');
+  var elRowRawCredit = document.getElementById('rowRawCredit');
+  var elRowTaxLimit = document.getElementById('rowTaxLimit');
+  var elRowFinalCredit = document.getElementById('rowFinalCredit');
+
+  // Bar segments
+  var barBase = document.getElementById('barBase');
+  var barUp1 = document.getElementById('barUp1');
+  var barUp2 = document.getElementById('barUp2');
+  var barUp3 = document.getElementById('barUp3');
+
+  // Radio buttons
+  var allRadioLabels = document.querySelectorAll('.sim-form__radio-label');
+
+  // ====== Format ======
+  function fmt(val) {
+    return Math.round(val).toLocaleString('ja-JP');
+  }
+
+  function fmtRate(val) {
+    return (Math.round(val * 100) / 100).toFixed(2);
+  }
+
+  // ====== Main Calculation ======
+  function calculate() {
+    var capital = parseFloat(capitalInput.value) || 0;
+    var prevSalary = parseFloat(prevSalaryInput.value) || 0;
+    var currSalary = parseFloat(currSalaryInput.value) || 0;
+    var prevTraining = parseFloat(prevTrainingInput.value) || 0;
+    var currTraining = parseFloat(currTrainingInput.value) || 0;
+    var corpTax = parseFloat(corpTaxInput.value) || 0;
+    var hasKurumin = document.querySelector('input[name="kurumin"]:checked').value === 'yes';
+    var hasEruboshi = document.querySelector('input[name="eruboshi"]:checked').value === 'yes';
+    var hasBlueReturn = document.querySelector('input[name="blueReturn"]:checked').value === 'yes';
+
+    // Determine company type
+    var isSME = capital <= 10000; // 1億円以下
+
+    // Calculate rates
+    var salaryIncrease = currSalary - prevSalary;
+    var salaryRate = prevSalary > 0 ? (salaryIncrease / prevSalary) * 100 : 0;
+    var trainingRate = prevTraining > 0 ? ((currTraining - prevTraining) / prevTraining) * 100 : (currTraining > 0 ? 100 : 0);
+
+    // Check eligibility
+    var eligible = hasBlueReturn && salaryIncrease > 0;
+
+    var baseRate = 0;
+    var up1Rate = 0;
+    var up2Rate = 0;
+    var up3Rate = 0;
+    var maxRate = 0;
+
+    if (isSME) {
+      // 中小企業向け
+      if (salaryRate >= 1.5) {
+        eligible = eligible && true;
+        baseRate = 15;
+
+        // 上乗せ1: 給与増加率2.5%以上
+        if (salaryRate >= 2.5) {
+          up1Rate = 15;
+        }
+
+        // 上乗せ2: 教育訓練費増加率10%以上
+        if (trainingRate >= 10) {
+          up2Rate = 10;
+        }
+
+        // 上乗せ3: くるみん or えるぼし
+        if (hasKurumin || hasEruboshi) {
+          up3Rate = 5;
+        }
+
+        maxRate = 40;
+      } else {
+        eligible = false;
+      }
+    } else {
+      // 大企業向け
+      if (salaryRate >= 3) {
+        eligible = eligible && true;
+        baseRate = 10;
+
+        // 上乗せ1: 給与増加率4%以上
+        if (salaryRate >= 4) {
+          up1Rate = 5;
+        }
+
+        // 上乗せ2: 教育訓練費増加率20%以上
+        if (trainingRate >= 20) {
+          up2Rate = 5;
+        }
+
+        // 上乗せ3: くるみん or えるぼし
+        if (hasKurumin || hasEruboshi) {
+          up3Rate = 5;
+        }
+
+        maxRate = 25;
+      } else {
+        eligible = false;
+      }
+    }
+
+    var totalRate = Math.min(baseRate + up1Rate + up2Rate + up3Rate, maxRate);
+
+    // Calculate credit amount
+    var rawCredit = 0;
+    var taxLimit = 0;
+    var finalCredit = 0;
+
+    if (eligible && salaryIncrease > 0) {
+      rawCredit = salaryIncrease * (totalRate / 100);
+      taxLimit = corpTax * 0.20;
+      finalCredit = Math.min(rawCredit, taxLimit);
+    }
+
+    // ====== Update DOM ======
+
+    // Badge
+    if (eligible) {
+      elEligibilityBadge.className = 'sim-badge sim-badge--green';
+      elEligibilityBadge.textContent = '適用可能';
+    } else {
+      elEligibilityBadge.className = 'sim-badge sim-badge--red';
+      if (!hasBlueReturn) {
+        elEligibilityBadge.textContent = '適用不可（青色申告が必要）';
+      } else if (salaryIncrease <= 0) {
+        elEligibilityBadge.textContent = '適用不可（給与が増加していません）';
+      } else {
+        elEligibilityBadge.textContent = '適用不可（給与増加率が基準未満）';
+      }
+    }
+
+    // Main card
+    elCreditAmount.innerHTML = fmt(Math.round(finalCredit)) + '<span> 万円</span>';
+    elCreditRate.innerHTML = totalRate + '<span> %</span>';
+
+    // Detail rows
+    elRowCompanyType.textContent = isSME ? '中小企業者等（資本金1億円以下）' : '大企業（資本金1億円超）';
+    elRowSalaryIncrease.innerHTML = fmt(Math.round(salaryIncrease)) + '<span>万円</span>';
+    elRowSalaryRate.innerHTML = fmtRate(salaryRate) + '<span>%</span>';
+    elRowTrainingRate.innerHTML = fmtRate(trainingRate) + '<span>%</span>';
+    elRowBlueReturn.textContent = hasBlueReturn ? 'あり' : 'なし';
+
+    elRowBaseRate.innerHTML = baseRate + '<span>%</span>';
+    elRowUp1Rate.innerHTML = up1Rate + '<span>%</span>';
+    elRowUp2Rate.innerHTML = up2Rate + '<span>%</span>';
+    elRowUp3Rate.innerHTML = up3Rate + '<span>%</span>';
+    elRowTotalRate.innerHTML = totalRate + '<span>%</span>';
+
+    elRowRawCredit.innerHTML = fmt(Math.round(rawCredit)) + '<span>万円</span>';
+    elRowTaxLimit.innerHTML = fmt(Math.round(taxLimit)) + '<span>万円</span>';
+    elRowFinalCredit.innerHTML = fmt(Math.round(finalCredit)) + '<span>万円</span>';
+
+    // Bar chart
+    var barMax = maxRate > 0 ? maxRate : 40;
+    var pctBase = (baseRate / barMax) * 100;
+    var pctUp1 = (up1Rate / barMax) * 100;
+    var pctUp2 = (up2Rate / barMax) * 100;
+    var pctUp3 = (up3Rate / barMax) * 100;
+
+    barBase.style.width = pctBase + '%';
+    barUp1.style.width = pctUp1 + '%';
+    barUp2.style.width = pctUp2 + '%';
+    barUp3.style.width = pctUp3 + '%';
+
+    barBase.textContent = baseRate > 0 ? baseRate + '%' : '';
+    barUp1.textContent = up1Rate > 0 ? '+' + up1Rate + '%' : '';
+    barUp2.textContent = up2Rate > 0 ? '+' + up2Rate + '%' : '';
+    barUp3.textContent = up3Rate > 0 ? '+' + up3Rate + '%' : '';
+  }
+
+  // ====== Event Listeners ======
+  var inputs = [capitalInput, prevSalaryInput, currSalaryInput, prevTrainingInput, currTrainingInput, corpTaxInput];
+  inputs.forEach(function(input) {
+    input.addEventListener('input', calculate);
+  });
+
+  // Radio buttons
+  allRadioLabels.forEach(function(label) {
+    label.addEventListener('click', function() {
+      // Find sibling radio labels in the same group
+      var parent = this.parentNode;
+      parent.querySelectorAll('.sim-form__radio-label').forEach(function(l) {
+        l.classList.remove('is-active');
+      });
+      this.classList.add('is-active');
+      this.querySelector('input').checked = true;
+      calculate();
+    });
+  });
+
+  // Initial calculation
+  calculate();
+})();
+</script>
+
+</body>
+</html>

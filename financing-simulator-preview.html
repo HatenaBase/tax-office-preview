@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="icon" type="image/png" href="./favicon.png">
   <title>融資診断シミュレーション｜はてなベース税理士事務所</title>
   <meta name="description" content="創業融資・日本政策金融公庫の融資可能額を簡易診断。自己資金や事業経験から借入可能額の目安をシミュレーションできます。はてなベース税理士事務所。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -527,10 +527,7 @@
 <header class="hb-header">
   <div class="hb-header__inner">
     <a class="hb-header__logo" href="./tax-accountant-preview.html">
-      <div class="hb-header__logo-text">
-        はてなベース税理士事務所
-        <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
-      </div>
+      <img src="images/hatena_logo.svg" alt="はてなベース税理士事務所" style="height:36px;width:auto;">
     </a>
     <nav class="hb-header__nav">
       <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
@@ -839,6 +836,99 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ====== Calculation Reference Section ====== -->
+<section class="section">
+  <div class="section__inner">
+    <div class="hb-section-head">
+      <span class="hb-section-head__en">REFERENCE</span>
+      <span class="hb-section-head__jp">計算根拠</span>
+    </div>
+
+    <div style="max-width: 1280px; margin: 0 auto;">
+
+      <!-- 元利均等返済の計算式 -->
+      <div style="margin-bottom: 48px;">
+        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
+          返済シミュレーションの計算式（元利均等返済）
+        </h3>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">
+          本シミュレーションでは、元利均等返済方式で毎月の返済額を算出しています。元利均等返済とは、毎月の返済額（元金+利息）が一定となる返済方法です。
+        </p>
+        <div style="background: var(--blue-ghost); border: 1px solid var(--blue-light); border-radius: 8px; padding: 24px 32px; margin-bottom: 16px;">
+          <p style="font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">計算式</p>
+          <p style="font-family: var(--font-en); font-size: 18px; color: var(--blue); line-height: 1.8;">
+            月額返済額 = 借入額 &times; r &times; (1 + r)<sup>n</sup> &divide; ((1 + r)<sup>n</sup> - 1)
+          </p>
+          <p style="font-size: 13px; color: var(--ink-soft); margin-top: 12px; line-height: 1.8;">
+            r = 年利 &divide; 12（月利）<br>
+            n = 返済年数 &times; 12（返済回数）
+          </p>
+        </div>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft);">
+          本シミュレーションでは、金利2.0%・返済期間7年（84回）を標準条件として月々の返済額を算出しています。据置期間がある場合、据置期間中は利息のみの支払いとなり、据置期間終了後から元利均等返済が始まります。
+        </p>
+      </div>
+
+      <!-- 日本政策金融公庫の金利目安 -->
+      <div style="margin-bottom: 48px;">
+        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
+          日本政策金融公庫の金利目安
+        </h3>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">
+          日本政策金融公庫の国民生活事業における主な融資制度の金利は以下の通りです（金利は時期により変動します）。
+        </p>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px;">
+          <thead>
+            <tr>
+              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">融資制度</th>
+              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">金利目安（年利）</th>
+              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">返済期間</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">新創業融資制度</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">1.5% ~ 3.0%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">設備: 最長20年 / 運転: 最長7年</td></tr>
+            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">新規開業資金</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">1.2% ~ 2.8%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">設備: 最長20年 / 運転: 最長7年</td></tr>
+            <tr><td style="padding: 12px 16px; color: var(--ink-soft);">一般貸付</td><td style="padding: 12px 16px; color: var(--ink-soft);">1.5% ~ 3.0%</td><td style="padding: 12px 16px; color: var(--ink-soft);">設備: 最長10年 / 運転: 最長7年</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft);">金利は審査結果・担保の有無・特例制度の適用等により変動します。最新の金利は日本政策金融公庫のWebサイトでご確認ください。</p>
+      </div>
+
+      <!-- 融資可能額の算定ロジック -->
+      <div style="margin-bottom: 48px;">
+        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
+          融資可能額の算定ロジック
+        </h3>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">本シミュレーションでは、融資の種類に応じて以下の算定方法を使用しています。</p>
+        <p style="font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">創業融資の場合</p>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px; padding-left: 16px;">
+          自己資金 x 倍率（事業経験により1~6倍）で算出。日本政策金融公庫では「自己資金の2~3倍程度」が一般的な目安ですが、事業経験が豊富で計画の信頼性が高い場合はそれ以上の融資を受けられることもあります。
+        </p>
+        <p style="font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px;">既存事業の融資の場合</p>
+        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px; padding-left: 16px;">
+          運転資金は月商の3~6ヶ月分、設備資金は営業利益の5~7倍を目安に算出。既存借入残高を差し引いた純調達額を表示しています。債務償還年数（=借入金 / 年間キャッシュフロー）が10年以内であれば審査通過の可能性が高くなります。
+        </p>
+      </div>
+
+      <!-- 参考リンク -->
+      <div>
+        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
+          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
+          参考リンク
+        </h3>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="https://www.jfc.go.jp/" target="_blank" rel="noopener noreferrer" style="font-size: 13px; color: var(--blue); text-decoration: none;">日本政策金融公庫 公式サイト &rarr;</a>
+          <a href="https://www.jfc.go.jp/n/rate/index.html" target="_blank" rel="noopener noreferrer" style="font-size: 13px; color: var(--blue); text-decoration: none;">日本政策金融公庫 金利一覧 &rarr;</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="./favicon.png">
-  <title>役員報酬シミュレーション｜はてなベース税理士事務所</title>
-  <meta name="description" content="役員報酬の最適額を簡易シミュレーション。手取り・税金・社会保険料のバランスを可視化し、法人と個人のトータル手残りを最大化する報酬設計を支援します。">
+  <title>法人化シミュレーション｜はてなベース税理士事務所</title>
+  <meta name="description" content="個人事業主の法人化（法人成り）の税負担を比較シミュレーション。所得税・住民税・事業税・社会保険料を個人と法人で比較し、法人化の損益分岐点を可視化します。はてなベース税理士事務所。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -87,19 +87,21 @@
 
     /* ====== Mobile Nav ====== */
     .hb-mobile-nav {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(255,255,255,.98); z-index: 99;
-      flex-direction: column; justify-content: center; align-items: center; gap: 32px;
-      opacity: 0; pointer-events: none; transition: opacity .3s;
+      flex-direction: column; justify-content: center; align-items: center; gap: 28px;
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     }
-    .hb-mobile-nav.is-open {
-      display: flex; opacity: 1; pointer-events: auto;
-    }
+    .hb-mobile-nav.is-open { display: flex; }
     .hb-mobile-nav a {
-      font-family: var(--font-en-sans); font-size: 16px; font-weight: 500;
-      letter-spacing: .06em; color: var(--ink); text-decoration: none;
+      font-family: var(--font-en-sans); font-size: 14px; font-weight: 500;
+      letter-spacing: .06em; color: var(--ink-soft); text-decoration: none;
+      padding: 12px 24px; transition: color .2s;
     }
     .hb-mobile-nav a:hover { color: var(--blue); }
+    .hb-mobile-nav .hb-header__cta {
+      margin-top: 12px; padding: 14px 32px; font-size: 14px;
+    }
 
     /* ====== SubHero ====== */
     .hb-subhero {
@@ -295,24 +297,36 @@
     }
     .sim-main-card__value {
       font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 64px; color: var(--blue); line-height: 1;
+      font-size: 56px; color: var(--blue); line-height: 1;
       margin-bottom: 4px;
     }
     .sim-main-card__value span {
       font-family: var(--font-jp); font-style: normal; font-weight: 400;
       font-size: 18px; color: var(--ink-soft);
     }
+    .sim-main-card__value.is-negative {
+      color: #C05040;
+    }
     .sim-main-card__total-label {
       font-size: 12px; color: var(--ink-light); margin-top: 16px; margin-bottom: 4px;
     }
     .sim-main-card__total-value {
       font-family: var(--font-en); font-style: italic; font-weight: 300;
-      font-size: 32px; color: var(--ink); line-height: 1;
+      font-size: 28px; color: var(--ink); line-height: 1;
     }
     .sim-main-card__total-value span {
       font-family: var(--font-jp); font-style: normal; font-weight: 400;
       font-size: 14px; color: var(--ink-soft);
     }
+
+    /* ====== Badge ====== */
+    .sim-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 700; margin-bottom: 16px;
+    }
+    .sim-badge--green { background: #E6F4EA; color: #1B7A3D; }
+    .sim-badge--yellow { background: #FFF8E1; color: #9A6700; }
 
     /* ====== Bar Chart ====== */
     .sim-bar {
@@ -323,22 +337,36 @@
       font-weight: 700; font-size: 14px; margin-bottom: 20px;
       color: var(--ink);
     }
-    .sim-bar__track {
-      width: 100%; height: 40px; display: flex; border-radius: 6px;
-      overflow: hidden; margin-bottom: 16px;
+    .sim-bar__row {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
     }
-    .sim-bar__seg {
+    .sim-bar__row:last-child { margin-bottom: 0; }
+    .sim-bar__row-label {
+      width: 80px; font-size: 13px; font-weight: 600; color: var(--ink);
+      flex-shrink: 0;
+    }
+    .sim-bar__row-track {
+      flex: 1; height: 36px; display: flex; border-radius: 6px;
+      overflow: hidden; background: var(--line-soft);
+    }
+    .sim-bar__row-seg {
       height: 100%; transition: width .4s ease;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-en-sans); font-size: 11px; font-weight: 600;
+      font-family: var(--font-en-sans); font-size: 10px; font-weight: 600;
       color: #fff; white-space: nowrap; min-width: 0; overflow: hidden;
     }
-    .sim-bar__seg--take-home { background: var(--blue); }
-    .sim-bar__seg--personal-tax { background: #5A9BD5; }
-    .sim-bar__seg--corp-tax { background: #F4A940; }
-    .sim-bar__seg--corp-si { background: #E07050; }
+    .sim-bar__row-value {
+      width: 100px; text-align: right; flex-shrink: 0;
+      font-family: var(--font-en); font-style: italic; font-weight: 300;
+      font-size: 18px; color: var(--ink);
+    }
+    .sim-bar__row-value span {
+      font-family: var(--font-jp); font-style: normal; font-size: 12px;
+      color: var(--ink-light);
+    }
     .sim-bar__legend {
-      display: flex; flex-wrap: wrap; gap: 16px;
+      display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;
+      padding-top: 16px; border-top: 1px solid var(--line-soft);
     }
     .sim-bar__legend-item {
       display: flex; align-items: center; gap: 6px;
@@ -408,6 +436,63 @@
       font-size: 12px; line-height: 1.8; color: var(--ink-light);
     }
 
+    /* ====== Explanation Section ====== */
+    .explanation {
+      max-width: 1280px; margin: 0 auto;
+    }
+    .explanation__block {
+      margin-bottom: 48px;
+    }
+    .explanation__block:last-child { margin-bottom: 0; }
+    .explanation__title {
+      font-weight: 700; font-size: 18px; color: var(--ink);
+      margin-bottom: 20px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--line-soft);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .explanation__title::before {
+      content: ''; display: inline-block;
+      width: 4px; height: 20px; background: var(--blue); border-radius: 2px;
+    }
+    .explanation__text {
+      font-size: 14px; line-height: 2; color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+    .explanation__list {
+      list-style: none; margin-bottom: 16px;
+    }
+    .explanation__list li {
+      font-size: 14px; line-height: 2; color: var(--ink-soft);
+      padding-left: 20px; position: relative;
+    }
+    .explanation__list li::before {
+      content: ''; position: absolute; left: 0; top: 12px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+    }
+    .explanation__table {
+      width: 100%; border-collapse: collapse; margin-bottom: 16px;
+      font-size: 14px;
+    }
+    .explanation__table th {
+      background: var(--blue); color: #fff;
+      padding: 12px 16px; text-align: left; font-weight: 600;
+      font-size: 13px;
+    }
+    .explanation__table td {
+      padding: 12px 16px; border-bottom: 1px solid var(--line-soft);
+      color: var(--ink-soft);
+    }
+    .explanation__table tr:last-child td { border-bottom: none; }
+    .explanation__table tr:nth-child(even) td { background: var(--paper); }
+    .explanation__link {
+      font-size: 13px; color: var(--blue); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .explanation__link:hover { text-decoration: underline; }
+    .explanation__links {
+      display: flex; flex-direction: column; gap: 8px; margin-top: 16px;
+    }
+
     /* ====== CTA Section ====== */
     .cta-blue {
       padding: 96px 32px; background: var(--blue); color: #fff;
@@ -459,22 +544,25 @@
       .sim-layout { gap: 32px; }
       .sim-form { padding: 24px; }
       .sim-main-card { padding: 28px 20px; }
-      .sim-main-card__value { font-size: 44px; }
-      .sim-main-card__total-value { font-size: 24px; }
+      .sim-main-card__value { font-size: 40px; }
+      .sim-main-card__total-value { font-size: 22px; }
       .sim-tables { grid-template-columns: 1fr; }
       .sim-detail-row { padding: 12px 16px; }
       .sim-detail-row__value { font-size: 16px; }
       .sim-bar { padding: 20px; }
-      .sim-bar__track { height: 32px; }
-      .sim-bar__seg { font-size: 10px; }
+      .sim-bar__row { flex-wrap: wrap; gap: 8px; }
+      .sim-bar__row-label { width: 100%; }
+      .sim-bar__row-value { width: auto; }
       .cta-blue__inner { grid-template-columns: 1fr; gap: 36px; }
       .hb-section-head { flex-direction: column; gap: 8px; }
       .sim-form__radio-group { flex-direction: column; }
       .sim-disclaimer { padding: 16px 20px; }
+      .explanation__table { font-size: 12px; }
+      .explanation__table th, .explanation__table td { padding: 10px 12px; }
     }
 
     @media (max-width: 480px) {
-      .sim-main-card__value { font-size: 36px; }
+      .sim-main-card__value { font-size: 32px; }
       .sim-bar__legend { gap: 10px; }
       .sim-bar__legend-item { font-size: 11px; }
     }
@@ -486,7 +574,10 @@
 <header class="hb-header">
   <div class="hb-header__inner">
     <a class="hb-header__logo" href="./tax-accountant-preview.html">
-      <img src="images/hatena_logo.svg" alt="はてなベース税理士事務所" style="height:36px;width:auto;">
+      <div class="hb-header__logo-text">
+        はてなベース税理士事務所
+        <span class="hb-header__logo-sub">HatenaBase Tax Office</span>
+      </div>
     </a>
     <nav class="hb-header__nav">
       <a href="./tax-advisor-preview.html">TAX ADVISOR</a>
@@ -507,20 +598,20 @@
   <a href="./financing-support-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">FINANCING</a>
   <a href="./tools-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">SIMULATION</a>
   <a href="./about-us-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">ABOUT US</a>
-  <a href="./contact-preview.html" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">CONTACT</a>
+  <a href="./contact-preview.html" class="hb-header__cta" onclick="document.querySelector('.hb-mobile-nav').classList.remove('is-open')">CONTACT</a>
 </div>
 
 <!-- ====== SubHero ====== -->
 <section class="hb-subhero">
   <div class="hb-subhero__inner">
     <div class="hb-subhero__crumb">
-      <a href="./tax-accountant-preview.html">HOME</a>&ensp;/&ensp;TOOLS&ensp;/&ensp;EXECUTIVE COMPENSATION SIMULATOR
+      <a href="./tax-accountant-preview.html">HOME</a>&ensp;/&ensp;<a href="./tools-preview.html">TOOLS</a>&ensp;/&ensp;INCORPORATION SIMULATOR
     </div>
-    <div class="hb-subhero__en">Executive Compensation Simulator</div>
-    <h1 class="hb-subhero__jp">役員報酬シミュレーション</h1>
+    <div class="hb-subhero__en">Incorporation Simulator</div>
+    <h1 class="hb-subhero__jp">法人化シミュレーション</h1>
     <p class="hb-subhero__lead">
-      役員報酬の金額を変えると、個人の手取り・法人の手残りはどう変わるか。<br>
-      税金と社会保険料のバランスを可視化し、最適な報酬設計をサポートします。
+      個人事業主として事業を続けた場合と、法人化（法人成り）した場合の税負担・社会保険料を比較します。<br>
+      法人化のタイミング判断にご活用ください。
     </p>
   </div>
 </section>
@@ -530,7 +621,7 @@
   <div class="section__inner">
     <div class="hb-section-head">
       <div class="hb-section-head__en">SIMULATION</div>
-      <div class="hb-section-head__jp">報酬額シミュレーション</div>
+      <div class="hb-section-head__jp">法人化 税負担比較</div>
     </div>
 
     <div class="sim-layout">
@@ -538,58 +629,80 @@
       <div class="sim-form">
         <div class="sim-form__title">条件を入力</div>
 
-        <!-- 1. 会社の利益 -->
+        <!-- 1. 事業所得 -->
         <div class="sim-form__group">
-          <label class="sim-form__label" for="profit">
-            会社の利益<span class="sim-form__label-sub">（役員報酬控除前）</span>
+          <label class="sim-form__label" for="bizIncome">
+            事業所得<span class="sim-form__label-sub">（年間）</span>
           </label>
           <div class="sim-form__input-wrap">
-            <input type="number" id="profit" class="sim-form__input" value="1000" min="0" max="50000" step="10">
-            <span class="sim-form__unit">万円</span>
-          </div>
-        </div>
-
-        <!-- 2. 役員報酬 -->
-        <div class="sim-form__group">
-          <label class="sim-form__label" for="comp">
-            役員報酬<span class="sim-form__label-sub">（年額）</span>
-          </label>
-          <div class="sim-form__input-wrap">
-            <input type="number" id="comp" class="sim-form__input" value="600" min="0" max="1000" step="10">
+            <input type="number" id="bizIncome" class="sim-form__input" value="800" min="0" max="50000" step="10">
             <span class="sim-form__unit">万円</span>
           </div>
           <div class="sim-form__slider-wrap">
-            <input type="range" id="compSlider" class="sim-form__slider" value="600" min="0" max="1000" step="10">
+            <input type="range" id="bizIncomeSlider" class="sim-form__slider" value="800" min="0" max="5000" step="10">
             <div class="sim-form__slider-labels">
               <span>0万円</span>
-              <span id="sliderMax">1,000万円</span>
+              <span>5,000万円</span>
             </div>
           </div>
         </div>
 
-        <!-- 3. 扶養家族 -->
+        <!-- 2. 青色申告特別控除 -->
         <div class="sim-form__group">
-          <label class="sim-form__label" for="dependents">扶養家族</label>
+          <label class="sim-form__label">青色申告特別控除</label>
+          <div class="sim-form__radio-group">
+            <label class="sim-form__radio-label is-active" data-value="65">
+              <input type="radio" name="blueDeduction" value="65" checked>
+              65万円
+            </label>
+            <label class="sim-form__radio-label" data-value="10">
+              <input type="radio" name="blueDeduction" value="10">
+              10万円
+            </label>
+            <label class="sim-form__radio-label" data-value="0">
+              <input type="radio" name="blueDeduction" value="0">
+              なし
+            </label>
+          </div>
+        </div>
+
+        <!-- 3. 社会保険の被扶養者数 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="dependents">社会保険の被扶養者数</label>
           <select id="dependents" class="sim-form__select">
-            <option value="0">0人</option>
+            <option value="0">0人（本人のみ）</option>
             <option value="1">1人</option>
             <option value="2">2人</option>
             <option value="3">3人以上</option>
           </select>
         </div>
 
-        <!-- 4. 社会保険 -->
+        <!-- 4. 希望役員報酬 -->
         <div class="sim-form__group">
-          <label class="sim-form__label">社会保険の加入状況</label>
-          <div class="sim-form__radio-group">
-            <label class="sim-form__radio-label is-active" data-value="kyokai">
-              <input type="radio" name="insurance" value="kyokai" checked>
-              協会けんぽ
-            </label>
-            <label class="sim-form__radio-label" data-value="kokuho">
-              <input type="radio" name="insurance" value="kokuho">
-              国民健康保険
-            </label>
+          <label class="sim-form__label" for="directorComp">
+            希望役員報酬額<span class="sim-form__label-sub">（年額）</span>
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="directorComp" class="sim-form__input" value="500" min="0" max="50000" step="10">
+            <span class="sim-form__unit">万円</span>
+          </div>
+          <div class="sim-form__slider-wrap">
+            <input type="range" id="directorCompSlider" class="sim-form__slider" value="500" min="0" max="5000" step="10">
+            <div class="sim-form__slider-labels">
+              <span>0万円</span>
+              <span>5,000万円</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. 配偶者への給与 -->
+        <div class="sim-form__group">
+          <label class="sim-form__label" for="spouseSalary">
+            配偶者への給与<span class="sim-form__label-sub">（年額・ない場合は0）</span>
+          </label>
+          <div class="sim-form__input-wrap">
+            <input type="number" id="spouseSalary" class="sim-form__input" value="0" min="0" max="10000" step="10">
+            <span class="sim-form__unit">万円</span>
           </div>
         </div>
       </div>
@@ -599,100 +712,143 @@
 
         <!-- Main Card -->
         <div class="sim-main-card">
-          <div class="sim-main-card__label">PERSONAL TAKE-HOME</div>
-          <div class="sim-main-card__sub">個人の手取り年額</div>
-          <div class="sim-main-card__value" id="takeHome">0<span> 万円</span></div>
-          <div class="sim-main-card__total-label">トータル手残り（個人手取り + 法人手残り）</div>
-          <div class="sim-main-card__total-value" id="totalRemaining">0<span> 万円</span></div>
+          <div id="resultBadge" class="sim-badge sim-badge--green">法人化が有利</div>
+          <div class="sim-main-card__label">DIFFERENCE</div>
+          <div class="sim-main-card__sub">法人化による年間負担差額</div>
+          <div class="sim-main-card__value" id="diffAmount">0<span> 万円 お得</span></div>
+          <div class="sim-main-card__total-label">個人事業の年間負担合計 / 法人の年間負担合計</div>
+          <div class="sim-main-card__total-value" id="totalComparison">0<span>万円</span> / 0<span>万円</span></div>
         </div>
 
-        <!-- Bar Chart -->
+        <!-- Comparison Bar -->
         <div class="sim-bar">
-          <div class="sim-bar__title">構成比</div>
-          <div class="sim-bar__track" id="barTrack">
-            <div class="sim-bar__seg sim-bar__seg--take-home" id="barTakeHome" style="width:50%"></div>
-            <div class="sim-bar__seg sim-bar__seg--personal-tax" id="barPersonalTax" style="width:20%"></div>
-            <div class="sim-bar__seg sim-bar__seg--corp-tax" id="barCorpTax" style="width:20%"></div>
-            <div class="sim-bar__seg sim-bar__seg--corp-si" id="barCorpSI" style="width:10%"></div>
+          <div class="sim-bar__title">税負担・社会保険料の比較</div>
+
+          <div class="sim-bar__row">
+            <div class="sim-bar__row-label">個人事業</div>
+            <div class="sim-bar__row-track">
+              <div class="sim-bar__row-seg" id="barSoleIncome" style="width:0%; background:#E07050;"></div>
+              <div class="sim-bar__row-seg" id="barSoleResident" style="width:0%; background:#F4A940;"></div>
+              <div class="sim-bar__row-seg" id="barSoleBiz" style="width:0%; background:#5A9BD5;"></div>
+              <div class="sim-bar__row-seg" id="barSoleNHI" style="width:0%; background:#8B5CF6;"></div>
+              <div class="sim-bar__row-seg" id="barSolePension" style="width:0%; background:#6DC08E;"></div>
+            </div>
+            <div class="sim-bar__row-value" id="barSoleTotal">0<span>万円</span></div>
           </div>
+
+          <div class="sim-bar__row">
+            <div class="sim-bar__row-label">法人</div>
+            <div class="sim-bar__row-track">
+              <div class="sim-bar__row-seg" id="barCorpTax" style="width:0%; background:#1F61AB;"></div>
+              <div class="sim-bar__row-seg" id="barCorpIncome" style="width:0%; background:#E07050;"></div>
+              <div class="sim-bar__row-seg" id="barCorpResident" style="width:0%; background:#F4A940;"></div>
+              <div class="sim-bar__row-seg" id="barCorpSI" style="width:0%; background:#8B5CF6;"></div>
+            </div>
+            <div class="sim-bar__row-value" id="barCorpTotal">0<span>万円</span></div>
+          </div>
+
           <div class="sim-bar__legend">
             <div class="sim-bar__legend-item">
-              <div class="sim-bar__legend-dot" style="background:var(--blue)"></div>
-              個人の手取り
-            </div>
-            <div class="sim-bar__legend-item">
-              <div class="sim-bar__legend-dot" style="background:#5A9BD5"></div>
-              個人の税・社保
+              <div class="sim-bar__legend-dot" style="background:#E07050"></div>
+              所得税
             </div>
             <div class="sim-bar__legend-item">
               <div class="sim-bar__legend-dot" style="background:#F4A940"></div>
-              法人税等
+              住民税
             </div>
             <div class="sim-bar__legend-item">
-              <div class="sim-bar__legend-dot" style="background:#E07050"></div>
-              法人社保負担
+              <div class="sim-bar__legend-dot" style="background:#5A9BD5"></div>
+              個人事業税
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#8B5CF6"></div>
+              社会保険料/国保
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#6DC08E"></div>
+              国民年金
+            </div>
+            <div class="sim-bar__legend-item">
+              <div class="sim-bar__legend-dot" style="background:#1F61AB"></div>
+              法人税等
             </div>
           </div>
         </div>
 
         <!-- Detail Tables -->
         <div class="sim-tables">
-          <!-- Personal -->
+          <!-- 個人事業 -->
           <div class="sim-detail-card">
             <div class="sim-detail-card__header">
               <div class="sim-detail-card__header-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
               </div>
-              個人（役員）
+              個人事業のまま
             </div>
             <div class="sim-detail-card__body">
               <div class="sim-detail-row">
-                <div class="sim-detail-row__label">役員報酬（年額）</div>
-                <div class="sim-detail-row__value" id="rowComp">600<span>万円</span></div>
+                <div class="sim-detail-row__label">事業所得</div>
+                <div class="sim-detail-row__value" id="rowSoleBizIncome">0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--negative">
                 <div class="sim-detail-row__label">所得税</div>
-                <div class="sim-detail-row__value" id="rowIncomeTax">-0<span>万円</span></div>
+                <div class="sim-detail-row__value" id="rowSoleIncomeTax">-0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--negative">
                 <div class="sim-detail-row__label">住民税</div>
-                <div class="sim-detail-row__value" id="rowResidentTax">-0<span>万円</span></div>
+                <div class="sim-detail-row__value" id="rowSoleResidentTax">-0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--negative">
-                <div class="sim-detail-row__label">社会保険料（個人負担）</div>
-                <div class="sim-detail-row__value" id="rowPersonalSI">-0<span>万円</span></div>
+                <div class="sim-detail-row__label">個人事業税</div>
+                <div class="sim-detail-row__value" id="rowSoleBizTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">国民健康保険料</div>
+                <div class="sim-detail-row__value" id="rowSoleNHI">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">国民年金保険料</div>
+                <div class="sim-detail-row__value" id="rowSolePension">-0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--highlight">
-                <div class="sim-detail-row__label">個人の手取り</div>
-                <div class="sim-detail-row__value" id="rowTakeHome">0<span>万円</span></div>
+                <div class="sim-detail-row__label">負担合計</div>
+                <div class="sim-detail-row__value" id="rowSoleTotal">0<span>万円</span></div>
               </div>
             </div>
           </div>
 
-          <!-- Corporate -->
+          <!-- 法人 -->
           <div class="sim-detail-card">
             <div class="sim-detail-card__header">
               <div class="sim-detail-card__header-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
               </div>
-              法人
+              法人化した場合
             </div>
             <div class="sim-detail-card__body">
               <div class="sim-detail-row">
                 <div class="sim-detail-row__label">法人所得</div>
-                <div class="sim-detail-row__value" id="rowCorpIncome">400<span>万円</span></div>
+                <div class="sim-detail-row__value" id="rowCorpBizIncome">0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--negative">
                 <div class="sim-detail-row__label">法人税等</div>
-                <div class="sim-detail-row__value" id="rowCorpTax">-0<span>万円</span></div>
+                <div class="sim-detail-row__value" id="rowCorpCorpTax">-0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--negative">
-                <div class="sim-detail-row__label">社会保険料（会社負担）</div>
+                <div class="sim-detail-row__label">役員報酬の所得税</div>
+                <div class="sim-detail-row__value" id="rowCorpIncomeTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">役員報酬の住民税</div>
+                <div class="sim-detail-row__value" id="rowCorpResidentTax">-0<span>万円</span></div>
+              </div>
+              <div class="sim-detail-row sim-detail-row--negative">
+                <div class="sim-detail-row__label">社会保険料（本人+会社）</div>
                 <div class="sim-detail-row__value" id="rowCorpSI">-0<span>万円</span></div>
               </div>
               <div class="sim-detail-row sim-detail-row--highlight">
-                <div class="sim-detail-row__label">法人の手残り</div>
-                <div class="sim-detail-row__value" id="rowCorpRemaining">0<span>万円</span></div>
+                <div class="sim-detail-row__label">負担合計</div>
+                <div class="sim-detail-row__value" id="rowCorpTotal">0<span>万円</span></div>
               </div>
             </div>
           </div>
@@ -701,7 +857,7 @@
         <!-- Disclaimer -->
         <div class="sim-disclaimer">
           <p>
-            本シミュレーションは概算です。実際の税額は各種控除・税制改正等により異なります。詳細な検討は税理士にご相談ください。
+            本シミュレーションは概算です。法人設立費用（約25万円）、法人住民税均等割（年間約7万円）、税理士顧問報酬等のランニングコストは含まれていません。実際の判断は税理士にご相談ください。
           </p>
         </div>
       </div>
@@ -709,7 +865,7 @@
   </div>
 </section>
 
-<!-- ====== Calculation Reference Section ====== -->
+<!-- ====== Explanation Section ====== -->
 <section class="section">
   <div class="section__inner">
     <div class="hb-section-head">
@@ -717,96 +873,95 @@
       <div class="hb-section-head__jp">計算根拠</div>
     </div>
 
-    <div style="max-width: 1280px; margin: 0 auto;">
+    <div class="explanation">
 
-      <!-- 所得税率テーブル -->
-      <div style="margin-bottom: 48px;">
-        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
-          所得税の税率（累進課税）
-        </h3>
-        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">
-          役員報酬から給与所得控除・社会保険料控除等を差し引いた課税所得金額に対し、以下の累進税率が適用されます。
-        </p>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px;">
+      <!-- 所得税率 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">所得税の税率（累進課税）</h3>
+        <p class="explanation__text">所得税は超過累進税率が適用されます。課税所得金額に応じて以下の税率が適用されます。</p>
+        <table class="explanation__table">
           <thead>
             <tr>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">課税所得金額</th>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">税率</th>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">控除額</th>
+              <th>課税所得金額</th>
+              <th>税率</th>
+              <th>控除額</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">1,000円 ~ 194.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">5%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">0円</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">195万円 ~ 329.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">10%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">97,500円</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">330万円 ~ 694.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">20%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">427,500円</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">695万円 ~ 899.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">23%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">636,000円</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">900万円 ~ 1,799.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">33%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">1,536,000円</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">1,800万円 ~ 3,999.9万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">40%</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">2,796,000円</td></tr>
-            <tr><td style="padding: 12px 16px; color: var(--ink-soft);">4,000万円 ~</td><td style="padding: 12px 16px; color: var(--ink-soft);">45%</td><td style="padding: 12px 16px; color: var(--ink-soft);">4,796,000円</td></tr>
+            <tr><td>1,000円 ~ 194.9万円</td><td>5%</td><td>0円</td></tr>
+            <tr><td>195万円 ~ 329.9万円</td><td>10%</td><td>97,500円</td></tr>
+            <tr><td>330万円 ~ 694.9万円</td><td>20%</td><td>427,500円</td></tr>
+            <tr><td>695万円 ~ 899.9万円</td><td>23%</td><td>636,000円</td></tr>
+            <tr><td>900万円 ~ 1,799.9万円</td><td>33%</td><td>1,536,000円</td></tr>
+            <tr><td>1,800万円 ~ 3,999.9万円</td><td>40%</td><td>2,796,000円</td></tr>
+            <tr><td>4,000万円 ~</td><td>45%</td><td>4,796,000円</td></tr>
           </tbody>
         </table>
-        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 8px;">上記に加え、復興特別所得税として所得税額の2.1%が加算されます。また、住民税は課税所得の10%として計算しています。</p>
+        <p class="explanation__text">上記に加え、復興特別所得税として所得税額の2.1%が加算されます。</p>
       </div>
 
       <!-- 法人税率 -->
-      <div style="margin-bottom: 48px;">
-        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
-          法人税等の実効税率
-        </h3>
-        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">
-          本シミュレーションでは、法人税・法人住民税・法人事業税を合算した以下の実効税率で計算しています（中小法人、資本金1億円以下を想定）。
-        </p>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px;">
+      <div class="explanation__block">
+        <h3 class="explanation__title">法人税の実効税率</h3>
+        <p class="explanation__text">本シミュレーションでは、法人税・法人住民税・法人事業税を合算した実効税率を使用しています。</p>
+        <table class="explanation__table">
           <thead>
             <tr>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">法人所得</th>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">実効税率（概算）</th>
+              <th>法人所得</th>
+              <th>実効税率（概算）</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">400万円以下</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">約22%</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">400万円超 ~ 800万円</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">約25%</td></tr>
-            <tr><td style="padding: 12px 16px; color: var(--ink-soft);">800万円超</td><td style="padding: 12px 16px; color: var(--ink-soft);">約35%</td></tr>
+            <tr><td>400万円以下</td><td>約22%</td></tr>
+            <tr><td>400万円超 ~ 800万円</td><td>約25%</td></tr>
+            <tr><td>800万円超</td><td>約35%</td></tr>
           </tbody>
         </table>
+        <p class="explanation__text">中小法人（資本金1億円以下）の場合、年800万円以下の所得部分は軽減税率が適用されます。</p>
       </div>
 
       <!-- 社会保険料率 -->
-      <div style="margin-bottom: 48px;">
-        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
-          社会保険料率の概要
-        </h3>
-        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft); margin-bottom: 16px;">
-          本シミュレーションでは、協会けんぽ加入の場合は個人負担・会社負担それぞれ約15%（合計約30%）、国民健康保険の場合は約10%として概算しています。
-        </p>
-        <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 14px;">
+      <div class="explanation__block">
+        <h3 class="explanation__title">社会保険料率の概要</h3>
+        <p class="explanation__text">個人事業主と法人では加入する社会保険制度が異なります。</p>
+        <table class="explanation__table">
           <thead>
             <tr>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">区分</th>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">協会けんぽ</th>
-              <th style="background: var(--blue); color: #fff; padding: 12px 16px; text-align: left; font-weight: 600; font-size: 13px;">国民健康保険</th>
+              <th>区分</th>
+              <th>個人事業主</th>
+              <th>法人</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">健康保険</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">約10%（労使折半）</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft);">所得連動（上限あり）</td></tr>
-            <tr><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">厚生年金</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">約18.3%（労使折半）</td><td style="padding: 12px 16px; border-bottom: 1px solid var(--line-soft); color: var(--ink-soft); background: var(--paper);">国民年金（定額 約20万円/年）</td></tr>
-            <tr><td style="padding: 12px 16px; color: var(--ink-soft);">会社負担</td><td style="padding: 12px 16px; color: var(--ink-soft);">あり（約15%）</td><td style="padding: 12px 16px; color: var(--ink-soft);">なし</td></tr>
+            <tr><td>健康保険</td><td>国民健康保険（所得連動、上限あり）</td><td>協会けんぽ（標準報酬月額の約10%）</td></tr>
+            <tr><td>年金</td><td>国民年金（定額 約20万円/年）</td><td>厚生年金（標準報酬月額の約18.3%）</td></tr>
+            <tr><td>会社負担</td><td>なし</td><td>社会保険料の約50%を会社が負担</td></tr>
           </tbody>
         </table>
-        <p style="font-size: 14px; line-height: 2; color: var(--ink-soft);">報酬額が高額になると標準報酬月額の上限により、実際の料率は低下します。</p>
+        <p class="explanation__text">法人化すると社会保険料の負担は増えますが、将来の年金受給額が増加するメリットもあります。本シミュレーションでは協会けんぽ（東京都）の料率を基に概算しています。</p>
+      </div>
+
+      <!-- 個人事業税 -->
+      <div class="explanation__block">
+        <h3 class="explanation__title">個人事業税について</h3>
+        <p class="explanation__text">事業所得が290万円を超える場合、個人事業税（税率5%が標準）が課されます。法人化するとこの負担はなくなります。</p>
+        <ul class="explanation__list">
+          <li>事業主控除：290万円</li>
+          <li>税率：業種により3%~5%（第一種事業が5%で大半の業種が該当）</li>
+          <li>計算式：（事業所得 - 290万円）x 税率</li>
+        </ul>
       </div>
 
       <!-- 参考リンク -->
-      <div>
-        <h3 style="font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); display: flex; align-items: center; gap: 10px;">
-          <span style="display: inline-block; width: 4px; height: 20px; background: var(--blue); border-radius: 2px;"></span>
-          参考リンク
-        </h3>
-        <div style="display: flex; flex-direction: column; gap: 8px;">
-          <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener noreferrer" style="font-size: 13px; color: var(--blue); text-decoration: none;">国税庁 - 所得税の税率 &rarr;</a>
+      <div class="explanation__block">
+        <h3 class="explanation__title">参考リンク</h3>
+        <div class="explanation__links">
+          <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm" target="_blank" rel="noopener noreferrer" class="explanation__link">
+            国税庁 - 所得税の税率 &rarr;
+          </a>
+          <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/hojin/5759.htm" target="_blank" rel="noopener noreferrer" class="explanation__link">
+            国税庁 - 法人税の税率 &rarr;
+          </a>
         </div>
       </div>
 
@@ -819,9 +974,9 @@
   <div class="cta-blue__inner">
     <div>
       <div class="cta-blue__label">CONTACT US</div>
-      <h2 class="cta-blue__title">より精緻な報酬設計を<br>ご希望の方へ</h2>
+      <h2 class="cta-blue__title">法人化のタイミングを<br>一緒に検討しませんか</h2>
       <p class="cta-blue__lead">
-        本シミュレーションは概算値です。実際の最適報酬額は、役員個人の所得状況・家族構成・将来の退職金設計・社会保険の選択など、多くの変数を考慮する必要があります。税務顧問契約の中で、お客様の状況に合わせた精緻なシミュレーションと最適な報酬戦略をご提案いたします。
+        本シミュレーションは概算値です。法人化の判断には、消費税の免税期間、退職金制度の活用、社会保険の将来設計など、税金以外の多くの要素を考慮する必要があります。税務顧問契約の中で、お客様に最適な法人化のタイミングと設立プランをご提案いたします。
       </p>
     </div>
     <div class="cta-blue__buttons">
@@ -846,7 +1001,7 @@
       </div>
       <div>
         <div style="font-family: var(--font-en-sans); font-size: 10px; font-weight: 500; letter-spacing: .3em; color: rgba(255,255,255,.45); margin-bottom: 16px;">TOOLS</div>
-        <a href="./tamura-division-preview.html#tools" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color .2s;">シミュレーションツール</a>
+        <a href="./tools-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">シミュレーションツール</a>
         <a href="./executive-comp-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none; margin-bottom: 10px;">役員報酬シミュレーション</a>
         <a href="./financing-simulator-preview.html" style="display: block; color: rgba(255,255,255,.7); font-size: 13px; text-decoration: none;">融資診断シミュレーション</a>
       </div>
@@ -888,38 +1043,37 @@
 <script>
 (function() {
   // ====== DOM References ======
-  const profitInput    = document.getElementById('profit');
-  const compInput      = document.getElementById('comp');
-  const compSlider     = document.getElementById('compSlider');
-  const sliderMaxLabel = document.getElementById('sliderMax');
-  const dependentsSelect = document.getElementById('dependents');
-  const radioLabels    = document.querySelectorAll('.sim-form__radio-label');
+  var bizIncomeInput = document.getElementById('bizIncome');
+  var bizIncomeSlider = document.getElementById('bizIncomeSlider');
+  var dependentsSelect = document.getElementById('dependents');
+  var directorCompInput = document.getElementById('directorComp');
+  var directorCompSlider = document.getElementById('directorCompSlider');
+  var spouseSalaryInput = document.getElementById('spouseSalary');
+  var radioLabels = document.querySelectorAll('.sim-form__radio-label');
 
-  // Result elements
-  const elTakeHome       = document.getElementById('takeHome');
-  const elTotalRemaining = document.getElementById('totalRemaining');
-  const elRowComp        = document.getElementById('rowComp');
-  const elRowIncomeTax   = document.getElementById('rowIncomeTax');
-  const elRowResidentTax = document.getElementById('rowResidentTax');
-  const elRowPersonalSI  = document.getElementById('rowPersonalSI');
-  const elRowTakeHome    = document.getElementById('rowTakeHome');
-  const elRowCorpIncome  = document.getElementById('rowCorpIncome');
-  const elRowCorpTax     = document.getElementById('rowCorpTax');
-  const elRowCorpSI      = document.getElementById('rowCorpSI');
-  const elRowCorpRemaining = document.getElementById('rowCorpRemaining');
+  // ====== Format ======
+  function fmt(val) {
+    return Math.round(val).toLocaleString('ja-JP');
+  }
 
-  // Bar segments
-  const barTakeHome   = document.getElementById('barTakeHome');
-  const barPersonalTax = document.getElementById('barPersonalTax');
-  const barCorpTax    = document.getElementById('barCorpTax');
-  const barCorpSI     = document.getElementById('barCorpSI');
-
-  // ====== Calculation Functions ======
+  // ====== Tax Calculations ======
 
   /**
-   * Calculate salary income deduction (給与所得控除)
-   * @param {number} income - annual salary in 万円
-   * @returns {number} deduction in 万円
+   * Income tax (所得税) - progressive rates in 万円
+   */
+  function calcIncomeTax(taxableIncome) {
+    if (taxableIncome <= 0) return 0;
+    if (taxableIncome <= 195) return taxableIncome * 0.05;
+    if (taxableIncome <= 330) return taxableIncome * 0.10 - 9.75;
+    if (taxableIncome <= 695) return taxableIncome * 0.20 - 42.75;
+    if (taxableIncome <= 900) return taxableIncome * 0.23 - 63.6;
+    if (taxableIncome <= 1800) return taxableIncome * 0.33 - 153.6;
+    if (taxableIncome <= 4000) return taxableIncome * 0.40 - 279.6;
+    return taxableIncome * 0.45 - 479.6;
+  }
+
+  /**
+   * Salary income deduction (給与所得控除) - for corporate director
    */
   function calcSalaryDeduction(income) {
     if (income <= 0) return 0;
@@ -932,181 +1086,237 @@
   }
 
   /**
-   * Calculate income tax (所得税)
-   * @param {number} taxableIncome - taxable income in 万円
-   * @returns {number} tax in 万円
-   */
-  function calcIncomeTax(taxableIncome) {
-    if (taxableIncome <= 0) return 0;
-    // Rates in 万円 basis
-    if (taxableIncome <= 195) return taxableIncome * 0.05;
-    if (taxableIncome <= 330) return taxableIncome * 0.10 - 9.75;
-    if (taxableIncome <= 695) return taxableIncome * 0.20 - 42.75;
-    if (taxableIncome <= 900) return taxableIncome * 0.23 - 63.6;
-    if (taxableIncome <= 1800) return taxableIncome * 0.33 - 153.6;
-    if (taxableIncome <= 4000) return taxableIncome * 0.40 - 279.6;
-    return taxableIncome * 0.45 - 479.6;
-  }
-
-  /**
-   * Calculate corporate tax (法人税等) - simplified effective rate
-   * @param {number} corpIncome - corporate income in 万円
-   * @returns {number} tax in 万円
+   * Corporate tax (法人税等) - simplified effective rate in 万円
    */
   function calcCorpTax(corpIncome) {
     if (corpIncome <= 0) return 0;
-    let tax = 0;
-    if (corpIncome <= 400) {
-      tax = corpIncome * 0.22;
-    } else if (corpIncome <= 800) {
-      tax = 400 * 0.22 + (corpIncome - 400) * 0.25;
-    } else {
-      tax = 400 * 0.22 + 400 * 0.25 + (corpIncome - 800) * 0.35;
-    }
-    return tax;
+    if (corpIncome <= 400) return corpIncome * 0.22;
+    if (corpIncome <= 800) return 400 * 0.22 + (corpIncome - 400) * 0.25;
+    return 400 * 0.22 + 400 * 0.25 + (corpIncome - 800) * 0.35;
   }
 
   /**
-   * Calculate social insurance premium (personal share)
-   * @param {number} comp - annual compensation in 万円
-   * @param {string} type - 'kyokai' or 'kokuho'
-   * @returns {number} premium in 万円
+   * Individual business tax (個人事業税) - rate 5%, deduction 290万円
    */
-  function calcPersonalSI(comp, type) {
-    if (comp <= 0) return 0;
-    if (type === 'kyokai') {
-      // Approx 15% of comp (employee share)
-      return comp * 0.15;
-    } else {
-      // National Health Insurance: roughly 10% (no pension component in simple model)
-      return comp * 0.10;
-    }
+  function calcBizTax(bizIncome) {
+    if (bizIncome <= 290) return 0;
+    return (bizIncome - 290) * 0.05;
   }
 
   /**
-   * Calculate social insurance premium (company share)
-   * @param {number} comp - annual compensation in 万円
-   * @param {string} type - 'kyokai' or 'kokuho'
-   * @returns {number} premium in 万円
+   * National Health Insurance (国民健康保険) - rough estimate
+   * Based on income ratio + equalization per capita, capped at ~106万円
    */
-  function calcCorpSI(comp, type) {
-    if (comp <= 0) return 0;
-    if (type === 'kyokai') {
-      return comp * 0.15;
-    } else {
-      // No company share for NHI
-      return 0;
-    }
+  function calcNHI(bizIncome, dependents) {
+    if (bizIncome <= 0) return 0;
+    // Income-based rate: ~11% of income (after 43万円 deduction)
+    var incomeBase = Math.max(0, bizIncome - 43) * 0.11;
+    // Per-capita flat amount: ~5万円/person
+    var perCapita = (1 + dependents) * 5;
+    var total = incomeBase + perCapita;
+    // Annual cap ~106万円
+    return Math.min(total, 106);
   }
 
-  // ====== Format ======
-  function fmt(val) {
-    return Math.round(val).toLocaleString('ja-JP');
+  /**
+   * National Pension (国民年金) - flat amount per person
+   * ~16,980円/month x 12 = ~20.4万円/year per person
+   */
+  function calcNationalPension(dependents) {
+    // Self + spouse if applicable (dependents >= 1 and spouse is type 1 insured)
+    var persons = 1;
+    return persons * 20.4;
+  }
+
+  /**
+   * Social Insurance (協会けんぽ) for corporate
+   * Health: ~10% (employer + employee)
+   * Pension: ~18.3% (employer + employee)
+   * Total: ~30% of comp (both shares combined)
+   */
+  function calcCorpSocialInsurance(comp) {
+    if (comp <= 0) return 0;
+    // Combined employer + employee rate ~30%
+    // Standard monthly remuneration has a cap for health (~139万円/month)
+    // and pension (~65万円/month)
+    var monthlyComp = comp / 12;
+
+    // Health insurance: ~10% (capped at monthly ~139万円)
+    var healthBase = Math.min(monthlyComp, 139);
+    var healthAnnual = healthBase * 12 * 0.10;
+
+    // Pension: ~18.3% (capped at monthly ~65万円)
+    var pensionBase = Math.min(monthlyComp, 65);
+    var pensionAnnual = pensionBase * 12 * 0.183;
+
+    return healthAnnual + pensionAnnual;
   }
 
   // ====== Main Calculation ======
   function calculate() {
-    const profit = parseFloat(profitInput.value) || 0;
-    let comp = parseFloat(compInput.value) || 0;
-    const dependents = parseInt(dependentsSelect.value) || 0;
-    const insuranceType = document.querySelector('input[name="insurance"]:checked').value;
+    var bizIncome = parseFloat(bizIncomeInput.value) || 0;
+    var blueDeduction = parseFloat(document.querySelector('input[name="blueDeduction"]:checked').value) || 0;
+    var dependents = parseInt(dependentsSelect.value) || 0;
+    var directorComp = parseFloat(directorCompInput.value) || 0;
+    var spouseSalary = parseFloat(spouseSalaryInput.value) || 0;
 
-    // Clamp comp to profit
-    if (comp > profit) {
-      comp = profit;
-      compInput.value = comp;
-      compSlider.value = comp;
+    // ========= Individual (Sole Proprietor) =========
+    var soleAdjustedIncome = bizIncome - blueDeduction;
+    if (soleAdjustedIncome < 0) soleAdjustedIncome = 0;
+
+    var soleNHI = calcNHI(soleAdjustedIncome, dependents);
+    var solePension = calcNationalPension(dependents);
+
+    // Taxable income for individual
+    var soleBasicDeduction = 48; // 基礎控除
+    var soleDependentDeduction = 38 * dependents; // 扶養控除（簡易）
+    var soleSocialDeduction = soleNHI + solePension; // 社会保険料控除
+
+    var soleTaxableIncome = soleAdjustedIncome - soleBasicDeduction - soleDependentDeduction - soleSocialDeduction;
+    if (soleTaxableIncome < 0) soleTaxableIncome = 0;
+
+    var soleIncomeTax = calcIncomeTax(soleTaxableIncome) * 1.021; // 復興特別所得税含む
+    if (soleIncomeTax < 0) soleIncomeTax = 0;
+    var soleResidentTax = soleTaxableIncome * 0.10;
+    if (soleResidentTax < 0) soleResidentTax = 0;
+    var soleBizTax = calcBizTax(soleAdjustedIncome);
+
+    var soleTotalBurden = soleIncomeTax + soleResidentTax + soleBizTax + soleNHI + solePension;
+
+    // ========= Corporate =========
+    // Corp income = biz income - director comp - spouse salary
+    var corpIncome = bizIncome - directorComp - spouseSalary;
+    if (corpIncome < 0) corpIncome = 0;
+
+    var corpTax = calcCorpTax(corpIncome);
+
+    // Director's personal tax
+    var salaryDeduction = calcSalaryDeduction(directorComp);
+    var corpBasicDeduction = 48;
+    var corpDependentDeduction = 38 * dependents;
+
+    // Social insurance on director comp
+    var corpSI = calcCorpSocialInsurance(directorComp);
+    var corpSIPersonalShare = corpSI / 2; // Approx personal share for deduction
+
+    var directorTaxableIncome = directorComp - salaryDeduction - corpBasicDeduction - corpDependentDeduction - corpSIPersonalShare;
+    if (directorTaxableIncome < 0) directorTaxableIncome = 0;
+
+    var corpIncomeTax = calcIncomeTax(directorTaxableIncome) * 1.021;
+    if (corpIncomeTax < 0) corpIncomeTax = 0;
+    var corpResidentTax = directorTaxableIncome * 0.10;
+    if (corpResidentTax < 0) corpResidentTax = 0;
+
+    // Spouse salary tax (simplified)
+    var spouseTax = 0;
+    if (spouseSalary > 0) {
+      var spouseDeduction = calcSalaryDeduction(spouseSalary);
+      var spouseTaxable = spouseSalary - spouseDeduction - 48;
+      if (spouseTaxable < 0) spouseTaxable = 0;
+      spouseTax = calcIncomeTax(spouseTaxable) * 1.021 + spouseTaxable * 0.10;
+      if (spouseTax < 0) spouseTax = 0;
+
+      // Spouse social insurance
+      var spouseSI = calcCorpSocialInsurance(spouseSalary);
+      corpSI += spouseSI;
     }
 
-    // Update slider max
-    compSlider.max = profit;
-    sliderMaxLabel.textContent = fmt(profit) + '万円';
+    var corpTotalBurden = corpTax + corpIncomeTax + corpResidentTax + corpSI + spouseTax;
 
-    // ---- Personal Side ----
-    const salaryDeduction = calcSalaryDeduction(comp);
-    const personalSI = calcPersonalSI(comp, insuranceType);
-    const basicDeduction = 48; // 基礎控除
-    const dependentDeduction = 38 * dependents; // 扶養控除(簡易)
+    // ========= Difference =========
+    var diff = soleTotalBurden - corpTotalBurden;
 
-    let taxableIncome = comp - salaryDeduction - personalSI - basicDeduction - dependentDeduction;
-    if (taxableIncome < 0) taxableIncome = 0;
+    // ========= Update DOM =========
 
-    const incomeTax = calcIncomeTax(taxableIncome);
-    // 復興特別所得税 2.1%
-    const incomeTaxWithSurtax = incomeTax * 1.021;
-    const residentTax = taxableIncome * 0.10;
-    const personalTakeHome = comp - incomeTaxWithSurtax - residentTax - personalSI;
+    // Badge
+    var badgeEl = document.getElementById('resultBadge');
+    var diffEl = document.getElementById('diffAmount');
+    if (diff > 0) {
+      badgeEl.className = 'sim-badge sim-badge--green';
+      badgeEl.textContent = '法人化が有利';
+      diffEl.className = 'sim-main-card__value';
+      diffEl.innerHTML = fmt(Math.round(Math.abs(diff))) + '<span> 万円 お得</span>';
+    } else if (diff < 0) {
+      badgeEl.className = 'sim-badge sim-badge--yellow';
+      badgeEl.textContent = '個人事業が有利';
+      diffEl.className = 'sim-main-card__value is-negative';
+      diffEl.innerHTML = fmt(Math.round(Math.abs(diff))) + '<span> 万円 負担増</span>';
+    } else {
+      badgeEl.className = 'sim-badge sim-badge--yellow';
+      badgeEl.textContent = '同等';
+      diffEl.className = 'sim-main-card__value';
+      diffEl.innerHTML = '0<span> 万円</span>';
+    }
 
-    // ---- Corporate Side ----
-    const corpIncome = profit - comp;
-    const corpTax = calcCorpTax(corpIncome);
-    const corpSI = calcCorpSI(comp, insuranceType);
-    const corpRemaining = corpIncome - corpTax - corpSI;
+    document.getElementById('totalComparison').innerHTML =
+      fmt(Math.round(soleTotalBurden)) + '<span>万円</span> / ' +
+      fmt(Math.round(corpTotalBurden)) + '<span>万円</span>';
 
-    // ---- Totals ----
-    const totalRemaining = personalTakeHome + corpRemaining;
-    const personalTaxAndSI = incomeTaxWithSurtax + residentTax + personalSI;
+    // Detail rows - Sole
+    document.getElementById('rowSoleBizIncome').innerHTML = fmt(Math.round(soleAdjustedIncome)) + '<span>万円</span>';
+    document.getElementById('rowSoleIncomeTax').innerHTML = '-' + fmt(Math.round(soleIncomeTax)) + '<span>万円</span>';
+    document.getElementById('rowSoleResidentTax').innerHTML = '-' + fmt(Math.round(soleResidentTax)) + '<span>万円</span>';
+    document.getElementById('rowSoleBizTax').innerHTML = '-' + fmt(Math.round(soleBizTax)) + '<span>万円</span>';
+    document.getElementById('rowSoleNHI').innerHTML = '-' + fmt(Math.round(soleNHI)) + '<span>万円</span>';
+    document.getElementById('rowSolePension').innerHTML = '-' + fmt(Math.round(solePension)) + '<span>万円</span>';
+    document.getElementById('rowSoleTotal').innerHTML = fmt(Math.round(soleTotalBurden)) + '<span>万円</span>';
 
-    // ---- Update DOM ----
-    elTakeHome.innerHTML = fmt(Math.round(personalTakeHome)) + '<span> 万円</span>';
-    elTotalRemaining.innerHTML = fmt(Math.round(totalRemaining)) + '<span> 万円</span>';
+    // Detail rows - Corp
+    document.getElementById('rowCorpBizIncome').innerHTML = fmt(Math.round(corpIncome)) + '<span>万円</span>';
+    document.getElementById('rowCorpCorpTax').innerHTML = '-' + fmt(Math.round(corpTax)) + '<span>万円</span>';
+    document.getElementById('rowCorpIncomeTax').innerHTML = '-' + fmt(Math.round(corpIncomeTax + spouseTax)) + '<span>万円</span>';
+    document.getElementById('rowCorpResidentTax').innerHTML = '-' + fmt(Math.round(corpResidentTax)) + '<span>万円</span>';
+    document.getElementById('rowCorpSI').innerHTML = '-' + fmt(Math.round(corpSI)) + '<span>万円</span>';
+    document.getElementById('rowCorpTotal').innerHTML = fmt(Math.round(corpTotalBurden)) + '<span>万円</span>';
 
-    elRowComp.innerHTML = fmt(Math.round(comp)) + '<span>万円</span>';
-    elRowIncomeTax.innerHTML = '-' + fmt(Math.round(incomeTaxWithSurtax)) + '<span>万円</span>';
-    elRowResidentTax.innerHTML = '-' + fmt(Math.round(residentTax)) + '<span>万円</span>';
-    elRowPersonalSI.innerHTML = '-' + fmt(Math.round(personalSI)) + '<span>万円</span>';
-    elRowTakeHome.innerHTML = fmt(Math.round(personalTakeHome)) + '<span>万円</span>';
+    // Bar chart
+    var maxBurden = Math.max(soleTotalBurden, corpTotalBurden, 1);
 
-    elRowCorpIncome.innerHTML = fmt(Math.round(corpIncome)) + '<span>万円</span>';
-    elRowCorpTax.innerHTML = '-' + fmt(Math.round(corpTax)) + '<span>万円</span>';
-    elRowCorpSI.innerHTML = '-' + fmt(Math.round(corpSI)) + '<span>万円</span>';
-    elRowCorpRemaining.innerHTML = fmt(Math.round(corpRemaining)) + '<span>万円</span>';
+    function barPct(val) { return Math.max(0, (val / maxBurden) * 100); }
 
-    // ---- Bar Chart ----
-    const total = profit > 0 ? profit : 1;
-    const pctTakeHome = Math.max(0, (personalTakeHome / total) * 100);
-    const pctPersonalTax = Math.max(0, (personalTaxAndSI / total) * 100);
-    const pctCorpTax = Math.max(0, (corpTax / total) * 100);
-    const pctCorpSI = Math.max(0, (corpSI / total) * 100);
+    document.getElementById('barSoleIncome').style.width = barPct(soleIncomeTax) + '%';
+    document.getElementById('barSoleResident').style.width = barPct(soleResidentTax) + '%';
+    document.getElementById('barSoleBiz').style.width = barPct(soleBizTax) + '%';
+    document.getElementById('barSoleNHI').style.width = barPct(soleNHI) + '%';
+    document.getElementById('barSolePension').style.width = barPct(solePension) + '%';
+    document.getElementById('barSoleTotal').innerHTML = fmt(Math.round(soleTotalBurden)) + '<span>万円</span>';
 
-    barTakeHome.style.width = pctTakeHome + '%';
-    barPersonalTax.style.width = pctPersonalTax + '%';
-    barCorpTax.style.width = pctCorpTax + '%';
-    barCorpSI.style.width = pctCorpSI + '%';
-
-    // Show labels only if segment is wide enough
-    barTakeHome.textContent = pctTakeHome > 8 ? Math.round(pctTakeHome) + '%' : '';
-    barPersonalTax.textContent = pctPersonalTax > 8 ? Math.round(pctPersonalTax) + '%' : '';
-    barCorpTax.textContent = pctCorpTax > 8 ? Math.round(pctCorpTax) + '%' : '';
-    barCorpSI.textContent = pctCorpSI > 8 ? Math.round(pctCorpSI) + '%' : '';
+    document.getElementById('barCorpTax').style.width = barPct(corpTax) + '%';
+    document.getElementById('barCorpIncome').style.width = barPct(corpIncomeTax + spouseTax) + '%';
+    document.getElementById('barCorpResident').style.width = barPct(corpResidentTax) + '%';
+    document.getElementById('barCorpSI').style.width = barPct(corpSI) + '%';
+    document.getElementById('barCorpTotal').innerHTML = fmt(Math.round(corpTotalBurden)) + '<span>万円</span>';
   }
 
   // ====== Event Listeners ======
-
-  // Profit input
-  profitInput.addEventListener('input', function() {
+  bizIncomeInput.addEventListener('input', function() {
+    bizIncomeSlider.value = this.value;
+    calculate();
+  });
+  bizIncomeSlider.addEventListener('input', function() {
+    bizIncomeInput.value = this.value;
     calculate();
   });
 
-  // Comp text input
-  compInput.addEventListener('input', function() {
-    compSlider.value = this.value;
+  directorCompInput.addEventListener('input', function() {
+    directorCompSlider.value = this.value;
+    calculate();
+  });
+  directorCompSlider.addEventListener('input', function() {
+    directorCompInput.value = this.value;
     calculate();
   });
 
-  // Comp slider
-  compSlider.addEventListener('input', function() {
-    compInput.value = this.value;
-    calculate();
-  });
-
-  // Dependents
   dependentsSelect.addEventListener('change', calculate);
+  spouseSalaryInput.addEventListener('input', calculate);
 
   // Radio buttons
   radioLabels.forEach(function(label) {
     label.addEventListener('click', function() {
-      radioLabels.forEach(function(l) { l.classList.remove('is-active'); });
+      var parent = this.parentNode;
+      parent.querySelectorAll('.sim-form__radio-label').forEach(function(l) {
+        l.classList.remove('is-active');
+      });
       this.classList.add('is-active');
       this.querySelector('input').checked = true;
       calculate();
