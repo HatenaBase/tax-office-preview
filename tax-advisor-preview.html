@@ -27,7 +27,7 @@
       --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
     /* Header */
     .hb-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
@@ -52,7 +52,7 @@
     .hb-subhero__crumb a:hover { color: var(--blue); }
     .hb-subhero__en { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 16px; color: var(--blue); margin-bottom: 16px; letter-spacing: .04em; }
     .hb-subhero__jp { font-family: var(--font-jp); font-weight: 900; font-size: clamp(28px, 4vw, 52px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px; }
-    .hb-subhero__lead { font-size: 15px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
+    .hb-subhero__lead { font-size: 16px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
 
     /* Section */
     .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
@@ -68,10 +68,10 @@
     .str-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
     .str-card { padding: 48px 40px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
     .str-card:hover { background: var(--blue-ghost); }
-    .str-card__icon { width: 56px; height: 56px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 14px; }
+    .str-card__icon { display: none; }
     .str-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); line-height: 1; margin-bottom: 8px; }
     .str-card__title { font-weight: 700; font-size: 20px; line-height: 1.4; margin-bottom: 14px; }
-    .str-card__desc { font-size: 14px; line-height: 2; color: var(--ink-soft); }
+    .str-card__desc { font-size: 16px; line-height: 2; color: var(--ink-soft); }
 
     /* Scope */
     .scope-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
@@ -94,7 +94,7 @@
     .price-block__title { font-weight: 700; font-size: 20px; margin-bottom: 6px; }
     .price-block__desc { font-size: 14px; color: var(--ink-soft); margin-bottom: 12px; line-height: 1.85; }
     .price-block__unit { font-size: 12px; color: var(--ink-light); text-align: right; margin-bottom: 8px; }
-    .price-block__note { font-size: 13px; color: var(--ink-soft); margin-top: 14px; line-height: 1.85; }
+    .price-block__note { font-size: 14px; color: var(--ink-soft); margin-top: 14px; line-height: 1.85; }
 
     /* Addon table */
     .addon-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
@@ -108,7 +108,7 @@
     .flow-v-step + .flow-v-step { border-top: none; }
     .flow-v-step__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 40px; color: var(--blue); line-height: 1; }
     .flow-v-step__title { font-weight: 700; font-size: 18px; margin-bottom: 10px; }
-    .flow-v-step__desc { font-size: 14px; line-height: 2; color: var(--ink-soft); }
+    .flow-v-step__desc { font-size: 16px; line-height: 2; color: var(--ink-soft); }
     .flow-v-arrow { display: flex; justify-content: center; padding: 8px 0; }
     .flow-v-arrow svg { width: 24px; height: 32px; }
 
@@ -116,7 +116,7 @@
     .faq-item { padding: 28px 0; border-bottom: 1px solid var(--line); }
     .faq-item__q { font-weight: 700; font-size: 15px; margin-bottom: 10px; cursor: pointer; }
     .faq-item__q::before { content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans); font-weight: 600; color: var(--blue); }
-    .faq-item__a { font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
+    .faq-item__a { font-size: 15px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
 
     /* CTA */
     .cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
@@ -222,43 +222,21 @@
       </div>
       <div class="str-grid">
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          </div>
           <div class="str-card__num">01</div>
           <h3 class="str-card__title">事業を理解した専門家が伴走</h3>
           <p class="str-card__desc">お客様の事業内容を深く理解した担当者が、日々の「これどうすればいい？」に寄り添います。創業期ならではの悩み——役員報酬の設定、経費の線引き、届出のタイミングなど、チャットで実務に即したアドバイスを提供。気軽に相談できる安心感があります。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon" style="background: #EEF3FF;">
-            <!-- freee official logo -->
-            <svg viewBox="0 0 120 46.348" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:auto;">
-              <path d="M106.798 24.938a4.74 4.74 0 0 0 4.9 3.636c4.247 0 7.335-4.11 8.3-7.479l-1.25-.265c-.919 3.257-3.653 5.782-6.19 5.782s-2.973-1.659-2.973-2.7c3.463-.691 6.3-1.811 6.3-4.6 0-1.267-.867-2.532-3.169-2.532-3.124 0-5.37 2.789-5.939 5.456-1.189 2.832-3.828 5.082-6.215 5.082-2.879 0-3.182-2-3.182-2.887 3.017-.545 6.754-1.777 6.754-4.825 0-1.628-1.1-2.824-3.4-2.824-3.6 0-5.911 3.276-6.422 6.161-1.325 2.973-4.078 5.2-6.649 5.2-2.969 0-3.461-1.927-3.461-3.166 2.88-.547 7.28-1.756 7.28-5.165 0-1.563-.973-3.031-3.634-3.031-4.242 0-6.719 4.211-6.964 7.135a11.122 11.122 0 0 1-1.631.139c-2 0-1.759-1.528-1.445-3.143.452-2.323-.8-4.131-3.227-4.131-2.779 0-4.831 2.747-5.973 5.464.646-3.322.088-5.359-3.909-5.359a17.556 17.556 0 0 0-6.16 1.456s.813-4.194.813-4.194c1.007-5.179 2.365-6.27 4.058-6.27 1.341 0 2.232.8 3.317 2.2l.582-3.012a7.614 7.614 0 0 0-3.974-1.091c-4 0-6.657 2.905-7.766 8.608l-1.045 5.388a44.946 44.946 0 0 1-15.547 3.276l-.338 1.734a46.61 46.61 0 0 0 15.5-3.02l-1.99 10.231c-.974 5.011-2.286 6.275-4.038 6.275-1.631 0-2.61-1.3-3.317-2.2l-.583 3.012a7.739 7.739 0 0 0 4.059 1.091c3.679 0 6.508-2.671 7.662-8.608l2.217-11.414a19.768 19.768 0 0 1 5.73-1.657c1.881 0 2.226.638 1.738 3.186l-1.88 9.637 3.563-.242.953-4.9c.541-2.783 2.456-6.785 4.919-6.785 1.24 0 1.51.946 1.278 2.138-.6 3.1 1.234 3.888 3.4 3.888a20.512 20.512 0 0 0 3.048-.186 5.415 5.415 0 0 0 5.771 4.931c3.2 0 5.929-2.1 7.738-4.765a5.039 5.039 0 0 0 5.234 3.832c2.936.005 5.478-2.04 7.157-4.487Zm5.794-6.666c.54 0 1.019.379 1.019 1.2 0 1.771-2.221 2.626-3.955 3.013-.001-1.347 1.457-4.213 2.936-4.213Zm-11.993.117c.579 0 1.089.387 1.089 1.3 0 1.848-2.375 2.79-4.232 3.206.001-1.451 1.612-4.506 3.143-4.506Zm-12.9.066c.585 0 1.2.382 1.2 1.452 0 2-2.606 3.03-4.627 3.478.007-1.697 1.788-4.929 3.43-4.929ZM28.017 21.276a54.792 54.792 0 0 1-10.978-1.1A29.832 29.832 0 0 0 33.15 0L10.665 17.3c-1.257.968-1.587.637-2.782.637a7.2 7.2 0 0 0-4.983 2 2.114 2.114 0 0 1-1.329.8L0 21.129l2.991.656c2.385.524 2.928.913 4.241 2.617l16.9 21.946a24.837 24.837 0 0 0-5.927-18.021 16.135 16.135 0 0 0 5.23-.91 7.83 7.83 0 0 1 3.451-.576h8.96c.121-.6-.106-.779-.99-.9l-6.931-.964c.307-.219.729-.6 1.047-.859a3.531 3.531 0 0 1 1.9-.979 50.594 50.594 0 0 0 5.41-1.616c.755-.264.636-.542.793-1.008a51.529 51.529 0 0 1-9.058.761Z" fill="#2864f0"/>
-              <path d="M7.183 21.708a1.114 1.114 0 1 1 1.115-1.115 1.115 1.115 0 0 1-1.115 1.115ZM18.052 26.965A14.81 14.81 0 0 1 7.893 22.95c2.385-.731 5.45-.826 9.473-.4a97.142 97.142 0 0 0 10.16 1 14.8 14.8 0 0 1-9.474 3.415Z" fill="#fff"/>
-            </svg>
-          </div>
           <div class="str-card__num">02</div>
           <h3 class="str-card__title">freee認定アドバイザー 5つ星</h3>
-          <p class="str-card__desc">freee認定アドバイザー最上位の5つ星を取得。freee会計100%の事務所だから、これまでfreeeを使ってきた事業者様も、新しくfreeeを導入される事業者様も安心です。導入設定から日常の活用まで一貫してサポートします。</p>
+          <p class="str-card__desc">freee認定アドバイザー最上位の5つ星を取得。freeeを中心にクラウド会計の導入から活用まで一貫してサポートします。これまでfreeeを使ってきた事業者様も、新しく導入される事業者様も安心です。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
           <div class="str-card__num">03</div>
           <h3 class="str-card__title">お客様の手間は最小限に</h3>
           <p class="str-card__desc">面倒な経理作業はすべて弊所が巻き取ります。必要な資料を共有いただくだけで、記帳から届出、決算・申告まで完了。お客様に業務負荷をほとんど感じさせません。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon" style="background: #F0F4F8;">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:36px;height:36px;">
-              <rect x="4" y="8" width="40" height="28" rx="4" stroke="#1F61AB" stroke-width="2.5" fill="none"/>
-              <path d="M4 16l20 12 20-12" stroke="#1F61AB" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="16" cy="28" r="2" fill="#1F61AB"/>
-              <circle cx="24" cy="28" r="2" fill="#1F61AB"/>
-              <circle cx="32" cy="28" r="2" fill="#1F61AB"/>
-            </svg>
-          </div>
           <div class="str-card__num">04</div>
           <h3 class="str-card__title">チャットでスピーディーに対応</h3>
           <p class="str-card__desc">コミュニケーションはチャットツールで完結。気軽にやり取りできるため、メールのような堅苦しさはありません。スレッドでトピックを分けるから、複数の相談が同時に進んでも混乱が生じない設計です。</p>
@@ -454,7 +432,7 @@
       <div style="max-width: 800px;">
         <div class="faq-item">
           <p class="faq-item__q">freee以外の会計ソフトでも対応できますか？</p>
-          <p class="faq-item__a">弊所はfreee会計100%の事務所です。現在他のソフトをご利用の場合は、freeeへの移行をサポートいたします（別途料金）。</p>
+          <p class="faq-item__a">弊所はfreeeを中心にクラウド会計を活用しています。現在他のソフトをご利用の場合は、freeeへの移���をサポートいたします（別途料金）。</p>
         </div>
         <div class="faq-item">
           <p class="faq-item__q">スポットで決算申告だけお願いすることは可能ですか？</p>

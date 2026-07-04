@@ -27,7 +27,7 @@
       --font-jp: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-jp); color: var(--ink); background: var(--white); font-size: 16px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
     /* Header */
     .hb-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
@@ -52,7 +52,7 @@
     .hb-subhero__crumb a:hover { color: var(--blue); }
     .hb-subhero__en { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 16px; color: var(--blue); margin-bottom: 16px; letter-spacing: .04em; }
     .hb-subhero__jp { font-family: var(--font-jp); font-weight: 900; font-size: clamp(28px, 4vw, 52px); line-height: 1.25; letter-spacing: -.02em; color: var(--ink); margin-bottom: 28px; }
-    .hb-subhero__lead { font-size: 15px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
+    .hb-subhero__lead { font-size: 16px; line-height: 2; color: var(--ink-soft); max-width: 720px; }
 
     /* Section */
     .section { padding: 96px 32px; background: var(--white); border-bottom: 1px solid var(--line); }
@@ -76,10 +76,10 @@
     .str-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
     .str-card { padding: 48px 40px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); transition: background .3s; }
     .str-card:hover { background: var(--blue-ghost); }
-    .str-card__icon { width: 56px; height: 56px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; background: var(--blue-light); border-radius: 14px; }
+    .str-card__icon { display: none; }
     .str-card__num { font-family: var(--font-en); font-style: italic; font-weight: 300; font-size: 36px; color: var(--blue); line-height: 1; margin-bottom: 8px; }
     .str-card__title { font-weight: 700; font-size: 20px; line-height: 1.4; margin-bottom: 14px; }
-    .str-card__desc { font-size: 14px; line-height: 2; color: var(--ink-soft); }
+    .str-card__desc { font-size: 16px; line-height: 2; color: var(--ink-soft); }
 
     /* Scope */
     .scope-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
@@ -94,7 +94,7 @@
     .faq-item { padding: 28px 0; border-bottom: 1px solid var(--line); }
     .faq-item__q { font-weight: 700; font-size: 15px; margin-bottom: 10px; cursor: pointer; }
     .faq-item__q::before { content: 'Q.'; margin-right: 8px; font-family: var(--font-en-sans); font-weight: 600; color: var(--blue); }
-    .faq-item__a { font-size: 14px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
+    .faq-item__a { font-size: 15px; line-height: 1.9; color: var(--ink-soft); padding-left: 28px; }
 
     /* CTA */
     .cta-blue { padding: 96px 32px; background: var(--blue); color: #fff; }
@@ -244,33 +244,21 @@
       </div>
       <div class="str-grid">
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M9 17H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2v10a2 2 0 01-2 2h-4"/><path d="M12 15l-3 6h6l-3-6z"/></svg>
-          </div>
           <div class="str-card__num">01</div>
           <h3 class="str-card__title">FAS領域の経験を活かしたサポート</h3>
           <p class="str-card__desc">税理士だけでなくFAS領域の経験のある公認会計士も所属するため、M&amp;Aに伴う税務デューデリジェンスに加え、財務デューデリジェンスや組織再編税制を踏まえたスキーム検討など、トランザクション全体を税務面からサポートします。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-          </div>
           <div class="str-card__num">02</div>
           <h3 class="str-card__title">上場企業の複雑な税務に対応</h3>
           <p class="str-card__desc">外形標準課税の申告、グループ通算制度への対応、税効果会計の適用など複雑な税務業務を正確に処理します。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
-          </div>
           <div class="str-card__num">03</div>
           <h3 class="str-card__title">株式報酬・SOの制度設計から評価まで</h3>
           <p class="str-card__desc">ストックオプションの公正価値評価はもちろん、税制適格要件の確認、株式報酬制度全体の設計まで対応。企業のインセンティブ設計を税務面から支えます。</p>
         </div>
         <div class="str-card">
-          <div class="str-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1F61AB" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
           <div class="str-card__num">04</div>
           <h3 class="str-card__title">専門家ネットワークとの連携</h3>
           <p class="str-card__desc">弁護士・公認会計士・社会保険労務士・不動産鑑定士など、案件に応じた最適な専門家チームを組成。ワンストップで高度な案件に対応します。</p>
