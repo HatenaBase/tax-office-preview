@@ -1,0 +1,186 @@
+/* =============================================================
+   Hatenabase Design System — colors_and_type.css
+   Source: design-system/マスターデザインガイド.md +
+           design-system/ホームページデザインガイド.md +
+           design-system/資料デザインガイド.md
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+
+:root {
+  /* ---------- Brand colors ---------- */
+  --color-primary:      #0A2846; /* 濃紺 — 見出し / アクセント / CTA */
+  --color-primary-700:  #0E365E; /* hover surfaces */
+  --color-primary-900:  #061B30; /* press / dark footer base */
+  --color-text:         #191919; /* body */
+  --color-text-mute:    #555B63; /* secondary copy */
+  --color-bg:           #FFFFFF;
+  --color-bg-sub:       #F5F7FA; /* section divider */
+  --color-bg-sub-2:     #EEF1F6; /* deeper card on white */
+  --color-border:       #E0E4E8;
+  --color-border-strong:#C8CFD7;
+
+  /* Accent — used very sparingly for figure highlights */
+  --color-accent-soft:  rgba(10, 40, 70, 0.08);
+  --color-accent-line:  rgba(10, 40, 70, 0.16);
+
+  /* SaaS partner brand colors (do not alter) */
+  --saas-freee:      #2864F0;
+  --saas-kintone:    #F5A623;
+  --saas-salesforce: #00A1E0;
+  --saas-bakuraku:   #0052CC;
+  --saas-kanjo:      #8B2D8B;
+
+  /* ---------- Typography ---------- */
+  --font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN",
+                 "Noto Sans JP", -apple-system, BlinkMacSystemFont,
+                 "Yu Gothic", sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+
+  /* Web type scale (HP/LP) */
+  --text-hero:        48px;   /* h1 */
+  --text-heading:     32px;   /* h2 */
+  --text-subheading:  24px;   /* h3 */
+  --text-lead:        18px;
+  --text-body:        16px;
+  --text-caption:     14px;
+  --text-micro:       12px;
+
+  /* Slide type scale (1920×1080 / pt-aligned px) */
+  --slide-title:      40px;   /* 30pt */
+  --slide-section:    32px;   /* 24pt */
+  --slide-body:       24px;   /* 18pt */
+  --slide-caption:    18px;   /* 14pt */
+
+  /* Print type (チラシ) */
+  --print-catch:      32pt;
+  --print-sub:        20pt;
+  --print-body:       11pt;
+
+  --line-height-tight: 1.4;
+  --line-height-base:  1.8;  /* 本文標準 */
+
+  /* ---------- Spacing (8pt grid + master values) ---------- */
+  --space-xs:   4px;
+  --space-sm:   8px;
+  --space-md:  16px;
+  --space-lg:  32px;
+  --space-xl:  64px;
+  --space-2xl: 96px;   /* セクション間 */
+  --space-3xl: 128px;
+
+  /* ---------- Radii ---------- */
+  --radius-sm:  4px;   /* slide rectangles */
+  --radius-md:  8px;   /* CTA buttons */
+  --radius-lg: 16px;   /* large cards */
+
+  /* ---------- Shadows (very restrained) ---------- */
+  --shadow-cta:    0 4px 12px rgba(10, 40, 70, 0.25);
+  --shadow-card:   0 1px 2px rgba(10, 40, 70, 0.04),
+                   0 4px 16px rgba(10, 40, 70, 0.06);
+  --shadow-raise:  0 8px 24px rgba(10, 40, 70, 0.10);
+
+  /* ---------- Layout ---------- */
+  --container-max: 1200px;
+  --container-pad: 24px;
+
+  /* ---------- Motion ---------- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-1:  160ms;
+  --duration-2:  240ms;
+}
+
+/* ---------- Base ---------- */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--text-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Semantic typography (web) ---------- */
+.h-hero,
+h1.hb {
+  font-size: var(--text-hero);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: var(--line-height-tight);
+  letter-spacing: 0.01em;
+}
+
+.h-heading,
+h2.hb {
+  font-size: var(--text-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.h-subheading,
+h3.hb {
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  line-height: 1.5;
+}
+
+.t-lead {
+  font-size: var(--text-lead);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+}
+
+.t-body,
+p.hb {
+  font-size: var(--text-body);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+}
+
+.t-caption {
+  font-size: var(--text-caption);
+  color: var(--color-text-mute);
+}
+
+.t-micro {
+  font-size: var(--text-micro);
+  color: var(--color-text-mute);
+  letter-spacing: 0.04em;
+}
+
+/* Stat number — large emphasized figure */
+.t-stat {
+  font-size: 64px;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Eyebrow / kicker label above headings */
+.t-eyebrow {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-primary);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  :root {
+    --text-hero:       32px;
+    --text-heading:    24px;
+    --text-subheading: 20px;
+    --space-2xl:       64px;
+  }
+}

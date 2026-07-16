@@ -1,0 +1,79 @@
+/* Hatenabase slide deck — 1280x720 */
+@import url('../colors_and_type.css');
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #2a2a2a; color: var(--color-text); font-family: var(--font-family); }
+.deck { display: flex; flex-direction: column; align-items: center; gap: 24px; padding: 24px; }
+
+.slide {
+  width: 1280px;
+  height: 720px;
+  background: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0,0,0,.4);
+  font-family: var(--font-family);
+  color: var(--color-text);
+}
+
+/* Required overlays (chrome) */
+.s-logo { position: absolute; top: 28px; right: 36px; height: 32px; z-index: 5; }
+.s-logo--white { filter: brightness(0) invert(1); }
+.s-copy { position: absolute; bottom: 20px; right: 36px; font-size: 11px; color: #555B63; letter-spacing: 0.04em; z-index: 5; }
+.s-copy--white { color: rgba(255,255,255,.6); }
+.s-section { position: absolute; top: 32px; left: 48px; font-size: 13px; color: #555B63; letter-spacing: 0.16em; text-transform: uppercase; z-index: 5; }
+.s-section--white { color: rgba(255,255,255,.7); }
+.s-num { position: absolute; bottom: 20px; left: 36px; font-size: 11px; color: #555B63; font-family: ui-monospace, monospace; letter-spacing: 0.08em; z-index: 5; }
+.s-num--white { color: rgba(255,255,255,.6); }
+
+/* Title slide */
+.s-title { background: #0A2846; color: #fff; padding: 96px 80px; display: flex; flex-direction: column; justify-content: flex-end; gap: 32px; }
+.s-title__bg { position: absolute; inset: 0; pointer-events: none; opacity: 0.5; }
+.s-title__bg svg { width: 100%; height: 100%; }
+.s-title__eyebrow { font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,.7); margin: 0; position: relative; z-index: 2; }
+.s-title__h1 { font-size: 72px; font-weight: 700; line-height: 1.2; margin: 0; letter-spacing: 0.01em; position: relative; z-index: 2; }
+.s-title__sub { font-size: 22px; color: rgba(255,255,255,.85); margin: 0; line-height: 1.6; position: relative; z-index: 2; max-width: 800px; }
+.s-title__meta { display: flex; gap: 32px; margin-top: 24px; font-size: 14px; color: rgba(255,255,255,.7); position: relative; z-index: 2; }
+
+/* Generic content slide */
+.s-content { padding: 96px 80px 64px; }
+.s-content__title { font-size: 40px; font-weight: 700; color: #0A2846; line-height: 1.3; margin: 0 0 12px; }
+.s-content__sub { font-size: 18px; color: #555B63; margin: 0 0 48px; line-height: 1.6; }
+
+/* Agenda */
+.agenda { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 48px; margin-top: 24px; }
+.agenda__row { display: flex; gap: 20px; align-items: baseline; padding: 16px 0; border-top: 1px solid #E0E4E8; }
+.agenda__num { font-family: ui-monospace, monospace; font-size: 14px; color: #0A2846; font-weight: 700; letter-spacing: 0.08em; width: 32px; }
+.agenda__t { font-size: 22px; font-weight: 500; color: #191919; }
+.agenda__hint { font-size: 14px; color: #555B63; margin-left: auto; }
+
+/* Service / 3-up cards on slide */
+.s3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; }
+.s3 .c { background: #F5F7FA; border-left: 3px solid #0A2846; border-radius: 4px; padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; min-height: 320px; }
+.s3 .c__num { font-family: ui-monospace, monospace; font-size: 14px; color: #0A2846; font-weight: 700; letter-spacing: 0.1em; }
+.s3 .c__t { font-size: 22px; font-weight: 700; color: #0A2846; line-height: 1.4; margin: 0; }
+.s3 .c__d { font-size: 15px; color: #191919; line-height: 1.7; margin: 0; }
+.s3 .c__r { font-size: 13px; color: #555B63; margin-top: auto; padding-top: 12px; border-top: 1px solid #E0E4E8; }
+.s3 .c__saas { display: flex; gap: 12px; align-items: center; padding-top: 8px; }
+.s3 .c__saas img { height: 18px; max-width: 80px; object-fit: contain; }
+
+/* Stats slide */
+.stats4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 32px; }
+.stats4 .it { padding: 16px 24px; border-left: 3px solid #0A2846; }
+.stats4 .it__n { font-size: 80px; font-weight: 700; color: #0A2846; line-height: 1; letter-spacing: -0.02em; font-feature-settings: "tnum"; }
+.stats4 .it__u { font-size: 36px; margin-left: 4px; }
+.stats4 .it__l { font-size: 14px; color: #555B63; margin-top: 16px; }
+
+/* Diagram slide (flow) */
+.flow { display: flex; align-items: center; gap: 0; margin-top: 64px; }
+.flow .n { background: #F5F7FA; border: 1px solid #E0E4E8; border-radius: 4px; padding: 24px 20px; flex: 1; text-align: center; font-size: 17px; font-weight: 500; color: #191919; }
+.flow .n.dark { background: #0A2846; color: #fff; border-color: #0A2846; }
+.flow .arr { width: 56px; height: 2px; background: #0A2846; position: relative; flex-shrink: 0; }
+.flow .arr::after { content:""; position: absolute; right: -1px; top: -7px; border-left: 10px solid #0A2846; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+.flow-cap { font-size: 14px; color: #555B63; margin-top: 32px; text-align: center; }
+
+/* Thank you */
+.s-thanks { background: #0A2846; color: #fff; padding: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 24px; }
+.s-thanks__h { font-size: 88px; font-weight: 700; letter-spacing: 0.02em; margin: 0; }
+.s-thanks__sub { font-size: 22px; color: rgba(255,255,255,.85); margin: 0; }
+.s-thanks__contact { margin-top: 48px; font-size: 14px; color: rgba(255,255,255,.7); display: flex; flex-direction: column; gap: 4px; }

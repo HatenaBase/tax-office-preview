@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/hatenabase-design-system-019df040-5997-738f-b84d-e587e37995ba/colors_and_type.css">
+<link rel="stylesheet" href="_ds/hatenabase-design-system-019df040-5997-738f-b84d-e587e37995ba/ui_kits/corporate-site/styles.css">
+<script src="_ds/hatenabase-design-system-019df040-5997-738f-b84d-e587e37995ba/_ds_bundle.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+<style>
+:root{--navy:#0A2846;--blu:#2D5FA8;--sky:#A9C4E4;--pale:#DCE6F2;--ink:#191919;--mute:#555B63;--line:#E0E4E8;--sub:#F5F7FA}
+body{margin:0;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--ink);background:#fff;line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:var(--navy);text-decoration:none}
+a:hover{color:var(--blu)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding:104px 0}
+.secsub{background:var(--sub)}
+.sh{display:flex;align-items:baseline;gap:20px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:64px;position:relative}
+.leaf{width:12px;height:12px;background:var(--navy);border-radius:0 100% 0 100%;align-self:center;flex-shrink:0}
+.en{font-size:12px;letter-spacing:.26em;font-weight:700;color:var(--navy)}
+.sh h2{margin:0;font-size:32px;font-weight:700;letter-spacing:.06em;line-height:1.4}
+.rleaf{position:absolute;right:0;bottom:-30px;width:9px;height:9px;background:var(--blu);border-radius:0 100% 0 100%}
+.geo{display:grid;grid-template-columns:26px 26px;grid-template-rows:26px 26px;gap:3px;margin-bottom:30px}
+.geo i{display:block}
+.gl{grid-template-columns:34px 34px;grid-template-rows:34px 34px}
+.gl i{width:34px;height:34px}
+.n{background:var(--navy)}.b{background:var(--blu)}.s{background:var(--sky)}.p{background:var(--pale)}
+.o{border-radius:50%}.tl{border-radius:100% 0 0 0}.tr{border-radius:0 100% 0 0}.bl{border-radius:0 0 0 100%}.br{border-radius:0 0 100% 0}
+.hd{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
+.hdw{display:flex;align-items:center;justify-content:space-between;height:72px}
+.hlogo{height:34px;display:block}
+.nav{display:flex;align-items:center;gap:32px}
+.nav a{font-size:12px;letter-spacing:.16em;font-weight:700}
+.cta{display:inline-block;background:var(--navy);color:#fff;font-weight:700;border-radius:8px;padding:12px 28px;font-size:14px;letter-spacing:.06em;transition:transform .2s,box-shadow .2s}
+.cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 4px 12px rgba(10,40,70,.25)}
+.hero{padding:96px 0 110px;border-bottom:1px solid var(--line)}
+.herog{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+.crumb{font-size:11px;letter-spacing:.2em;color:var(--mute);margin-bottom:28px}
+.hero h1{font-size:44px;font-weight:700;line-height:1.5;letter-spacing:.04em;margin:0 0 32px;color:var(--navy)}
+.hero p{font-size:15px;color:var(--mute);margin:0 0 18px;max-width:560px}
+.heroart{display:grid;grid-template-columns:repeat(4,72px);grid-template-rows:repeat(4,72px);gap:6px;justify-content:center}
+.heroart i{display:block}
+.herodark{background:var(--navy);border-bottom:none}
+.herodark h1{color:#fff}
+.herodark .crumb{color:var(--sky)}
+.herodark p{color:#C6D4E4}
+.herodark .cta{background:#fff;color:var(--navy)}
+.tcta{font-weight:700;font-size:14px;letter-spacing:.04em;display:inline-flex;align-items:center;gap:8px}
+.tcta em{font-style:normal;transition:transform .2s}
+.tcta:hover em{transform:translateX(4px)}
+.fgrid{display:grid;grid-template-columns:repeat(4,1fr);padding:1px 0 0 1px}
+.fc{border:1px solid var(--line);margin:0 0 -1px -1px;padding:44px 34px 40px;background:#fff}
+.fc h3{margin:0 0 18px;font-size:17px;font-weight:700;line-height:1.6;letter-spacing:.04em}
+.fc p{margin:0;font-size:13.5px;color:var(--mute);letter-spacing:.03em}
+.fshadow{gap:20px;padding:0}
+.fshadow .fc{border:none;margin:0;border-radius:12px;box-shadow:0 1px 2px rgba(10,40,70,.04),0 4px 16px rgba(10,40,70,.06)}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);padding:1px 0 0 1px}
+.ac2{border:1px solid var(--line);margin:0 0 -1px -1px;padding:56px 32px;background:#fff;text-align:center}
+.ac2 .geo{margin:0 auto 26px;justify-content:center}
+.ac2 h3{margin:0 0 14px;font-size:18px;font-weight:700;letter-spacing:.06em}
+.ac2 p{margin:0;font-size:13.5px;color:var(--mute);text-align:left}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px}
+.sc{border:1px solid var(--line);background:#fff;border-radius:12px;padding:40px 32px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+.sc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(10,40,70,.1);color:inherit}
+.snum{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--blu);margin-bottom:22px}
+.sc h3{margin:0 0 16px;font-size:19px;font-weight:700;line-height:1.55;letter-spacing:.04em;color:var(--navy)}
+.sc p{margin:0 0 24px;font-size:13.5px;color:var(--mute);flex:1}
+.rm{font-size:12px;letter-spacing:.18em;font-weight:700;color:var(--navy)}
+.oth{border:1px solid var(--line);border-radius:12px;background:#fff;padding:36px 40px;display:flex;align-items:center;gap:36px}
+.oth h3{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:.04em}
+.oth p{margin:0;font-size:13.5px;color:var(--mute)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.vc{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.vbody{padding:32px 36px 36px}
+.vtag{font-size:11px;letter-spacing:.14em;color:var(--mute);margin-bottom:6px}
+.vc h3{margin:0 0 16px;font-size:18px;font-weight:700;letter-spacing:.04em}
+.vc p{margin:0 0 20px;font-size:13.5px;color:var(--mute)}
+.vimg{height:240px;background:var(--pale)}
+.flgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.fl{border-top:2px solid var(--navy);padding-top:26px}
+.fln{font-size:13px;letter-spacing:.2em;font-weight:700;color:var(--blu);margin-bottom:14px}
+.fl h3{margin:0 0 12px;font-size:17px;font-weight:700;letter-spacing:.04em}
+.fl p{margin:0;font-size:13px;color:var(--mute)}
+.cband{text-align:center;padding:110px 24px}
+.cband .en{display:block;margin-bottom:26px}
+.cband h2{font-size:38px;font-weight:700;letter-spacing:.08em;line-height:1.6;margin:0 0 20px;color:var(--navy)}
+.cband p{color:var(--mute);font-size:14px;margin:0 0 44px}
+.ft{background:var(--navy);color:#fff;padding:80px 0 36px}
+.ft a{color:#C6D4E4;font-size:13px}
+.ft a:hover{color:#fff}
+.ftg{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.4fr;gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.16)}
+.fth{font-size:12px;letter-spacing:.2em;font-weight:700;color:var(--sky);margin-bottom:18px}
+.ftcol{display:flex;flex-direction:column;gap:10px}
+.gco{margin-bottom:16px}
+.gco b{display:block;font-size:13px;font-weight:700}
+.gco span{font-size:11.5px;color:#9FB4CB}
+.ftlogo{height:32px;filter:brightness(0) invert(1);margin-bottom:20px}
+.ftbtm{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11.5px;color:#9FB4CB}
+@media(max-width:960px){.herog{grid-template-columns:1fr}.heroart{display:none}.fgrid,.agrid,.sgrid,.flgrid{grid-template-columns:1fr 1fr}.vgrid{grid-template-columns:1fr}.ftg{grid-template-columns:1fr 1fr}}
+</style>
+</helmet>
+<header class="hd"><div class="wrap hdw"><a href="#"><img class="hlogo" src="assets/hatenabase-logo.png" alt="Hatenabase"></a><nav class="nav"><a href="#features">FEATURES</a><a href="#service">SERVICE</a><a href="#voice">VOICE</a><a href="シミュレーション_幾何学デザイン.dc.html">SIMULATION</a><a href="#">ABOUT US</a><a class="cta" href="#contact">CONTACT</a></nav></div></header>
+<section class="hero"><div class="wrap herog"><div><div class="crumb">HOME / TAX OFFICE　—　HatenaBase Tax Office, Shinjuku Tokyo</div><h1>クラウド会計に特化した<br>新宿区の税理士事務所</h1><p>創業期のスタートアップから成長フェーズ、上場準備企業、上場企業に至るまで、あらゆるステージの企業を支援するクラウド会計特化型の税理士事務所です。</p><p>創業期・中小企業のお客様を支えるスタートアップ・グロース支援部と、上場準備企業・上場企業のお客様を支えるミドルマーケット支援部——2つの専門部門で、記帳代行から高度な税務相談まで幅広い税務ニーズに対応します。</p><p style="margin-bottom:40px">「自分でやらなきゃ」を手放して、まずは気軽にご相談ください。</p><a class="cta" href="#contact">お問い合わせはこちら →</a></div><div class="heroart"><i class="n tl"></i><i class="s o"></i><i class="p"></i><i class="b br"></i><i class="p o"></i><i class="b"></i><i class="n bl"></i><i class="s tr"></i><i class="s tl"></i><i></i><i class="p o"></i><i class="n tr"></i><i class="b o"></i><i class="p bl"></i><i class="n"></i><i class="s br"></i></div></div></section>
+<section class="sec" id="features"><div class="wrap"><div class="sh"><span class="leaf"></span><span class="en">FEATURES</span><h2>5つの特徴</h2><span class="rleaf"></span></div><div class="fgrid"><div class="fc"><span class="geo"><i class="n tl"></i><i class="s o"></i><i class="b"></i><i></i></span><h3>公認会計士・税理士が代表</h3><p>会計と税務、両方の専門性を活かしたサービスを提供。監査法人出身の公認会計士・税理士が代表を務め、会計・税務の両側面からお客様の課題を的確にカバーします。</p></div><div class="fc"><span class="geo"><i class="b o"></i><i></i><i class="s bl"></i><i class="n"></i></span><h3>DX/AXを得意とするコンサル会社を併設</h3><p>AI・クラウドを活用したバックオフィスDXを専門とするコンサルティング会社を併設。経理のDX化・自動化も一気通貫で対応します。</p></div><div class="fc"><span class="geo"><i class="p o"></i><i class="n br"></i><i class="n"></i><i class="s o"></i></span><h3>社労士事務所併設でワンストップ対応</h3><p>提携社労士事務所と連携し、税務・労務・社会保険まで、バックオフィス業務をワンストップで対応。窓口を一本化できます。</p></div><div class="fc"><span class="geo"><i class="s bl"></i><i class="b"></i><i class="n o"></i><i class="p tr"></i></span><h3>融資を専門で行う事業部</h3><p>日本政策金融公庫を中心とした創業融資の専門事業部を設置。累計90件超・総調達額8億円超の実績で、資金調達を成功に導きます。</p></div><div class="fc"><span class="geo"><i class="s tl"></i><i class="b br"></i><i class="p o"></i><i class="n tr"></i></span><h3>freee認定アドバイザー最上位5つ星</h3><p>クラウド会計freeeの認定アドバイザーとして最上位の5つ星を取得。導入から運用まで高い専門性で支援します。</p></div></div></div></section>
+<section class="sec secsub"><div class="wrap"><div class="sh"><span class="leaf"></span><span class="en">ABOUT US</span><h2>私たちについて</h2><span class="rleaf"></span></div><div class="agrid"><div class="ac2"><span class="geo gl"><i class="s bl"></i><i class="n"></i><i class="p o"></i><i class="b tr"></i></span><h3>オンライン完結</h3><p>チャットツールとクラウド会計で業務が完結。場所を問わず、スピーディな税務支援を提供します。</p></div><div class="ac2"><span class="geo gl"><i class="n o"></i><i class="s tr"></i><i class="b bl"></i><i class="p"></i></span><h3>2つの専門部門</h3><p>スタートアップ・グロース支援部とミドルマーケット支援部。企業のステージに合わせた専門チームが対応します。</p></div><div class="ac2"><span class="geo gl"><i class="p tl"></i><i class="b o"></i><i class="s"></i><i class="n br"></i></span><h3>チャットツール完結</h3><p>コミュニケーションはチャットツールで完結。レスポンス良く、いつでも気軽にやり取りできます。</p></div></div><div style="text-align:center;margin-top:48px"><a class="tcta" href="#">事務所について詳しく見る <em>→</em></a></div></div></section>
+<section class="sec" id="service"><div class="wrap"><div class="sh"><span class="leaf"></span><span class="en">SERVICE</span><h2>サービス紹介</h2><span class="rleaf"></span></div><div class="sgrid"><a class="sc" href="グロース支援部_幾何学デザイン.dc.html"><span class="geo"><i class="n tl"></i><i class="s"></i><i class="b o"></i><i></i></span><div class="snum">01　STARTUP &amp; GROWTH</div><h3>スタートアップ・グロース支援部</h3><p>記帳代行・決算申告・税務届出・年末調整・創業融資支援まで、創業期の業務課題を丸ごとお引き受けするスタートアップ・グロース支援部。</p><span class="rm">READ MORE ↗</span></a><a class="sc" href="ミドルマーケット支援部_幾何学デザイン.dc.html"><span class="geo"><i class="b br"></i><i class="n o"></i><i></i><i class="s tl"></i></span><div class="snum">02　MIDDLE MARKET</div><h3>ミドルマーケット支援部</h3><p>外形標準課税の税額計算、グループ通算制度、組織再編税制、四半期税金計算まで、上場準備フェーズ・上場後の業務課題を解決するミドルマーケット支援部。税務デューデリジェンス・株価算定・ストックオプション評価など、高度な専門性を要する税務業務に対応します。</p><span class="rm">READ MORE ↗</span></a><a class="sc" href="資金調達支援_幾何学デザイン.dc.html"><span class="geo"><i class="s o"></i><i class="b tr"></i><i class="n"></i><i class="p o"></i></span><div class="snum">03　FINANCING</div><h3>資金調達支援</h3><p>日本政策金融公庫を中心に、事業計画書の作成から金融機関の担当者紹介まで。累計90件超・総調達額8億円超の実績で、創業期の資金調達を成功に導きます。成果報酬型だから、リスクなく始められます。</p><span class="rm">READ MORE ↗</span></a></div><div class="oth"><span class="geo" style="margin:0"><i class="p bl"></i><i class="n o"></i><i class="s"></i><i class="b tr"></i></span><div style="flex:1"><div class="snum" style="margin-bottom:6px">04　CLOUD ACCOUNTING</div><h3>クラウド会計ソフト導入支援</h3><p>クラウド会計の導入・初期設定から日常運用まで。銀行口座・クレカ連携、請求書設定、自動仕訳ルールの構築まで一貫サポートします。</p></div></div></div></section>
+<section class="sec secsub" id="voice"><div class="wrap"><div class="sh"><span class="leaf"></span><span class="en">VOICE</span><h2>お客様の声</h2><span class="rleaf"></span></div><div class="vgrid"><div class="vc"><div class="vimg"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="voice-ogai" shape="rect" placeholder="株式会社オーガイ様の画像" hint-size="100%,240px"></x-import></div><div class="vbody"><div class="vtag">SES事業</div><h3>株式会社オーガイ</h3><p>「資金繰りの不安から解放され、"攻め"の経理・財務戦略を確立できました。freee記帳の構築、複数回の融資獲得、Looker StudioでのBI分析まで——経理業務の時間を40時間から10時間に削減できたのは大きいです。」</p><a class="tcta" href="#">紹介記事を読む <em>↗</em></a></div></div><div class="vc"><div class="vimg"><x-import component-from-global-scope="image-slot" from="./image-slot.js" id="voice-growthsoil" shape="rect" placeholder="株式会社グロースソイル様の画像" hint-size="100%,240px"></x-import></div><div class="vbody"><div class="vtag">BtoBマーケティング支援</div><h3>株式会社グロースソイル</h3><p>「社員雇用後に毎月100万円の赤字で倒産の危機に。資金調達支援と財務再建を依頼し、公庫融資の実行・コスト削減・売上拡大を並行して進めた結果、支援開始3カ月で単月黒字化を達成できました。」</p><a class="tcta" href="#">紹介記事を読む <em>↗</em></a></div></div></div></div></section>
+<section class="sec"><div class="wrap"><div class="sh"><span class="leaf"></span><span class="en">FLOW</span><h2>ご契約の流れ</h2><span class="rleaf"></span></div><div class="flgrid"><div class="fl"><div class="fln">01</div><h3>無料相談</h3><p>オンライン面談（Google Meet）にて、現在の経理状況やご要望をヒアリングします。所要時間は約30分。事前準備は不要です。</p></div><div class="fl"><div class="fln">02</div><h3>お見積り</h3><p>ヒアリング内容をもとに、最適なプランと料金をご提案します。</p></div><div class="fl"><div class="fln">03</div><h3>ご契約</h3><p>電子契約でオンライン完結。紙の郵送は一切不要です。契約後、Slackのお客様専用チャンネルにご招待します。</p></div><div class="fl"><div class="fln">04</div><h3>業務開始</h3><p>キックオフMTGを行い、記帳代行を開始。毎月の資料共有はGoogleドライブで完結。不明点はSlackチャットでいつでもご質問いただけます。※以降、面談は決算時のみの年1回となります。</p></div></div></div></section>
+<section class="secsub cband" id="contact"><span class="en">CONTACT</span><h2>お気軽に<br>お問い合わせください。</h2><p>初回のご相談は無料です。オンラインにて対応いたします。</p><a class="cta" href="#">お見積り相談はこちら →</a></section>
+<footer class="ft"><div class="wrap"><div class="ftg"><div><img class="ftlogo" src="assets/hatenabase-logo.png" alt="Hatenabase"><div style="font-size:12px;color:#9FB4CB;line-height:2">クラウド会計×ITに強い<br>新宿区の税理士事務所</div></div><div><div class="fth">SERVICE</div><div class="ftcol"><a href="グロース支援部_幾何学デザイン.dc.html">スタートアップ・グロース支援部</a><a href="ミドルマーケット支援部_幾何学デザイン.dc.html">ミドルマーケット支援部</a><a href="資金調達支援_幾何学デザイン.dc.html">資金調達支援</a><a href="シミュレーション_幾何学デザイン.dc.html">シミュレーション</a></div></div><div><div class="fth">ABOUT</div><div class="ftcol"><a href="#">私たちについて</a><a href="#">お問い合わせ</a></div></div><div><div class="fth">GROUP COMPANIES</div><div class="gco"><b>はてなベース株式会社</b><span>DX・AI・経営管理コンサルティング</span></div><div class="gco"><b>はてなベース税理士事務所</b><span>税務・会計・月次決算</span></div><div class="gco"><b>はてなベース社会保険労務士事務所</b><span>労務・人事・社会保険</span></div></div></div><div class="ftbtm"><span>共通所在地：東京都新宿区愛住町23-1 woody21 6階</span><span>Copyright © 2026 HatenaBase Inc.</span></div></div></footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroDark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;デザイン切替&quot;},&quot;cardStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;罫線グリッド&quot;,&quot;カードシャドウ&quot;],&quot;default&quot;:&quot;罫線グリッド&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;デザイン切替&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const dark = this.props.heroDark ?? false;
+    const shadow = (this.props.cardStyle ?? "罫線グリッド") === "カードシャドウ";
+    return {
+      heroClass: dark ? "hero herodark" : "hero",
+      fgridClass: shadow ? "fgrid fshadow" : "fgrid"
+    };
+  }
+}
+</script>
+</body>
+</html>

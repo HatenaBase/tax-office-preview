@@ -1,0 +1,197 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "case-study-v2/**",
+              "flyer-deck/**",
+              "slides/**",
+              "ui_kits/corporate-site/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Zen Kaku Gothic New))/i]",
+        "message": "Font not provided by the design system. Available: Zen Kaku Gothic New."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--color-accent-line",
+      "--color-accent-soft",
+      "--color-bg",
+      "--color-bg-sub",
+      "--color-bg-sub-2",
+      "--color-border",
+      "--color-border-strong",
+      "--color-primary",
+      "--color-primary-700",
+      "--color-primary-900",
+      "--color-text",
+      "--color-text-mute",
+      "--container-max",
+      "--container-pad",
+      "--duration-1",
+      "--duration-2",
+      "--ease-out",
+      "--font-family",
+      "--font-weight-bold",
+      "--font-weight-medium",
+      "--font-weight-regular",
+      "--freee",
+      "--freee-dark",
+      "--freee-deep",
+      "--ink",
+      "--ink-soft",
+      "--line-height-base",
+      "--line-height-tight",
+      "--muted",
+      "--paper",
+      "--paper-2",
+      "--pink",
+      "--print-body",
+      "--print-catch",
+      "--print-sub",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-sm",
+      "--saas-bakuraku",
+      "--saas-freee",
+      "--saas-kanjo",
+      "--saas-kintone",
+      "--saas-salesforce",
+      "--shadow-card",
+      "--shadow-cta",
+      "--shadow-raise",
+      "--slide-body",
+      "--slide-caption",
+      "--slide-section",
+      "--slide-title",
+      "--space-2xl",
+      "--space-3xl",
+      "--space-lg",
+      "--space-md",
+      "--space-sm",
+      "--space-xl",
+      "--space-xs",
+      "--text-body",
+      "--text-caption",
+      "--text-heading",
+      "--text-hero",
+      "--text-lead",
+      "--text-micro",
+      "--text-subheading",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--color-primary": "color",
+      "--color-primary-700": "color",
+      "--color-primary-900": "color",
+      "--color-text": "font",
+      "--color-text-mute": "font",
+      "--color-bg": "color",
+      "--color-bg-sub": "color",
+      "--color-bg-sub-2": "color",
+      "--color-border": "color",
+      "--color-border-strong": "color",
+      "--color-accent-soft": "color",
+      "--color-accent-line": "color",
+      "--saas-freee": "color",
+      "--saas-kintone": "color",
+      "--saas-salesforce": "color",
+      "--saas-bakuraku": "color",
+      "--saas-kanjo": "color",
+      "--font-family": "font",
+      "--font-weight-regular": "font",
+      "--font-weight-medium": "font",
+      "--font-weight-bold": "font",
+      "--text-hero": "font",
+      "--text-heading": "font",
+      "--text-subheading": "font",
+      "--text-lead": "font",
+      "--text-body": "font",
+      "--text-caption": "font",
+      "--text-micro": "font",
+      "--slide-title": "spacing",
+      "--slide-section": "spacing",
+      "--slide-body": "spacing",
+      "--slide-caption": "spacing",
+      "--print-catch": "other",
+      "--print-sub": "other",
+      "--print-body": "other",
+      "--line-height-tight": "font",
+      "--line-height-base": "font",
+      "--space-xs": "spacing",
+      "--space-sm": "spacing",
+      "--space-md": "spacing",
+      "--space-lg": "spacing",
+      "--space-xl": "spacing",
+      "--space-2xl": "spacing",
+      "--space-3xl": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--shadow-cta": "shadow",
+      "--shadow-card": "shadow",
+      "--shadow-raise": "shadow",
+      "--container-max": "spacing",
+      "--container-pad": "spacing",
+      "--ease-out": "other",
+      "--duration-1": "other",
+      "--duration-2": "other",
+      "--freee": "color",
+      "--freee-deep": "color",
+      "--freee-dark": "color",
+      "--ink": "color",
+      "--ink-soft": "color",
+      "--muted": "color",
+      "--paper": "color",
+      "--paper-2": "color",
+      "--white": "color",
+      "--accent": "color",
+      "--pink": "color"
+    },
+    "fontFamilies": [
+      "Zen Kaku Gothic New"
+    ]
+  }
+}
