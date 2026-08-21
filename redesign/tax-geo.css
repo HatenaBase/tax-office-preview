@@ -1,7 +1,16 @@
+/* tax-site: 幾何学デザイン統合スタイル (Issue #2 / Claude Design)
+ * ビルド入力。scripts/convert.py が tax-pages/assets/tax-geo.css へコピーする。
+ * 元は redesign/tax-geo.css（下層4枚用）+ geo-top.html インライン style（トップ専用クラス）を統合。
+ * 命名衝突は tax-geo.css 側の値に統一。heroDark / cardStyle バリアント（.herodark/.fshadow）は不採用のため持ち込まない。
+ */
+*,*::before,*::after{box-sizing:border-box}
 :root{--navy:#0A2846;--blu:#2D5FA8;--sky:#A9C4E4;--pale:#DCE6F2;--ink:#191919;--mute:#555B63;--line:#E0E4E8;--sub:#F5F7FA}
 body{margin:0;font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--ink);background:#fff;line-height:1.8;-webkit-font-smoothing:antialiased}
 a{color:var(--navy);text-decoration:none}
 a:hover{color:var(--blu)}
+a:focus-visible,summary:focus-visible,.cta:focus-visible{outline:2px solid var(--blu);outline-offset:2px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--navy);color:#fff;padding:10px 18px;z-index:100;border-radius:0 0 8px 0}
+.skip:focus{left:0;color:#fff}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 .sec{padding:104px 0}
 .secsub{background:var(--sub)}
@@ -13,6 +22,7 @@ a:hover{color:var(--blu)}
 .geo{display:grid;grid-template-columns:26px 26px;grid-template-rows:26px 26px;gap:3px;margin-bottom:30px}
 .geo i{display:block}
 .gl{grid-template-columns:34px 34px;grid-template-rows:34px 34px}
+.gl i{width:34px;height:34px}
 .n{background:var(--navy)}.b{background:var(--blu)}.s{background:var(--sky)}.p{background:var(--pale)}
 .o{border-radius:50%}.tl{border-radius:100% 0 0 0}.tr{border-radius:0 100% 0 0}.bl{border-radius:0 0 0 100%}.br{border-radius:0 0 100% 0}
 .hd{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
@@ -70,7 +80,7 @@ a:hover{color:var(--blu)}
 .tm .ro{font-size:12px;color:var(--blu);letter-spacing:.06em;font-weight:700;margin-top:10px}
 .tm .co{font-size:11.5px;color:var(--mute)}
 .tm p{text-align:left;font-size:12.5px;color:var(--mute);margin:18px 0 0}
-.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px}
 .sc{border:1px solid var(--line);background:#fff;border-radius:12px;padding:38px 32px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
 a.sc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(10,40,70,.1)}
 .snum{font-size:12px;letter-spacing:.22em;font-weight:700;color:var(--blu);margin-bottom:20px}
@@ -98,5 +108,88 @@ a.sc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(10,40,70,.1)}
 .gco b{display:block;font-size:13px;font-weight:700}
 .gco span{font-size:11.5px;color:#9FB4CB}
 .ftlogo{height:32px;filter:brightness(0) invert(1);margin-bottom:20px}
-.ftbtm{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11.5px;color:#9FB4CB}
-@media(max-width:960px){.pherog{grid-template-columns:1fr}.art3{display:none}.fgrid,.fgrid3,.flgrid,.pgrid,.team,.sgrid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}.ftg{grid-template-columns:1fr 1fr}}
+.ftbtm{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11.5px;color:#9FB4CB;flex-wrap:wrap;gap:8px}
+
+/* ── トップページ専用クラス（geo-top.html インライン style より統合） ── */
+.hero{padding:96px 0 110px;border-bottom:1px solid var(--line)}
+.herog{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+.hero h1{font-size:44px;font-weight:700;line-height:1.5;letter-spacing:.04em;margin:0 0 32px;color:var(--navy)}
+.hero p{font-size:15px;color:var(--mute);margin:0 0 18px;max-width:560px}
+.heroart{display:grid;grid-template-columns:repeat(4,72px);grid-template-rows:repeat(4,72px);gap:6px;justify-content:center}
+.heroart i{display:block}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);padding:1px 0 0 1px}
+.ac2{border:1px solid var(--line);margin:0 0 -1px -1px;padding:56px 32px;background:#fff;text-align:center}
+.ac2 .geo{margin:0 auto 26px;justify-content:center}
+.ac2 h3{margin:0 0 14px;font-size:18px;font-weight:700;letter-spacing:.06em}
+.ac2 p{margin:0;font-size:13.5px;color:var(--mute);text-align:left}
+.oth{border:1px solid var(--line);border-radius:12px;background:#fff;padding:36px 40px;display:flex;align-items:center;gap:36px}
+.oth h3{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:.04em}
+.oth p{margin:0;font-size:13.5px;color:var(--mute)}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.vc{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.vbody{padding:32px 36px 36px}
+.vtag{font-size:11px;letter-spacing:.14em;color:var(--mute);margin-bottom:6px}
+.vc h3{margin:0 0 16px;font-size:18px;font-weight:700;letter-spacing:.04em}
+.vc p{margin:0 0 20px;font-size:13.5px;color:var(--mute)}
+.vimg{height:240px;background:var(--pale)}
+
+/* ── 実装上の必須修正（プレビューには無い。§9 で申告） ── */
+section[id]{scroll-margin-top:88px}
+/* カード等が縮小時に内容ではみ出さないよう、grid/flex 子のはみ出しを許容 */
+.fc,.sc,.fl,.tm,.pi,.chip,.vc,.tk,.oth,.ac2{min-width:0}
+
+/* タブレット（≤960px）: 多カラムを2カラムへ。インライン指定の3/4列も追随させる */
+@media(max-width:960px){
+  .herog,.pherog{grid-template-columns:1fr}
+  .heroart,.art3{display:none}
+  .fgrid,.fgrid3,.flgrid,.pgrid,.team,.sgrid,.agrid{grid-template-columns:1fr 1fr}
+  .two,.vgrid{grid-template-columns:1fr}
+  .ftg{grid-template-columns:1fr 1fr}
+  [style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
+}
+/* モバイル（≤767px）: 全グリッド1カラム。ナビはリンクを消さず折返して全リンク維持 */
+@media(max-width:767px){
+  .fgrid,.fgrid3,.flgrid,.pgrid,.team,.sgrid,.agrid,.g2,.two,.vgrid,.ftg{grid-template-columns:1fr}
+  [style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"]{grid-template-columns:1fr!important}
+  .hdw{height:auto;flex-wrap:wrap;padding:12px 0;gap:10px}
+  .nav{width:100%;flex-wrap:wrap;gap:14px 18px}
+  .sec{padding:64px 0}
+  .sh{margin-bottom:40px}
+  .sh h2{font-size:26px}
+  .hero{padding:56px 0 64px}
+  .hero h1{font-size:32px}
+  .phero{padding:48px 0 56px}
+  .phero h1{font-size:28px}
+  .cband{padding:72px 20px}
+  .cband h2{font-size:28px}
+  .fgrid .fc,.agrid .ac2{margin:0 0 -1px 0}
+}
+
+/* ---- お問い合わせフォーム (#6 /contact/) ---- */
+#hb-tax-contact-form .cfitem{margin-bottom:22px}
+#hb-tax-contact-form .cflabel{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
+#hb-tax-contact-form .cfreq{font-style:normal;font-size:10.5px;color:#fff;background:var(--blu);border-radius:4px;padding:1px 8px;margin-left:8px;vertical-align:1px}
+#hb-tax-contact-form input[type="text"],#hb-tax-contact-form input[type="email"],#hb-tax-contact-form input[type="tel"],#hb-tax-contact-form select,#hb-tax-contact-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:15px;font-family:inherit;color:var(--ink);background:#fff}
+#hb-tax-contact-form input:focus,#hb-tax-contact-form select:focus,#hb-tax-contact-form textarea:focus{outline:2px solid var(--blu);outline-offset:1px;border-color:var(--blu)}
+#hb-tax-contact-form .cfagree{margin:28px 0}
+#hb-tax-contact-form .cfprivacy{font-size:12.5px;color:var(--mute);max-height:180px;overflow-y:auto;padding:12px 16px;background:var(--sub);border-radius:8px}
+#hb-tax-contact-form .cfcheck{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--navy);margin-top:14px;cursor:pointer}
+#hb-tax-contact-form .cfcheck input{width:18px;height:18px;accent-color:var(--navy)}
+#hb-tax-contact-form .cfmsg{min-height:1.5em;font-size:14px;font-weight:700;margin:0 0 16px}
+#hb-tax-contact-form .cfmsg.ok{color:#1B7F4B}
+#hb-tax-contact-form .cfmsg.ng{color:#B3261E}
+#hb-tax-contact-form button.cta{border:none;cursor:pointer;font-family:inherit;width:100%;text-align:center;font-size:15px;padding:16px 28px}
+#hb-tax-contact-form button.cta:disabled{opacity:.5;transform:none;box-shadow:none;cursor:default}
+
+/* ---- 事務所概要・メンバー (#7 /about-us/) ---- */
+.ovl{margin:0}
+.ovl>div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ovl>div:last-child{border-bottom:none}
+.ovl dt{font-size:12px;letter-spacing:.14em;font-weight:700;color:var(--blu);padding-top:2px}
+.ovl dd{margin:0;font-size:14.5px}
+.tm .tmimg{width:120px;height:120px;margin:0 auto 18px}
+.tm h3{margin:0 0 2px;font-size:18px;letter-spacing:.06em;color:var(--navy)}
+.tm .tmen{font-size:11px;letter-spacing:.22em;color:var(--mute);margin-bottom:8px}
+.tm .tmrole{font-size:12.5px;font-weight:700;color:var(--blu);margin-bottom:14px}
+.tm p{margin:0;font-size:13px;color:var(--mute);text-align:left}
+@media(max-width:767px){ .ovl>div{grid-template-columns:1fr;gap:2px} }
