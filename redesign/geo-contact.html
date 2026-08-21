@@ -40,9 +40,11 @@
   <div class="cfitem"><label class="cflabel" for="cf-tel">電話番号（半角数字・ハイフンなし）</label>
     <input id="cf-tel" type="tel" name="your-phone-number" maxlength="11" placeholder="例）09012345678"></div>
   <div class="cfitem"><label class="cflabel" for="cf-body">お問い合わせ内容 <em class="cfreq">必須</em></label>
-    <textarea id="cf-body" name="contact-of-inquery" rows="7" placeholder="ご相談内容をお書きください" required></textarea></div>
+    <textarea id="cf-body" name="contact-of-inquery" rows="7" maxlength="5000" placeholder="ご相談内容をお書きください" required></textarea></div>
   <div class="cfagree"><details class="faqi"><summary>個人情報保護方針を確認する</summary><div class="cfprivacy"><p>田村直大公認会計士・税理士事務所（屋号：はてなベース税理士事務所）は、ご提供いただいた個人情報を、お問い合わせへの対応および当事務所のサービス提供の目的でのみ利用します。法令に基づく場合を除き、ご本人の同意なく第三者へ提供することはありません。全文は送信先フォームと同一の方針に基づきます。お問い合わせ窓口: info.tax@hatenabase.com（個人情報保護管理者 田村直大）</p></div></details>
     <label class="cfcheck"><input type="checkbox" name="privacy-agreement" value="同意します" required> 「個人情報保護方針」に同意します <em class="cfreq">必須</em></label></div>
+  <!-- honeypot: 人間には見えない。bot が値を入れたらサーバー側で破棄する -->
+  <div class="cfhp" aria-hidden="true"><label>この欄は空のままにしてください<input type="text" name="hb-website" tabindex="-1" autocomplete="off"></label></div>
   <p id="hb-cf-msg" class="cfmsg" role="status" aria-live="polite"></p>
   <button type="submit" class="cta" id="hb-cf-submit">送信する →</button>
 </form>
