@@ -109,6 +109,8 @@ a.sc:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(10,40,70,.1)}
 .gco span{font-size:11.5px;color:#9FB4CB}
 .ftlogo{height:32px;filter:brightness(0) invert(1);margin-bottom:20px}
 .ftbtm{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-size:11.5px;color:#9FB4CB;flex-wrap:wrap;gap:8px}
+.ftbtm .ftlegal a{color:#9FB4CB;font-size:11.5px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+.ftbtm .ftlegal a:hover{color:#fff}
 
 /* ── トップページ専用クラス（geo-top.html インライン style より統合） ── */
 .hero{padding:96px 0 110px;border-bottom:1px solid var(--line)}
